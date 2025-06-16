@@ -1,0 +1,40 @@
+import Link from 'next/link';
+import React from 'react';
+
+const Navbar = () => {
+  return (
+    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+      <div className="max-w-6xl mx-auto px-6  py-5">
+        <ul className="flex justify-end space-x-8 text-base font-semibold text-gray-800">
+          <li>
+            <Link href="#hero" className="hover:text-blue-600 transition duration-200">
+              About Me
+            </Link>
+          </li>
+          <li>
+            <Link href="#senior-project" className="hover:text-blue-600 transition duration-200">
+              Senior Project
+            </Link>
+          </li>
+           <li>
+            <Link href="#contact" className="hover:text-blue-600 transition duration-200">
+              Skills
+            </Link>
+          </li>
+          <li>
+            <Link href="#projects" className="hover:text-blue-600 transition duration-200">
+              Academic Projects
+            </Link>
+          </li>
+          <li>
+            <Link href="#contact" className="hover:text-blue-600 transition duration-200">
+              Education
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
