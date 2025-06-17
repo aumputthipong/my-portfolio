@@ -5,7 +5,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="py-28  bg-slate-200">
+    <section  id="home" className="py-28  bg-slate-200">
       <Container maxWidth="md">
         <Typography
           variant="h2"
@@ -18,14 +18,14 @@ const Hero = () => {
         <Typography variant="h4" fontWeight="medium" className="text-indigo-900" gutterBottom>
           Full-Stack Developer ·Frontend-Backend Developer
         </Typography>
-        <div className="" id="about">
+
             <Typography variant="body1" color="text.secondary">
               A recent graduate and new graduated passionate full-stack
               developer. I specialize in web development using technologies like
               TypeScript, JavaScript, React, NestJS, and Next.js. I'm always
               open to learning new things and continuously improving my skills.
             </Typography>
-        </div>
+    
         <div className="text-sm text-gray-500 space-y-1">
           <p>
             Email:{" "}
