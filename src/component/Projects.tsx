@@ -61,24 +61,26 @@ export default function Projects() {
               whileTap={{ scale: 0.97 }}
               className="hover:shadow-xl transition duration-300"
             >
-              <Card className="p-4 h-full flex flex-col justify-between">
-                 <div className="relative h-48 overflow-hidden">
+              <Card className="p-4 h-full flex flex-col justify-between group">
+                <div className="relative h-48 overflow-hidden rounded-md">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full group-hover:scale-105 transition duration-300"
+                    className="object-cover w-full h-full transition duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-white text-black px-4 py-2 rounded font-semibold text-sm shadow hover:bg-gray-100"
+                      className="bg-white text-blue-600 px-4 py-2 rounded shadow text-sm font-medium flex items-center gap-2 hover:bg-gray-100 transition"
                     >
-                      ดูตัวอย่าง
+                      <FaExternalLinkAlt className="text-sm" />
+                      View Project
                     </a>
                   </div>
                 </div>
+
                 <CardContent>
                   <h3 className="text-xl font-semibold mb-2">
                     {project.title}
