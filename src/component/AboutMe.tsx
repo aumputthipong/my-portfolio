@@ -9,6 +9,7 @@ import {
   SiMui, SiBootstrap, SiTailwindcss, SiExpress, SiNodedotjs,
   SiNestjs, SiFastapi, SiPostgresql, SiMysql, SiMongodb
 } from "react-icons/si";
+import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from '@mui/lab';
 
 
 const AboutMe = () => {
@@ -60,85 +61,88 @@ const AboutMe = () => {
           <div className="flex-1 text-left md:w-3/5">
             {/* About Me Paragraphs */}
 
-
             {/* Skills Section */}
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {techSkills.map((section) => (
-    <Card key={section.category} className='bg-white border border-gray-200 rounded-lg shadow-sm p-6 text-left'>
-      <h3 className="text-xl font-semibold mb-4 text-gray-800">
-        {section.category}
-      </h3>
-      <div className="flex flex-wrap gap-4">
-        {section.skills.map((skill) => (
-          <div className='flex flex-col items-center gap-2'>
-          <span
-            key={skill.label}
-            className="text-4xl"
-          >
-            {skill.icon}
-          </span>
-           <span
-          
-            className="bg-gray-200 text-gray-800 rounded-full px-3 py-1 text-sm font-medium shadow-sm"
-          >
-      
-            {skill.label}
-          </span>
-          </div>
-        ))}
-      </div>
-    </Card>
-  ))}
-</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Timeline position="left">
+                <TimelineItem>
+                  <TimelineSeparator>
+                    <TimelineDot />
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                  <TimelineContent>Eat</TimelineContent>
+                </TimelineItem>
+              </Timeline>
+              {techSkills.map((section) => (
+                <Card
+                  key={section.category}
+                  className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 text-left"
+                >
+                  <h3 className="text-xl font-semibold mb-4 text-gray-800">
+                    {section.category}
+                  </h3>
+                  <div className="flex flex-wrap gap-4">
+                    {section.skills.map((skill) => (
+                      <div className="flex flex-col items-center gap-2">
+                        <span key={skill.label} className="text-4xl">
+                          {skill.icon}
+                        </span>
+                        <span className="bg-gray-200 text-gray-800 rounded-full px-3 py-1 text-sm font-medium shadow-sm">
+                          {skill.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
 
           {/* Right Column: Stat Cards */}
-<div className="flex-shrink-0 w-full md:w-2/5 flex flex-col gap-6">
- <motion.div
+          <div className="flex-shrink-0 w-full md:w-2/5 flex flex-col gap-6">
+            <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="hover:shadow-xl transition duration-300"
             >
-  <Card className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 text-left">
+              <Card className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 text-left">
+                {/* Header with logos */}
+                <div className="flex items-center gap-3 mb-4">
+                  <img
+                    src="/image/KMITL_Logo.png"
+                    alt="KMITL Logo"
+                    className="h-10 w-auto"
+                  />
+                  <img
+                    src="/image/ITKMITL_Logo.png"
+                    alt="IT Logo"
+                    className="h-10 w-auto"
+                  />
+                  <h3 className="text-xl font-semibold text-gray-800 ml-auto">
+                    Education
+                  </h3>
+                </div>
 
-    {/* Header with logos */}
-    <div className="flex items-center gap-3 mb-4">
-      <img
-        src="/image/KMITL_Logo.png"
-        alt="KMITL Logo"
-        className="h-10 w-auto"
-      />
-      <img
-        src="/image/ITKMITL_Logo.png"
-        alt="IT Logo"
-        className="h-10 w-auto"
-      />
-      <h3 className="text-xl font-semibold text-gray-800 ml-auto">Education</h3>
-    </div>
+                {/* Timeline container */}
+                <div className="relative pl-4 border-l-2 border-blue-500 ml-2">
+                  {/* Education Item */}
+                  <div className="mb-6 relative">
+                    {/* Circle bullet */}
 
-    {/* Timeline container */}
-    <div className="relative pl-4 border-l-2 border-blue-500 ml-2">
-      
-      {/* Education Item */}
-      <div className="mb-6 relative">
-        {/* Circle bullet */}
-        
-        {/* Timeline content */}
-        <p className="text-gray-700 font-semibold">
-          B.Sc. in Information Technology (Software Engineering)
-        </p>
-        <p className="text-sm text-gray-600">
-          King Mongkut's Institute of Technology Ladkrabang (KMITL)
-        </p>
-        <p className="text-xs text-gray-500 mt-1">Graduated: June 2024</p>
-      </div>
-    </div>
-    
-  </Card>
-  </motion.div>
-</div>
-
-        
+                    {/* Timeline content */}
+                    <p className="text-gray-700 font-semibold">
+                      B.Sc. in Information Technology (Software Engineering)
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      King Mongkut's Institute of Technology Ladkrabang (KMITL)
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Graduated: June 2024
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
