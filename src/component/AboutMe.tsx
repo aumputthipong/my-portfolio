@@ -63,23 +63,31 @@ const AboutMe = () => {
 
             {/* Skills Section */}
        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-  {techSkills.map((section) => (
-    <div key={section.category}>
+      {techSkills.map((section) => (
+    <Card key={section.category} className='bg-white border border-gray-200 rounded-lg shadow-sm p-6 text-left'>
       <h3 className="text-xl font-semibold mb-4 text-gray-800">
         {section.category}
       </h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-4">
         {section.skills.map((skill) => (
+          <div className='flex flex-col items-center gap-2'>
           <span
             key={skill.label}
-            className="flex items-center gap-2 bg-gray-200 text-gray-800 rounded-full px-3 py-1 text-sm font-medium shadow-sm"
+            className="text-4xl"
           >
             {skill.icon}
+          </span>
+           <span
+          
+            className="bg-gray-200 text-gray-800 rounded-full px-3 py-1 text-sm font-medium shadow-sm"
+          >
+      
             {skill.label}
           </span>
+          </div>
         ))}
       </div>
-    </div>
+    </Card>
   ))}
 </div>
           </div>

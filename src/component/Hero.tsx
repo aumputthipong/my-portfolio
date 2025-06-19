@@ -1,7 +1,7 @@
 "use client";
 
 import { Email, EmailOutlined } from "@mui/icons-material";
-import { Button, Container, Typography } from "@mui/material";
+import { Avatar, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -64,9 +64,7 @@ const Hero = () => {
               <FaGithub /> GitHub
             </a>
             <a
-              href={"putthipong.chb@gmail.com"}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:putthipong.chb@gmail.com"
               className="flex items-center gap-1 text-blue-600 hover:underline"
             >
               <MdEmail /> putthipong.chb@gmail.com
@@ -95,26 +93,14 @@ const Hero = () => {
           </div>
         </div>
             <div className="md:w-1/2 flex justify-center">
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
             <ul className="text-sm border-l-2 border-blue-500 pl-4 space-y-2">
   <li>💻 2020 — Started coding in C</li>
   <li>🚀 2022 — Discovered React & JS</li>
   <li>🎓 2024 — Graduated from KMITL</li>
 </ul>
 
-<TypeAnimation
-  sequence={[
-    '// building things with TypeScript',
-    1000,
-    '// crafting backend with NestJS',
-    1000,
-    '// styling UI with Tailwind',
-    1000,
-  ]}
-  wrapper="span"
-  speed={60}
-  repeat={Infinity}
-  className="text-sm md:text-md font-mono text-blue-600"
-/>
+
             </div>
 
 </div>
