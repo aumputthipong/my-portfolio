@@ -10,7 +10,7 @@ import { Sen } from 'next/font/google'
 
 export default function Home() {
   return (
-    <main className="bg-white min-h-screen text-black">
+    <main >
       <Hero/>
       <AboutMe/>
       <SeniorProject />

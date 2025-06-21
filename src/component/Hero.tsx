@@ -9,7 +9,11 @@ import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
   return (
-    <section id="home" className="py-28  bg-slate-100">
+    <section id="home" 
+         className="min-h-screen flex items-center relative bg-gradient-to-br from-slate-50 to-slate-200"
+
+     >
+        <div className="w-full">
       <Container maxWidth="lg">
 
          <div className="flex flex-col-reverse md:flex-row items-center gap-10">
@@ -105,7 +109,8 @@ const Hero = () => {
 
 </div>
       </Container>
-    </section>
+     </div>
+     </section>
   );
 };
 

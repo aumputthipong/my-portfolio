@@ -1,4 +1,5 @@
 
+// layout.tsx
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import Navbar from "@/component/Navbar";
@@ -18,7 +19,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
         <MUIThemeProvider >
      
         <Navbar />
-        <main className="container mx-auto px-4 py-8">{children}</main>
+        <main>{children}</main>
         <Footer />
         </MUIThemeProvider>
       </body>
