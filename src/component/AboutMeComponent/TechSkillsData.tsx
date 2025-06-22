@@ -17,30 +17,7 @@ import {
 } from "react-icons/si";
 
 export const techSkills = [
-  {
-    category: "Front-End Frameworks",
-    skills: [
-      { label: "React", icon: "image/skills/framework/react.png" },
-      { label: "Next", icon:"image/skills/framework/nextjs.png" },
-      { label: "Vue", icon: "image/skills/framework/vue.png" },
-      { label: "Material UI", icon: "image/skills/framework/mui.png" },
-      { label: "Tailwind", icon: "image/skills/framework/tailwind.png" },
-      { label: "Bootstrap", icon: "image/skills/framework/Bootstrap.png" },
-    ],
-  },
-  {
-    category: "Back-End Frameworks",
-    skills: [
-      { label: "Nodejs", icon: "image/skills/framework/node.png" },
-      { label: "Nest", icon: "image/skills/framework/nestjs.png" },
-      { label: "FastAPI", icon: "image/skills/framework/fastapi.png" },
-      { label: "Express", icon: "image/skills/framework/express-js.png" },
-      { label: "PostgresQL", icon: "image/skills/framework/Postgresql.png" },
-      { label: "MySQL", icon: "image/skills/framework/mysql.png"},
-      { label: "MongoDB", icon: "image/skills/framework/mongodb.png" },
-    ],
-  },
-  {
+    {
     category: "Programming Languages",
     skills: [
       { label: "JavaScripts", icon: "image/skills/programming/js.png" },
@@ -51,6 +28,30 @@ export const techSkills = [
       { label: "CSS", icon: "image/skills/programming/css.png" },
     ],
   },
+  {
+    category: "Front-End Develope Skills",
+    skills: [
+      { label: "React", icon: "image/skills/framework/react.png" },
+      { label: "Next", icon:"image/skills/framework/nextjs.png" },
+      { label: "Vue", icon: "image/skills/framework/vue.png" },
+      { label: "MUI", icon: "image/skills/framework/mui.png" },
+      { label: "Tailwind", icon: "image/skills/framework/tailwind.png" },
+      { label: "Bootstrap", icon: "image/skills/framework/Bootstrap.png" },
+    ],
+  },
+  {
+    category: "Back-End Develope Skills",
+    skills: [
+      { label: "Nodejs", icon: "image/skills/framework/node.png" },
+      { label: "Nest", icon: "image/skills/framework/nestjs.png" },
+      { label: "FastAPI", icon: "image/skills/framework/fastapi.png" },
+      { label: "Express", icon: "image/skills/framework/express-js.png" },
+      { label: "PostgresQL", icon: "image/skills/framework/Postgresql.png" },
+      { label: "MySQL", icon: "image/skills/framework/mysql.png"},
+      { label: "MongoDB", icon: "image/skills/framework/mongodb.png" },
+    ],
+  },
+
   {
     category: "Tools",
     skills: [

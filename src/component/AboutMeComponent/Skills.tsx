@@ -17,19 +17,19 @@ const Skills = () => {
             🛠️
           </div>
           <div>
-            <h4 className="text-lg font-bold text-gray-800 mb-2">
+            <h4 className="text-2xl font-bold text-gray-800 mb-4">
               {section.category}
             </h4>
             <div className="flex flex-wrap gap-4">
               {section.skills.map((skill) => (
                 <div
                   key={skill.label}
-                  className="flex flex-col items-center gap-1"
+                  className="flex flex-col items-center gap-1 border-2 border-zinc-200 rounded-[15px] p-2 w-20"
                 >
                   <img src={skill.icon} className="h-8"/>
-                  <span className="bg-gray-200 text-gray-800 rounded-full px-3 py-1 text-xs font-medium shadow-sm">
+                  <div className="text-gray-800 px-3 py-1 text-xs font-medium text-center truncate">
                     {skill.label}
-                  </span>
+                  </div>
                 </div>
               ))}
             </div>
