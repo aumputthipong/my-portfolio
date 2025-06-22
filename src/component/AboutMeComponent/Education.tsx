@@ -5,7 +5,7 @@ import { Card } from '@mui/material';
 const Education = () => {
   return (
                
-              <motion.div
+              <motion.div 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className="hover:shadow-xl transition duration-300 col-span-full"

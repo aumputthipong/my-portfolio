@@ -1,10 +1,10 @@
-import { Card } from "@mui/material";
+import { Button, Card } from "@mui/material";
 import React from "react";
 
 const Introduction = () => {
   return (
-    <Card 
-    className="shadow-md rounded-xl p-6 max-w-4xl mx-auto mt-10 col-span-full"
+    <Card
+    className="shadow-md rounded-xl p-6 max-w-4xl mx-auto "
     >
       <div className=" md:flex-row items-start gap-6 ">
         <div className=" gap-8 flex items-center text-center md:text-left md:items-start  ">
@@ -14,10 +14,13 @@ const Introduction = () => {
             className="h-32 object-contain mb-4 rounded-2xl"
           />
           <div className="">
-            <h2 className="text-xl font-bold text-gray-800">
+            <div className="flex ">
+
+            <h2 className="text-3xl font-bold text-gray-800">
               Putthipong Chobngam
             </h2>
-            <p className="text-sm text-gray-500">Nickname: AUM</p>
+            <p className="ml-2 text-3xl font-bold  text-gray-500"> (AUM) </p>
+            </div>
             <p className="mt-2 text-blue-600 font-semibold">
               Full-Stack Developer
             </p>
@@ -30,6 +33,7 @@ const Introduction = () => {
               constantly improving my skills to stay up-to-date in the tech
               world.
             </p>
+            <Button> My Project</Button>
           </div>
         </div>
         {/* Personal Details */}

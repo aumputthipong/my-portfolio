@@ -14,19 +14,12 @@ const Navbar = () => {
               Home
             </Link>
           </li>
-          <li>
-          </li>
            <li>
             <Link href="#contact" className="hover:text-blue-600 transition duration-200">
               About
             </Link>
           </li>
           <li>
-            <Link href="#projects" className="hover:text-blue-600 transition duration-200">
-                Projects
-            </Link>
-          </li>
-           <li>
             <Link href="#projects" className="hover:text-blue-600 transition duration-200">
                 Projects
             </Link>
