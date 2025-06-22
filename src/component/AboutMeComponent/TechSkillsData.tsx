@@ -18,50 +18,48 @@ import {
 
 export const techSkills = [
   {
+    category: "Front-End Frameworks",
+    skills: [
+      { label: "React", icon: "image/skills/framework/react.png" },
+      { label: "Next", icon:"image/skills/framework/nextjs.png" },
+      { label: "Vue", icon: "image/skills/framework/vue.png" },
+      { label: "Material UI", icon: "image/skills/framework/mui.png" },
+      { label: "Tailwind", icon: "image/skills/framework/tailwind.png" },
+      { label: "Bootstrap", icon: "image/skills/framework/Bootstrap.png" },
+    ],
+  },
+  {
+    category: "Back-End Frameworks",
+    skills: [
+      { label: "Nodejs", icon: "image/skills/framework/node.png" },
+      { label: "Nest", icon: "image/skills/framework/nestjs.png" },
+      { label: "FastAPI", icon: "image/skills/framework/fastapi.png" },
+      { label: "Express", icon: "image/skills/framework/express-js.png" },
+      { label: "PostgresQL", icon: "image/skills/framework/Postgresql.png" },
+      { label: "MySQL", icon: "image/skills/framework/mysql.png"},
+      { label: "MongoDB", icon: "image/skills/framework/mongodb.png" },
+    ],
+  },
+  {
     category: "Programming Languages",
     skills: [
-      { label: "JavaScripts", icon: <SiReact className="text-blue-500" /> },
-      { label: "TypeScripts", icon: <SiNextdotjs /> },
-      { label: "Java", icon: <SiVuedotjs className="text-green-500" /> },
-      { label: "Python", icon: <SiJavascript className="text-yellow-500" /> },
-      { label: "Html", icon: <SiTypescript className="text-blue-600" /> },
-      { label: "CSS", icon: <SiMui className="text-indigo-500" /> },
+      { label: "JavaScripts", icon: "image/skills/programming/js.png" },
+      { label: "TypeScripts", icon: "image/skills/programming/typescript.png" },
+      { label: "Python", icon: "image/skills/programming/python.png"},
+      { label: "Java", icon: "image/skills/programming/java.png" },
+      { label: "Html", icon: "image/skills/programming/html.png" },
+      { label: "CSS", icon: "image/skills/programming/css.png" },
     ],
   },
   {
     category: "Tools",
     skills: [
-      { label: "Git", icon: <SiReact className="text-blue-500" /> },
-      { label: "Postman", icon: <SiNextdotjs /> },
-      { label: "Docker", icon: <SiVuedotjs className="text-green-500" /> },
-      { label: "Figma", icon: <SiJavascript className="text-yellow-500" /> },
-      { label: "Html", icon: <SiTypescript className="text-blue-600" /> },
-      { label: "CSS", icon: <SiMui className="text-indigo-500" /> },
-    ],
-  },
-  {
-    category: "Front-End",
-    skills: [
-      { label: "React", icon: <SiReact className="text-blue-500" /> },
-      { label: "Next", icon: <SiNextdotjs /> },
-      { label: "Vue", icon: <SiVuedotjs className="text-green-500" /> },
-      { label: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
-      { label: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-      { label: "Material UI", icon: <SiMui className="text-indigo-500" /> },
-      { label: "Bootstrap", icon: <SiBootstrap className="text-purple-600" /> },
-      { label: "Tailwind", icon: <SiTailwindcss className="text-cyan-500" /> },
-    ],
-  },
-  {
-    category: "Backend",
-    skills: [
-      { label: "Express", icon: <SiExpress /> },
-      { label: "Nodejs", icon: <SiNodedotjs className="text-green-600" /> },
-      { label: "Nest", icon: <SiNestjs className="text-red-500" /> },
-      { label: "FastAPI", icon: <SiFastapi className="text-blue-500" /> },
-      { label: "PostgresQL", icon: <SiPostgresql className="text-blue-800" /> },
-      { label: "MySQL", icon: <SiMysql className="text-blue-600" /> },
-      { label: "MongoDB", icon: <SiMongodb className="text-green-600" /> },
+      { label: "Git", icon: "image/skills/tools/git.png" },
+      { label: "Postman", icon:"image/skills/tools/postman.png" },
+      { label: "Docker", icon: "image/skills/tools/docker.png" },
+      { label: "Figma", icon: "image/skills/tools/figma.png" },
+      { label: "Github", icon: "image/skills/tools/github.png" },
+
     ],
   },
 ];

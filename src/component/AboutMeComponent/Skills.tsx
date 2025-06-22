@@ -26,7 +26,7 @@ const Skills = () => {
                   key={skill.label}
                   className="flex flex-col items-center gap-1"
                 >
-                  <span className="text-3xl">{skill.icon}</span>
+                  <img src={skill.icon} className="h-8"/>
                   <span className="bg-gray-200 text-gray-800 rounded-full px-3 py-1 text-xs font-medium shadow-sm">
                     {skill.label}
                   </span>
