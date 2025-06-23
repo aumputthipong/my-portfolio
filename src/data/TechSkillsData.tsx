@@ -1,20 +1,4 @@
-import {
-  SiReact,
-  SiNextdotjs,
-  SiVuedotjs,
-  SiJavascript,
-  SiTypescript,
-  SiMui,
-  SiBootstrap,
-  SiTailwindcss,
-  SiExpress,
-  SiNodedotjs,
-  SiNestjs,
-  SiFastapi,
-  SiPostgresql,
-  SiMysql,
-  SiMongodb,
-} from "react-icons/si";
+
 
 export const techSkills = [
     {

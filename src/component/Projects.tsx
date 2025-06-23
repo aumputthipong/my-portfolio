@@ -1,78 +1,35 @@
-// components/Projects.tsx
+
 'use client'
 
-
+import { projectData } from '@/data/ProjectsData'
 import { Card, CardContent } from '@mui/material'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import ProjectModal from './Project/ProjectModal'
 
-const projectData = [
-    {
-    title: 'BookingRoom Web Application',
-    description:
-    'Fullstack app using Next.js frontend and Golang backend for realtime deal countdown.',
-    tech: ['Next.js','Typescripts', 'MongoDB', 'DaisyUI'],
-    github: 'https://github.com/your-username/next-golang',
-    
-    demo: '#',
-    image: 'projects/bookingroom.png',
-        images: [
-      "/images/detail1.png",
-      "/images/detail2.png",
-    ],
-},
-{
-  title: 'Job Search Application',
-  description:
-    'Developed a job search mobile application by using React Native and Firebase database',
-  tech: ['ReactNative', 'Firebasse', 'Mobile App'],
-  github: 'https://github.com/your-username/next-golang',
-  demo: '#',
-  image: 'projects/jobsearch.png',
-      images: [
-      "/images/detail1.png",
-      "/images/detail2.png",
-    ],
-},
-  {
-    title: 'Food Ordering Web Application',
-    description:
-      'Web app platform to support image/video AI analysis (Object Detection, Segmentation, Classification, Regression) with microservices architecture.',
-    tech: ['Vue', 'Express', 'MySQL', 'Docker'],
-    github: 'https://github.com/your-username/ai-garden',
-    demo: 'https://ai-garden-demo.com',
-    image: 'projects/foodshop.png',
-        images: [
-      "/images/detail1.png",
-      "/images/detail2.png",
-    ],
-  },
-   {
-    title: 'Convenience Store Management ',
-    description:
-      'Develope Convenience Store Management Web Application.',
-    tech: ['Java', 'SpringBoot', 'MongoDB', "React"],
-    github: 'https://github.com/your-username/next-golang',
-    demo: '#',
-    image: 'projects/con_manage.png',
-        images: [
-      "/images/detail1.png",
-      "/images/detail2.png",
-    ],
-  },
-]
 
 export default function Projects() {
-  const [openProject, setOpenProject] = useState<null | number>(null);
+const [openProject, setOpenProject] = useState<number | null>(null);
   return (
     <section id="projects" className="py-20 px-4 bg-gray-50">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">Academic Projects</h2>
+        <h2 className="text-4xl  text-slate-900 font-bold mb-6">Academic Projects</h2>
         <p className="text-gray-600 mb-10">
           These are some of the web applications I have built.
         </p>
         <div className="grid gap-6 sm:grid-cols-2">
+
+
+      {openProject !== null && (
+          <ProjectModal
+            project={projectData[openProject]}
+            onClose={() => setOpenProject(null)}
+          />  
+      )}
+
+
+
           {projectData.map((project, index) => (
             <motion.div
               key={index}
@@ -89,7 +46,7 @@ export default function Projects() {
                   />
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <button
-                onClick={() => setOpenProject(index)}
+              onClick={() => setOpenProject(index)}
                 className="bg-white text-blue-600 px-4 py-2 rounded shadow text-sm font-medium flex items-center gap-2 hover:bg-gray-100 transition"
               >
                 <FaExternalLinkAlt className="text-sm" />

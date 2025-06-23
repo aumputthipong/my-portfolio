@@ -39,10 +39,10 @@ const SeniorProject = () => {
   return (
     <section id="senior-project" className="py-20 px-4 ">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">Academic Projects</h2>
+        <h2 className="text-4xl font-bold text-slate-900 mb-6">Final Projects </h2>
 
         <p className="text-gray-600 mb-10">
-          AI Garden System is a web application platform to support image and video analysis using various AI models such as Object Detection, Image Classification, Regression, and Instance Segmentation.
+          AI Garden System is a my thesis web application  platform to support image and video analysis using various AI models such as Object Detection, Image Classification, Regression, and Instance Segmentation.
         </p>
 
         <div className="flex items-center justify-center w-full max-w-2xl mx-auto gap-4">

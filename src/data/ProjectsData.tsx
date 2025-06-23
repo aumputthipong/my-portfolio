@@ -1,0 +1,55 @@
+export const projectData = [
+  {
+    id: 1,
+    title: "BookingRoom Web Application",
+    description:
+      "Fullstack app using Next.js frontend and Golang backend for realtime deal countdown.",
+    tech: ["Next.js", "Typescripts", "MongoDB", "DaisyUI"],
+    github: "https://github.com/your-username/next-golang",
+
+    demo: "#",
+    image: "projects/bookingroom.png",
+    images: ["/projects/mobile/mobile1.png", "/images/detail2.png"],
+  },
+  {
+    id: 2,
+    title: "Job Search Application",
+    description:
+      "Developed a job search mobile application by using React Native and Firebase database",
+    tech: ["ReactNative", "Firebasse", "Mobile App"],
+    github: "https://github.com/your-username/next-golang",
+    demo: "#",
+    image: "projects/jobsearch.png",
+    images: [
+      "/projects/mobile/mobile1.png",
+      "/projects/mobile/mobile2.png",
+      "/projects/mobile/mobile3.png",
+      "/projects/mobile/mobile4.png",
+      "/projects/mobile/mobile5.png",
+      "/projects/mobile/mobile6.png",
+      "/projects/mobile/mobile7.png",
+      "/projects/mobile/mobile8.png",
+    ],
+  },
+  {
+    id: 3,
+    title: "Food Ordering Web Application",
+    description:
+      "Web app platform to support image/video AI analysis (Object Detection, Segmentation, Classification, Regression) with microservices architecture.",
+    tech: ["Vue", "Express", "MySQL", "Docker"],
+    github: "https://github.com/your-username/ai-garden",
+    demo: "https://ai-garden-demo.com",
+    image: "projects/foodshop.png",
+    images: ["/images/detail1.png", "/images/detail2.png"],
+  },
+  {
+    id: 4,
+    title: "Convenience Store Management ",
+    description: "Develope Convenience Store Management Web Application.",
+    tech: ["Java", "SpringBoot", "MongoDB", "React"],
+    github: "https://github.com/your-username/next-golang",
+    demo: "#",
+    image: "projects/con_manage.png",
+    images: ["/images/detail1.png", "/images/detail2.png"],
+  },
+];

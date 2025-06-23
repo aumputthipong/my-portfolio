@@ -8,9 +8,10 @@ const Education = () => {
               <motion.div 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="hover:shadow-xl transition duration-300 col-span-full"
-              >
-                <Card className=" flex border border-gray-200 rounded-lg shadow-sm p-6 text-left gap-6">
+                className=" transition duration-300  "
+                >
+                <Card className="  flex border border-gray-200 rounded-lg  p-6 text-left gap-6">
+    
                   <img
                     src="/image/KMITL_Logo.png"
                     alt="KMITL Logo"
@@ -33,13 +34,13 @@ const Education = () => {
                         (KMITL)
                       </p>
                       <p className="text-xs text-gray-500 mt-1">
-                        Graduated: June 2024
+                        Graduated: May 2025
                       </p>
                     </div>
                   </div>
                 </Card>
               </motion.div>
-        
+           
   )
 }
 

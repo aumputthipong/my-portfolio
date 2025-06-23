@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { techSkills } from "./TechSkillsData";
+import { techSkills } from "../../data/TechSkillsData";
 import { Card } from "@mui/material";
 const Skills = () => {
 
@@ -11,7 +11,7 @@ const Skills = () => {
       {techSkills.map((section) => (
         <Card
           key={section.category}
-          className="flex items-start border border-gray-200 rounded-lg shadow-sm p-6 text-left gap-6"
+          className="flex items-start border border-gray-200 rounded-lg p-6 text-left gap-6"
         >
           <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-3xl">
             🛠️

@@ -6,11 +6,11 @@ import Introduction from "./AboutMeComponent/Introduction";
 
 const AboutMe = () => {
   return (
-    <section id="about-me" className="py-20 px-4 bg-[#FDFAF6]">
+    <section id="about-me" className="py-20 px-4 bg-zinc-50">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="sticky top-24 w-full md:w-2/4 md:h-fit self-start">
-            <h2 className="text-5xl font-bold mb-4 text-indigo-800 ">About Me</h2>
+          <div className="sticky top-24 w-full md:w-1/4 md:h-fit self-start">
+            <h2 className="text-5xl font-bold mb-4 text-slate-800 ">About Me</h2>
             <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
               Get to know more about my background and expertise
             </p>
@@ -38,14 +38,14 @@ const AboutMe = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 pl-6 relative bg">
-            <div className="flex col-span-full gap-6 ">
+            <div className="flex col-span-full gap-8 ">
               {/* timeline */}
               <div
                 className="relative flex flex-col items-center"
                 style={{ width: "40px" }}
               >
-                <div className="absolute top-0 bottom-0 w-[6px] bg-indigo-600" />
-                <div className="border-3 border-indigo-400 bg-white rounded-full z-10 p-2  ">
+                <div className="absolute top-0 bottom-0 w-[6px] bg-[#333333]" />
+                <div className="border-3 border-[#333333] bg-white rounded-full z-10 p-2  ">
                   <svg
                     className="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
@@ -77,14 +77,14 @@ const AboutMe = () => {
               </div>
             </div>
 
-            <div className="flex col-span-full gap-6 ">
+            <div className="flex col-span-full gap-8 ">
               {/* timeline */}
               <div
                 className="relative flex flex-col items-center"
                 style={{ width: "40px" }}
               >
-                <div className="absolute top-0 bottom-0 w-[6px] bg-indigo-600" />
-                <div className="border-3 border-indigo-400 bg-white rounded-full z-10 p-2  ">
+                <div className="absolute top-0 bottom-0 w-[6px] bg-[#333333]" />
+                <div className="border-3 border-[#333333] bg-white rounded-full z-10 p-2  ">
                   <svg
                     className="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
@@ -115,15 +115,16 @@ const AboutMe = () => {
                 <Skills />
               </div>
             </div>
+            
 
-            <div className="flex col-span-full gap-6 ">
+            <div className="flex col-span-full gap-8 ">
               {/* timeline */}
               <div
                 className="relative flex flex-col items-center"
                 style={{ width: "40px" }}
               >
-                <div className="absolute top-0 bottom-0 w-[6px] bg-indigo-600 rounded-full  " />
-                <div className="border-3 border-indigo-400 bg-white rounded-full  z-10 p-2  ">
+                <div className="absolute top-0 bottom-0 w-[6px] bg-[#333333] rounded-full  " />
+                <div className="border-3 border-[#333333] bg-white rounded-full  z-10 p-2  ">
                   <svg
                     className="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
@@ -144,7 +145,7 @@ const AboutMe = () => {
                 </div>
               </div>
               {/* content with head */}
-              <div className="pb-12">
+              <div className="col-span-full pb-12">
                 <h2
                   className="text-4xl font-bold text-gray-800 pb-6"
                   id="education"
