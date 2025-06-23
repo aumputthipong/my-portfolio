@@ -27,9 +27,6 @@ const [openProject, setOpenProject] = useState<number | null>(null);
             onClose={() => setOpenProject(null)}
           />  
       )}
-
-
-
           {projectData.map((project, index) => (
             <motion.div
               key={index}

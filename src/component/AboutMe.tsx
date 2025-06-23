@@ -9,33 +9,38 @@ const AboutMe = () => {
     <section id="about-me" className="py-20 px-4 bg-zinc-50">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="sticky top-24 w-full md:w-1/4 md:h-fit self-start">
-            <h2 className="text-5xl font-bold mb-4 text-slate-800 ">About Me</h2>
-            <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-              Get to know more about my background and expertise
-            </p>
-            <h2 className="text-2xl font-bold mb-4">ABOUT ME</h2>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2 text-blue-700 font-semibold text-lg">
-                <span className="w-2 h-2 bg-blue-700 rounded-full inline-block"></span>
-                <a href="#introduction" className="hover:underline">
-                  Introduction
-                </a>
-              </li>
-              <li className="flex items-center gap-2 text-blue-700 font-semibold text-lg">
-                <span className="w-2 h-2 bg-blue-700 rounded-full inline-block"></span>
-                <a href="#skills" className="hover:underline">
-                  Skills
-                </a>
-              </li>
-              <li className="flex items-center gap-2 text-blue-700 font-semibold text-lg">
-                <span className="w-2 h-2 bg-blue-700 rounded-full inline-block"></span>
-                <a href="#education" className="hover:underline">
-                  Education
-                </a>
-              </li>
-            </ul>
-          </div>
+         <div className="sticky top-24 w-full md:w-1/4 self-start space-y-6">
+  {/* หัวข้อหลัก */}
+  <div>
+    <h2 className="text-4xl font-bold text-slate-800 mb-2">About Me</h2>
+    <p className="text-gray-600 text-sm leading-relaxed">
+      Get to know more about my background and expertise.
+    </p>
+  </div>
+
+  {/* หัวข้อย่อย + ลิงก์ */}
+  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+    <h3 className="text-lg font-semibold text-slate-700 mb-4">Quick Navigation</h3>
+    <ul className="space-y-3">
+      {[
+        { href: '#introduction', label: 'Introduction' },
+        { href: '#skills', label: 'Skills' },
+        { href: '#education', label: 'Education' },
+      ].map((item, index) => (
+        <li key={index}>
+          <a
+            href={item.href}
+            className="flex items-center gap-3 text-blue-700 hover:text-blue-900 font-medium transition-colors duration-200"
+          >
+            <span className="w-2.5 h-2.5 bg-blue-600 rounded-full"></span>
+            <span>{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-3 pl-6 relative bg">
             <div className="flex col-span-full gap-8 ">
@@ -44,10 +49,10 @@ const AboutMe = () => {
                 className="relative flex flex-col items-center"
                 style={{ width: "40px" }}
               >
-                <div className="absolute top-0 bottom-0 w-[6px] bg-[#333333]" />
-                <div className="border-3 border-[#333333] bg-white rounded-full z-10 p-2  ">
+                <div className="absolute top-0 bottom-0 w-[4px] bg-[#333333]" />
+                <div className="border-[4px] border-[#333333]  rounded-full z-10 p-1 bg-[#333333]  ">
                   <svg
-                    className="w-6 h-6 text-gray-800 dark:text-white"
+                    className="w-6 h-6 text-white "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -83,10 +88,10 @@ const AboutMe = () => {
                 className="relative flex flex-col items-center"
                 style={{ width: "40px" }}
               >
-                <div className="absolute top-0 bottom-0 w-[6px] bg-[#333333]" />
-                <div className="border-3 border-[#333333] bg-white rounded-full z-10 p-2  ">
+                <div className="absolute top-0 bottom-0 w-[4px] bg-[#333333]" />
+                <div className="border-[4px] border-[#333333]  rounded-full z-10 p-1 bg-[#333333]  ">
                   <svg
-                    className="w-6 h-6 text-gray-800 dark:text-white"
+                    className="w-6 h-6 text-white "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -123,10 +128,10 @@ const AboutMe = () => {
                 className="relative flex flex-col items-center"
                 style={{ width: "40px" }}
               >
-                <div className="absolute top-0 bottom-0 w-[6px] bg-[#333333] rounded-full  " />
-                <div className="border-3 border-[#333333] bg-white rounded-full  z-10 p-2  ">
+                <div className="absolute top-0 bottom-0 w-[4px] bg-[#333333] rounded-full  " />
+                <div className="border-[4px] border-[#333333]  rounded-full  z-10 p-1 bg-[#333333]  ">
                   <svg
-                    className="w-6 h-6 text-gray-800 dark:text-white"
+                    className="w-6 h-6 text-white "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -150,7 +155,7 @@ const AboutMe = () => {
                   className="text-4xl font-bold text-gray-800 pb-6"
                   id="education"
                 >
-                  education
+                  Education
                 </h2>
                 <Education />
               </div>
