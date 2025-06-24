@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
   <html lang="en" className="scroll-smooth">
-      <body className="bg-white text-gray-900">
+      <body className="bg-white text-gray">
         <MUIThemeProvider >
      
         <Navbar />

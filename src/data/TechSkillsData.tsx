@@ -1,8 +1,12 @@
-
-
+import TerminalIcon from '@mui/icons-material/Terminal';
+import WebIcon from '@mui/icons-material/Web';
+import BuildIcon from '@mui/icons-material/Build';
+import StorageIcon from '@mui/icons-material/Storage';
 export const techSkills = [
     {
     category: "Programming Languages",
+
+    icon: <TerminalIcon className="text-6xl text-white" />,
     skills: [
       { label: "JavaScripts", icon: "image/skills/programming/js.png" },
       { label: "TypeScripts", icon: "image/skills/programming/typescript.png" },
@@ -14,6 +18,7 @@ export const techSkills = [
   },
   {
     category: "Front-End Develope Skills",
+    icon: <WebIcon className="text-6xl text-white" />,
     skills: [
       { label: "React", icon: "image/skills/framework/react.png" },
       { label: "Next", icon:"image/skills/framework/nextjs.png" },
@@ -25,6 +30,7 @@ export const techSkills = [
   },
   {
     category: "Back-End Develope Skills",
+    icon: <StorageIcon className="text-6xl text-white" />,
     skills: [
       { label: "Nodejs", icon: "image/skills/framework/node.png" },
       { label: "Nest", icon: "image/skills/framework/nestjs.png" },
@@ -38,6 +44,7 @@ export const techSkills = [
 
   {
     category: "Tools",
+    icon: <BuildIcon className="text-6xl text-white" />,
     skills: [
       { label: "Git", icon: "image/skills/tools/git.png" },
       { label: "Postman", icon:"image/skills/tools/postman.png" },

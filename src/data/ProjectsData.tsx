@@ -2,6 +2,7 @@ export const projectData = [
   {
     id: 1,
     title: "BookingRoom Web Application",
+     type: "Development",
     description:
       "Fullstack app using Next.js frontend and Golang backend for realtime deal countdown.",
     tech: ["Next.js", "Typescripts", "MongoDB", "DaisyUI"],
@@ -14,6 +15,7 @@ export const projectData = [
   {
     id: 2,
     title: "Job Search Application",
+     type: "Development",
     description:
       "Developed a job search mobile application by using React Native and Firebase database",
     tech: ["ReactNative", "Firebasse", "Mobile App"],
@@ -34,6 +36,7 @@ export const projectData = [
   {
     id: 3,
     title: "Food Ordering Web Application",
+     type: "Development",
     description:
       "Web app platform to support image/video AI analysis (Object Detection, Segmentation, Classification, Regression) with microservices architecture.",
     tech: ["Vue", "Express", "MySQL", "Docker"],
@@ -45,6 +48,29 @@ export const projectData = [
   {
     id: 4,
     title: "Convenience Store Management ",
+     type: "Development",
+    description: "Develope Convenience Store Management Web Application.",
+    tech: ["Java", "SpringBoot", "MongoDB", "React"],
+    github: "https://github.com/your-username/next-golang",
+    demo: "#",
+    image: "projects/con_manage.png",
+    images: ["/images/detail1.png", "/images/detail2.png"],
+  },
+    {
+    id: 5,
+    title: "BlueRoom Registration System",
+     type: "UX/UI Design",
+    description: "Develope Convenience Store Management Web Application.",
+    tech: ["Java", "SpringBoot", "MongoDB", "React"],
+    github: "https://github.com/your-username/next-golang",
+    demo: "#",
+    image: "projects/con_manage.png",
+    images: ["/images/detail1.png", "/images/detail2.png"],
+  },
+     {
+    id: 5,
+    title: "รถจอดลาน Mobile Application",
+     type: "UX/UI Design",
     description: "Develope Convenience Store Management Web Application.",
     tech: ["Java", "SpringBoot", "MongoDB", "React"],
     github: "https://github.com/your-username/next-golang",

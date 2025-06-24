@@ -13,8 +13,8 @@ const Skills = () => {
           key={section.category}
           className="flex items-start border border-gray-200 rounded-lg p-6 text-left gap-6"
         >
-          <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-3xl">
-            🛠️
+          <div className="flex-shrink-0 w-16 h-16 bg-[#333333] rounded-full flex items-center justify-center text-3xl">
+            {section.icon}
           </div>
           <div>
             <h4 className="text-2xl font-bold text-gray-800 mb-4">
