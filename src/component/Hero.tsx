@@ -1,11 +1,11 @@
 "use client";
 
-import { Email, EmailOutlined } from "@mui/icons-material";
+import { CodeSharp, Description, Laptop, Storage } from "@mui/icons-material";
 import { Avatar, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import {
   FaDownload,
-  FaExternalLinkAlt,
+
   FaGithub,
   FaLinkedin,
 } from "react-icons/fa";
@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2240%22%20height=%2240%22%20viewBox=%220%200%2040%2040%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%23e2e8f0%20fill-opacity=%220.2%22%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+      {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2240%22%20height=%2240%22%20viewBox=%220%200%2040%2040%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%23e2e8f0%20fill-opacity=%220.2%22%3E%3Ccircle%20cx=%2220%22%20cy=%2220%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div> */}
 
       <div className="w-full relative z-10">
         <Container maxWidth="lg">
@@ -38,18 +38,18 @@ const Hero = () => {
                   </span>
                 </div>
 
-                <Typography
-                  variant="h1"
+                <div
+              
                   className="text-4xl lg:text-5xl font-bold text-slate-800 leading-tight"
                 >
                   Hello, I'm{" "}
                   <span className="relative">
                     <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      Putthipong Chobngam
+                      Putthipong 
                     </span>
                     <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full opacity-30"></div>
                   </span>
-                </Typography>
+                </div>
 
                 <div className="flex items-center gap-3">
                   <HiCode className="text-blue-500 text-xl flex-shrink-0" />
@@ -58,6 +58,8 @@ const Hero = () => {
                       "Full-Stack Developer",
                       2000,
                       "Frontend-Backend Developer",
+                      2000,
+                      "Software Engineer",
                       2000,
                     ]}
                     wrapper="span"
@@ -70,17 +72,16 @@ const Hero = () => {
 
               {/* Enhanced Description */}
               <div className="space-y-4">
-                <Typography
-                  variant="body1"
+                <div
                   className="text-lg text-gray-600 leading-relaxed"
                 >
                   Welcome to my portfolio website. I'm passionate about creating
                   innovative web solutions with modern technologies and turning
                   complex problems into simple, elegant designs.
-                </Typography>
+                </div>
 
                 {/* Contact Info Cards */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 pt-4">
                   <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20">
                     <MdLocationOn className="text-red-500 text-sm" />
                     <span className="text-sm text-gray-700">
@@ -132,7 +133,7 @@ const Hero = () => {
                   className="!border-2 !border-gray-300 hover:!border-gray-400 !text-gray-700 hover:!bg-gray-50 !font-semibold !px-8 !py-3 !rounded-full !transition-all !duration-300 !normal-case"
                   startIcon={<FaDownload />}
                 >
-                  Download CV
+                  Download Resume
                 </Button>
               </div>
 
@@ -162,7 +163,8 @@ const Hero = () => {
                         }}
                         className="shadow-lg"
                       >
-                        PC
+                      <img
+                        src="image/my_pic.JPG"/>
                       </Avatar>
                     </div>
                   </div>
@@ -190,17 +192,17 @@ const Hero = () => {
                 {/* Floating Tech Badges */}
                 <div className="absolute -top-4 -left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-md animate-bounce border border-white/40">
                   <span className="text-xs font-semibold text-gray-700">
-                    React
+                    <CodeSharp className="w-4 h-4" />
                   </span>
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-md animate-bounce delay-500 border border-white/40">
                   <span className="text-xs font-semibold text-gray-700">
-                    Node.js
+                    <Laptop className="w-4 h-4" />
                   </span>
                 </div>
                 <div className="absolute top-1/2 -right-8 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-md animate-bounce delay-1000 border border-white/40">
                   <span className="text-xs font-semibold text-gray-700">
-                    TypeScript
+                    <Description className="w-4 h-4" />
                   </span>
                 </div>
               </div>

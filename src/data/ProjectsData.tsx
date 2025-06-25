@@ -43,7 +43,10 @@ export const projectData = [
     github: "https://github.com/your-username/ai-garden",
     demo: "https://ai-garden-demo.com",
     image: "projects/foodshop.png",
-    images: ["/images/detail1.png", "/images/detail2.png"],
+    images: [
+      "/projects/mobile/mobile8.png",
+      "/projects/mobile/mobile8.png"
+    ],
   },
   {
     id: 4,

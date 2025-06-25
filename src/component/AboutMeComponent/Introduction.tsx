@@ -10,7 +10,7 @@ const Introduction = () => {
       <div className=" md:flex-row items-start gap-6 ">
         <div className=" gap-8 flex items-center text-center md:text-left md:items-start  ">
           <img
-            src="image/my_pic.JPG"
+            src="image/MyformalPic.jpg"
             alt="KMITL Logo"
             className="h-32 object-contain mb-4 rounded-2xl"
           />
@@ -34,7 +34,7 @@ const Introduction = () => {
             </p>
 
 
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 pt-4">
                               <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20">
                                 <MdLocationOn className="text-red-500 text-sm" />
                                 <span className="text-sm text-gray-700">

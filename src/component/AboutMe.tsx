@@ -1,46 +1,83 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Skills from "./AboutMeComponent/Skills";
 import Education from "./AboutMeComponent/Education";
 import Introduction from "./AboutMeComponent/Introduction";
+import { CastForEducation, ChevronRight, Code, CodeSharp, Home, Person, School } from "@mui/icons-material";
+import { FaGraduationCap } from "react-icons/fa";
 
 const AboutMe = () => {
   return (
     <section id="about-me" className="py-20 px-4 bg-zinc-50">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
-         <div className="sticky top-24 w-full md:w-1/4 self-start space-y-6">
-  {/* หัวข้อหลัก */}
-  <div>
-    <h2 className="text-4xl font-bold text-slate-800 mb-2">About Me</h2>
-    <p className="text-gray-600 text-sm leading-relaxed">
-      Get to know more about my background and expertise.
-    </p>
-  </div>
+          <div className="sticky top-24 w-full md:w-1/4 self-start space-y-6">
+            {/* หัวข้อหลัก */}
+            <div>
+              <h2 className="text-4xl font-bold text-slate-800 mb-2">
+                About Me
+              </h2>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Get to know more about my background and expertise.
+              </p>
+            </div>
 
-  {/* หัวข้อย่อย + ลิงก์ */}
-  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-    <h3 className="text-lg font-semibold text-slate-700 mb-4">Quick Navigation</h3>
-    <ul className="space-y-3">
-      {[
-        { href: '#introduction', label: 'Introduction' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#education', label: 'Education' },
-      ].map((item, index) => (
-        <li key={index}>
-          <a
-            href={item.href}
-            className="flex items-center gap-3 text-blue-700 hover:text-blue-900 font-medium transition-colors duration-200"
-          >
-            <span className="w-2.5 h-2.5 bg-blue-600 rounded-full"></span>
-            <span>{item.label}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-</div>
-
+            {/* หัวข้อย่อย + ลิงก์ */}
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+              <h3 className="text-lg font-semibold text-slate-700 mb-4">
+                Quick Navigation
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  {
+                    href: "#introduction",
+                    label: "Introduction",
+                    icon: <Person className="w-4 h-4" />,
+                  },
+                  {
+                    href: "#skills",
+                    label: "Skills",
+                    icon: <CodeSharp className="w-4 h-4" />,
+                  },
+                  {
+                    href: "#education",
+                    label: "Education",
+                    icon: <School className="w-4 h-4" />,
+                  },
+                ].map((item, index) => (
+                  <li
+                    key={index}
+                    onClick={() =>
+                      document
+                        .getElementById(`${item.href.slice(1)}`) // Remove '#' from href
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                  >
+                    <div
+                      key={index}
+                      className="group relative cursor-pointer rounded-xl p-4 transition-all duration-300 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-2 border-blue-200 shadow-md transform scale-[1.02]"
+                    >                   
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-r-full shadow-lg"></div>
+                      <div className="flex items-center gap-4 relative z-10">
+                        <div className="relative p-2 rounded-lg transition-all duration-300 bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg">
+                          <div className="transition-colors duration-300 text-white">
+                             {item.icon}
+                          </div>      
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg blur-md opacity-30 -z-10"></div>
+                        </div>     
+                        <div className="flex-1">
+                          <span className="font-semibold transition-colors duration-300 text-slate-800">
+                            {item.label}
+                          </span>
+                        </div>         
+                        <ChevronRight className="w-4 h-4 transition-all duration-300 text-blue-600 transform translate-x-1" />
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 pl-6 relative bg">
             <div className="flex col-span-full gap-8 ">
@@ -120,7 +157,6 @@ const AboutMe = () => {
                 <Skills />
               </div>
             </div>
-            
 
             <div className="flex col-span-full gap-8 ">
               {/* timeline */}
@@ -160,10 +196,6 @@ const AboutMe = () => {
                 <Education />
               </div>
             </div>
-
-    
-
-     
           </div>
         </div>
       </div>
