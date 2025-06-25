@@ -136,25 +136,7 @@ const Hero = () => {
                 </Button>
               </div>
 
-              {/* Social Links - Enhanced */}
-              <div className="flex gap-4 pt-2">
-                <a
-                  href="https://github.com/aumputthipong"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
-                >
-                  <FaGithub className="text-gray-700 text-lg group-hover:text-black transition-colors" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
-                >
-                  <FaLinkedin className="text-blue-600 text-lg group-hover:text-blue-700 transition-colors" />
-                </a>
-              </div>
+          
             </div>
 
             {/* Right Content - Profile Section */}
@@ -184,6 +166,25 @@ const Hero = () => {
                       </Avatar>
                     </div>
                   </div>
+                      {/* Social Links - Enhanced */}
+              <div className="flex gap-4 pt-2">
+                <a
+                  href="https://github.com/aumputthipong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
+                >
+                  <FaGithub className="text-gray-700 text-lg group-hover:text-black transition-colors" />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
+                >
+                  <FaLinkedin className="text-blue-600 text-lg group-hover:text-blue-700 transition-colors" />
+                </a>
+              </div>
                 </div>
 
                 {/* Floating Tech Badges */}

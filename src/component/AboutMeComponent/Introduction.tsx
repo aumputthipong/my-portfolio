@@ -1,5 +1,6 @@
 import { Button, Card } from "@mui/material";
 import React from "react";
+import { MdEmail, MdLocationOn } from "react-icons/md";
 
 const Introduction = () => {
   return (
@@ -31,6 +32,25 @@ const Introduction = () => {
               constantly improving my skills to stay up-to-date in the tech
               world.
             </p>
+
+
+                  <div className="flex flex-wrap gap-3">
+                              <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20">
+                                <MdLocationOn className="text-red-500 text-sm" />
+                                <span className="text-sm text-gray-700">
+                                  Bangkok, Thailand
+                                </span>
+                              </div>
+                              <a
+                                href="mailto:putthipong.chb@gmail.com"
+                                className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20 hover:bg-white/80 transition-all duration-200 group"
+                              >
+                                <MdEmail className="text-blue-500 text-sm group-hover:scale-110 transition-transform" />
+                                <span className="text-sm text-gray-700">
+                                  putthipong.chb@gmail.com
+                                </span>
+                              </a>
+                            </div>
 
           </div>
         </div>
