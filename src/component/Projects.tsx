@@ -72,19 +72,19 @@ export default function Projects() {
               <Card className="h-full flex flex-col overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
                 
                 {/* Project Image */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden ">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="cursor-pointerabsolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
                       onClick={() => setOpenProject(index)}
-                      className="bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105"
+                      className="cursor-pointer bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105"
                     >
-                      <FaExternalLinkAlt className="text-sm" />
+                      <FaExternalLinkAlt className="text-sm " />
                       View Details
                     </button>
                   </div>

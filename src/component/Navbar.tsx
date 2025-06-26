@@ -16,7 +16,7 @@ const Navbar = () => {
 
         <button
           onClick={() => document.getElementById("home")?.scrollIntoView()}
-          className=" flex items-center gap-2 px-4 py-2 rounded-full  transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10 "
+          className=" cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full  transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10 "
         >
           <svg
             className="w-5 h-5"
@@ -37,7 +37,7 @@ const Navbar = () => {
         </button>
         <button 
           onClick={() => document.getElementById("about-me")?.scrollIntoView()}
-        className="flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10">
+        className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10">
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path
               fillRule="evenodd"
@@ -51,7 +51,7 @@ const Navbar = () => {
         {/* Projects */}
         <button 
           onClick={() => document.getElementById("projects")?.scrollIntoView()}
-        className="flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10">
+        className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10">
           <svg
             className="w-5 h-5"
             fill="none"

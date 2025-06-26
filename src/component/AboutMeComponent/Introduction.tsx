@@ -23,7 +23,7 @@ const Introduction = () => {
             <p className="ml-2 text-3xl font-bold  text-gray-500"> (AUM) </p>
             </div>
 
-            <p className="text-gray-600 leading-relaxed text-sm">
+            <p className="text-gray-600 leading-relaxed text-sm py-2">
               A recent graduate and passionate full-stack developer. I
               specialize in modern web development using technologies like{" "}
               <strong>TypeScript</strong>, <strong>JavaScript</strong>,{" "}

@@ -59,7 +59,7 @@ const AboutMe = () => {
                     >                   
                       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-r-full shadow-lg"></div>
                       <div className="flex items-center gap-4 relative z-10">
-                        <div className="relative p-2 rounded-lg transition-all duration-300 bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg">
+                        <div className="relative p-2 rounded-lg transition-all duration-300 bg-gradient-to-br from-zinc-800 to-slate-500 shadow-lg">
                           <div className="transition-colors duration-300 text-white">
                              {item.icon}
                           </div>      

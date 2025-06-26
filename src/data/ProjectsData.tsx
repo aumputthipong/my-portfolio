@@ -9,8 +9,21 @@ export const projectData = [
     github: "https://github.com/your-username/next-golang",
 
     demo: "#",
-    image: "projects/bookingroom.png",
-    images: ["/projects/mobile/mobile1.png", "/images/detail2.png"],
+    image:  "/projects/bookingroom/booking (1).png",
+     images: [
+       "/projects/bookingroom/booking (1).png",
+       "/projects/bookingroom/booking (2).png",
+      "/projects/bookingroom/booking (3).png",
+       "/projects/bookingroom/booking (4).png",
+       "/projects/bookingroom/booking (5).png",
+       "/projects/bookingroom/booking (6).png",
+       "/projects/bookingroom/booking (7).png",
+       "/projects/bookingroom/booking (8).png",
+       "/projects/bookingroom/booking (9).png",
+       "/projects/bookingroom/booking (10).png",
+      "/projects/bookingroom/booking (11).png",
+         "/projects/bookingroom/booking (12).png",
+    ],
   },
   {
     id: 2,
@@ -43,9 +56,13 @@ export const projectData = [
     github: "https://github.com/your-username/ai-garden",
     demo: "https://ai-garden-demo.com",
     image: "projects/foodshop.png",
-    images: [
-      "/projects/mobile/mobile8.png",
-      "/projects/mobile/mobile8.png"
+  images: [
+      "/projects/foodordering/foodorder1.png",
+      "/projects/foodordering/foodorder2.png",
+      "/projects/foodordering/foodorder3.png",
+      "/projects/foodordering/foodorder4.png",
+      "/projects/foodordering/foodorder5.png",
+      "/projects/foodordering/foodorder6.png",
     ],
   },
   {
