@@ -55,22 +55,22 @@ const AboutMe = () => {
                   >
                     <div
                       key={index}
-                      className="group relative cursor-pointer rounded-xl p-4 transition-all duration-300 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-2 border-blue-200 shadow-md transform scale-[1.02]"
+                      className="group relative cursor-pointer rounded-xl p-4 transition-all duration-300 bg-gradient-to-r from-slate-50 via-gray-50 to-zinc-50 border-2 border-slate-200 shadow-md transform scale-[1.02]"
                     >                   
-                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-r-full shadow-lg"></div>
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-zinc-500 to-zinc-600 rounded-r-full shadow-lg"></div>
                       <div className="flex items-center gap-4 relative z-10">
-                        <div className="relative p-2 rounded-lg transition-all duration-300 bg-gradient-to-br from-zinc-800 to-slate-500 shadow-lg">
+                        <div className="relative p-2 rounded-lg transition-all duration-300 bg-gradient-to-br from-zinc-800 to-slate-600 shadow-lg">
                           <div className="transition-colors duration-300 text-white">
                              {item.icon}
                           </div>      
-                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg blur-md opacity-30 -z-10"></div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-zinc-500 to-slate-500 rounded-lg blur-md opacity-30 -z-10"></div>
                         </div>     
                         <div className="flex-1">
                           <span className="font-semibold transition-colors duration-300 text-slate-800">
                             {item.label}
                           </span>
                         </div>         
-                        <ChevronRight className="w-4 h-4 transition-all duration-300 text-blue-600 transform translate-x-1" />
+                        <ChevronRight className="w-4 h-4 transition-all duration-300 text-zinc-600 transform translate-x-1" />
                       </div>
                     </div>
                   </li>

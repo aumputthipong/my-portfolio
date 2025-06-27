@@ -15,7 +15,7 @@ const Education = () => {
       whileTap={{ scale: 0.98 }}
       className="w-full max-w-4xl mx-auto"
     >
-      <div className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-2xl">
+      <div className="relative  overflow-hidden bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-2xl">
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100/40 to-indigo-100/40 rounded-full -translate-y-16 translate-x-16"></div>
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-50/60 to-indigo-50/60 rounded-full translate-y-12 -translate-x-12"></div>

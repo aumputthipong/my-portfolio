@@ -82,8 +82,8 @@ const Hero = () => {
 
                 {/* Contact Info Cards */}
                 <div className="flex flex-wrap gap-3 pt-4">
-                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20">
-                    <MdLocationOn className="text-red-500 text-sm" />
+                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20 hover:shadow-md transition-all duration-200 group">
+                    <MdLocationOn className="text-red-500 text-sm   group-hover:scale-110 transition-transform" />
                     <span className="text-sm text-gray-700">
                       Bangkok, Thailand
                     </span>
