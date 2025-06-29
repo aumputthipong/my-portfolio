@@ -4,7 +4,7 @@
 import AboutMe from '@/component/AboutMe'
 import Hero from '@/component/Hero'
 import Projects from '@/component/Projects'
-import SeniorProject from '@/component/SeniorProject'
+
 
 
 export default function Home() {
@@ -12,7 +12,6 @@ export default function Home() {
     <main >
       <Hero/>
       <AboutMe/>
-      <SeniorProject />
       <Projects />
      
     </main>

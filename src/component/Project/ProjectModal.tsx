@@ -1,20 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
 type ProjectModalProps = {
   project: {
+    id: number;
     title: string;
     images: string[];
   };
   onClose: () => void;
 };
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
-  const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
-  const handleImageClick = (image: string) => {
-    setSelectedImage(image);
-  };
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
 
   const closeImageModal = () => {
     setSelectedImage(null);
+  };
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // แก้ไขฟังก์ชัน handleImageClick
+  const handleImageClick = (img: string) => {
+    const index = project.images.findIndex((image) => image === img);
+    setCurrentImageIndex(index);
+    setSelectedImage(img);
+  };
+
+  // เพิ่มฟังก์ชันสำหรับเลื่อนรูป
+  const nextImage = () => {
+    const nextIndex = (currentImageIndex + 1) % project.images.length;
+    setCurrentImageIndex(nextIndex);
+    setSelectedImage(project.images[nextIndex]);
+  };
+
+  const prevImage = () => {
+    const prevIndex =
+      currentImageIndex === 0
+        ? project.images.length - 1
+        : currentImageIndex - 1;
+    setCurrentImageIndex(prevIndex);
+    setSelectedImage(project.images[prevIndex]);
   };
 
   return (
@@ -82,19 +105,97 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-60 p-4"
           onClick={closeImageModal}
         >
-          <div className="relative max-w-[95vw] max-h-[95vh]">
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* ปุ่มปิด */}
             <button
               onClick={closeImageModal}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 text-3xl font-light w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
+              className="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl font-light w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10"
             >
               ×
             </button>
+
+            {/* ปุ่ม Previous */}
+            {project.images.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevImage();
+                }}
+                className="cursor-pointer absolute left-6 top-1/2 -translate-y-1/2 
+             text-gray-700 text-5xl leading-none 
+             w-20 h-20 flex items-center justify-center 
+             rounded-full bg-white/60 hover:bg-white/80 
+             backdrop-blur-sm transition-all duration-300 
+             z-10 shadow-lg"
+              >
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m15 19-7-7 7-7"
+                  />
+                </svg>
+              </button>
+            )}
+
+            {/* ปุ่ม Next */}
+            {project.images.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextImage();
+                }}
+                className="cursor-pointer absolute right-6 top-1/2 -translate-y-1/2 
+             text-gray-700 text-5xl leading-none 
+             w-20 h-20 flex items-center justify-center 
+             rounded-full bg-white/60 hover:bg-white/80 
+             backdrop-blur-sm transition-all duration-300 
+             z-10 shadow-lg"
+              >
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m9 5 7 7-7 7"
+                  />
+                </svg>
+              </button>
+            )}
+
+            {/* รูปภาพ */}
             <img
               src={selectedImage}
               alt="Full size view"
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
+
+            {/* แสดงลำดับรูป (ถ้ามีมากกว่า 1 รูป) */}
+            {project.images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                {currentImageIndex + 1} / {project.images.length}
+              </div>
+            )}
           </div>
         </div>
       )}

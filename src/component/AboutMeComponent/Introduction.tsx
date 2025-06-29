@@ -18,7 +18,7 @@ const Introduction = () => {
               />
               </div>
         
-            <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white shadow-lg animate-pulse"></div>
+            <div className="absolute bottom-1 right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-white shadow-lg"></div>
           </div>
           <div className="">
             <div className="flex ">

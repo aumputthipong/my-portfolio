@@ -4,8 +4,9 @@ import { projectData } from "@/data/ProjectsData";
 import { Card, CardContent } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaCalendarAlt } from "react-icons/fa";
 import ProjectModal from "./Project/ProjectModal";
+import GraduationProjects from "./Project/GraduationProjects";
 
 export default function Projects() {
   const [openProject, setOpenProject] = useState<number | null>(null);
@@ -21,15 +22,18 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 px-4 bg-gray-50">
+
+     <GraduationProjects/>
+  
+
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl text-slate-900 font-bold mb-4">
+        <div className=" mb-12 text-center">
+          <h2 className="text-4xl text-center text-slate-900 font-bold mb-4">
             Academic Projects
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             These are some of the web applications I have built.
           </p>
-
           <div className="flex justify-center mb-10">
             <div className="inline-flex bg-white rounded-lg p-1 shadow-sm border border-gray-200">
               {tabs.map((tab) => (
@@ -81,7 +85,7 @@ export default function Projects() {
                   <div className="cursor-pointerabsolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
-                      onClick={() => setOpenProject(index)}
+                      onClick={() => {setOpenProject(project.id) ;}}
                       className="cursor-pointer bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105"
                     >
                       <FaExternalLinkAlt className="text-sm " />
@@ -119,34 +123,29 @@ export default function Projects() {
                   </div>
                   
                   {/* Action Links */}
-                  <div className="flex gap-4 pt-4 border-t border-gray-100">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors duration-200"
-                    >
-                      <FaGithub className="text-base" />
-                      Code
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors duration-200"
-                    >
-                      <FaExternalLinkAlt className="text-sm" />
-                      Live Demo
-                    </a>
-                  </div>
+                <div className="flex gap-4 pt-4 border-t border-gray-100 justify-between">
+  <a
+    href={project.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors duration-200"
+  >
+    <FaGithub className="text-base" />
+    Code
+  </a>
+  <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
+    <FaCalendarAlt className="text-sm" />
+      {project.year} 
+  </div>
+</div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
           </div>
-          {openProject !== null && (
+          {openProject !== null && projectData.find((p) => p.id === openProject) && (
             <ProjectModal
-              project={projectData[openProject]}
+                project={projectData.find((p) => p.id === openProject)!}
               onClose={() => setOpenProject(null)}
             />
           )}
