@@ -3,20 +3,61 @@
 import React, { useEffect, useState } from "react";
 
 const Navbar = () => {
-   
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    // สร้าง Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // อัพเดต active section เมื่อ section เข้ามาใน viewport
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        // กำหนดว่าจะเริ่มตรวจสอบเมื่อ section อยู่ที่ตรงกลางของหน้าจอ
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0
+      }
+    );
+
+    // หา sections ทั้งหมดที่ต้องการ observe
+    const sections = document.querySelectorAll("#home, #about-me, #projects, #contact");
+    sections.forEach((section) => observer.observe(section));
+
+    // Cleanup function
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
+  // ฟังก์ชันสำหรับ scroll ไปยัง section
+  const scrollToSection = (sectionId:string) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
+  // ฟังก์ชันสำหรับเช็คว่า section นั้นเป็น active หรือไม่
+  const isActive = (sectionId:string) => activeSection === sectionId;
+
   return (
     <nav
       className={`fixed my-2 top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${
         "translate-y-0 opacity-100" 
       }`}
     >
-      {" "}
-      <div className="flex items-center space-x-2sm   bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-4 py-1 shadow-2xl">
-        {/* Title */}
-
+      <div className="flex items-center space-x-2 bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-4 py-1 shadow-2xl">
+        {/* Home Button */}
         <button
-          onClick={() => document.getElementById("home")?.scrollIntoView()}
-          className=" cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full  transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10 "
+          onClick={() => scrollToSection("home")}
+          className={`cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+            isActive("home")
+              ? "text-white bg-black/80 shadow-lg"
+              : "text-black/80 hover:text-black hover:bg-black/10"
+          }`}
         >
           <svg
             className="w-5 h-5"
@@ -35,9 +76,16 @@ const Navbar = () => {
           </svg>
           Home
         </button>
+
+        {/* About Button */}
         <button 
-          onClick={() => document.getElementById("about-me")?.scrollIntoView()}
-        className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10">
+          onClick={() => scrollToSection("about-me")}
+          className={`cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+            isActive("about-me")
+              ? "text-white bg-black/80 shadow-lg"
+              : "text-black/80 hover:text-black hover:bg-black/10"
+          }`}
+        >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path
               fillRule="evenodd"
@@ -48,10 +96,15 @@ const Navbar = () => {
           About
         </button>
 
-        {/* Projects */}
+        {/* Projects Button */}
         <button 
-          onClick={() => document.getElementById("projects")?.scrollIntoView()}
-        className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10">
+          onClick={() => scrollToSection("projects")}
+          className={`cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+            isActive("projects")
+              ? "text-white bg-black/80 shadow-lg"
+              : "text-black/80 hover:text-black hover:bg-black/10"
+          }`}
+        >
           <svg
             className="w-5 h-5"
             fill="none"
@@ -65,13 +118,19 @@ const Navbar = () => {
           </svg>
           Projects
         </button>
-        <button 
-          onClick={() => document.getElementById("contact")?.scrollIntoView()}
-        className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-black/80 hover:text-black hover:bg-black/10">
-        <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-  <path d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z"/>
-</svg>
 
+        {/* Contact Button */}
+        <button 
+          onClick={() => scrollToSection("contact")}
+          className={`cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+            isActive("contact")
+              ? "text-white bg-black/80 shadow-lg"
+              : "text-black/80 hover:text-black hover:bg-black/10"
+          }`}
+        >
+          <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z"/>
+          </svg>
           Contact
         </button>
       </div>
