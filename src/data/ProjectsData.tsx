@@ -26,6 +26,7 @@ export const projectData = [
          "/projects/bookingroom/booking (12).png",
     ],
     haveImage: true,
+        layout: "web",
   },
   {
     id: 2,
@@ -49,6 +50,7 @@ export const projectData = [
       "/projects/mobile/mobile8.png",
     ],
     haveImage: true,
+        layout: "mobile",
   },
   {
     id: 3,
@@ -71,6 +73,7 @@ export const projectData = [
       
     ],
     haveImage: true,
+        layout: "web",
   },
   {
     id: 4,
@@ -84,12 +87,13 @@ export const projectData = [
       year: 2023,
     images: ["/images/detail1.png", "/images/detail2.png"],
     haveImage: true,
+        layout: "web",
   },
   {
     id: 5,
     title: "Parking App Design",
     year: 2024,
-    layout:"mobile",
+
     type: "UX/UI Design",
     description: "Develope Convenience Store Management Web Application.",
     tech: ["Figma", "UX/UI" ],
@@ -106,6 +110,7 @@ export const projectData = [
       "/projects/ParkingApp/parking (9).png",
     ],
     haveImage: true,
+       layout:"mobile",
 
   },
   //   {
@@ -120,5 +125,6 @@ export const projectData = [
   //   image: "projects/con_manage.png",
   //   images: ["/images/detail1.png", "/images/detail2.png"],
   // },
+  //     layout: "web",
   // haveImage: true,
 ];

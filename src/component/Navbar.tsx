@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
 
+  type SectionId = "home" | "about-me" | "projects" | "contact";
   useEffect(() => {
     // สร้าง Intersection Observer
     const observer = new IntersectionObserver(
@@ -34,14 +35,14 @@ const Navbar = () => {
   }, []);
 
   // ฟังก์ชันสำหรับ scroll ไปยัง section
-  const scrollToSection = (sectionId:string) => {
+  const scrollToSection = (sectionId:SectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: "smooth"
     });
   };
 
   // ฟังก์ชันสำหรับเช็คว่า section นั้นเป็น active หรือไม่
-  const isActive = (sectionId:string) => activeSection === sectionId;
+  const isActive = (sectionId:SectionId) => activeSection === sectionId;
 
   return (
     <nav
