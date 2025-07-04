@@ -4,7 +4,7 @@ export const projectData = [
     title: "BookingRoom Web Application",
      type: "Development",
     description:
-      "Fullstack app using Next.js frontend and Golang backend for realtime deal countdown.",
+      "Devleloped a booking room web application using Next.js Typescripts and MongoDB for the database.",
     tech: ["Next.js", "Typescripts","Tailwind", "MongoDB", ],
     github: "https://github.com/aumputthipong/BookingNextApp.git",
 
@@ -33,7 +33,7 @@ export const projectData = [
     title: "Job Search Application",
      type: "Development",
     description:
-      "Developed a job search mobile application by using React Native and Firebase database",
+      "Developed a job search and find job mobile application by using React Native and connect with Firebase database",
     tech: ["ReactNative", "Firebasse", "Mobile App"],
     github: "https://github.com/aumputthipong/job-app-project.git",
     demo: false,
@@ -58,7 +58,7 @@ export const projectData = [
      type: "Development",
        year: 2023,
     description:
-      "Web app platform to support image/video AI analysis (Object Detection, Segmentation, Classification, Regression) with microservices architecture.",
+      "Developed a food ordering in canteen web application using Vue.js for the frontend, Express.js for the backend, and MySQL for the database.",
     tech: ["Vue", "Express", "MySQL", "JavaScript" ],
     github: "https://github.com/aumputthipong/FoodIOrderingProject.git",
     demo: "https://ai-garden-demo.com",
@@ -95,7 +95,7 @@ export const projectData = [
     year: 2024,
 
     type: "UX/UI Design",
-    description: "Develope Convenience Store Management Web Application.",
+    description: "Design a Parking Mobile Application that search for parking location.",
     tech: ["Figma", "UX/UI" ],
     github: "",
     demo: false,
