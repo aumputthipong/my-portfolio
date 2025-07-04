@@ -96,7 +96,7 @@ const Education = () => {
                 <div className="flex items-center gap-3 text-gray-600">
                   <CalendarMonth className="h-5 w-5 text-indigo-600 flex-shrink-0" />
                   <span className="font-medium">
-                    Graduated: May 2025
+                    Graduated: 2025
                   </span>
                 </div>
               </motion.div>

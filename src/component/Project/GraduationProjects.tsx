@@ -21,8 +21,9 @@ const GraduationProjects = () => {
       ],
       images: [
         "/projects/senior/ai-web (3).png",
-        "/projects/senior/ai-web (1).png",
+       "/projects/senior/ai-web (17).png",
         "/projects/senior/ai-web (2).png",
+        "/projects/senior/ai-web (1).png",
         "/projects/senior/ai-web.png",
         "/projects/senior/ai-web (9).png",
         "/projects/senior/ai-web (5).png",
@@ -36,10 +37,11 @@ const GraduationProjects = () => {
         "/projects/senior/ai-web (10).png",
       // "/projects/senior/ai-web (13).png",
       //   "/projects/senior/ai-web (15).png",
-      // "/projects/senior/ai-web (16).png",,
+     
 
       ],
       github: "https://github.com/aumputthipong/AI-garden-System.git",
+      layout: "web",
     },
   ];
 

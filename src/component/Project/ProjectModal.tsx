@@ -5,6 +5,7 @@ type ProjectModalProps = {
     id: number;
     title: string;
     images: string[];
+           layout: string;
   };
   onClose: () => void;
 };
@@ -73,7 +74,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                   <img
                     src={img}
                     alt={`${img}`}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className={`w-full
+                      ${
+                        project.layout === "mobile"
+                          ? "h-96 object-contain"
+                          : "h-48 object-cover"
+                      }
+                      group-hover:scale-105 transition-transform duration-300`}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
