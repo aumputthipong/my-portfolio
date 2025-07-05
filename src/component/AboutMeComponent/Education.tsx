@@ -11,15 +11,12 @@ const Education = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      whileHover={{ scale: 1.02, y: -5 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{  y: -5 }}
+      whileTap={{  }}
       className="w-full max-w-4xl mx-auto"
     >
       <div className="relative  overflow-hidden bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-2xl">
-        {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100/40 to-indigo-100/40 rounded-full -translate-y-16 translate-x-16"></div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-50/60 to-indigo-50/60 rounded-full translate-y-12 -translate-x-12"></div>
-        
+
         {/* Main content */}
         <div className="relative z-10 p-8">
           <div className="flex flex-col lg:flex-row items-start gap-8">
@@ -101,16 +98,6 @@ const Education = () => {
                 </div>
               </motion.div>
 
-              {/* Achievement Badge */}
-              <motion.div 
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.5, type: "spring" }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 px-4 py-2 rounded-full border border-green-200 shadow-sm"
-              >
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium">Recently Graduated</span>
-              </motion.div>
             </div>
           </div>
         </div>

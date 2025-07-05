@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { ReactNode } from 'react'
 
 const theme = createTheme({
+  
   typography: {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
@@ -16,6 +17,7 @@ const theme = createTheme({
       fontFamily: 'Gill Sans, Calibri, "Trebuchet MS", sans-serif',
     },
   },
+  
 })
 
 export default function MUIThemeProvider({ children }: { children: ReactNode }) {

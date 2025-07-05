@@ -38,14 +38,11 @@ const Hero = () => {
                   </span>
                 </div>
 
-                <div
-              
-                  className="text-4xl lg:text-5xl font-bold text-slate-800 leading-tight"
-                >
+                <div className="text-4xl lg:text-5xl font-bold text-slate-800 leading-tight  dark:text-white">
                   Hello, I'm{" "}
                   <span className="relative">
                     <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      Putthipong 
+                      Putthipong
                     </span>
                     <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full opacity-30"></div>
                   </span>
@@ -72,12 +69,9 @@ const Hero = () => {
 
               {/* Enhanced Description */}
               <div className="space-y-4">
-                <div
-                  className="text-lg text-gray-600 leading-relaxed"
-                >
-                  Welcome to my portfolio website. I'm passionate about creating
-                  innovative web solutions with modern technologies and turning
-                  complex problems into simple, elegant designs.
+                <div className="text-lg text-gray-600 leading-relaxed">
+                  Welcome to my portfolio website. I'm a passionate,
+                  <br />self-motivated developer — always learning, always growing.
                 </div>
 
                 {/* Contact Info Cards */}
@@ -136,8 +130,6 @@ const Hero = () => {
                   Download Resume
                 </Button>
               </div>
-
-          
             </div>
 
             {/* Right Content - Profile Section */}
@@ -163,30 +155,29 @@ const Hero = () => {
                         }}
                         className="shadow-lg"
                       >
-                      <img
-                        src="image/my_pic.JPG"/>
+                        <img src="image/my_pic.JPG" />
                       </Avatar>
                     </div>
                   </div>
-                      {/* Social Links - Enhanced */}
-              <div className="flex gap-4 pt-2">
-                <a
-                  href="https://github.com/aumputthipong"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
-                >
-                  <FaGithub className="text-gray-700 text-lg group-hover:text-black transition-colors" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
-                >
-                  <FaLinkedin className="text-blue-600 text-lg group-hover:text-blue-700 transition-colors" />
-                </a>
-              </div>
+                  {/* Social Links - Enhanced */}
+                  <div className="flex gap-4 pt-2">
+                    <a
+                      href="https://github.com/aumputthipong"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
+                    >
+                      <FaGithub className="text-gray-700 text-lg group-hover:text-black transition-colors" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/putthipong-chobngam-2131412a6/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"
+                    >
+                      <FaLinkedin className="text-blue-600 text-lg group-hover:text-blue-700 transition-colors" />
+                    </a>
+                  </div>
                 </div>
 
                 {/* Floating Tech Badges */}

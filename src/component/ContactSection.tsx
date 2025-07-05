@@ -5,13 +5,13 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa'
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-50 border-t">
+    <section id="contact" className="py-20 px-4 bg-gray-50 ">
       <div className="max-w-4xl mx-auto text-center">
         
-        <h2 className="text-4xl font-bold mb-6 text-gray-800">
+        <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-slate-800">
           Contact</h2>
         <p className="text-gray-600 mb-12 text-lg max-w-2xl mx-auto">
-          I'm always open to discussing new opportunities, collaborations, or just a friendly chat.
+          I'm always open to new opportunities, ideas, or simply to get in touch
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">

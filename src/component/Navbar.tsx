@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -134,6 +135,7 @@ const Navbar = () => {
           </svg>
           Contact
         </button>
+        <ThemeToggle/>
       </div>
     </nav>
   );

@@ -42,20 +42,26 @@ const GraduationProjects = () => {
       ],
       github: "https://github.com/aumputthipong/AI-garden-System.git",
       layout: "web",
+      haveImage: true,
     },
   ];
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl  text-slate-900 font-bold mb-4">
-        Senior Projects (Thesis)
-      </h2>
-      <p className="text-gray-600 text-lg max-w-2xl mx-auto"></p>
-      <div className="space-y-16">
+   <div className="max-w-6xl mx-auto  py-10   ">
+  {/* Header Section */}
+  <div className=" mb-12">
+          <span className="text-4xl lg:text-5xl font-bold  mb-6">
+      My Thesis Projects
+    </span>
+
+  </div>
+
+  {/* Projects Grid/List */}
+ 
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className="flex flex-col lg:flex-row items-center gap-10  overflow-hidden p-6 bg-white "
+            className="flex flex-col lg:flex-row items-center gap-10  overflow-hidden p-6 bg-white  group"
           >
             {/* Project Image */}
             <div className="w-full lg:w-1/2 h-72 relative overflow-hidden rounded-xl shadow-sm">
@@ -81,28 +87,17 @@ const GraduationProjects = () => {
                   </button>
                 </div>
 
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Image Count */}
-                {project.images.length > 1 && (
-                  <div className="absolute top-4 right-4 bg-black/60 text-white px-2 py-1 rounded-full text-xs shadow-sm">
-                    {project.images.length} photos
-                  </div>
-                )}
+           
               </div>
             </div>
 
             {/* Project Content */}
-            <div className="w-full lg:w-1/2">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+            <div className="w-full lg:w-1/2 ">
+            
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 pb-4 border-b border-gray-100 ">
                 {project.title}
               </h3>
-              <p className="text-black font-semibold text-xl leading-relaxed ">
+              <p className="text-black font-semibold text-xl leading-relaxed  ">
                 Overview
               </p>
               <p className="text-gray-600 text-sm leading-relaxed mb-4">
@@ -124,19 +119,25 @@ const GraduationProjects = () => {
               {/* Buttons */}
               <div className="flex flex-wrap gap-3">
               
-                <a
+                {/* <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-900 transition"
                 >
                   GitHub
-                </a>
+                </a> */}
+                
+                   <div
+                  className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-900 transition"
+                >
+                  GitHub
+                </div>
               </div>
             </div>
           </div>
         ))}
-      </div>
+   
 
       {openProject !== null && (
         <ProjectModal

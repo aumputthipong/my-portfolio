@@ -6,6 +6,7 @@ import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 
 import MUIThemeProvider from "@/component/ThemeRegistry";
+import ThemeToggle from "@/component/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "PortFolio",
@@ -15,9 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
   <html lang="en" className="scroll-smooth">
-      <body className="bg-white text-gray">
+      <body className="bg-white text-gray ">
         <MUIThemeProvider >
      
+
         <Navbar />
         <main>{children}</main>
         <Footer />

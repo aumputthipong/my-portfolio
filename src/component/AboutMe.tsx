@@ -14,16 +14,16 @@ const AboutMe = () => {
           <div className="sticky top-24 w-full md:w-1/4 self-start space-y-6">
             {/* หัวข้อหลัก */}
             <div>
-              <h2 className="text-4xl font-bold text-slate-800 mb-2">
+              <span className="text-4xl lg:text-5xl font-bold  mb-2">
                 About Me
-              </h2>
+              </span>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Get to know more about my background and expertise.
               </p>
             </div>
 
             {/* หัวข้อย่อย + ลิงก์ */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 ">
               <h3 className="text-lg font-semibold text-slate-700 mb-4">
                 Quick Navigation
               </h3>
@@ -110,7 +110,7 @@ const AboutMe = () => {
               {/* content with head */}
               <div className="pb-12">
                 <h2
-                  className="text-4xl font-bold text-gray-800 pb-6"
+                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6"
                   id="introduction"
                 >
                   Introduction
@@ -149,7 +149,7 @@ const AboutMe = () => {
               {/* content with head */}
               <div className="pb-12">
                 <h2
-                  className="text-4xl font-bold text-gray-800 pb-6"
+                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6"
                   id="skills"
                 >
                   Skills
@@ -188,7 +188,7 @@ const AboutMe = () => {
               {/* content with head */}
               <div className="col-span-full pb-12">
                 <h2
-                  className="text-4xl font-bold text-gray-800 pb-6"
+                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6"
                   id="education"
                 >
                   Education

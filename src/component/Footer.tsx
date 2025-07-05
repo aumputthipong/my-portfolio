@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-gray-200 py-10 mt-20">
+    <footer className="bg-slate-900 text-gray-200 py-10 ">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h3 className="text-lg font-semibold mb-2">Putthipong Chobngam</h3>
    

@@ -21,19 +21,21 @@ export default function Projects() {
       : projectData.filter((project) => project.type === activeTab);
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gray-50">
+    <section id="projects" className="py-10 px-4 bg-neutral-100">
       <GraduationProjects />
 
       <div className="max-w-6xl mx-auto">
-        <div className=" mb-12 text-center">
-          <h2 className="text-4xl text-center text-slate-900 font-bold mb-4">
-            Academic Projects
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            These are some of the web applications I have built.
-          </p>
+        <div className=" mb-12 ">
+ 
+
+          <span className="text-4xl lg:text-5xl font-bold   mb-6">
+            My Academic Projects
+          </span>
+
+          
+     
           <div className="flex justify-center mb-10">
-            <div className="inline-flex bg-white rounded-lg p-1 shadow-sm border border-gray-200">
+            <div className="inline-flex bg-white rounded-lg p-1 shadow-sm border border-gray-200 mt-6 ">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -61,7 +63,7 @@ export default function Projects() {
               ))}
             </div>
           </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={index}
@@ -89,10 +91,10 @@ export default function Projects() {
                         onClick={() => {
                           setOpenProject(project.id);
                         }}
-                        className="cursor-pointer bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105"
-                      >
+                        className={`bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105
+                      ${project.haveImage===true?"cursor-pointer":"cursor-not-allowed "}`}disabled={project.haveImage===false}>
                         <FaExternalLinkAlt className="text-sm " />
-                        View Details
+                       {project.haveImage===true?"View Details":"No Images"}
                       </button>
                     </div>
                   </div>
@@ -155,6 +157,7 @@ export default function Projects() {
             )}
         </div>
       </div>
+      
     </section>
   );
 }
