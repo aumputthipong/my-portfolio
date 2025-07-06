@@ -38,7 +38,7 @@ const Hero = () => {
                   </span>
                 </div>
 
-                <div className="text-4xl lg:text-5xl font-bold text-slate-800 leading-tight  dark:text-white">
+                <div className="text-4xl lg:text-5xl font-bold text-slate-800 leading-tight  ">
                   Hello, I'm{" "}
                   <span className="relative">
                     <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
