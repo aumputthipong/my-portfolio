@@ -24,6 +24,9 @@ const GraduationProjects = () => {
        "/projects/senior/ai-web (17).png",
         "/projects/senior/ai-web (2).png",
         "/projects/senior/ai-web (1).png",
+        "/projects/senior/ai-web (18).png",
+           "/projects/senior/ai-web (19).png",
+              "/projects/senior/ai-web (20).png",
         "/projects/senior/ai-web.png",
         "/projects/senior/ai-web (9).png",
         "/projects/senior/ai-web (5).png",
@@ -36,7 +39,6 @@ const GraduationProjects = () => {
         "/projects/senior/ai-web (11).png",
         "/projects/senior/ai-web (10).png",
       // "/projects/senior/ai-web (13).png",
-      //   "/projects/senior/ai-web (15).png",
      
 
       ],

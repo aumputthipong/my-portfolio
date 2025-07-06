@@ -86,17 +86,19 @@ export default function Projects() {
                       }`}
                     />
                     <div className="cursor-pointerabsolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    
+                     ${project.haveImage===true?<div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <button
                         onClick={() => {
                           setOpenProject(project.id);
                         }}
                         className={`bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105
-                      ${project.haveImage===true?"cursor-pointer":"cursor-not-allowed "}`}disabled={project.haveImage===false}>
-                        <FaExternalLinkAlt className="text-sm " />
+                      ${project.haveImage===true?"cursor-pointer":"cursor-not-allowed "}`}>
+                         <FaExternalLinkAlt className="text-sm " />
                        {project.haveImage===true?"View Details":"No Images"}
                       </button>
                     </div>
+:``}
                   </div>
 
                   {/* Project Content */}
@@ -129,6 +131,10 @@ export default function Projects() {
 
                     {/* Action Links */}
                     <div className="flex gap-4 pt-4 border-t border-gray-100 justify-between">
+                      <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
+                        <FaCalendarAlt className="text-sm" />
+                        {project.year}
+                      </div>
                       <a
                         href={project.github}
                         target="_blank"
@@ -138,10 +144,6 @@ export default function Projects() {
                         <FaGithub className="text-base" />
                         Code
                       </a>
-                      <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
-                        <FaCalendarAlt className="text-sm" />
-                        {project.year}
-                      </div>
                     </div>
                   </CardContent>
                 </Card>
