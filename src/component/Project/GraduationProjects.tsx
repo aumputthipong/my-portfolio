@@ -7,10 +7,14 @@ const GraduationProjects = () => {
   const projects = [
     {
       id: 1,
-      title: "AI Garden System",
+      title: "Web Application Platform to Support Image and Video Analysis with AI in a Microservice Model",
       description:
-        "AI Garden System is a web application that allows users to manage and monitor their garden using AI technology.",
-      category: "AI/ML",
+      `Design and Developed a full-stack web application platform that enables users to analyze images and videos using AI models integrated into the platform,
+       supporting object detection, regression, classification, and image segmentation.`
+        ,
+        objective:["Designed user-friendly UI to support non-technical users accessing AI computer vision."
+          ,`Enhanced the platform to support integration of new AI services and enable AI developers to use the platform as a bridge to end users.
+`],
       tech: [
         "React",
         "NestJs",
@@ -107,7 +111,28 @@ const GraduationProjects = () => {
               </p>
 
               {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-4">
+           
+              {/* Buttons */}
+          <div className="flex flex-col gap-2">
+  <p className="text-black font-semibold text-xl leading-relaxed">
+    objective
+  </p>
+  
+  {Array.isArray(project.objective) ? (
+    <ul className="text-gray-600 text-sm leading-relaxed mb-4 pl-4 space-y-2">
+      {project.objective.map((item, index) => (
+        <li key={index} className="list-disc marker:text-gray-400">
+          {item}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+      {project.objective}
+    </p>
+  )}
+</div>
+            <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, i) => (
                   <span
                     key={i}
@@ -117,26 +142,8 @@ const GraduationProjects = () => {
                   </span>
                 ))}
               </div>
+            </div>   
 
-              {/* Buttons */}
-              <div className="flex flex-wrap gap-3">
-              
-                {/* <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-900 transition"
-                >
-                  GitHub
-                </a> */}
-                
-                   <div
-                  className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-900 transition"
-                >
-                  GitHub
-                </div>
-              </div>
-            </div>
           </div>
         ))}
    

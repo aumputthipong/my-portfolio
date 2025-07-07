@@ -171,8 +171,6 @@ haveImage: true,
       "/projects/depth-esti/depth-est (0).png",
        "/projects/depth-esti/depth-est (1).png",
         "/projects/depth-esti/depth-est (2).png",
-         "/projects/depth-esti/depth-est (3).png",
-          "/projects/depth-esti/depth-est (4).png",
            "/projects/depth-esti/depth-est (6).png",
 
       

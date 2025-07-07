@@ -135,15 +135,15 @@ export default function Projects() {
                         <FaCalendarAlt className="text-sm" />
                         {project.year}
                       </div>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors duration-200"
-                      >
-                        <FaGithub className="text-base" />
-                        Code
-                      </a>
+                      {project.github.length >=1&&(<a
+            href={project.github}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md"
+>
+  <FaGithub className="text-base" />
+  Code
+</a>)}
                     </div>
                   </CardContent>
                 </Card>
