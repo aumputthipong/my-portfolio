@@ -25,12 +25,18 @@ export default function Projects() {
       <GraduationProjects />
 
       <div className="max-w-6xl mx-auto">
-        <div className=" mb-12 ">
+        <div className="text-center mb-16 ">
  
 
-          <span className="text-4xl lg:text-5xl font-bold   mb-6">
+        <div className="inline-block relative">
+          <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
             My Academic Projects
-          </span>
+          </h2>
+          {/* Subtle underline accent */}
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+        </div>
+ 
+      
 
           
      
