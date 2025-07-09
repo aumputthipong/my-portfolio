@@ -8,10 +8,12 @@ const GraduationProjects = () => {
     {
       id: 1,
       title: "AI Garden System",
-      description: `Design and developed a full-stack web application platform that enables users to analyze images and videos using AI models integrated into the platform,
-       supporting object detection, regression, classification, and image segmentation.`,
+      description: `Design and developed a full-stack web application 
+      platform that enables users to analyze images and videos using AI computer vision services
+       integrated into the platform, supporting object detection, regression, classification, 
+       and image segmentation.`,
       objective: [
-        "Designed user-friendly UI to support non-technical users accessing AI computer vision.",
+        "Designed a user-friendly UI to support non-technical users, including doctors and medical students easily access AI computer vision services. ",
         `Enhanced the platform to support integration of new AI services and enable AI developers to use the platform as a bridge to end users.
 `,
       ],
@@ -27,21 +29,21 @@ const GraduationProjects = () => {
         "/projects/senior/ai-web (3).png",
         "/projects/senior/ai-web (17).png",
         "/projects/senior/ai-web (2).png",
-        "/projects/senior/ai-web (1).png",
-        "/projects/senior/ai-web (18).png",
         "/projects/senior/ai-web (19).png",
-        "/projects/senior/ai-web (20).png",
+        "/projects/senior/ai-web (18).png",
+        "/projects/senior/ai-web (1).png",
+        "/projects/senior/ai-web (4).png",
         "/projects/senior/ai-web.png",
         "/projects/senior/ai-web (9).png",
         "/projects/senior/ai-web (5).png",
         "/projects/senior/ai-web (6).png",
         "/projects/senior/ai-web (7).png",
-        // "/projects/senior/ai-web (4).png",
         "/projects/senior/ai-web (14).png",
         "/projects/senior/ai-web (8).png",
         // "/projects/senior/ai-web (12).png",
         "/projects/senior/ai-web (11).png",
         "/projects/senior/ai-web (10).png",
+        "/projects/senior/ai-web (20).png",
         // "/projects/senior/ai-web (13).png",
       ],
       github: "https://github.com/aumputthipong/AI-garden-System.git",
@@ -148,12 +150,15 @@ const GraduationProjects = () => {
 
     {/* Technologies */}
     <div className="space-y-2">
-   
+     <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2 ">
+        Technology
+      </h4>
       <div className="flex flex-wrap gap-2">
+        
         {project.tech.map((tech, i) => (
           <span
             key={i}
-                    className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium"
+                            className="bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs px-3 py-1 rounded-full border border-blue-200 font-medium"
           >
             {tech}
           </span>

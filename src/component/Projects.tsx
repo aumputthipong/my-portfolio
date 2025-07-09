@@ -26,20 +26,14 @@ export default function Projects() {
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 ">
- 
+          <div className="inline-block relative">
+            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+              My Academic Projects
+            </h2>
+            {/* Subtle underline accent */}
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+          </div>
 
-        <div className="inline-block relative">
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-            My Academic Projects
-          </h2>
-          {/* Subtle underline accent */}
-          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-        </div>
- 
-      
-
-          
-     
           <div className="flex justify-center mb-10">
             <div className="inline-flex bg-white rounded-lg p-1 shadow-sm border border-gray-200 mt-6 ">
               {tabs.map((tab) => (
@@ -92,19 +86,29 @@ export default function Projects() {
                       }`}
                     />
                     <div className="cursor-pointerabsolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
-                     ${project.haveImage===true?<div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button
-                        onClick={() => {
-                          setOpenProject(project.id);
-                        }}
-                        className={`bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105
-                      ${project.haveImage===true?"cursor-pointer":"cursor-not-allowed "}`}>
-                         <FaExternalLinkAlt className="text-sm " />
-                       {project.haveImage===true?"View Details":"No Images"}
-                      </button>
-                    </div>
-:``}
+                    $
+                    {project.haveImage === true ? (
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button
+                          onClick={() => {
+                            setOpenProject(project.id);
+                          }}
+                          className={`bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105
+                      ${
+                        project.haveImage === true
+                          ? "cursor-pointer"
+                          : "cursor-not-allowed "
+                      }`}
+                        >
+                          <FaExternalLinkAlt className="text-sm " />
+                          {project.haveImage === true
+                            ? "View Details"
+                            : "No Images"}
+                        </button>
+                      </div>
+                    ) : (
+                      ``
+                    )}
                   </div>
 
                   {/* Project Content */}
@@ -141,15 +145,17 @@ export default function Projects() {
                         <FaCalendarAlt className="text-sm" />
                         {project.year}
                       </div>
-                      {project.github.length >=1&&(<a
-            href={project.github}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md"
->
-  <FaGithub className="text-base" />
-  Code
-</a>)}
+                      {project.github.length >= 1 && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md"
+                        >
+                          <FaGithub className="text-base" />
+                          Code
+                        </a>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -165,7 +171,6 @@ export default function Projects() {
             )}
         </div>
       </div>
-      
     </section>
   );
 }

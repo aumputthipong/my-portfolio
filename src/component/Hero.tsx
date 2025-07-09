@@ -6,6 +6,8 @@ import React from "react";
 import {
   FaDownload,
 
+  FaEnvelope,
+
   FaGithub,
   FaLinkedin,
 } from "react-icons/fa";
@@ -123,11 +125,16 @@ const Hero = () => {
                 </Button>
 
                 <Button
+                 onClick={() =>
+                    document
+                      .getElementById("contact")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   variant="outlined"
                   className="!border-2 !border-gray-300 hover:!border-gray-400 !text-gray-700 hover:!bg-gray-50 !font-semibold !px-8 !py-3 !rounded-full !transition-all !duration-300 !normal-case"
-                  startIcon={<FaDownload />}
+                  startIcon={       <FaEnvelope />}
                 >
-                  Download Resume
+                  Contact Me
                 </Button>
               </div>
             </div>

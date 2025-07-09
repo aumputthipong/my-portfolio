@@ -63,7 +63,7 @@ const ContactSection = () => {
             className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:bg-gray-50 group"
           >
             <div className="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-              <FaLinkedin className="text-blue-700 text-lg" />
+              <FaLinkedin className="text-blue-700 text-lg" />  
             </div>
             <div className="text-left">
               <p className="font-medium text-gray-800">LinkedIn</p>
