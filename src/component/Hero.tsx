@@ -177,7 +177,7 @@ const Hero = () => {
                       <FaGithub className="text-gray-700 text-lg group-hover:text-black transition-colors" />
                     </a>
                     <a
-                      href="https://www.linkedin.com/in/putthipong-chobngam-2131412a6/"
+                      href="https://www.linkedin.com/in/putthipong-chobngam/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 group border border-white/30"

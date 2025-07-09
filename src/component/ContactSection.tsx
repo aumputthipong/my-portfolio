@@ -57,7 +57,7 @@ const ContactSection = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/putthipong-chobngam-2131412a6/"
+            href="https://www.linkedin.com/in/putthipong-chobngam/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:bg-gray-50 group"
