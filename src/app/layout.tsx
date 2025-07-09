@@ -6,7 +6,7 @@ import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 
 import MUIThemeProvider from "@/component/ThemeRegistry";
-import ThemeToggle from "@/component/ThemeToggle";
+
 
 export const metadata: Metadata = {
   title: "PortFolio",
