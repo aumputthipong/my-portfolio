@@ -28,19 +28,44 @@ export const projectData = [
     haveImage: true,
     layout: "web",
   },
-  {
+   {
     id: 2,
+    title: "Canteen Food Ordering Web Application",
+    type: "Development",
+    year: 2023,
+    description:
+      "Developed food ordering system for canteen web application, using Vue.js for the frontend, Express.js for the backend, and MySQL for the database.",
+    tech: ["Vue", "Express", "MySQL", "JavaScript"],
+    github: "https://github.com/aumputthipong/FoodIOrderingProject.git",
+    ref: "https://ai-garden-ref.com",
+    image:  "/projects/foodordering/foodorder (5).png",
+    images: [
+      "/projects/foodordering/foodorder (5).png",
+      "/projects/foodordering/foodorder (2).png",
+      "/projects/foodordering/foodorder (3).png",
+      "/projects/foodordering/foodorder (7).png",
+      "/projects/foodordering/foodorder (6).png",
+      "/projects/foodordering/foodorder (4).png",
+      "/projects/foodordering/foodorder (1).png",
+      "/projects/foodordering/foodorder (9).png",
+      "/projects/foodordering/foodorder (8).png",
+      "/projects/foodordering/foodorder (10).png",
+    ],
+    haveImage: true,
+    layout: "web",
+  },
+  {
+    id: 3,
     title: "Job Search Application",
     type: "Development",
     description:
       "Developed a mobile application for job seekers and employers using React Native, integrated with Firebase for real-time data and user management.",
-    tech: ["ReactNative", "Firebasse", "Mobile App"],
+    tech: ["ReactNative", "Firebasse", "Mobile App","JavaScript"],
     github: "https://github.com/aumputthipong/job-app-project.git",
     ref: false,
     image: "/projects/jobapp/jobapp (1).png",
     year: 2023,
     images: [
-
       "/projects/jobapp/jobapp (1).png",
       "/projects/jobapp/jobapp (2).png",
       "/projects/jobapp/jobapp (3).png",
@@ -65,28 +90,7 @@ export const projectData = [
     haveImage: true,
     layout: "mobile",
   },
-  {
-    id: 3,
-    title: "Food Ordering Web Application",
-    type: "Development",
-    year: 2023,
-    description:
-      "Developed food ordering system for canteen web application, using Vue.js for the frontend, Express.js for the backend, and MySQL for the database.",
-    tech: ["Vue", "Express", "MySQL", "JavaScript"],
-    github: "https://github.com/aumputthipong/FoodIOrderingProject.git",
-    ref: "https://ai-garden-ref.com",
-    image: "projects/foodshop.png",
-    images: [
-      "/projects/foodordering/foodorder1.png",
-      "/projects/foodordering/foodorder2.png",
-      "/projects/foodordering/foodorder3.png",
-      "/projects/foodordering/foodorder4.png",
-      "/projects/foodordering/foodorder5.png",
-      "/projects/foodordering/foodorder6.png",
-    ],
-    haveImage: true,
-    layout: "web",
-  },
+ 
   {
     id: 4,
     title: "Convenience Store Management ",
@@ -127,16 +131,17 @@ export const projectData = [
     haveImage: true,
     layout: "mobile",
   },
-    {
+  {
     id: 6,
     title: "BlueRoom Registration System",
-     type: "UX/UI Design",
-    description: "Analyzed requirements and designed  scheduling system for faculty to manage class timetables and teaching assignments ",
+    type: "UX/UI Design",
+    description:
+      "Analyzed requirements and designed  scheduling system for faculty to manage class timetables and teaching assignments ",
     tech: ["Figma", "UX/UI Design"],
     github: "",
-      year: 2024,
+    year: 2024,
     ref: false,
-    image:       "/projects/reg-web/reg (11).png",
+    image: "/projects/reg-web/reg (11).png",
     images: [
       "/projects/reg-web/reg (1).png",
       "/projects/reg-web/reg (2).png",
@@ -151,31 +156,29 @@ export const projectData = [
       "/projects/reg-web/reg (11).png",
       "/projects/reg-web/reg (12).png",
       "/projects/reg-web/reg (13).png",
-      
     ],
     layout: "web",
-haveImage: true,
+    haveImage: true,
   },
 
-     {
+  {
     id: 7,
-    title: "Depth Estimate",
-     type: "DeepLearn",
-    description: "Estimated depth maps from RGB images using a convolutional autoencoder. Built for a Deep Learning course project.",
-    tech: ["Deep Learning", "Machine Learning","Train Model"],
+    title: "Depth Estimate Model",
+    type: "Train Model",
+    description:
+      "Estimated depth maps from RGB images using a convolutional autoencoder. Built for a Deep Learning course project.",
+    tech: ["Deep Learning", "Machine Learning", "Train Model","Python"],
     github: "https://github.com/aumputthipong/depth_estimate.git",
-      year: 2024,
+    year: 2024,
     ref: false,
-    image:       "/projects/depth-esti/depth-est (1).png",
+    image: "/projects/depth-esti/depth-est (1).png",
     images: [
       "/projects/depth-esti/depth-est (0).png",
-       "/projects/depth-esti/depth-est (1).png",
-        "/projects/depth-esti/depth-est (2).png",
-           "/projects/depth-esti/depth-est (6).png",
-
-      
+      "/projects/depth-esti/depth-est (1).png",
+      "/projects/depth-esti/depth-est (2).png",
+      "/projects/depth-esti/depth-est (6).png",
     ],
     layout: "web",
-haveImage: true,
+    haveImage: true,
   },
 ];
