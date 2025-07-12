@@ -8,13 +8,14 @@ const GraduationProjects = () => {
     {
       id: 1,
       title: "AI Garden System",
-      description: `Design and developed a full-stack web application 
+      description: `Developed and designed a full-stack web application 
       platform that enables users to analyze images and videos using AI computer vision services
        integrated into the platform, supporting object detection, regression, classification, 
        and image segmentation.`,
       objective: [
         "Designed a user-friendly UI to support non-technical users, including doctors and medical students easily access AI computer vision services. ",
-        `Enhanced the platform to support integration of new AI services and enable AI developers to use the platform as a bridge to end users.
+        `Developed a platform to support the integration of new AI services for AI developers.
+
 `,
       ],
       tech: [
