@@ -12,11 +12,11 @@ const GraduationProjects = () => {
       platform that enables users to analyze images and videos using AI computer vision services
        integrated into the platform, supporting object detection, regression, classification, 
        and image segmentation.`,
-      objective: [
+      responsibility: [
         "Designed a user-friendly UI to support non-technical users, including doctors and medical students easily access AI computer vision services. ",
         `Developed a platform to support the integration of new AI services for AI developers.
-
 `,
+        `Designed a user-friendly UI to support non-technical users, including doctors and medical students at Siriraj Hospital, to easily access AI computer vision services.`,
       ],
       tech: [
         "React",
@@ -131,11 +131,11 @@ const GraduationProjects = () => {
     {/* Objective */}
     <div className="space-y-2">
       <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-        Objective
+        Responsibilities
       </h4>
-      {Array.isArray(project.objective) ? (
+      {Array.isArray(project.responsibility) ? (
         <ul className="text-gray-600 dark:text-gray-300 text-base space-y-2">
-          {project.objective.map((item, i) => (
+          {project.responsibility.map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"></span>
               <span>{item}</span>
@@ -144,7 +144,7 @@ const GraduationProjects = () => {
         </ul>
       ) : (
         <p className="text-gray-600 dark:text-gray-300 text-base">
-          {project.objective}
+          {project.responsibility}
         </p>
       )}
     </div>
