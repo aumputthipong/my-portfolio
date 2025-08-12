@@ -45,7 +45,7 @@ const GraduationProjects = () => {
         // "/projects/senior/ai-web (14).png",
         // "/projects/senior/ai-web (12).png",
         "/projects/senior/ai-web (11).png",
-        // "/projects/senior/ai-web (13).png",
+        "/projects/senior/ai-web (13).png",
       ],
       github: "https://github.com/aumputthipong/AI-garden-System.git",
       layout: "web",
@@ -68,15 +68,15 @@ const GraduationProjects = () => {
   </div>
 
   {/* Projects Grid */}
-  <div className="grid gap-12">
+  <div className="grid gap-12 group ">
     {projects.map((project, index) => (
       <div
         key={project.id}
-        className="flex flex-col lg:flex-row items-center gap-12 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8"
+        className=" flex flex-col lg:flex-row items-center gap-12 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8"
       >
   {/* Project Image */}
   <div className="w-full lg:w-1/2 h-80 relative">
-    <div className="relative w-full h-full group cursor-pointer">
+    <div className="relative w-full h-full group ">
       {/* Background gradient behind the image */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 to-purple-100/40 dark:from-slate-700 dark:to-slate-600 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300 z-0" />
 
@@ -92,12 +92,12 @@ const GraduationProjects = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* View Button */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <div className=" absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
           <button
             onClick={() => setOpenProject(index)}
-            className="bg-white/95 dark:bg-slate-700 text-gray-900 dark:text-white px-6 py-3 rounded-full shadow-xl text-sm font-semibold flex items-center gap-2 hover:bg-white dark:hover:bg-slate-600 transition-all duration-200 transform hover:scale-105"
+            className=" cursor-pointer bg-white/95 dark:bg-slate-700 text-gray-900 dark:text-white px-6 py-3 rounded-full shadow-xl text-sm font-semibold flex items-center gap-2 hover:bg-white dark:hover:bg-slate-600 transition-all duration-200 transform hover:scale-105"
           >
-            <FaExternalLinkAlt className="text-base" />
+            <FaExternalLinkAlt className="text-base "  />
             View Project Details
           </button>
         </div>
