@@ -10,13 +10,11 @@ import Projects from '@/component/Projects'
 
 export default function Home() {
   return (
-    <main >
-
+    <main>
       <Hero/>
       <AboutMe/>
       <Projects />
       <ContactSection/>
-     
     </main>
   )
 }

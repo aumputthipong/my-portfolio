@@ -27,24 +27,24 @@ const GraduationProjects = () => {
         "Docker",
       ],
       images: [
+        "/projects/senior/ai-web.png",
+        "/projects/senior/ai-web (9).png",
         "/projects/senior/ai-web (3).png",
         "/projects/senior/ai-web (17).png",
         "/projects/senior/ai-web (2).png",
         "/projects/senior/ai-web (19).png",
         "/projects/senior/ai-web (18).png",
         "/projects/senior/ai-web (1).png",
+        "/projects/senior/ai-web (20).png",
         "/projects/senior/ai-web (4).png",
-        "/projects/senior/ai-web.png",
-        "/projects/senior/ai-web (9).png",
+        // "/projects/senior/ai-web (8).png",
+        "/projects/senior/ai-web (7).png",
         "/projects/senior/ai-web (5).png",
         "/projects/senior/ai-web (6).png",
-        "/projects/senior/ai-web (7).png",
-        "/projects/senior/ai-web (14).png",
-        "/projects/senior/ai-web (8).png",
+        "/projects/senior/ai-web (10).png",
+        // "/projects/senior/ai-web (14).png",
         // "/projects/senior/ai-web (12).png",
         "/projects/senior/ai-web (11).png",
-        "/projects/senior/ai-web (10).png",
-        "/projects/senior/ai-web (20).png",
         // "/projects/senior/ai-web (13).png",
       ],
       github: "https://github.com/aumputthipong/AI-garden-System.git",
@@ -54,29 +54,26 @@ const GraduationProjects = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto  py-16   ">
-      {/* Header Section */}
-      <div className="text-center mb-20">
-        <div className="inline-block relative">
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-            My Senior Projects
-          </h2>
-          {/* Subtle underline accent */}
-          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-        </div>
-        <p className="text-gray-600 text-lg mt-8 max-w-2xl mx-auto">
-          Web Application Platform to Support Image and Video Analysis with AI
-          in a Microservice Model
-        </p>
-      </div>
+<div className="max-w-6xl mx-auto py-20 px-4 lg:px-8">
+  {/* Header Section */}
+  <div className="text-center mb-16">
+    <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+      My Senior Projects
+    </h2>
+    <div className="mx-auto w-28 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+    <p className="mt-6 text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+      Web Application Platform to Support Image and Video Analysis with AI
+      in a Microservice Model
+    </p>
+  </div>
 
-      {/* Projects Grid/List */}
-
-      {projects.map((project, index) => (
-       <div
-  key={project.id}
-  className="flex flex-col lg:flex-row items-center gap-12 overflow-hidden p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md group transition-all"
->
+  {/* Projects Grid */}
+  <div className="grid gap-12">
+    {projects.map((project, index) => (
+      <div
+        key={project.id}
+        className="flex flex-col lg:flex-row items-center gap-12 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8"
+      >
   {/* Project Image */}
   <div className="w-full lg:w-1/2 h-80 relative">
     <div className="relative w-full h-full group cursor-pointer">
@@ -108,68 +105,63 @@ const GraduationProjects = () => {
     </div>
   </div>
 
-  {/* Project Info */}
-  <div className="w-full lg:w-1/2 space-y-6">
-    {/* Title */}
-    <div className="relative">
-      <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
-        {project.title}
-      </h3>
-      <div className="mt-3 w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
-    </div>
+   <div className="w-full lg:w-1/2 space-y-6">
+          {/* Title */}
+          <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+            {project.title}
+          </h3>
 
-    {/* Overview */}
-    <div className="space-y-2">
-      <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-        Overview
-      </h4>
-      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
-        {project.description}
-      </p>
-    </div>
+          {/* Overview */}
+          <div>
+            <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
+              Overview
+            </h4>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              {project.description}
+            </p>
+          </div>
 
-    {/* Objective */}
-    <div className="space-y-2">
-      <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-        Responsibilities
-      </h4>
-      {Array.isArray(project.responsibility) ? (
-        <ul className="text-gray-600 dark:text-gray-300 text-base space-y-2">
-          {project.responsibility.map((item, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"></span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-gray-600 dark:text-gray-300 text-base">
-          {project.responsibility}
-        </p>
-      )}
-    </div>
+          {/* Responsibilities */}
+          <div>
+            <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
+              Responsibilities
+            </h4>
+            <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+              {Array.isArray(project.responsibility) ? (
+                project.responsibility.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                    {item}
+                  </li>
+                ))
+              ) : (
+                <p>{project.responsibility}</p>
+              )}
+            </ul>
+          </div>
 
-    {/* Technologies */}
-    <div className="space-y-2">
-     <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2 ">
-        Technology
-      </h4>
-      <div className="flex flex-wrap gap-2">
-        
-        {project.tech.map((tech, i) => (
-          <span
-            key={i}
-                            className="bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs px-3 py-1 rounded-full border border-blue-200 font-medium"
-          >
-            {tech}
-          </span>
-        ))}
+          {/* Technologies */}
+          <div>
+            <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
+              Technology
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech, i) => (
+                <span
+                  key={i}
+                  className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-700 dark:to-slate-600 text-blue-700 dark:text-blue-300 text-xs px-3 py-1 rounded-full border border-blue-200 dark:border-slate-500 font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    ))}
   </div>
-</div>
 
-        ))}
+
 
       {openProject !== null && (
         <ProjectModal
