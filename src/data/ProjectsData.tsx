@@ -42,6 +42,7 @@ export const projectData = [
     images: [
       "/projects/foodordering/foodorder (5).png",
       "/projects/foodordering/foodorder (2).png",
+      "Screenshot 2025-07-11 010432.png",
       "/projects/foodordering/foodorder (3).png",
       "/projects/foodordering/foodorder (7).png",
       "/projects/foodordering/foodorder (6).png",
@@ -49,7 +50,7 @@ export const projectData = [
       "/projects/foodordering/foodorder (1).png",
       "/projects/foodordering/foodorder (9).png",
       "/projects/foodordering/foodorder (8).png",
-      "/projects/foodordering/foodorder (10).png",
+      // "/projects/foodordering/foodorder (10).png",
     ],
     haveImage: true,
     layout: "web",
