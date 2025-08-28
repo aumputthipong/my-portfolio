@@ -13,10 +13,9 @@ const GraduationProjects = () => {
        integrated into the platform, supporting object detection, regression, classification, 
        and image segmentation.`,
       responsibility: [
-        `Designed a user-friendly UI to support non-technical users, including doctors and medical students at Siriraj Hospital, to easily access AI computer vision services.`,
-        `Developed a platform to support the integration of new AI services for AI developers.
-        `,
-        "Converted existing AI Computer Vision models into services by building microservices using Python and FastAPI, and integrated them into the platform. ",
+        `Designed a user-friendly UI to support non-technical users, including medical professors and medical students at Siriraj Hospital, to easily access AI computer vision services.`,
+        "Transformed provided AI computer vision models into microservice-based APIs using Python and FastAPI, and integrated them into the platform.",
+        `Developed a platform to support the integration of new AI services for AI developers.`,
       ],
       tech: [
         "React",
