@@ -42,7 +42,7 @@ export const projectData = [
     images: [
       "/projects/foodordering/foodorder (5).png",
       "/projects/foodordering/foodorder (2).png",
-      "Screenshot 2025-07-11 010432.png",
+      "/projects/foodordering/foodorder(11).png",
       "/projects/foodordering/foodorder (3).png",
       "/projects/foodordering/foodorder (7).png",
       "/projects/foodordering/foodorder (6).png",
