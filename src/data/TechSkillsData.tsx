@@ -32,7 +32,7 @@ export const techSkills = [
     category: "Back-End Develope Skills",
     icon: <StorageIcon className="text-6xl text-white" />,
     skills: [
-      { label: "Nodejs", icon: "image/skills/framework/node.png" },
+  
       { label: "Nest", icon: "image/skills/framework/nestjs.png" },
       { label: "FastAPI", icon: "image/skills/framework/fastapi.png" },
       { label: "Express", icon: "image/skills/framework/express-js.png" },
