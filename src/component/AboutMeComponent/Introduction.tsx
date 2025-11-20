@@ -11,7 +11,7 @@ const Introduction = () => {
   <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
 
             <img
-              src="image/MyformalPic.jpg"
+              src="image/MyformalPic2.jpg"
               alt="Putthipong Chobngam"
       className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-300"
               
