@@ -18,14 +18,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   };
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // แก้ไขฟังก์ชัน handleImageClick
+
   const handleImageClick = (img: string) => {
     const index = project.images.findIndex((image) => image === img);
     setCurrentImageIndex(index);
     setSelectedImage(img);
   };
 
-  // เพิ่มฟังก์ชันสำหรับเลื่อนรูป
+
   const nextImage = () => {
     const nextIndex = (currentImageIndex + 1) % project.images.length;
     setCurrentImageIndex(nextIndex);
