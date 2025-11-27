@@ -29,13 +29,10 @@ const Introduction = () => {
             </div>
 
             <p className="text-gray-600 leading-relaxed text-sm py-2">
-              A recent graduate and passionate full-stack developer. I
-              specialize in modern web development using technologies like{" "}
-              <strong>TypeScript</strong>, <strong>JavaScript</strong>,{" "}
-              <strong>React</strong>, <strong>Next.js</strong>, and{" "}
-              <strong>NestJS</strong>. I enjoy learning new things and
-              constantly improving my skills to stay up-to-date in the tech
-              world.
+              Passionate and self-motivated web developer with a focus on software engineering and full-stack development. 
+              Recently graduated from the Faculty of Information Technology KMITL. Eager to keep learning and improving.
+               Seeking an opportunity to contribute and grow in a development team.
+            
             </p>
 
             <div className="flex flex-wrap gap-3 pt-4">
