@@ -27,9 +27,14 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 ">
           <div className="inline-block relative">
-            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              My Academic Projects
+            <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+              My{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Academic
+              </span>{" "}
+              Projects
             </h2>
+
             {/* Subtle underline accent */}
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
           </div>
