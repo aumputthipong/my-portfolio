@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ProjectModal from "./ProjectModal";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-
 import { GoProjectRoadmap } from "react-icons/go";
 import { AiFillProject } from "react-icons/ai";
 import { BiLayout } from "react-icons/bi";
@@ -52,7 +51,7 @@ const GraduationProjects = () => {
         "/projects/senior/ai-web (10).png",
 
         "/projects/senior/ai-web (11).png",
-        "/projects/senior/ai-web (13).png",
+        // "/projects/senior/ai-web (13).png",
       ],
       github: "https://github.com/aumputthipong/AI-garden-System.git",
       layout: "web",
@@ -68,7 +67,7 @@ const GraduationProjects = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
 
         {/* Title with Gradient */}
-        <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">
+        <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
           My{" "}
           <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
             Senior{" "}
@@ -82,12 +81,12 @@ const GraduationProjects = () => {
         </div>
       </div>
 
-      {/* Projects Grid */}
+      {/* Projects Card */}
       <div className="grid gap-12 group ">
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className=" bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+            className=" bg-white  rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
           >
             <div className="bg-gradient-to-br from-zinc-800 to-slate-700 shadow-lg p-8">
               <div className="flex items-center gap-6 max-w-5xl mx-auto">
@@ -101,20 +100,15 @@ const GraduationProjects = () => {
                   </p>
                 </div>
               </div>
-        
-        
-               
-          
             </div>
-               <VideoProject />
-            <div className=" flex flex-col lg:flex-row items-center gap-12 p-8">
+            <div className=" flex flex-col lg:flex-row items-center gap-12 p-8 ">
               {/* Project Image */}
-              <div className="w-full lg:w-1/2 h-80 relative ">
+              <div className="w-full lg:w-1/2  relative   ">
                 {/* Project Description with Icons */}
 
-                <div className="relative w-full h-full group ">
+                <div className="relative w-full h-full group bg-red ">
                   {/* Background gradient behind the image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 to-purple-100/40 dark:from-slate-700 dark:to-slate-600 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300 z-0" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 to-purple-100/40  rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300 z-0" />
 
                   {/* Image Container */}
                   <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl z-10">
@@ -131,38 +125,49 @@ const GraduationProjects = () => {
                     <div className=" absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button
                         onClick={() => setOpenProject(index)}
-                        className=" cursor-pointer bg-white/95 dark:bg-slate-700 text-gray-900 dark:text-white px-6 py-3 rounded-full shadow-xl text-sm font-semibold flex items-center gap-2 hover:bg-white dark:hover:bg-slate-600 transition-all duration-200 transform hover:scale-105"
+                        className=" cursor-pointer bg-white/95 text-gray-900  px-6 py-3 rounded-full shadow-xl text-sm font-semibold flex items-center gap-2 hover:bg-white  transition-all duration-200 transform hover:scale-105"
                       >
                         <FaExternalLinkAlt className="text-base " />
-                        View Project Details
+                        View Project
                       </button>
                     </div>
                   </div>
                 </div>
+                {/* Technologies  badge*/}
+                <div className="mx-auto pt-5">
+                  <h4 className="text-xl font-bold text-blue-600  mb-3 ">
+                    Technology
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-gradient-to-r from-blue-50 to-indigo-50   text-blue-700  text-xs px-3 py-1 rounded-full border border-blue-200  font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              <div className="w-full lg:w-1/2 space-y-6">
+              <div className="w-full lg:w-1/2 space-y-6 ">
                 {/* Title */}
-                {/* <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
-                  {project.title}
-                </h3> */}
-
-                {/* Overview */}
                 <div>
-                  <h4 className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                  <h4 className="text-3xl font-bold text-blue-600  mb-2">
                     {project.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-gray-600  leading-relaxed">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Responsibilities */}
                 <div>
-                  <h4 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                  <h4 className="text-xl font-bold text-blue-600  mb-2">
                     Responsibilities
                   </h4>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2 text-gray-600 ">
                     {Array.isArray(project.responsibility) ? (
                       project.responsibility.map((item, i) => (
                         <li key={i} className="flex items-start gap-2">
@@ -175,25 +180,9 @@ const GraduationProjects = () => {
                     )}
                   </ul>
                 </div>
-
-                {/* Technologies  badge*/}
-                <div>
-                  <h4 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-3 ">
-                    Technology
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-700 dark:to-slate-600 text-blue-700 dark:text-blue-300 text-xs px-3 py-1 rounded-full border border-blue-200 dark:border-slate-500 font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
+            <VideoProject />
           </div>
         ))}
       </div>
