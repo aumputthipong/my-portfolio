@@ -3,13 +3,13 @@ import { FaPlay } from "react-icons/fa";
 export default function VideoProject() {
   const videos = [
       {
-          name: "ตัวอย่างขั้นตอนการใช้งาน AI",
-        desc:"Demo การใช้งาน AI Service ในแพลตฟอร์ม",
+          name: "AI Usage Workflow",
+        desc:"Demo of how to use AI services within the platform",
           url: "https://www.youtube.com/embed/fFF1u_CTjZM",
         },
       {
-        name: "ตัวอย่างขั้นตอนการเพิ่ม AI ใหม่",
-        desc:"Demo การเพิ่ม AI Service  ใหม่เข้าแพลตฟอร์ม",
+        name: "Adding New AI Services",
+        desc:"Demo of how to integrate new AI services into the platform",
         url: "https://www.youtube.com/embed/B7YQeZ6N9No",
       },
     ];
