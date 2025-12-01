@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import VideoProject from "./VideoProject";
 
 type ProjectModalProps = {
   project: {
@@ -62,9 +63,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
               ×
             </button>
           </div>
-
           <div className="flex-1 overflow-y-auto p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+               {/* <div
+
+                  className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <VideoProject />
+                </div> */}
               {project.images.map((img, i) => (
                 <div
                   key={i}

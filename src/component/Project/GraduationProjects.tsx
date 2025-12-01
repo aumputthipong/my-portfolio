@@ -6,6 +6,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { GoProjectRoadmap } from "react-icons/go";
 import { AiFillProject } from "react-icons/ai";
 import { BiLayout } from "react-icons/bi";
+import VideoProject from "./VideoProject";
 
 const GraduationProjects = () => {
   const [openProject, setOpenProject] = useState<number | null>(null);
@@ -96,11 +97,16 @@ const GraduationProjects = () => {
 
                 <div className="flex-1">
                   <p className="text-white text-3xl font-bold leading-relaxed">
-                  {project.full_project_name}
+                    {project.full_project_name}
                   </p>
                 </div>
               </div>
+        
+        
+               
+          
             </div>
+               <VideoProject />
             <div className=" flex flex-col lg:flex-row items-center gap-12 p-8">
               {/* Project Image */}
               <div className="w-full lg:w-1/2 h-80 relative ">
