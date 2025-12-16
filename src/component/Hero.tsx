@@ -162,7 +162,7 @@ const Hero = () => {
                         }}
                         className="shadow-lg"
                       >
-                        <img src="image/my_pic.JPG" />
+                        <img src="image/my_pic2.JPG" />
                       </Avatar>
                     </div>
                   </div>
