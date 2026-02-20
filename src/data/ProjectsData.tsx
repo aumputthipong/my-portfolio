@@ -2,7 +2,7 @@ export const projectData = [
   {
     id: 1,
     title: "BookingRoom Web Application",
-    type: "Development",
+    type: "Software Development",
     description:
       "Devleloped a booking room web application using Next.js Typescripts and MongoDB for the database.",
     tech: ["Next.js", "Typescripts", "Tailwind", "MongoDB"],
@@ -30,8 +30,8 @@ export const projectData = [
   },
    {
     id: 2,
-    title: "Canteen Food Ordering Web Application",
-    type: "Development",
+    title: "Canteen Food Web Application",
+    type: "Software Development",
     year: 2023,
     description:
       "Developed food ordering system for canteen web application, using Vue.js for the frontend, Express.js for the backend, and MySQL for the database.",
@@ -58,7 +58,7 @@ export const projectData = [
   {
     id: 3,
     title: "Job Search Application",
-    type: "Development",
+    type: "Software Development",
     description:
       "Developed a mobile application for job seekers and employers using React Native, integrated with Firebase for real-time data and user management.",
     tech: ["ReactNative", "Firebasse", "Mobile App","JavaScript"],
@@ -92,7 +92,7 @@ export const projectData = [
   {
     id: 4,
     title: "Convenience Store Management ",
-    type: "Development",
+    type: "Software Development",
     description:
       "Developed an employee management module for a convenience store web application using Java Spring Boot, designed with a microservices architecture.",
     tech: ["Java", "SpringBoot", "MongoDB", "React"],
@@ -162,7 +162,7 @@ export const projectData = [
   {
     id: 7,
     title: "Depth Estimate Model",
-    type: "Train Model",
+    type: "AI & Machine Learning",
     description:
       "Estimated depth maps from RGB images using a convolutional autoencoder. Built for a Deep Learning course project.",
     tech: ["Deep Learning", "Machine Learning", "Train Model","Python"],
