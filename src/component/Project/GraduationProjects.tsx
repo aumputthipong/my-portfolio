@@ -42,16 +42,19 @@ const GraduationProjects = () => {
         "/projects/senior/ai-web (1).png",
         "/projects/senior/ai-web (20).png",
         "/projects/senior/ai-web (4).png",
-        "/projects/senior/ai-web.png",
-        "/projects/senior/ai-web (9).png",
         // "/projects/senior/ai-web (8).png",
         "/projects/senior/ai-web (7).png",
         "/projects/senior/ai-web (5).png",
         "/projects/senior/ai-web (6).png",
         "/projects/senior/ai-web (10).png",
 
-        "/projects/senior/ai-web (11).png",
-        // "/projects/senior/ai-web (13).png",
+        // "/projects/senior/ai-web (11).png",
+        "/projects/senior/ai-web (21).png",
+        "/projects/senior/ai-web (23).png",
+        "/projects/senior/ai-web (22).png",
+        "/projects/senior/ai-web.png",
+        "/projects/senior/ai-web (9).png",
+        "/projects/senior/ai-web (13).png",
       ],
       github: "https://github.com/aumputthipong/AI-garden-System.git",
       layout: "web",
@@ -86,22 +89,21 @@ const GraduationProjects = () => {
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className=" bg-white  rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+            className=" bg-white  rounded-[10px] shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
           >
-            <div className="bg-gradient-to-br from-zinc-800 to-slate-700 shadow-lg p-8">
+            <div className="bg-gradient-to-br shadow-md p-6">
               <div className="flex items-center gap-6 max-w-5xl mx-auto">
-                <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl  ">
-                  <BiLayout className="w-10 h-10 text-white" />
+                <div className="relative flex items-center justify-center shadow-2xl bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl w-full aspect-square max-w-[4rem]">
+                  <BiLayout className="text-white w-7/10 h-7/10" />
                 </div>
-
-                <div className="flex-1">
-                  <p className="text-white text-3xl font-bold leading-relaxed">
+                <div className="flex-1 ">
+                  <p className="text-indigo-800 text-2xl font-bold leading-relaxed">
                     {project.full_project_name}
                   </p>
                 </div>
               </div>
             </div>
-            <div className=" flex flex-col lg:flex-row items-center gap-12 p-8 ">
+            <div className=" flex flex-col lg:flex-row items-center gap-12 p-8 bg-slate-100 m-4 ">
               {/* Project Image */}
               <div className="w-full lg:w-1/2  relative   ">
                 {/* Project Description with Icons */}

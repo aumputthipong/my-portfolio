@@ -119,10 +119,10 @@ export default function Projects() {
                   {/* Project Content */}
                   <CardContent className="flex-1 flex flex-col p-6">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                      <h3 className="text-xl text-left font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 text-left">
                         {project.description}
                       </p>
 
