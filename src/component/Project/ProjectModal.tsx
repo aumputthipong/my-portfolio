@@ -58,7 +58,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 text-2xl font-light w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+              className="text-gray-400 leading-none  hover:text-gray-600 text-2xl font-light w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
             >
               ×
             </button>
@@ -117,8 +117,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             {/* ปุ่มปิด */}
             <button
               onClick={closeImageModal}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl font-light w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10"
-            >
+className="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl font-light w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10 leading-none pb-1"            >
               ×
             </button>
 
@@ -137,7 +136,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
              z-10 shadow-lg"
               >
                 <svg
-                  className="w-6 h-6 text-gray-800 "
+                  className="w-10 h-10 text-gray-700 "
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -171,7 +170,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
              z-10 shadow-lg"
               >
                 <svg
-                  className="w-6 h-6 text-gray-800"
+                  className="w-10 h-10 text-gray-700"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

@@ -6,6 +6,7 @@ import { GoProjectRoadmap } from "react-icons/go";
 import { AiFillProject } from "react-icons/ai";
 import { BiLayout } from "react-icons/bi";
 import VideoProject from "./VideoProject";
+import { LuCodeXml } from "react-icons/lu";
 
 const GraduationProjects = () => {
   const [openProject, setOpenProject] = useState<number | null>(null);
@@ -26,13 +27,14 @@ const GraduationProjects = () => {
         `Developed a web platform that supports adding and integrating new AI services, for AI developers.`,
       ],
       tech: [
-        "React",
-        "NestJs",
-        "TypeScript",
-        "Tailwind",
-        "PostGreSQL",
-        "Docker",
+        { name: "React", icon: "image/skills/framework/react.png" },
+        { name: "NestJs", icon: "image/skills/framework/nestjs.png" },
+        { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
+        { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
+        { name: "PostGreSQL", icon: "image/skills/framework/postgresql.png" },
+        { name: "Docker", icon: "image/skills/tools/docker.png" },
       ],
+
       images: [
         "/projects/senior/ai-web (3).png",
         // "/projects/senior/ai-web (17).png",
@@ -63,19 +65,18 @@ const GraduationProjects = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto py-20 px-4 lg:px-8">
+    <div className="max-w-7xl mx-auto py-20 px-4 lg:px-8">
       {/* Header Section */}
       <div className="text-center mb- relative ">
         {/* Decorative Elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
 
         {/* Title with Gradient */}
-        <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
-          My{" "}
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            Senior{" "}
+        <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 uppercase">
+        My{" "}
+          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 bg-clip-text text-transparent">
+           Senior Project
           </span>
-          Project
         </h2>
 
         {/*Divider */}
@@ -85,105 +86,101 @@ const GraduationProjects = () => {
       </div>
 
       {/* Projects Card */}
-      <div className="grid gap-12 group ">
+      <div className="grid gap-8 ">
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className=" bg-white  rounded-[10px] shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+            className="bg-white border  border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
           >
-            <div className="bg-gradient-to-br shadow-md p-6">
-              <div className="flex items-center gap-6 max-w-5xl mx-auto">
-                <div className="relative flex items-center justify-center shadow-2xl bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl w-full aspect-square max-w-[4rem]">
-                  <BiLayout className="text-white w-7/10 h-7/10" />
-                </div>
-                <div className="flex-1 ">
-                  <p className="text-indigo-800 text-2xl font-bold leading-relaxed">
-                    {project.full_project_name}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className=" flex flex-col lg:flex-row items-center gap-12 p-8 bg-slate-100 m-4 ">
-              {/* Project Image */}
-              <div className="w-full lg:w-1/2  relative   ">
-                {/* Project Description with Icons */}
+            {/* Card Header */}
+          <div className="px-8 py-5 bg-zinc-800 flex items-center gap-4 ">
+  <div className="flex items-center justify-center bg-white/10 border border-white/20 rounded-xl w-16 h-16 flex-shrink-0">
+    <LuCodeXml className="text-white w-6 h-6" />
+  </div>
+  <p className="text-white text-3xl font-bold leading-snug ">
+    {project.full_project_name}
+  </p>
+</div>
 
-                <div className="relative w-full h-full group bg-red ">
-                  {/* Background gradient behind the image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 to-purple-100/40  rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300 z-0" />
-
-                  {/* Image Container */}
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl z-10">
-                    <img
-                      src={project.images[0]}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* View Button */}
-                    <div className=" absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <button
-                        onClick={() => setOpenProject(index)}
-                        className=" cursor-pointer bg-white/95 text-gray-900  px-6 py-3 rounded-full shadow-xl text-sm font-semibold flex items-center gap-2 hover:bg-white  transition-all duration-200 transform hover:scale-105"
-                      >
-                        <FaExternalLinkAlt className="text-base " />
-                        View Project
-                      </button>
+            {/* Card Body */}
+            <div className=" p-8 m-4 rounded-2xl border border-gray-200 group">
+              <div className="flex flex-col lg:flex-row items-start gap-10 ">
+                {/* Left: Image + Tech */}
+                <div className="w-full lg:w-1/2 mt-12">
+                  <div className="relative w-full group">
+                    <div className="relative w-full rounded-xl overflow-hidden border border-gray-200 shadow-sm group-hover:shadow-md transition-shadow duration-300">
+                      <img
+                        src={project.images[0]}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <button
+                          onClick={() => setOpenProject(index)}
+                          className="cursor-pointer bg-white text-gray-900 px-6 py-3 rounded-full shadow-md text-sm font-semibold flex items-center gap-2 hover:bg-gray-100 transition-all duration-200"
+                        >
+                          <FaExternalLinkAlt className="text-sm" />
+                          View Project
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                {/* Technologies  badge*/}
-                <div className="mx-auto pt-5">
-                  <h4 className="text-xl font-bold text-blue-600  mb-3 ">
-                    Technology
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="bg-gradient-to-r from-blue-50 to-indigo-50   text-blue-700  text-xs px-3 py-1 rounded-full border border-blue-200  font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+
+                {/* Right: Info */}
+                <div className="w-full lg:w-1/2 space-y-6">
+                  <div>
+                    <h4 className="text-3xl font-bold text-indigo-700 mb-2">
+                      {project.title}
+                    </h4>
+                    <p className="text-gray-500 leading-relaxed text-m">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-2xl font-bold text-indigo-700 mb-3 uppercase tracking-wide">
+                      Responsibilities
+                    </h4>
+                    <ul className="space-y-2 text-gray-500 text-m">
+                      {Array.isArray(project.responsibility) ? (
+                        project.responsibility.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                            {item}
+                          </li>
+                        ))
+                      ) : (
+                        <p>{project.responsibility}</p>
+                      )}
+                    </ul>
                   </div>
                 </div>
               </div>
-
-              <div className="w-full lg:w-1/2 space-y-6 ">
-                {/* Title */}
-                <div>
-                  <h4 className="text-3xl font-bold text-blue-600  mb-2">
-                    {project.title}
-                  </h4>
-                  <p className="text-gray-600  leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Responsibilities */}
-                <div>
-                  <h4 className="text-xl font-bold text-blue-600  mb-2">
-                    Responsibilities
-                  </h4>
-                  <ul className="space-y-2 text-gray-600 ">
-                    {Array.isArray(project.responsibility) ? (
-                      project.responsibility.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                          {item}
-                        </li>
-                      ))
-                    ) : (
-                      <p>{project.responsibility}</p>
-                    )}
-                  </ul>
+              {/* Tech Badges */}
+              <div className="pt-2 mx-2">
+                <h4 className="text-2xl font-bold text-indigo-700 mb-3 uppercase tracking-wide ">
+                  Tech Stack
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="inline-flex items-center bg-white text-indigo-600 gap-1.5 text-s px-3 py-1.5 rounded-full border border-indigo-200 font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-200 "
+                    >
+                      <img
+                        src={tech.icon}
+                        className="h-4 w-4 object-contain"
+                      />
+                      {tech.name}
+                    </span>
+                  ))}
                 </div>
               </div>
+              
             </div>
+
             <VideoProject />
           </div>
         ))}
