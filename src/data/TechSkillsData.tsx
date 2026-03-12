@@ -46,7 +46,7 @@ export const techSkills = [
     category: "Databases",
     icon: <StorageIcon  className="text-6xl text-white" />,
     skills: [
-      { label: "PostgresQL", icon: "image/skills/framework/postgresql.png" },
+      { label: "PostgresQL", icon: "image/skills/framework/Postgresql.png" },
       { label: "MySQL", icon:"image/skills/framework/mysql.png" },
       { label: "MongoDB", icon: "image/skills/framework/mongodb.png" },
       { label: "Firebase", icon: "image/skills/framework/firebase.png" },

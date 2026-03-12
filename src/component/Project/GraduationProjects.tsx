@@ -31,7 +31,7 @@ const GraduationProjects = () => {
         { name: "NestJs", icon: "image/skills/framework/nestjs.png" },
         { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
         { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
-        { name: "PostGreSQL", icon: "image/skills/framework/postgresql.png" },
+        { name: "PostGreSQL", icon: "image/skills/framework/Postgresql.png" },
         { name: "Docker", icon: "image/skills/tools/docker.png" },
       ],
 
