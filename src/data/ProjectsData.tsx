@@ -5,7 +5,8 @@ export const projectData = [
     type: "Software Development",
     description:
       "Devleloped a booking room web application using Next.js Typescripts and MongoDB for the database.",
-    tech: ["Next.js", "Typescripts", "Tailwind", "MongoDB"],
+    tech:  [
+        { name: "Next.js" ,icon: "image/skills/framework/nextjs.png"}, { name: "Typescripts" ,icon: "image/skills/programming/typescript.png"}, { name: "Tailwind" ,icon: "image/skills/framework/tailwind.png"}, { name: "MongoDB",icon: "image/skills/framework/mongodb.png" }],
     github: "https://github.com/aumputthipong/BookingNextApp.git",
 
     ref: "git",
@@ -35,7 +36,8 @@ export const projectData = [
     year: 2023,
     description:
       "Developed food ordering system for canteen web application, using Vue.js for the frontend, Express.js for the backend, and MySQL for the database.",
-    tech: ["Vue", "Express", "MySQL", "JavaScript"],
+    tech:  [
+        { name: "Vue" ,icon: "image/skills/framework/vue.png"}, { name: "Express",icon: "image/skills/framework/express-js.png" }, { name: "MySQL",icon: "image/skills/framework/mysql.png" }, { name: "JavaScript",icon: "image/skills/programming/js.png" }],
     github: "https://github.com/aumputthipong/FoodIOrderingProject.git",
     ref: "https://ai-garden-ref.com",
     image:  "/projects/foodordering/foodorder (5).png",
@@ -61,7 +63,8 @@ export const projectData = [
     type: "Software Development",
     description:
       "Developed a mobile application for job seekers and employers using React Native, integrated with Firebase for real-time data and user management.",
-    tech: ["ReactNative", "Firebasse", "Mobile App","JavaScript"],
+    tech:  [
+        { name: "ReactNative",icon: "image/skills/framework/react-native.png" }, { name: "Firebase" ,icon: "image/skills/framework/firebase.png"}, { name: "JavaScript",icon: "image/skills/programming/js.png" },{ name: "Mobile App" }],
     github: "https://github.com/aumputthipong/job-app-project.git",
     ref: false,
     image: "/projects/jobapp/jobapp (1).png",
@@ -95,7 +98,8 @@ export const projectData = [
     type: "Software Development",
     description:
       "Developed an employee management module for a convenience store web application using Java Spring Boot, designed with a microservices architecture.",
-    tech: ["Java", "SpringBoot", "MongoDB", "React"],
+    tech:  [
+        { name: "Java", icon: "image/skills/programming/java.png" }, { name: "SpringBoot", icon: "image/skills/framework/spring.png" }, { name: "MongoDB", icon: "image/skills/framework/mongodb.png" }, { name: "React", icon: "image/skills/framework/react.png" }],
     github: "https://github.com/aumputthipong/EmployeeManageProject.git",
     ref: false,
     image: "projects/con_manage.png",
@@ -112,7 +116,8 @@ export const projectData = [
     type: "UX/UI Design",
     description:
       "Designed a university parking mobile application using Figma, enabling users to search for available parking spots and navigate to parking areas.",
-    tech: ["Figma", "UX/UI Design"],
+    tech:  [
+        { name: "Figma", icon: "image/skills/tools/figma.png" }, { name: "UX/UI Design" }],
     github: "",
     ref: false,
     image: "/projects/ParkingApp/parking (3).png",
@@ -135,7 +140,8 @@ export const projectData = [
     type: "UX/UI Design",
     description:
       "Analyzed requirements and designed  scheduling system for faculty to manage class timetables and teaching assignments ",
-    tech: ["Figma", "UX/UI Design"],
+    tech:  [
+        { name: "Figma", icon: "image/skills/tools/figma.png" }, { name: "UX/UI Design" }],
     github: "",
     year: 2024,
     ref: false,
@@ -165,7 +171,8 @@ export const projectData = [
     type: "AI & Machine Learning",
     description:
       "Estimated depth maps from RGB images using a convolutional autoencoder. Built for a Deep Learning course project.",
-    tech: ["Deep Learning", "Machine Learning", "Train Model","Python"],
+    tech:  [
+         { name: "Python" ,icon:"image/skills/programming/python.png"},{ name: "Deep Learning" ,}, { name: "Machine Learning" ,}, { name: "Train Model" ,}],
     github: "https://github.com/aumputthipong/depth_estimate.git",
     year: 2024,
     ref: false,

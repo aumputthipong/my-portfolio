@@ -14,8 +14,8 @@ const AboutMe = () => {
           <div className="sticky top-24 w-full md:w-1/4 self-start space-y-6">
             {/* หัวข้อหลัก */}
             <div>
-              <span className="text-4xl lg:text-5xl font-bold  mb-2">
-                About Me
+              <span className="text-4xl lg:text-5xl font-bold  mb-2 ">
+                Profile
               </span>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Get to know more about my background and expertise.
@@ -30,8 +30,8 @@ const AboutMe = () => {
               <ul className="space-y-3">
                 {[
                   {
-                    href: "#introduction",
-                    label: "Introduction",
+                    href: "#about-me",
+                    label: "About Me",
                     icon: <Person className="w-4 h-4" />,
                   },
                   {
@@ -66,7 +66,7 @@ const AboutMe = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-zinc-500 to-slate-500 rounded-lg blur-md opacity-30 -z-10"></div>
                         </div>     
                         <div className="flex-1">
-                          <span className="font-semibold transition-colors duration-300 text-slate-800">
+                          <span className="font-semibold transition-colors duration-300 text-slate-800 ">
                             {item.label}
                           </span>
                         </div>         
@@ -110,10 +110,10 @@ const AboutMe = () => {
               {/* content with head */}
               <div className="pb-12">
                 <h2
-                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6"
-                  id="introduction"
+                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6 uppercase"
+                  id="about-me"
                 >
-                  Introduction
+                  About Me
                 </h2>
                 <Introduction />
               </div>
@@ -149,7 +149,7 @@ const AboutMe = () => {
               {/* content with head */}
               <div className="pb-12">
                 <h2
-                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6"
+                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6 uppercase"
                   id="skills"
                 >
                   Skills
@@ -188,7 +188,7 @@ const AboutMe = () => {
               {/* content with head */}
               <div className="col-span-full pb-12">
                 <h2
-                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6"
+                  className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6 uppercase"
                   id="education"
                 >
                   Education

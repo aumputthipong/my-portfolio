@@ -8,7 +8,7 @@ const ContactSection = () => {
     <section id="contact" className="py-20 px-4 bg-gray-50 ">
       <div className="max-w-4xl mx-auto text-center">
         
-        <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-slate-800">
+        <h2 className="text-5xl lg:text-6xl font-extrabold mb-6 text-slate-800 uppercase">
           Contact</h2>
         <p className="text-gray-600 mb-12 text-lg max-w-2xl mx-auto">
           I'm always open to new opportunities, ideas, or simply to get in touch

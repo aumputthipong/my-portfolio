@@ -27,16 +27,15 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 ">
           <div className="inline-block relative">
-            <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900  mb-4">
+            <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900  mb-4 uppercase">
               My{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Academic
-              </span>{" "}
-              Projects
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 bg-clip-text text-transparent">
+                Academic Projects
+              </span>
             </h2>
 
             {/* Subtle underline accent */}
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-700 rounded-full"></div>
           </div>
 
           <div className="flex justify-center mb-10">
@@ -45,16 +44,16 @@ export default function Projects() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ${
+                  className={`px-6 py-3 text-m font-medium rounded-md transition-all duration-200 ${
                     activeTab === tab
-                      ? "bg-blue-500 text-white shadow-md"
+                      ? "bg-indigo-600 text-white shadow-md"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
                   {tab}
                   <span
-                    className={`ml-2 text-xs ${
-                      activeTab === tab ? "text-blue-100" : "text-gray-400"
+                    className={`ml-2 text-sm ${
+                      activeTab === tab ? "text-indigo-100" : "text-gray-400"
                     }`}
                   >
                     (
@@ -118,7 +117,7 @@ export default function Projects() {
 
                   {/* Project Content */}
                   <CardContent className="flex-1 flex flex-col p-6">
-                    <div className="flex-1">
+                    <div className="flex-1 flex flex-col ">
                       <h3 className="text-xl text-left font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
                         {project.title}
                       </h3>
@@ -127,25 +126,27 @@ export default function Projects() {
                       </p>
 
                       {/* Tech Stack */}
-                      <div className="flex flex-wrap gap-2 mb-6">
+                      <div className="flex flex-wrap gap-2 mb-6 mt-auto">
                         {project.tech.slice(0, 4).map((tech, i) => (
                           <span
                             key={i}
-                            className="bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs px-3 py-1 rounded-full border border-blue-200 font-medium"
+                            className="flex gap-1 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs px-3 py-1 rounded-full border border-blue-200 font-medium"
                           >
-                            {tech}
+                            {tech.icon && (
+                              <img
+                                src={tech.icon}
+                                alt={`${tech.name}`}
+                                className="h-4 w-4 object-contain"
+                              />
+                            )}
+                            {tech.name}
                           </span>
                         ))}
-                        {project.tech.length > 4 && (
-                          <span className="text-xs text-gray-500 px-3 py-1">
-                            +{project.tech.length - 4} more
-                          </span>
-                        )}
                       </div>
                     </div>
 
                     {/* Action Links */}
-                    <div className="flex gap-4 pt-4 border-t border-gray-100 justify-between">
+                    <div className="flex gap-4 pt-4 border-t border-gray-100 justify-between min-h-[52px] items-center">
                       <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
                         <FaCalendarAlt className="text-sm" />
                         {project.year}
