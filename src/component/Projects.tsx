@@ -22,10 +22,13 @@ export default function Projects() {
       : projectData.filter((project) => project.type === activeTab);
 
   return (
-    <section id="projects" className="py-10 px-4 bg-neutral-100">
+    <section id="projects">
+      <div className="bg-neutral-100 px-4">
       <GraduationProjects />
+      </div>
 
-      <div className="max-w-6xl mx-auto">
+
+      <div className="max-w-6xl mx-auto py-20 px-4 ">
         {/* Academic Project title  */}
         <div className="text-center mb-8 relative">
           <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 uppercase">
