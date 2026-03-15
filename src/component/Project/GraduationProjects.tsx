@@ -66,7 +66,7 @@ const GraduationProjects = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto py-20 px-4 lg:px-8">
+    <div className="max-w-7xl mx-auto py-20 px-4 lg:px-8 ">
       {/* Header Section */}
       <div className="text-center mb-8 relative ">
         {/* Title with Gradient */}
@@ -85,15 +85,18 @@ const GraduationProjects = () => {
             className="bg-white border  border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
           >
             {/* Card Header */}
-            <div className="px-8 py-5 bg-zinc-800 flex items-center gap-4 ">
-              <div className="flex items-center justify-center bg-white/10 border border-white/20 rounded-xl w-16 h-16 flex-shrink-0">
-                <LuCodeXml className="text-white w-6 h-6" />
+            <div className="px-10 py-6 bg-zinc-800 flex items-center gap-5">
+              <LuCodeXml className="text-white/70 w-6 h-6 flex-shrink-0" />
+              <div className="w-px h-10 bg-white/10" />
+              <div className="flex flex-col gap-0.5">
+                <p className="text-white text-2xl font-bold tracking-tight">
+                  {project.full_project_name}
+                </p>
+                <span className="text-white/40 text-sm font-medium tracking-widest uppercase">
+                  AI Garden System
+                </span>
               </div>
-              <p className="text-white text-3xl font-bold leading-snug ">
-                {project.full_project_name}
-              </p>
             </div>
-
             {/* Card Body */}
             <div className=" p-8 m-4 rounded-2xl border border-gray-200 group">
               <div className="flex flex-col lg:flex-row items-start gap-10 ">
@@ -123,7 +126,7 @@ const GraduationProjects = () => {
                 {/* Right: Info */}
                 <div className="w-full lg:w-1/2 space-y-6">
                   <div>
-                    <h4 className="text-3xl font-bold text-indigo-700 mb-2">
+                    <h4 className="text-3xl font-bold text-indigo-700 mb-2 uppercase">
                       {project.title}
                     </h4>
                     <p className="text-gray-500 leading-relaxed text-m">
