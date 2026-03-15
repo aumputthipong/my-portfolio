@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa'
+import Divider from './UI/Divider'
 
 const ContactSection = () => {
   return (
@@ -10,6 +11,7 @@ const ContactSection = () => {
         
         <h2 className="text-5xl lg:text-6xl font-extrabold mb-6 text-slate-800 uppercase">
           Contact</h2>
+          <Divider/>
         <p className="text-gray-600 mb-12 text-lg max-w-2xl mx-auto">
           I'm always open to new opportunities, ideas, or simply to get in touch
         </p>

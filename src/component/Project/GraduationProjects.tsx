@@ -7,6 +7,7 @@ import { AiFillProject } from "react-icons/ai";
 import { BiLayout } from "react-icons/bi";
 import VideoProject from "./VideoProject";
 import { LuCodeXml } from "react-icons/lu";
+import Divider from "../UI/Divider";
 
 const GraduationProjects = () => {
   const [openProject, setOpenProject] = useState<number | null>(null);
@@ -67,22 +68,13 @@ const GraduationProjects = () => {
   return (
     <div className="max-w-7xl mx-auto py-20 px-4 lg:px-8">
       {/* Header Section */}
-      <div className="text-center mb- relative ">
-        {/* Decorative Elements */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
-
+      <div className="text-center mb-8 relative ">
         {/* Title with Gradient */}
         <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 uppercase">
-        My{" "}
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 bg-clip-text text-transparent">
-           Senior Project
-          </span>
+          My Senior Project
         </h2>
-
         {/*Divider */}
-        <div className="flex items-center justify-center gap-2 mt-6 mb-8 ">
-          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-        </div>
+        <Divider />
       </div>
 
       {/* Projects Card */}
@@ -93,14 +85,14 @@ const GraduationProjects = () => {
             className="bg-white border  border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
           >
             {/* Card Header */}
-          <div className="px-8 py-5 bg-zinc-800 flex items-center gap-4 ">
-  <div className="flex items-center justify-center bg-white/10 border border-white/20 rounded-xl w-16 h-16 flex-shrink-0">
-    <LuCodeXml className="text-white w-6 h-6" />
-  </div>
-  <p className="text-white text-3xl font-bold leading-snug ">
-    {project.full_project_name}
-  </p>
-</div>
+            <div className="px-8 py-5 bg-zinc-800 flex items-center gap-4 ">
+              <div className="flex items-center justify-center bg-white/10 border border-white/20 rounded-xl w-16 h-16 flex-shrink-0">
+                <LuCodeXml className="text-white w-6 h-6" />
+              </div>
+              <p className="text-white text-3xl font-bold leading-snug ">
+                {project.full_project_name}
+              </p>
+            </div>
 
             {/* Card Body */}
             <div className=" p-8 m-4 rounded-2xl border border-gray-200 group">
@@ -169,16 +161,12 @@ const GraduationProjects = () => {
                       key={i}
                       className="inline-flex items-center bg-white text-indigo-600 gap-1.5 text-s px-3 py-1.5 rounded-full border border-indigo-200 font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-200 "
                     >
-                      <img
-                        src={tech.icon}
-                        className="h-4 w-4 object-contain"
-                      />
+                      <img src={tech.icon} className="h-4 w-4 object-contain" />
                       {tech.name}
                     </span>
                   ))}
                 </div>
               </div>
-              
             </div>
 
             <VideoProject />
