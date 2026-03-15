@@ -52,6 +52,11 @@ const Navbar = () => {
       }`}
     >
       <div className="flex items-center space-x-2 bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-4 py-1 shadow-2xl">
+        <span className="text-m font-semibold text-black/80 px-3 py-2 tracking-wide"> 
+          Putthipong<span className="font-light text-black/50">.portfolio</span>
+        </span>
+         <div className="w-px h-5 bg-black/10" />
+
         {/* Home Button */}
         <button
           onClick={() => scrollToSection("home")}

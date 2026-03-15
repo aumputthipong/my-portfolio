@@ -28,7 +28,7 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         {/* Academic Project title  */}
         <div className="text-center mb-8 relative">
-          <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 uppercase">
+          <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 uppercase">
             My Academic Projects
           </h2>
 
