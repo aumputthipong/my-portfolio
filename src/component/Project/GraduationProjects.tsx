@@ -70,7 +70,7 @@ const GraduationProjects = () => {
       {/* Header Section */}
       <div className="text-center mb-8 relative ">
         {/* Title with Gradient */}
-        <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 uppercase">
+        <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 uppercase">
           My Senior Project
         </h2>
         {/*Divider */}
