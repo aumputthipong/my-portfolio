@@ -39,12 +39,12 @@ export default function Projects() {
         </div>
         {/* project navigation project */}
         <div className="flex justify-center mb-10 ">
-          <div className="inline-flex bg-white rounded-lg p-1 shadow-sm border border-gray-200 mt-6 ">
+          <div className="flex flex-wrap justify-center bg-white rounded-lg p-1 shadow-sm border border-gray-200 mt-6 ">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 text-m font-medium rounded-md transition-all duration-200 ${
+                className={`flex items-center px-6 py-3 text-m font-medium rounded-md transition-all duration-200 ${
                   activeTab === tab
                     ? "bg-indigo-600 text-white shadow-md"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"

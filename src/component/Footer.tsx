@@ -1,39 +1,54 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
-const Footer = () => {
-  return (
-    <footer className="bg-slate-900 text-gray-200 py-10 ">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h3 className="text-lg font-semibold mb-2">Putthipong Chobngam</h3>
-   
+const SOCIAL_LINKS = [
+{
+  href: "mailto:putthipong.chb@gmail.com",
+  icon: <FaEnvelope />,
+  label: "Email",
+},
+{
+  href: "https://github.com/aumputthipong",
+  icon: <FaGithub />,
+  label: "GitHub",
+  external: true,
+},
+];
+export default function Footer() {
+  const year = new Date().getFullYear();
 
-        <div className="flex justify-center gap-6 mb-6 text-xl">
-          <a
-            href="putthipong.chb@gmail.com"
-            className="hover:text-blue-400 transition"
-            aria-label="Email"
-          >
-            <FaEnvelope />
-          </a>
-          <a
-            href="https://github.com/aumputthipong"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-400 transition"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </a>
-          
+  return (
+    <footer className="w-full bg-slate-900 text-gray-200 py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-4">
+        {/* Name */}
+        <h3 className="text-base sm:text-lg font-semibold tracking-wide">
+          Putthipong Chobngam
+        </h3>
+
+        {/* Social Icons */}
+        <div className="flex items-center gap-5 text-xl">
+          {SOCIAL_LINKS.map(({ href, icon, label, external }) => (
+            <a
+              key={label}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              className="text-gray-400 hover:text-blue-400 transition-colors duration-200 p-2 rounded-full hover:bg-slate-800"
+              aria-label={label}
+            >
+              {icon}
+            </a>
+          ))}
         </div>
 
-        <p className="text-xs text-gray-400">
-          © {new Date().getFullYear()} Putthipong Chobngam. All rights reserved.
+        {/* Divider */}
+        <div className="w-16 h-px bg-slate-700" />
+
+        {/* Copyright */}
+        <p className="text-xs text-gray-500 text-center">
+          © {year} Putthipong Chobngam. All rights reserved.
         </p>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
