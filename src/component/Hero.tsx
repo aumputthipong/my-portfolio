@@ -3,14 +3,7 @@
 import { CodeSharp, Description, Laptop, Storage } from "@mui/icons-material";
 import { Avatar, Button, Container, Typography } from "@mui/material";
 import React from "react";
-import {
-  FaDownload,
-
-  FaEnvelope,
-
-  FaGithub,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaDownload, FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiCode } from "react-icons/hi";
 import { MdEmail, MdLocationOn } from "react-icons/md";
 import { TypeAnimation } from "react-type-animation";
@@ -73,7 +66,8 @@ const Hero = () => {
               <div className="space-y-4">
                 <div className="text-lg text-gray-600 leading-relaxed">
                   Welcome to my portfolio website. I'm a passionate,
-                  <br />self-motivated developer — always learning, always growing.
+                  <br />
+                  self-motivated developer — always learning, always growing.
                 </div>
 
                 {/* Contact Info Cards */}
@@ -97,7 +91,7 @@ const Hero = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 pt-4 w-full sm:w-auto">
                 <Button
                   variant="contained"
                   onClick={() =>
@@ -105,7 +99,7 @@ const Hero = () => {
                       .getElementById("projects")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
-                  className="!bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black !text-white !font-semibold !px-8 !py-3 !rounded-full !shadow-lg hover:!shadow-xl !transition-all !duration-300 !normal-case"
+                  className="!bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black !text-white !font-semibold !px-8 !py-3 !rounded-full !shadow-lg hover:!shadow-xl !transition-all !duration-300 !normal-case !w-full sm:!w-auto"
                   startIcon={
                     <svg
                       className="w-5 h-5"
@@ -125,14 +119,14 @@ const Hero = () => {
                 </Button>
 
                 <Button
-                 onClick={() =>
+                  variant="outlined"
+                  onClick={() =>
                     document
                       .getElementById("contact")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
-                  variant="outlined"
-                  className="!border-2 !border-gray-300 hover:!border-gray-400 !text-gray-700 hover:!bg-gray-50 !font-semibold !px-8 !py-3 !rounded-full !transition-all !duration-300 !normal-case"
-                  startIcon={       <FaEnvelope />}
+                  className="!border-2 !border-gray-300 hover:!border-gray-400 !text-gray-700 hover:!bg-gray-50 !font-semibold !px-8 !py-3 !rounded-full !transition-all !duration-300 !normal-case !w-full sm:!w-auto"
+                  startIcon={<FaEnvelope />}
                 >
                   Contact Me
                 </Button>
@@ -209,11 +203,11 @@ const Hero = () => {
         </Container>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center opacity-60">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
+    <div className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+  <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center opacity-60">
+    <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse" />
+  </div>
+</div>
     </section>
   );
 };

@@ -11,7 +11,7 @@ const AboutMe = () => {
     <section id="about-me" className="py-20 px-4 bg-zinc-50">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="sticky top-24 w-full md:w-1/4 self-start space-y-6">
+          <div className="hidden md:block sticky top-24 w-full md:w-1/4 self-start space-y-6">
             {/* หัวข้อหลัก */}
             <div>
               <span className="text-4xl lg:text-5xl font-bold  mb-2 ">
@@ -108,7 +108,7 @@ const AboutMe = () => {
                 </div>
               </div>
               {/* content with head */}
-              <div className="pb-12">
+              <div className="pb-12 w-full min-w-0">
                 <h2
                   className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6 uppercase"
                   id="about-me"
@@ -147,7 +147,7 @@ const AboutMe = () => {
                 </div>
               </div>
               {/* content with head */}
-              <div className="pb-12">
+              <div className="pb-12 w-full min-w-0">
                 <h2
                   className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6 uppercase"
                   id="skills"
@@ -186,7 +186,7 @@ const AboutMe = () => {
                 </div>
               </div>
               {/* content with head */}
-              <div className="col-span-full pb-12">
+              <div className="pb-12 w-full min-w-0">
                 <h2
                   className="text-3xl lg:text-4xl font-bold text-gray-800 pb-6 uppercase"
                   id="education"

@@ -12,9 +12,9 @@ const Education = () => {
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
   whileHover={{ y: -5 }}
-  className="w-full max-w-4xl mx-auto"
+  className="w-full max-w-4xl mx-auto "
 >
-  <div className="relative overflow-hidden bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 rounded-2xl p-8">
+  <div className="relative overflow-hidden bg-white border-2 border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 rounded-lg p-8">
     
     <div className="flex flex-col lg:flex-row items-start gap-8">
       
@@ -25,7 +25,7 @@ const Education = () => {
         transition={{ delay: 0.2, duration: 0.5 }}
         className="flex-shrink-0"
       >
-        <div className="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
+        <div className="bg- p-4 rounded-2xl border border-gray-200 shadow-sm">
           <img
             src="/image/KMITL_Logo.png"
             alt="KMITL Logo"
@@ -51,9 +51,9 @@ const Education = () => {
               className="h-10 w-auto object-contain"
             />
           </div>
-          <div className="h-6 w-px bg-gray-300 rounded-full"></div>
-          <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-sm">
-            <FaGraduationCap className="h-6 w-6 text-gray-700" />
+          <div className="h-10 w-px bg-gray-300 rounded-full"></div>
+          <div className="bg-white p-2 rounded-xl  border-gray-200 ">
+            <FaGraduationCap className="h-8 w-8 text-gray-700" />
           </div>
         </motion.div>
 
