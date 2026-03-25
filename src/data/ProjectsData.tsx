@@ -33,7 +33,6 @@ export const projectData = [
     haveImage: true,
     layout: "web",
   },
-
   {
     id: 2,
     title: "Job Search Application",
@@ -55,7 +54,7 @@ export const projectData = [
       "/projects/jobapp/jobapp(3).png",
       "/projects/jobapp/jobapp(10).png",
       "/projects/jobapp/jobapp(7).png",
-      // "/projects/jobapp/jobapp (22).png",
+      // "/projects/jobapp/jobapp(22).png",
       
       "/projects/jobapp/jobapp(16).png",
       "/projects/jobapp/jobapp(17).png",
