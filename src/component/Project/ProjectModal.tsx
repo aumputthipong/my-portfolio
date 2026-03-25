@@ -6,26 +6,23 @@ type ProjectModalProps = {
     id: number;
     title: string;
     images: string[];
-           layout: string;
+    layout: string;
   };
   onClose: () => void;
 };
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-
   const closeImageModal = () => {
     setSelectedImage(null);
   };
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
 
   const handleImageClick = (img: string) => {
     const index = project.images.findIndex((image) => image === img);
     setCurrentImageIndex(index);
     setSelectedImage(img);
   };
-
 
   const nextImage = () => {
     const nextIndex = (currentImageIndex + 1) % project.images.length;
@@ -50,7 +47,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white rounded-lg max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+          className="bg-white rounded-lg max-w-7xl w-full max-h-[95vh] overflow-hidden flex flex-col"
         >
           <div className="flex items-center justify-between p-6 border-b border-gray-200">
             <h2 className="text-2xl font-bold text-gray-800">
@@ -64,30 +61,35 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             </button>
           </div>
           <div className="flex-1 overflow-y-auto p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-              {project.images.map((img, i) => (
-                <div
-                  key={i}
-                  className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-                  onClick={() => handleImageClick(img)}
-                >
-                  <img
-                    src={img}
-                    alt={`${img}`}
-                    className={`w-full
-                      ${
+            <div className="flex-1 overflow-y-auto p-6">
+              <div
+                className={`grid gap-6 ${
+                  project.layout === "mobile"
+                    ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4" // Mobile layout: ใช้ column เยอะขึ้นเพราะรูปแคบ
+                    : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" // Desktop layout: รูปกว้าง ใช้ column น้อยลง
+                }`}
+              >
+                {project.images.map((img, i) => (
+                  <div
+                    key={i}
+                    className="relative group cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 bg-gray-50"
+                    onClick={() => handleImageClick(img)}
+                  >
+                    <img
+                      src={img}
+                      alt={`Project screenshot ${i + 1}`}
+                      className={`w-full block transition-transform duration-500 group-hover:scale-105 ${
                         project.layout === "mobile"
-                          ? "h-96 object-contain"
+                          ? "aspect-[9/19] object-cover object-top" // เน้นสัดส่วนมือถือ และชิดขอบบน
                           : "h-48 object-cover"
-                      }
-                      group-hover:scale-105 transition-transform duration-300`}
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white/90 rounded-full p-2">
+                      }`}
+                    />
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2 shadow-lg">
                         <svg
-                          className="w-6 h-6 text-gray-700"
+                          className="w-5 h-5 text-gray-700"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -102,8 +104,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -117,7 +119,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             {/* ปุ่มปิด */}
             <button
               onClick={closeImageModal}
-className="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl font-light w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10 leading-none pb-1"            >
+              className="absolute top-4 right-4 text-white hover:text-gray-300 text-3xl font-light w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10 leading-none pb-1"
+            >
               ×
             </button>
 

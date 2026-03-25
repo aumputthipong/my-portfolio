@@ -5,8 +5,12 @@ export const projectData = [
     type: "Software Development",
     description:
       "Devleloped a booking room web application using Next.js Typescripts and MongoDB for the database.",
-    tech:  [
-        { name: "Next.js" ,icon: "image/skills/framework/nextjs.png"}, { name: "Typescripts" ,icon: "image/skills/programming/typescript.png"}, { name: "Tailwind" ,icon: "image/skills/framework/tailwind.png"}, { name: "MongoDB",icon: "image/skills/framework/mongodb.png" }],
+    tech: [
+      { name: "Next.js", icon: "image/skills/framework/nextjs.png" },
+      { name: "Typescripts", icon: "image/skills/programming/typescript.png" },
+      { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
+      { name: "MongoDB", icon: "image/skills/framework/mongodb.png" },
+    ],
     github: "https://github.com/aumputthipong/BookingNextApp.git",
 
     ref: "git",
@@ -29,18 +33,65 @@ export const projectData = [
     haveImage: true,
     layout: "web",
   },
-   {
+
+  {
     id: 2,
+    title: "Job Search Application",
+    type: "Software Development",
+    description:
+      "Developed a mobile application for job seekers and employers using React Native, integrated with Firebase for real-time data and user management.",
+    tech: [
+      { name: "ReactNative", icon: "image/skills/framework/react-native.png" },
+      { name: "Firebase", icon: "image/skills/framework/firebase.png" },
+      { name: "JavaScript", icon: "image/skills/programming/js.png" },
+      { name: "Mobile App" },
+    ],
+    github: "https://github.com/aumputthipong/job-app-project.git",
+    ref: false,
+    image: "/projects/jobapp/jobapp(10).png",
+    year: 2023,
+    images: [
+
+      "/projects/jobapp/jobapp (3).png",
+      "/projects/jobapp/jobapp (10).png",
+      "/projects/jobapp/jobapp (7).png",
+      // "/projects/jobapp/jobapp (22).png",
+      
+      "/projects/jobapp/jobapp (16).png",
+      "/projects/jobapp/jobapp (17).png",
+      "/projects/jobapp/jobapp (13).png",
+      
+      
+      "/projects/jobapp/jobapp (20).png",
+      "/projects/jobapp/jobapp (24).png",
+      "/projects/jobapp/jobapp.png",
+      "/projects/jobapp/jobapp (14).png",
+      "/projects/jobapp/jobapp (8).png",
+      "/projects/jobapp/jobapp (9).png",
+      "/projects/jobapp/jobapp (12).png",
+      "/projects/jobapp/jobapp (2).png",
+      "/projects/jobapp/jobapp (1).png",
+         
+    ],
+    haveImage: true,
+    layout: "mobile",
+  },
+  {
+    id: 3,
     title: "Canteen Food Web Application",
     type: "Software Development",
     year: 2023,
     description:
       "Developed food ordering system for canteen web application, using Vue.js for the frontend, Express.js for the backend, and MySQL for the database.",
-    tech:  [
-        { name: "Vue" ,icon: "image/skills/framework/vue.png"}, { name: "Express",icon: "image/skills/framework/express-js.png" }, { name: "MySQL",icon: "image/skills/framework/mysql.png" }, { name: "JavaScript",icon: "image/skills/programming/js.png" }],
+    tech: [
+      { name: "Vue", icon: "image/skills/framework/vue.png" },
+      { name: "Express", icon: "image/skills/framework/express-js.png" },
+      { name: "MySQL", icon: "image/skills/framework/mysql.png" },
+      { name: "JavaScript", icon: "image/skills/programming/js.png" },
+    ],
     github: "https://github.com/aumputthipong/FoodIOrderingProject.git",
     ref: "https://ai-garden-ref.com",
-    image:  "/projects/foodordering/foodorder (5).png",
+    image: "/projects/foodordering/foodorder (5).png",
     images: [
       "/projects/foodordering/foodorder (5).png",
       "/projects/foodordering/foodorder (2).png",
@@ -58,48 +109,17 @@ export const projectData = [
     layout: "web",
   },
   {
-    id: 3,
-    title: "Job Search Application",
-    type: "Software Development",
-    description:
-      "Developed a mobile application for job seekers and employers using React Native, integrated with Firebase for real-time data and user management.",
-    tech:  [
-        { name: "ReactNative",icon: "image/skills/framework/react-native.png" }, { name: "Firebase" ,icon: "image/skills/framework/firebase.png"}, { name: "JavaScript",icon: "image/skills/programming/js.png" },{ name: "Mobile App" }],
-    github: "https://github.com/aumputthipong/job-app-project.git",
-    ref: false,
-    image: "/projects/jobapp/jobapp (1).png",
-    year: 2023,
-    images: [     
-      "/projects/jobapp/jobapp (1).png",
-      "/projects/jobapp/jobapp (21).png",
-      "/projects/jobapp/jobapp (20).png",    
-      "/projects/jobapp/jobapp (19).png", 
-      "/projects/jobapp/jobapp (6).png",
-      "/projects/jobapp/jobapp (17).png",
-      "/projects/jobapp/jobapp (4).png",
-      "/projects/jobapp/jobapp (11).png",
-      "/projects/jobapp/jobapp (13).png",
-      // "/projects/jobapp/jobapp (2).png",
-      // "/projects/jobapp/jobapp (12).png",
-      "/projects/jobapp/jobapp (5).png",
-      "/projects/jobapp/jobapp (15).png",
-      "/projects/jobapp/jobapp (14).png",
-      "/projects/jobapp/jobapp (18).png",
- 
-
-    ],
-    haveImage: true,
-    layout: "mobile",
-  },
- 
-  {
     id: 4,
     title: "Convenience Store Management ",
     type: "Software Development",
     description:
       "Developed an employee management module for a convenience store web application using Java Spring Boot, designed with a microservices architecture.",
-    tech:  [
-        { name: "Java", icon: "image/skills/programming/java.png" }, { name: "SpringBoot", icon: "image/skills/framework/spring.png" }, { name: "MongoDB", icon: "image/skills/framework/mongodb.png" }, { name: "React", icon: "image/skills/framework/react.png" }],
+    tech: [
+      { name: "Java", icon: "image/skills/programming/java.png" },
+      { name: "SpringBoot", icon: "image/skills/framework/spring.png" },
+      { name: "MongoDB", icon: "image/skills/framework/mongodb.png" },
+      { name: "React", icon: "image/skills/framework/react.png" },
+    ],
     github: "https://github.com/aumputthipong/EmployeeManageProject.git",
     ref: false,
     image: "projects/con_manage.png",
@@ -110,14 +130,16 @@ export const projectData = [
   },
   {
     id: 5,
-    title: "Parking App Design",
+    title: "Parking App Figma Design",
     year: 2024,
 
     type: "UX/UI Design",
     description:
       "Designed a university parking mobile application using Figma, enabling users to search for available parking spots and navigate to parking areas.",
-    tech:  [
-        { name: "Figma", icon: "image/skills/tools/figma.png" }, { name: "UX/UI Design" }],
+    tech: [
+      { name: "Figma", icon: "image/skills/tools/figma.png" },
+      { name: "UX/UI Design" },
+    ],
     github: "",
     ref: false,
     image: "/projects/ParkingApp/parking (3).png",
@@ -140,8 +162,10 @@ export const projectData = [
     type: "UX/UI Design",
     description:
       "Analyzed requirements and designed  scheduling system for faculty to manage class timetables and teaching assignments ",
-    tech:  [
-        { name: "Figma", icon: "image/skills/tools/figma.png" }, { name: "UX/UI Design" }],
+    tech: [
+      { name: "Figma", icon: "image/skills/tools/figma.png" },
+      { name: "UX/UI Design" },
+    ],
     github: "",
     year: 2024,
     ref: false,
@@ -171,8 +195,12 @@ export const projectData = [
     type: "AI & Machine Learning",
     description:
       "Estimated depth maps from RGB images using a convolutional autoencoder. Built for a Deep Learning course project.",
-    tech:  [
-         { name: "Python" ,icon:"image/skills/programming/python.png"},{ name: "Deep Learning" ,}, { name: "Machine Learning" ,}, { name: "Train Model" ,}],
+    tech: [
+      { name: "Python", icon: "image/skills/programming/python.png" },
+      { name: "Deep Learning" },
+      { name: "Machine Learning" },
+      { name: "Train Model" },
+    ],
     github: "https://github.com/aumputthipong/depth_estimate.git",
     year: 2024,
     ref: false,
