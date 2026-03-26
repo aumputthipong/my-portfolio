@@ -1,15 +1,14 @@
 # Personal Portfolio - Putthipong Chobngam
 
-A personal portfolio website developed to showcase my skills, projects, and background as an Information Technology graduate (Software Engineering). This project demonstrates my capabilities and readiness for a Full-Stack Developer position.
+A personal portfolio website developed to showcase my skills, projects, and background as an Information Technology graduate (Software Engineering). This project demonstrates my skill and readiness for a Full-Stack Developer position.
 
 ## Live Demo
 The application is deployed and accessible at:
 [https://portfolio-putthipong.vercel.app/](https://portfolio-putthipong.vercel.app/)
 
 ## Tech Stack
-* **Framework:** [Next.js](https://nextjs.org)
+* **Framework:** [Next.js](https://nextjs.org) ,[Tailwind CSS](https://tailwindcss.com/), [TypeScript](https://www.typescriptlang.org/)
 * **Deployment:** [Vercel](https://vercel.com)
-* *(คุณสามารถลบข้อความนี้และเพิ่มเครื่องมืออื่นๆ ที่ใช้ในโปรเจกต์ได้ เช่น Tailwind CSS, TypeScript)*
 
 ## Getting Started Locally
 
