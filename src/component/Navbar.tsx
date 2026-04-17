@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -87,6 +88,15 @@ const Navbar = () => {
       <div className="flex items-center bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-2 sm:px-4 py-1 shadow-2xl gap-1 sm:gap-2">
         {/* Brand */}
         <div className="hidden sm:flex items-center">
+          {isDetailPage && (
+            <Link
+              href="/#projects"
+              className="inline-flex items-center gap-1.5 text-sm text-black/50 hover:text-black px-3 py-2 transition-colors whitespace-nowrap"
+            >
+              <FaArrowLeft className="text-xs" />
+              Back
+            </Link>
+          )}
           <Link href="/" className="text-sm font-semibold text-black/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-black transition-colors">
             Putthipong
             <span className="font-light text-black/50">.portfolio</span>
