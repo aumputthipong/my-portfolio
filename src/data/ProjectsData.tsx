@@ -1,10 +1,25 @@
-export const projectData = [
+export interface Project {
+  id: number;
+  title: string;
+  type: "Software Development" | "UX/UI Design" | "AI & Machine Learning";
+  description: string;
+  tech: Array<{ name: string; icon?: string }>;
+  github: string;
+  ref?: string | false;
+  image: string;
+  year: number;
+  images: string[];
+  haveImage: boolean;
+  layout: "web" | "mobile";
+}
+
+export const projectData: Project[] = [
   {
     id: 1,
     title: "BookingRoom Web Application",
     type: "Software Development",
     description:
-      "Devleloped a booking room web application using Next.js Typescripts and MongoDB for the database.",
+      "Developed a booking room web application using Next.js Typescripts and MongoDB for the database.",
     tech: [
       { name: "Next.js", icon: "image/skills/framework/nextjs.png" },
       { name: "Typescripts", icon: "image/skills/programming/typescript.png" },
@@ -50,17 +65,12 @@ export const projectData = [
     image: "/projects/jobapp/jobapp(10).png",
     year: 2023,
     images: [
-
       "/projects/jobapp/jobapp(3).png",
       "/projects/jobapp/jobapp(10).png",
       "/projects/jobapp/jobapp(7).png",
-      // "/projects/jobapp/jobapp(22).png",
-      
       "/projects/jobapp/jobapp(16).png",
       "/projects/jobapp/jobapp(17).png",
       "/projects/jobapp/jobapp(13).png",
-      
-      
       "/projects/jobapp/jobapp(20).png",
       "/projects/jobapp/jobapp(24).png",
       "/projects/jobapp/jobapp.png",
@@ -70,7 +80,6 @@ export const projectData = [
       "/projects/jobapp/jobapp(12).png",
       "/projects/jobapp/jobapp(2).png",
       "/projects/jobapp/jobapp(1).png",
-         
     ],
     haveImage: true,
     layout: "mobile",
@@ -102,14 +111,13 @@ export const projectData = [
       "/projects/foodordering/foodorder (1).png",
       "/projects/foodordering/foodorder (9).png",
       "/projects/foodordering/foodorder (8).png",
-      // "/projects/foodordering/foodorder (10).png",
     ],
     haveImage: true,
     layout: "web",
   },
   {
     id: 4,
-    title: "Convenience Store Management ",
+    title: "Convenience Store Management",
     type: "Software Development",
     description:
       "Developed an employee management module for a convenience store web application using Java Spring Boot, designed with a microservices architecture.",
@@ -160,7 +168,7 @@ export const projectData = [
     title: "BlueRoom Registration System",
     type: "UX/UI Design",
     description:
-      "Analyzed requirements and designed  scheduling system for faculty to manage class timetables and teaching assignments ",
+      "Analyzed requirements and designed a scheduling system for faculty to manage class timetables and teaching assignments.",
     tech: [
       { name: "Figma", icon: "image/skills/tools/figma.png" },
       { name: "UX/UI Design" },

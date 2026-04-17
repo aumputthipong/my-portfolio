@@ -1,181 +1,131 @@
 "use client";
 
 import { projectData } from "@/data/ProjectsData";
-import { Card, CardContent } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaGithub, FaExternalLinkAlt, FaCalendarAlt } from "react-icons/fa";
-import ProjectModal from "./Project/ProjectModal";
+import { FaCalendarAlt, FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
 import GraduationProjects from "./Project/GraduationProjects";
 import Divider from "./UI/Divider";
 
 export default function Projects() {
-  const [openProject, setOpenProject] = useState<number | null>(null);
-
   const [activeTab, setActiveTab] = useState("All");
-  const types = [...new Set(projectData.map((project) => project.type))];
+  const types = [...new Set(projectData.map((p) => p.type))];
   const tabs = ["All", ...types];
 
   const filteredProjects =
     activeTab === "All"
       ? projectData
-      : projectData.filter((project) => project.type === activeTab);
+      : projectData.filter((p) => p.type === activeTab);
 
   return (
-    <section id="projects">
-      <div className="bg-neutral-100 px-4">
+    <section id="projects" className="bg-zinc-50">
+      {/* Senior Project */}
       <GraduationProjects />
-      </div>
 
-
-      <div className="max-w-6xl mx-auto py-20 px-4 ">
-        {/* Academic Project title  */}
+      {/* Academic Projects */}
+      <div className="max-w-6xl mx-auto py-20 px-4">
         <div className="text-center mb-8 relative">
           <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 uppercase">
             My Academic Projects
           </h2>
-
           <Divider />
         </div>
-        {/* project navigation project */}
-        <div className="flex justify-center mb-10 ">
-          <div className="flex flex-wrap justify-center bg-white rounded-lg p-1 shadow-sm border border-gray-200 mt-6 ">
+
+        {/* Tab filter */}
+        <div className="flex justify-center mb-12">
+          <div className="flex flex-wrap justify-center bg-white rounded-full p-1.5 shadow-sm border border-gray-200 gap-1">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`flex items-center px-6 py-3 text-m font-medium rounded-md transition-all duration-200 ${
+                className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
                   activeTab === tab
-                    ? "bg-indigo-600 text-white shadow-md"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    ? "bg-slate-800 text-white shadow-md"
+                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                 }`}
               >
                 {tab}
-                <span
-                  className={`ml-2 text-sm ${
-                    activeTab === tab ? "text-indigo-100" : "text-gray-400"
-                  }`}
-                >
-                  (
-                  {tab === "All"
-                    ? projectData.length
-                    : projectData.filter((project) => project.type === tab)
-                        .length}
-                  )
+                <span className={`ml-1.5 text-xs ${activeTab === tab ? "text-white/60" : "text-gray-400"}`}>
+                  ({tab === "All" ? projectData.length : projectData.filter((p) => p.type === tab).length})
                 </span>
               </button>
             ))}
           </div>
         </div>
-        {/*  project grid gallery */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
+
+        {/* Cards */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3, delay: index * 0.08 }}
+              whileHover={{ y: -6 }}
               className="group"
             >
-              <Card className="h-full flex flex-col overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
-                {/* Project Image */}
-                <div className="relative h-52 overflow-hidden ">
+              <div className="h-full flex flex-col border-2 border-gray-300 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden bg-white">
+                {/* Banner image */}
+                <div className="relative h-52 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className={`w-full h-full transition-transform duration-300 group-hover:scale-110 ${
-                      project.layout === "mobile"
-                        ? "object-contain"
-                        : "object-cover"
-                    }`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="cursor-pointerabsolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  $
-                  {project.haveImage === true ? (
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button
-                        onClick={() => {
-                          setOpenProject(project.id);
-                        }}
-                        className={`bg-white/90 backdrop-blur-sm text-gray-900 px-6 py-3 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 hover:bg-white transition-all duration-200 transform hover:scale-105
-                      ${
-                        project.haveImage === true
-                          ? "cursor-pointer"
-                          : "cursor-not-allowed "
-                      }`}
-                      >
-                        <FaExternalLinkAlt className="text-sm " />
-                        {project.haveImage === true
-                          ? "View Details"
-                          : "No Images"}
-                      </button>
-                    </div>
-                  ) : (
-                    ``
-                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+
+                  {/* Type badge */}
+                  <span className="absolute top-3 left-3 bg-white/80 backdrop-blur-sm text-gray-700 text-xs font-semibold px-3 py-1 rounded-full border border-white/40 shadow-sm">
+                    {project.type}
+                  </span>
+
+                  {/* Title on image */}
+                  <h3 className="absolute bottom-4 left-4 right-4 text-white font-bold text-base leading-snug drop-shadow-md">
+                    {project.title}
+                  </h3>
                 </div>
 
-                {/* Project Content */}
-                <CardContent className="flex-1 flex flex-col p-6">
-                  <div className="flex-1 flex flex-col ">
-                    <h3 className="text-xl text-left font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 text-left">
-                      {project.description}
-                    </p>
+                {/* Card body */}
+                <div className="flex-1 flex flex-col p-5">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
 
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                      {project.tech.slice(0, 4).map((tech, i) => (
-                        <span
-                          key={i}
-                          className="flex gap-1 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs px-3 py-1 rounded-full border border-blue-200 font-medium"
-                        >
-                          {tech.icon && (
-                            <img
-                              src={tech.icon}
-                              alt={`${tech.name}`}
-                              className="h-4 w-4 object-contain"
-                            />
-                          )}
-                          {tech.name}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Tech badges */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.tech.slice(0, 3).map((tech, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 text-gray-600 text-xs px-3 py-1 rounded-full font-medium"
+                      >
+                        {tech.icon && (
+                          <img src={tech.icon} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
+                        )}
+                        {tech.name}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Action Links */}
-                  <div className="flex gap-4 pt-4 border-t border-gray-100 justify-between min-h-[52px] items-center">
-                    <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
-                      <FaCalendarAlt className="text-sm" />
+                  {/* Footer */}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                    <div className="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                      <FaCalendarAlt />
                       {project.year}
                     </div>
-                    {project.github.length >= 1 && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md"
-                      >
-                        <FaGithub className="text-base" />
-                        Code
-                      </a>
-                    )}
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                      View Details
+                      <FaArrowRight className="text-xs" />
+                    </Link>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
-        {openProject !== null &&
-          projectData.find((p) => p.id === openProject) && (
-            <ProjectModal
-              project={projectData.find((p) => p.id === openProject)!}
-              onClose={() => setOpenProject(null)}
-            />
-          )}
       </div>
     </section>
   );
