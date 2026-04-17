@@ -1,10 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Lightbox from "@/component/UI/Lightbox";
-import VideoProject from "@/component/Project/VideoProject";
-import { FaGithub, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Lightbox, { LightboxItem } from "@/component/UI/Lightbox";
+import { FaChevronLeft, FaChevronRight, FaPlay } from "react-icons/fa";
 import { motion } from "framer-motion";
+
+const videos = [
+  { id: "fFF1u_CTjZM", name: "AI Usage Workflow", desc: "Demo of how to use AI services within the platform" },
+  { id: "B7YQeZ6N9No", name: "Adding New AI Services", desc: "Demo of how to integrate new AI services into the platform" },
+];
 
 const senior = {
   full_project_name:
@@ -44,9 +48,19 @@ const senior = {
     "/projects/senior/ai-web (9).png",
     "/projects/senior/ai-web (13).png",
   ],
-  github: "https://github.com/aumputthipong/AI-garden-System.git",
   year: 2025,
 };
+
+type MediaItem =
+  | { type: "video"; id: string; name: string; desc: string }
+  | { type: "image"; src: string };
+
+const mediaItems: MediaItem[] = [
+  { type: "image", src: senior.images[0] },
+  { type: "image", src: senior.images[1] },
+  ...videos.map((v) => ({ type: "video" as const, ...v })),
+  ...senior.images.slice(2).map((src) => ({ type: "image" as const, src })),
+];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -61,14 +75,21 @@ export default function SeniorProjectPage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const thumbnailRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const goPrev = () => setSelectedIndex((i) => Math.max(0, i - 1));
-  const goNext = () => setSelectedIndex((i) => Math.min(senior.images.length - 1, i + 1));
+  const currentItem = mediaItems[selectedIndex];
+  const total = mediaItems.length;
 
-  const selectImage = (i: number) => setSelectedIndex(i);
+  const goPrev = () => setSelectedIndex((i) => Math.max(0, i - 1));
+  const goNext = () => setSelectedIndex((i) => Math.min(total - 1, i + 1));
 
   useEffect(() => {
-    thumbnailRefs.current[selectedIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    thumbnailRefs.current[selectedIndex]?.scrollIntoView({
+      behavior: "smooth", block: "nearest", inline: "center",
+    });
   }, [selectedIndex]);
+
+  const handleMainClick = () => {
+    setLightboxIndex(selectedIndex);
+  };
 
   return (
     <div className="min-h-screen bg-zinc-50">
@@ -83,27 +104,37 @@ export default function SeniorProjectPage() {
           className="flex flex-col lg:flex-row gap-5 items-start"
         >
 
-          {/* ── LEFT: Image viewer + thumbnails ── */}
+          {/* ── LEFT: Viewer + thumbnails + responsibilities ── */}
           <div className="flex-1 min-w-0 space-y-3">
 
-            {/* Main image */}
+            {/* Main viewer */}
             <div
-              className="relative group cursor-pointer overflow-hidden rounded-xl bg-gray-900 shadow-xl border-2 border-gray-200"
-              onClick={() => setLightboxIndex(selectedIndex)}
+              className="relative group overflow-hidden rounded-xl bg-gray-900 shadow-xl border-2 border-gray-200"
+              onClick={handleMainClick}
             >
               <div className="aspect-video">
-                <img
-                  src={senior.images[selectedIndex]}
-                  alt={`Screenshot ${selectedIndex + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-
-              {/* Hover hint */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-4 py-2 rounded-full shadow">
-                  Click to expand
-                </span>
+                {currentItem.type === "video" ? (
+                  <iframe
+                    key={currentItem.id}
+                    src={`https://www.youtube.com/embed/${currentItem.id}?autoplay=1&rel=0&vq=hd1080`}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={currentItem.src}
+                      alt={`Screenshot`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-4 py-2 rounded-full shadow">
+                        Click to expand
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Prev arrow */}
@@ -117,7 +148,7 @@ export default function SeniorProjectPage() {
               )}
 
               {/* Next arrow */}
-              {selectedIndex < senior.images.length - 1 && (
+              {selectedIndex < total - 1 && (
                 <button
                   onClick={(e) => { e.stopPropagation(); goNext(); }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/50 hover:bg-black/75 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg"
@@ -128,26 +159,64 @@ export default function SeniorProjectPage() {
 
               {/* Counter */}
               <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-full font-medium">
-                {selectedIndex + 1} / {senior.images.length}
+                {selectedIndex + 1} / {total}
               </div>
+
+              {/* Video label */}
+              {currentItem.type === "video" && (
+                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <FaPlay className="text-[10px]" />
+                  {currentItem.name}
+                </div>
+              )}
             </div>
 
-            {/* Thumbnail strip */}
-            <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'thin' }}>
-              {senior.images.map((img, i) => (
+            {/* Thumbnail strip — videos first, then images */}
+            <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "thin" }}>
+              {mediaItems.map((item, i) => (
                 <div
                   key={i}
                   ref={(el) => { thumbnailRefs.current[i] = el; }}
-                  onClick={() => selectImage(i)}
+                  onClick={() => setSelectedIndex(i)}
                   className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-200 ${
                     i === selectedIndex
                       ? "border-slate-700 shadow-md"
                       : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"
                   }`}
                 >
-                  <img src={img} alt={`Thumb ${i + 1}`} className="w-32 h-[72px] object-cover" />
+                  {item.type === "video" ? (
+                    <div className="relative w-32 h-[72px] bg-gray-900">
+                      <img
+                        src={`https://img.youtube.com/vi/${item.id}/hqdefault.jpg`}
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/35">
+                        <div className="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                          <FaPlay className="text-white text-[10px] ml-0.5" />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <img src={item.src} alt={`Thumb ${i + 1}`} className="w-32 h-[72px] object-cover" />
+                  )}
                 </div>
               ))}
+            </div>
+
+            {/* Responsibilities */}
+            <div className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-5">
+              <SectionLabel>Responsibilities</SectionLabel>
+              <ul className="space-y-3">
+                {senior.responsibility.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: '#4b5563' }}>
+                    <span className="w-6 h-6 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-gray-500">
+                      {i + 1}
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
@@ -162,7 +231,6 @@ export default function SeniorProjectPage() {
             {/* Info card */}
             <div className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-5 space-y-4">
 
-              {/* Badge + title */}
               <div>
                 <span className="inline-block bg-gray-100 text-gray-500 text-xs font-semibold px-3 py-1 rounded-full border border-gray-200 mb-2">
                   Senior Project · {senior.year}
@@ -172,19 +240,16 @@ export default function SeniorProjectPage() {
                 </h1>
               </div>
 
-              {/* Full project name */}
               <p className="text-xs italic leading-relaxed border-l-2 border-gray-200 pl-3" style={{ color: '#9ca3af' }}>
                 {senior.full_project_name}
               </p>
 
-              {/* Description */}
               <p className="text-sm leading-relaxed" style={{ color: '#4b5563' }}>
                 {senior.description}
               </p>
 
               <div className="h-px bg-gray-100" />
 
-              {/* Tech Stack */}
               <div>
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2.5">Tech Stack</p>
                 <div className="flex flex-wrap gap-1.5">
@@ -201,41 +266,16 @@ export default function SeniorProjectPage() {
                 </div>
               </div>
 
-              {/* GitHub */}
-              <a
-                href={senior.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <FaGithub />
-                View Source Code
-              </a>
-
               <div className="h-px bg-gray-100" />
 
-              {/* Responsibilities */}
-              <div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Responsibilities</p>
-                <ul className="space-y-3">
-                  {senior.responsibility.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-xs leading-relaxed" style={{ color: '#4b5563' }}>
-                      <span className="w-5 h-5 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-gray-500">
-                        {i + 1}
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="h-px bg-gray-100" />
-
-              {/* Meta — bottom */}
               <div className="space-y-1.5">
                 <div className="flex justify-between">
                   <span className="text-gray-400 text-xs">Year</span>
                   <span className="font-semibold text-gray-700 text-xs">{senior.year}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 text-xs">Videos</span>
+                  <span className="font-semibold text-gray-700 text-xs">{videos.length}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400 text-xs">Screenshots</span>
@@ -246,23 +286,11 @@ export default function SeniorProjectPage() {
             </div>
           </div>
         </motion.div>
-
-        {/* ── Video Demo ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, delay: 0.15 }}
-          className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-6"
-        >
-          <SectionLabel>Video Demo</SectionLabel>
-          <VideoProject />
-        </motion.div>
-
       </div>
 
       {lightboxIndex !== null && (
         <Lightbox
-          images={senior.images}
+          items={mediaItems as LightboxItem[]}
           initialIndex={lightboxIndex}
           layout="web"
           onClose={() => setLightboxIndex(null)}
