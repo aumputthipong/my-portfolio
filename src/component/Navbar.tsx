@@ -1,40 +1,49 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
-
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
+  const router = useRouter();
+  const isDetailPage = pathname.startsWith("/projects/");
 
   type SectionId = "home" | "about-me" | "projects" | "contact";
 
- useEffect(() => {
-   const observer = new IntersectionObserver(
-     (entries) => {
-       entries.forEach((entry) => {
-         if (entry.isIntersecting) {
-           setActiveSection(entry.target.id);
-         }
-       });
-     },
-     { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
-   );
+  useEffect(() => {
+    if (isDetailPage) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+    );
 
-   const sections = document.querySelectorAll(
-     "#home, #about-me, #projects, #contact",
-   );
-   sections.forEach((section) => observer.observe(section));
-   return () => sections.forEach((section) => observer.unobserve(section));
- }, []);
+    const sections = document.querySelectorAll(
+      "#home, #about-me, #projects, #contact",
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, [isDetailPage]);
 
- const scrollToSection = (sectionId: SectionId) => {
-   document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
- };
+  const scrollToSection = (sectionId: SectionId) => {
+    if (isDetailPage) {
+      router.push(`/#${sectionId}`);
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
- const isActive = (sectionId: SectionId) => activeSection === sectionId;
+  const isActive = (sectionId: SectionId) =>
+    !isDetailPage && activeSection === sectionId;
 
-
-    const NAV_ITEMS: { id: SectionId; label: string; icon: React.ReactNode }[] = [
+  const NAV_ITEMS: { id: SectionId; label: string; icon: React.ReactNode }[] = [
     {
       id: "home",
       label: "Home",
@@ -76,12 +85,12 @@ const Navbar = () => {
   return (
     <nav className="fixed my-2 top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 translate-y-0 opacity-100">
       <div className="flex items-center bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-2 sm:px-4 py-1 shadow-2xl gap-1 sm:gap-2">
-        
-        {/* Brand — ซ่อนบนมือถือ */}
+        {/* Brand */}
         <div className="hidden sm:flex items-center">
-          <span className="text-sm font-semibold text-black/80 px-3 py-2 tracking-wide whitespace-nowrap">
-            Putthipong<span className="font-light text-black/50">.portfolio</span>
-          </span>
+          <Link href="/" className="text-sm font-semibold text-black/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-black transition-colors">
+            Putthipong
+            <span className="font-light text-black/50">.portfolio</span>
+          </Link>
           <div className="w-px h-5 bg-black/10 mx-2" />
         </div>
 
@@ -92,18 +101,17 @@ const Navbar = () => {
             onClick={() => scrollToSection(id)}
             className={`cursor-pointer flex items-center gap-1.5 rounded-full transition-all duration-300
               px-3 py-2 sm:px-4 sm:py-2
-              ${isActive(id)
-                ? "text-white bg-black/80 shadow-lg"
-                : "text-black/80 hover:text-black hover:bg-black/10"
+              ${
+                isActive(id)
+                  ? "text-white bg-black/80 shadow-lg"
+                  : "text-black/80 hover:text-black hover:bg-black/10"
               }`}
             aria-label={label}
           >
             {icon}
-            {/* ซ่อน label บนมือถือ แสดงแค่ icon */}
             <span className="hidden sm:inline text-sm">{label}</span>
           </button>
         ))}
-
       </div>
     </nav>
   );

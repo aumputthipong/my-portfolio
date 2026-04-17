@@ -1,10 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import Skills from "./AboutMeComponent/Skills";
 import Education from "./AboutMeComponent/Education";
 import Introduction from "./AboutMeComponent/Introduction";
-import { CastForEducation, ChevronRight, Code, CodeSharp, Home, Person, School } from "@mui/icons-material";
-import { FaGraduationCap } from "react-icons/fa";
+import { ChevronRight, CodeSharp, Person, School } from "@mui/icons-material";
 
 const AboutMe = () => {
   return (
