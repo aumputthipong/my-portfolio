@@ -148,7 +148,7 @@ export const projectData: Project[] = [
       { name: "UX/UI Design" },
     ],
     github: "",
-    ref: false,
+    ref: "https://www.figma.com/design/BYo9FiNxbL4vDWB7MyEpuf/prototype?node-id=0-1",
     image: "/projects/ParkingApp/parking (3).png",
     images: [
       "/projects/ParkingApp/parking (1).png",

@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Lightbox from "@/component/UI/Lightbox";
 import VideoProject from "@/component/Project/VideoProject";
-import { FaGithub, FaArrowLeft } from "react-icons/fa";
+import { FaGithub, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const senior = {
@@ -49,174 +48,213 @@ const senior = {
   year: 2025,
 };
 
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+      {children}
+    </p>
+  );
+}
+
 export default function SeniorProjectPage() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const thumbnailRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const goPrev = () => setSelectedIndex((i) => Math.max(0, i - 1));
+  const goNext = () => setSelectedIndex((i) => Math.min(senior.images.length - 1, i + 1));
+
+  const selectImage = (i: number) => setSelectedIndex(i);
+
+  useEffect(() => {
+    thumbnailRefs.current[selectedIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [selectedIndex]);
 
   return (
     <div className="min-h-screen bg-zinc-50">
       <div className="fixed top-1/4 left-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
       <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 pt-16 pb-20 relative z-10">
-
-        {/* Back */}
-        <div className="mb-5">
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm text-gray-600 hover:text-gray-900 text-sm font-medium px-4 py-2 rounded-full border border-white/30 shadow-sm hover:shadow-md transition-all duration-200 group"
-          >
-            <FaArrowLeft className="group-hover:-translate-x-0.5 transition-transform duration-200" />
-            Back to Portfolio
-          </Link>
-        </div>
-
-        {/* ── Hero ── */}
+      <div className="max-w-6xl mx-auto px-4 pt-16 pb-20 relative z-10 space-y-5">
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="relative h-56 md:h-72 overflow-hidden rounded-lg border-2 border-gray-300 shadow-xl"
+          className="flex flex-col lg:flex-row gap-5 items-start"
         >
-          <img
-            src={senior.images[0]}
-            alt={senior.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-        </motion.div>
 
-        {/* ── Info card ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, delay: 0.1 }}
-          className="mt-4 bg-white border-2 border-gray-300 rounded-lg shadow-xl p-6 md:p-8"
-        >
-          {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3">
-            <span className="inline-block bg-gray-100 text-gray-500 text-xs font-semibold px-3 py-1 rounded-full border border-gray-200">
-              Senior Project
-            </span>
-            <span className="text-gray-300 text-xs">·</span>
-            <span className="text-gray-400 text-xs">{senior.year}</span>
-            <span className="text-gray-300 text-xs">·</span>
-            <span className="text-gray-400 text-xs">Web Application</span>
-          </div>
+          {/* ── LEFT: Image viewer + thumbnails ── */}
+          <div className="flex-1 min-w-0 space-y-3">
 
-          {/* Title */}
-          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-800 leading-snug mb-1">
-            {senior.title}
-          </h1>
-          <p className="text-xs text-gray-400 leading-relaxed border-l-2 border-gray-200 pl-3 mb-4">
-            {senior.full_project_name}
-          </p>
+            {/* Main image */}
+            <div
+              className="relative group cursor-pointer overflow-hidden rounded-xl bg-gray-900 shadow-xl border-2 border-gray-200"
+              onClick={() => setLightboxIndex(selectedIndex)}
+            >
+              <div className="aspect-video">
+                <img
+                  src={senior.images[selectedIndex]}
+                  alt={`Screenshot ${selectedIndex + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
 
-          {/* Description */}
-          <p className="text-gray-600 text-sm leading-relaxed mb-5">
-            {senior.description}
-          </p>
+              {/* Hover hint */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-4 py-2 rounded-full shadow">
+                  Click to expand
+                </span>
+              </div>
 
-          <div className="h-px bg-gray-100 mb-5" />
+              {/* Prev arrow */}
+              {selectedIndex > 0 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); goPrev(); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/50 hover:bg-black/75 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg"
+                >
+                  <FaChevronLeft className="text-xs" />
+                </button>
+              )}
 
-          {/* Tech + CTA */}
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
-            <div className="flex-1">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2.5">
-                Tech Stack
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {senior.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 text-gray-700 text-xs px-3 py-1.5 rounded-full font-medium hover:border-gray-300 hover:shadow-sm transition-all duration-200"
-                  >
-                    <img src={tech.icon} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
-                    {tech.name}
-                  </span>
-                ))}
+              {/* Next arrow */}
+              {selectedIndex < senior.images.length - 1 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); goNext(); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/50 hover:bg-black/75 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg"
+                >
+                  <FaChevronRight className="text-xs" />
+                </button>
+              )}
+
+              {/* Counter */}
+              <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-full font-medium">
+                {selectedIndex + 1} / {senior.images.length}
               </div>
             </div>
-            <a
-              href={senior.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 self-start sm:self-center flex-shrink-0"
-            >
-              <FaGithub />
-              Source Code
-            </a>
+
+            {/* Thumbnail strip */}
+            <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'thin' }}>
+              {senior.images.map((img, i) => (
+                <div
+                  key={i}
+                  ref={(el) => { thumbnailRefs.current[i] = el; }}
+                  onClick={() => selectImage(i)}
+                  className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-200 ${
+                    i === selectedIndex
+                      ? "border-slate-700 shadow-md"
+                      : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"
+                  }`}
+                >
+                  <img src={img} alt={`Thumb ${i + 1}`} className="w-32 h-[72px] object-cover" />
+                </div>
+              ))}
+            </div>
           </div>
-        </motion.div>
 
-        {/* ── Responsibilities ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, delay: 0.15 }}
-          className="mt-4 bg-white border-2 border-gray-300 rounded-lg shadow-xl p-6 md:p-8"
-        >
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-            Responsibilities
-          </p>
-          <ul className="space-y-3">
-            {senior.responsibility.map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
-                <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+          {/* ── RIGHT: Info panel ── */}
+          <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 space-y-4 lg:sticky lg:top-20">
 
-        {/* ── Screenshots ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, delay: 0.2 }}
-          className="mt-6"
-        >
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-            Screenshots
-            <span className="ml-2 font-normal normal-case tracking-normal text-gray-300">
-              ({senior.images.length})
-            </span>
-          </p>
+            {/* Cover image */}
+            <div className="overflow-hidden rounded-xl border-2 border-gray-200 shadow-xl bg-gray-900 h-44">
+              <img src={senior.images[0]} alt={senior.title} className="w-full h-full object-cover" />
+            </div>
 
-          {/* Uniform grid */}
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-            {senior.images.map((img, i) => (
-              <div
-                key={i}
-                onClick={() => setLightboxIndex(i)}
-                className="relative group cursor-pointer overflow-hidden rounded-lg border-2 border-gray-200 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
-              >
-                <img
-                  src={img}
-                  alt={`Screenshot ${i + 1}`}
-                  className="w-full h-28 md:h-32 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow">
-                    <svg className="w-3 h-3 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  </div>
+            {/* Info card */}
+            <div className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-5 space-y-4">
+
+              {/* Badge + title */}
+              <div>
+                <span className="inline-block bg-gray-100 text-gray-500 text-xs font-semibold px-3 py-1 rounded-full border border-gray-200 mb-2">
+                  Senior Project · {senior.year}
+                </span>
+                <h1 className="text-xl font-extrabold text-gray-900 leading-snug">
+                  {senior.title}
+                </h1>
+              </div>
+
+              {/* Full project name */}
+              <p className="text-xs italic leading-relaxed border-l-2 border-gray-200 pl-3" style={{ color: '#9ca3af' }}>
+                {senior.full_project_name}
+              </p>
+
+              {/* Description */}
+              <p className="text-sm leading-relaxed" style={{ color: '#4b5563' }}>
+                {senior.description}
+              </p>
+
+              <div className="h-px bg-gray-100" />
+
+              {/* Tech Stack */}
+              <div>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2.5">Tech Stack</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {senior.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 text-xs px-2.5 py-1 rounded-full font-medium"
+                      style={{ color: '#4b5563' }}
+                    >
+                      <img src={`../${tech.icon}`} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
+                      {tech.name}
+                    </span>
+                  ))}
                 </div>
               </div>
-            ))}
+
+              {/* GitHub */}
+              <a
+                href={senior.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <FaGithub />
+                View Source Code
+              </a>
+
+              <div className="h-px bg-gray-100" />
+
+              {/* Responsibilities */}
+              <div>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Responsibilities</p>
+                <ul className="space-y-3">
+                  {senior.responsibility.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs leading-relaxed" style={{ color: '#4b5563' }}>
+                      <span className="w-5 h-5 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-gray-500">
+                        {i + 1}
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="h-px bg-gray-100" />
+
+              {/* Meta — bottom */}
+              <div className="space-y-1.5">
+                <div className="flex justify-between">
+                  <span className="text-gray-400 text-xs">Year</span>
+                  <span className="font-semibold text-gray-700 text-xs">{senior.year}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 text-xs">Screenshots</span>
+                  <span className="font-semibold text-gray-700 text-xs">{senior.images.length}</span>
+                </div>
+              </div>
+
+            </div>
           </div>
         </motion.div>
 
         {/* ── Video Demo ── */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, delay: 0.25 }}
-          className="mt-6"
+          transition={{ duration: 0.35, delay: 0.15 }}
+          className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-6"
         >
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-            Video Demo
-          </p>
+          <SectionLabel>Video Demo</SectionLabel>
           <VideoProject />
         </motion.div>
 
