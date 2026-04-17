@@ -67,27 +67,33 @@ export default function Projects() {
             >
               <div className="h-full flex flex-col border-2 border-gray-300 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden bg-white">
                 {/* Banner image */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden bg-gray-900">
+                  {/* Blurred bg for mobile portraits */}
+                  {project.layout === "mobile" && (
+                    <img
+                      src={project.image}
+                      aria-hidden
+                      className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-50"
+                    />
+                  )}
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className={`relative z-10 w-full h-full transition-transform duration-500 group-hover:scale-105 ${
+                      project.layout === "mobile" ? "object-contain" : "object-cover group-hover:scale-110"
+                    }`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-
-                  {/* Type badge */}
-                  <span className="absolute top-3 left-3 bg-white/80 backdrop-blur-sm text-gray-700 text-xs font-semibold px-3 py-1 rounded-full border border-white/40 shadow-sm">
-                    {project.type}
-                  </span>
-
-                  {/* Title on image */}
-                  <h3 className="absolute bottom-4 left-4 right-4 text-white font-bold text-base leading-snug drop-shadow-md">
-                    {project.title}
-                  </h3>
                 </div>
 
                 {/* Card body */}
                 <div className="flex-1 flex flex-col p-5">
+                  {/* Type badge + title */}
+                  <span className="inline-block w-fit bg-gray-100 text-gray-500 text-xs font-semibold px-3 py-1 rounded-full border border-gray-200 mb-2">
+                    {project.type}
+                  </span>
+                  <h3 className="font-bold text-gray-800 text-base leading-snug mb-3">
+                    {project.title}
+                  </h3>
                   <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
                     {project.description}
                   </p>

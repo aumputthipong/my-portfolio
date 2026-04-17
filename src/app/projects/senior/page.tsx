@@ -4,18 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 import Lightbox from "@/component/UI/Lightbox";
 import VideoProject from "@/component/Project/VideoProject";
-import { FaGithub, FaArrowLeft, FaCalendarAlt } from "react-icons/fa";
+import { FaGithub, FaArrowLeft } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const seniorProject = {
+const senior = {
   full_project_name:
     "Web Application Platform to Support Image and Video Analysis with AI in a Microservice Model",
   title: "AI Garden System",
-  description: `Full-stack web application platform that enables users to analyze images and videos using AI computer vision services integrated into the platform, supporting object detection, regression, classification, and image segmentation.`,
+  description:
+    "Full-stack web application platform that enables users to analyze images and videos using AI computer vision services, supporting object detection, regression, classification, and image segmentation.",
   responsibility: [
-    "Designed a user-friendly UI to support non-technical users, including medical professors and medical students, to easily access AI computer vision services.",
+    "Designed a user-friendly UI to support non-technical users, including medical professors and students, to easily access AI computer vision services.",
     "Implemented existing AI computer vision models as microservice-based AI services that the web platform can call and use.",
-    "Developed a web platform that supports adding and integrating new AI services, for AI developers.",
+    "Developed a web platform that supports adding and integrating new AI services for AI developers.",
   ],
   tech: [
     { name: "React", icon: "image/skills/framework/react.png" },
@@ -53,13 +54,13 @@ export default function SeniorProjectPage() {
 
   return (
     <div className="min-h-screen bg-zinc-50">
-      {/* Ambient blobs */}
       <div className="fixed top-1/4 left-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
       <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-4 pt-24 pb-20 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 pt-16 pb-20 relative z-10">
+
         {/* Back */}
-        <div className="mb-8">
+        <div className="mb-5">
           <Link
             href="/#projects"
             className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm text-gray-600 hover:text-gray-900 text-sm font-medium px-4 py-2 rounded-full border border-white/30 shadow-sm hover:shadow-md transition-all duration-200 group"
@@ -69,172 +70,135 @@ export default function SeniorProjectPage() {
           </Link>
         </div>
 
-        {/* Hero image */}
+        {/* ── Hero ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="relative h-[280px] md:h-[420px] w-full overflow-hidden rounded-lg border-2 border-gray-300 shadow-xl mb-10"
+          transition={{ duration: 0.35 }}
+          className="relative h-56 md:h-72 overflow-hidden rounded-lg border-2 border-gray-300 shadow-xl"
         >
           <img
-            src={seniorProject.images[0]}
-            alt={seniorProject.title}
+            src={senior.images[0]}
+            alt={senior.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6">
-            <span className="inline-block bg-white/80 backdrop-blur-sm text-gray-700 text-xs font-semibold px-3 py-1 rounded-full border border-white/40 shadow-sm mb-3">
-              Senior Project · {seniorProject.year}
-            </span>
-            <h1 className="text-2xl md:text-4xl font-extrabold text-white leading-tight drop-shadow-md">
-              {seniorProject.title}
-            </h1>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         </motion.div>
 
-        {/* Full project name bar */}
+        {/* ── Info card ── */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.05 }}
-          className="mb-8 border-l-4 border-gray-300 pl-4"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: 0.1 }}
+          className="mt-4 bg-white border-2 border-gray-300 rounded-lg shadow-xl p-6 md:p-8"
         >
-          <p className="text-xs text-gray-400 leading-relaxed">{seniorProject.full_project_name}</p>
-        </motion.div>
+          {/* Meta row */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3">
+            <span className="inline-block bg-gray-100 text-gray-500 text-xs font-semibold px-3 py-1 rounded-full border border-gray-200">
+              Senior Project
+            </span>
+            <span className="text-gray-300 text-xs">·</span>
+            <span className="text-gray-400 text-xs">{senior.year}</span>
+            <span className="text-gray-300 text-xs">·</span>
+            <span className="text-gray-400 text-xs">Web Application</span>
+          </div>
 
-        {/* Content */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="flex-1 space-y-6"
-          >
-            {/* About */}
-            <div className="border-2 border-gray-300 rounded-lg shadow-xl bg-white p-6">
-              <h2 className="text-lg font-bold text-gray-800 uppercase tracking-wide mb-3">
-                About this project
-              </h2>
-              <p className="text-gray-600 leading-relaxed text-sm">{seniorProject.description}</p>
-            </div>
+          {/* Title */}
+          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-800 leading-snug mb-1">
+            {senior.title}
+          </h1>
+          <p className="text-xs text-gray-400 leading-relaxed border-l-2 border-gray-200 pl-3 mb-4">
+            {senior.full_project_name}
+          </p>
 
-            {/* Responsibilities */}
-            <div className="border-2 border-gray-300 rounded-lg shadow-xl bg-white p-6">
-              <h2 className="text-lg font-bold text-gray-800 uppercase tracking-wide mb-4">
-                Responsibilities
-              </h2>
-              <ul className="space-y-3">
-                {seniorProject.responsibility.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
-                    <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Description */}
+          <p className="text-gray-600 text-sm leading-relaxed mb-5">
+            {senior.description}
+          </p>
 
-            {/* Tech stack */}
-            <div className="border-2 border-gray-300 rounded-lg shadow-xl bg-white p-6">
-              <h2 className="text-lg font-bold text-gray-800 uppercase tracking-wide mb-4">
+          <div className="h-px bg-gray-100 mb-5" />
+
+          {/* Tech + CTA */}
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
+            <div className="flex-1">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2.5">
                 Tech Stack
-              </h2>
+              </p>
               <div className="flex flex-wrap gap-2">
-                {seniorProject.tech.map((tech, i) => (
+                {senior.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="inline-flex items-center gap-2 border border-gray-200 bg-gray-50 text-gray-700 text-sm px-4 py-2 rounded-full font-medium hover:shadow-md hover:border-gray-300 transition-all duration-200"
+                    className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 text-gray-700 text-xs px-3 py-1.5 rounded-full font-medium hover:border-gray-300 hover:shadow-sm transition-all duration-200"
                   >
-                    <img src={tech.icon} alt={tech.name} className="h-4 w-4 object-contain" />
+                    <img src={tech.icon} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
                     {tech.name}
                   </span>
                 ))}
               </div>
             </div>
-
-            {/* GitHub */}
             <a
-              href={seniorProject.github}
+              href={senior.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 self-start sm:self-center flex-shrink-0"
             >
-              <FaGithub className="text-lg" />
-              View Source Code
+              <FaGithub />
+              Source Code
             </a>
-          </motion.div>
+          </div>
+        </motion.div>
 
-          {/* Right: meta */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.15 }}
-            className="lg:w-56 space-y-4"
-          >
-            <div className="border-2 border-gray-300 rounded-lg shadow-xl bg-white p-5 space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#333333] rounded-full flex items-center justify-center flex-shrink-0">
-                  <FaCalendarAlt className="text-white text-sm" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Year</p>
-                  <p className="text-gray-800 font-semibold text-sm">{seniorProject.year}</p>
-                </div>
-              </div>
-              <div className="h-px bg-gray-100" />
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#333333] rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Platform</p>
-                  <p className="text-gray-800 font-semibold text-sm">Web Application</p>
-                </div>
-              </div>
-              <div className="h-px bg-gray-100" />
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#333333] rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Type</p>
-                  <p className="text-gray-800 font-semibold text-sm">Senior Project</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Gallery */}
+        {/* ── Responsibilities ── */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="mt-12"
+          transition={{ duration: 0.35, delay: 0.15 }}
+          className="mt-4 bg-white border-2 border-gray-300 rounded-lg shadow-xl p-6 md:p-8"
         >
-          <h2 className="text-lg font-bold text-gray-800 uppercase tracking-wide mb-6">
-            Project Screenshots
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {seniorProject.images.map((img, i) => (
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+            Responsibilities
+          </p>
+          <ul className="space-y-3">
+            {senior.responsibility.map((item, i) => (
+              <li key={i} className="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* ── Screenshots ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: 0.2 }}
+          className="mt-6"
+        >
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+            Screenshots
+            <span className="ml-2 font-normal normal-case tracking-normal text-gray-300">
+              ({senior.images.length})
+            </span>
+          </p>
+
+          {/* Uniform grid */}
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+            {senior.images.map((img, i) => (
               <div
                 key={i}
-                className="relative group cursor-pointer overflow-hidden rounded-lg border-2 border-gray-200 shadow-md hover:shadow-xl hover:border-gray-300 transition-all duration-300"
                 onClick={() => setLightboxIndex(i)}
+                className="relative group cursor-pointer overflow-hidden rounded-lg border-2 border-gray-200 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
               >
                 <img
                   src={img}
                   alt={`Screenshot ${i + 1}`}
-                  className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-28 md:h-32 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-9 h-9 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                    <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow">
+                    <svg className="w-3 h-3 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                   </div>
                 </div>
@@ -243,23 +207,24 @@ export default function SeniorProjectPage() {
           </div>
         </motion.div>
 
-        {/* Video demos */}
+        {/* ── Video Demo ── */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.25 }}
-          className="mt-12"
+          transition={{ duration: 0.35, delay: 0.25 }}
+          className="mt-6"
         >
-          <h2 className="text-lg font-bold text-gray-800 uppercase tracking-wide mb-6">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
             Video Demo
-          </h2>
+          </p>
           <VideoProject />
         </motion.div>
+
       </div>
 
       {lightboxIndex !== null && (
         <Lightbox
-          images={seniorProject.images}
+          images={senior.images}
           initialIndex={lightboxIndex}
           layout="web"
           onClose={() => setLightboxIndex(null)}
