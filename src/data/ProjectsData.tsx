@@ -27,8 +27,7 @@ export const projectData: Project[] = [
       { name: "MongoDB", icon: "image/skills/framework/mongodb.png" },
     ],
     github: "https://github.com/aumputthipong/BookingNextApp.git",
-
-    ref: "git",
+    ref: false,
     image: "/projects/bookingroom/booking (1).png",
     year: 2024,
     images: [
@@ -98,7 +97,7 @@ export const projectData: Project[] = [
       { name: "JavaScript", icon: "image/skills/programming/js.png" },
     ],
     github: "https://github.com/aumputthipong/FoodIOrderingProject.git",
-    ref: "https://ai-garden-ref.com",
+    ref: false,
     image: "/projects/foodordering/foodorder (5).png",
     images: [
       "/projects/foodordering/foodorder (5).png",

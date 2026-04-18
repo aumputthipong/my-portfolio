@@ -3,13 +3,15 @@
 import { projectData } from "@/data/ProjectsData";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaCalendarAlt, FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import GraduationProjects from "./Project/GraduationProjects";
 import Divider from "./UI/Divider";
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
+  const router = useRouter();
   const types = [...new Set(projectData.map((p) => p.type))];
   const tabs = ["All", ...types];
 
@@ -20,17 +22,22 @@ export default function Projects() {
 
   return (
     <section id="projects" className="bg-zinc-50">
+      <div className="max-w-6xl mx-auto pt-20 px-4">
+        {/* Unified section header */}
+        <div className="text-center mb-10 relative">
+          <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 uppercase">
+            My Projects
+          </h2>
+          <Divider />
+        </div>
+
+      </div>
+
       {/* Senior Project */}
       <GraduationProjects />
 
       {/* Academic Projects */}
-      <div className="max-w-6xl mx-auto py-20 px-4">
-        <div className="text-center mb-8 relative">
-          <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 uppercase">
-            My Academic Projects
-          </h2>
-          <Divider />
-        </div>
+      <div className="max-w-6xl mx-auto pb-20 px-4">
 
         {/* Tab filter */}
         <div className="flex justify-center mb-12">
@@ -63,7 +70,8 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.08 }}
               whileHover={{ y: -4 }}
-              className="group"
+              className="group cursor-pointer"
+              onClick={() => router.push(`/projects/${project.id}`)}
             >
               <div className="h-full flex flex-col rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden bg-white">
 
@@ -84,6 +92,13 @@ export default function Projects() {
                         project.layout === "mobile" ? "object-contain" : "object-cover"
                       }`}
                     />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300 pointer-events-none">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-semibold px-4 py-2 rounded-lg shadow flex items-center gap-1.5">
+                        View Details
+                        <FaArrowRight className="text-[10px]" />
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -120,48 +135,51 @@ export default function Projects() {
                   </div>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
-                    {project.github.length > 0 ? (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 text-xs font-medium transition-colors duration-200"
-                        style={{ color: '#64748b' }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = '#1e293b')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
-                      >
-                        <FaGithub className="text-sm" />
-                        Source Code
-                      </a>
-                    ) : typeof project.ref === "string" ? (
-                      <a
-                        href={project.ref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 text-xs font-medium transition-colors duration-200"
-                        style={{ color: '#64748b' }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = '#1e293b')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
-                      >
-                        <FaFigma className="text-sm" />
-                        Figma
-                      </a>
-                    ) : (
-                      <div className="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
-                        <FaCalendarAlt />
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto gap-2">
+
+                    {/* Left: external link */}
+                    <div className="flex items-center min-w-0">
+                      {project.github.length > 0 ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-gray-300 text-xs font-semibold px-2.5 py-1 rounded-md transition-all duration-200"
+                          style={{ color: '#374151' }}
+                        >
+                          <FaGithub />
+                          Code
+                        </a>
+                      ) : typeof project.ref === "string" ? (
+                        <a
+                          href={project.ref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-gray-300 text-xs font-semibold px-2.5 py-1 rounded-md transition-all duration-200"
+                          style={{ color: '#374151' }}
+                        >
+                          <FaFigma />
+                          Figma
+                        </a>
+                      ) : null}
+                    </div>
+
+                    {/* Right: year + Details button */}
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className="text-xs font-medium text-gray-400">
                         {project.year}
-                      </div>
-                    )}
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className="inline-flex items-center gap-1.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
-                    >
-                      Details
-                      <FaArrowRight className="text-[10px]" />
-                    </Link>
+                      </span>
+                      <Link
+                        href={`/projects/${project.id}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+                      >
+                        Details
+                        <FaArrowRight className="text-[10px]" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
