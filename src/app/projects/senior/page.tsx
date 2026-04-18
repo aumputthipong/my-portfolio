@@ -74,6 +74,7 @@ export default function SeniorProjectPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const thumbnailRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const stripRef = useRef<HTMLDivElement>(null);
 
   const currentItem = mediaItems[selectedIndex];
   const total = mediaItems.length;
@@ -172,36 +173,54 @@ export default function SeniorProjectPage() {
             </div>
 
             {/* Thumbnail strip — videos first, then images */}
-            <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "thin" }}>
-              {mediaItems.map((item, i) => (
-                <div
-                  key={i}
-                  ref={(el) => { thumbnailRefs.current[i] = el; }}
-                  onClick={() => setSelectedIndex(i)}
-                  className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-200 ${
-                    i === selectedIndex
-                      ? "border-slate-700 shadow-md"
-                      : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"
-                  }`}
-                >
-                  {item.type === "video" ? (
-                    <div className="relative w-32 h-[72px] bg-gray-900">
-                      <img
-                        src={`https://img.youtube.com/vi/${item.id}/hqdefault.jpg`}
-                        alt={item.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/35">
-                        <div className="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
-                          <FaPlay className="text-white text-[10px] ml-0.5" />
+            <div className="flex items-center gap-2">
+              <button
+                onClick={goPrev}
+                disabled={selectedIndex === 0}
+                className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-md flex items-center justify-center transition-all duration-200 shadow"
+              >
+                <FaChevronLeft className="text-xs" />
+              </button>
+
+              <div ref={stripRef} className="thumb-strip flex gap-2 overflow-x-auto flex-1 pb-3">
+                {mediaItems.map((item, i) => (
+                  <div
+                    key={i}
+                    ref={(el) => { thumbnailRefs.current[i] = el; }}
+                    onClick={() => setSelectedIndex(i)}
+                    className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-200 ${
+                      i === selectedIndex
+                        ? "border-slate-700 shadow-md"
+                        : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"
+                    }`}
+                  >
+                    {item.type === "video" ? (
+                      <div className="relative w-32 h-[72px] bg-gray-900">
+                        <img
+                          src={`https://img.youtube.com/vi/${item.id}/hqdefault.jpg`}
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/35">
+                          <div className="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                            <FaPlay className="text-white text-[10px] ml-0.5" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ) : (
-                    <img src={item.src} alt={`Thumb ${i + 1}`} className="w-32 h-[72px] object-cover" />
-                  )}
-                </div>
-              ))}
+                    ) : (
+                      <img src={item.src} alt={`Thumb ${i + 1}`} className="w-32 h-[72px] object-cover" />
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={goNext}
+                disabled={selectedIndex === total - 1}
+                className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-md flex items-center justify-center transition-all duration-200 shadow"
+              >
+                <FaChevronRight className="text-xs" />
+              </button>
             </div>
 
             {/* Responsibilities */}

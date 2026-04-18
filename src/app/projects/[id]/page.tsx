@@ -14,6 +14,7 @@ export default function ProjectDetailPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const thumbnailRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const stripRef = useRef<HTMLDivElement>(null);
 
   if (isNaN(id)) notFound();
   const project = projectData.find((p) => p.id === id);
@@ -50,106 +51,119 @@ export default function ProjectDetailPage() {
           {/* ── LEFT: Image viewer + thumbnails ── */}
           <div className="flex-1 min-w-0 space-y-3">
 
-            {/* Main image */}
-            <div
-              className="relative group cursor-pointer overflow-hidden rounded-xl bg-gray-900 shadow-xl border-2 border-gray-200"
-              onClick={() => setLightboxIndex(selectedIndex)}
-            >
-              {isMobile ? (
-                <div className="relative aspect-video flex items-center justify-center overflow-hidden">
-                  <img
-                    src={images[selectedIndex]}
-                    aria-hidden
-                    className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-30"
-                  />
-                  <img
-                    src={images[selectedIndex]}
-                    alt={`Screenshot ${selectedIndex + 1}`}
-                    className="relative z-10 h-full max-h-[480px] object-contain"
-                  />
+            {/* No screenshots placeholder */}
+            {!project.haveImage && (
+              <div className="aspect-video rounded-xl bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center gap-4 text-center px-8">
+                <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
+                  <FaGithub className="text-3xl text-gray-400" />
                 </div>
-              ) : (
-                <div className="aspect-video">
-                  <img
-                    src={images[selectedIndex]}
-                    alt={`Screenshot ${selectedIndex + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
+                <div>
+                  <p className="font-semibold text-gray-500 text-sm">No screenshots available</p>
+                  <p className="text-xs text-gray-400 mt-1">View the source code on GitHub</p>
                 </div>
-              )}
-
-              {/* Hover hint */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-4 py-2 rounded-full shadow">
-                  Click to expand
-                </span>
-              </div>
-
-              {/* Prev arrow */}
-              {selectedIndex > 0 && (
-                <button
-                  onClick={(e) => { e.stopPropagation(); goPrev(); }}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/50 hover:bg-black/75 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg"
-                >
-                  <FaChevronLeft className="text-xs" />
-                </button>
-              )}
-
-              {/* Next arrow */}
-              {selectedIndex < images.length - 1 && (
-                <button
-                  onClick={(e) => { e.stopPropagation(); goNext(); }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/50 hover:bg-black/75 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg"
-                >
-                  <FaChevronRight className="text-xs" />
-                </button>
-              )}
-
-              {/* Counter */}
-              <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-full font-medium">
-                {selectedIndex + 1} / {images.length}
-              </div>
-            </div>
-
-            {/* Thumbnail strip */}
-            {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'thin' }}>
-                {images.map((img, i) => (
-                  <div
-                    key={i}
-                    ref={(el) => { thumbnailRefs.current[i] = el; }}
-                    onClick={() => selectImage(i)}
-                    className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-200 ${
-                      i === selectedIndex
-                        ? "border-slate-700 shadow-md"
-                        : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"
-                    }`}
+                {project.github.length > 0 && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow transition-all duration-200"
                   >
-                    {isMobile ? (
-                      <img src={img} alt={`Thumb ${i + 1}`} className="w-14 h-20 object-cover object-top bg-gray-900" />
-                    ) : (
-                      <img src={img} alt={`Thumb ${i + 1}`} className="w-32 h-[72px] object-cover" />
-                    )}
-                  </div>
-                ))}
+                    <FaGithub />
+                    View Source Code
+                  </a>
+                )}
               </div>
             )}
+
+            {/* Main image + thumbnails (only when haveImage) */}
+            {project.haveImage && (
+              <>
+                <div
+                  className="relative group cursor-pointer overflow-hidden rounded-xl bg-gray-900 shadow-xl border-2 border-gray-200"
+                  onClick={() => setLightboxIndex(selectedIndex)}
+                >
+                  {isMobile ? (
+                    <div className="relative aspect-video flex items-center justify-center overflow-hidden">
+                      <img src={images[selectedIndex]} aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-30" />
+                      <img src={images[selectedIndex]} alt={`Screenshot ${selectedIndex + 1}`} className="relative z-10 h-full max-h-[480px] object-contain" />
+                    </div>
+                  ) : (
+                    <div className="aspect-video">
+                      <img src={images[selectedIndex]} alt={`Screenshot ${selectedIndex + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+                    </div>
+                  )}
+
+                  {/* Hover hint */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-4 py-2 rounded-full shadow">
+                      Click to expand
+                    </span>
+                  </div>
+
+                  {selectedIndex > 0 && (
+                    <button onClick={(e) => { e.stopPropagation(); goPrev(); }} className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/50 hover:bg-black/75 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg">
+                      <FaChevronLeft className="text-xs" />
+                    </button>
+                  )}
+                  {selectedIndex < images.length - 1 && (
+                    <button onClick={(e) => { e.stopPropagation(); goNext(); }} className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-black/50 hover:bg-black/75 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg">
+                      <FaChevronRight className="text-xs" />
+                    </button>
+                  )}
+
+                  <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-full font-medium">
+                    {selectedIndex + 1} / {images.length}
+                  </div>
+                </div>
+
+                {/* Thumbnail strip */}
+                {images.length > 1 && (
+                  <div className="flex items-center gap-2">
+                    <button onClick={goPrev} disabled={selectedIndex === 0} className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-md flex items-center justify-center transition-all duration-200 shadow cursor-pointer">
+                      <FaChevronLeft className="text-xs" />
+                    </button>
+                    <div ref={stripRef} className="thumb-strip flex gap-2 overflow-x-auto flex-1 pb-3">
+                      {images.map((img, i) => (
+                        <div
+                          key={i}
+                          ref={(el) => { thumbnailRefs.current[i] = el; }}
+                          onClick={() => selectImage(i)}
+                          className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-200 ${i === selectedIndex ? "border-slate-700 shadow-md" : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"}`}
+                        >
+                          {isMobile ? (
+                            <img src={img} alt={`Thumb ${i + 1}`} className="w-14 h-20 object-cover object-top bg-gray-900" />
+                          ) : (
+                            <img src={img} alt={`Thumb ${i + 1}`} className="w-32 h-[72px] object-cover" />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <button onClick={goNext} disabled={selectedIndex === images.length - 1} className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-md flex items-center justify-center transition-all duration-200 shadow cursor-pointer">
+                      <FaChevronRight className="text-xs" />
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+
           </div>
 
           {/* ── RIGHT: Info panel ── */}
           <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 space-y-4 lg:sticky lg:top-20">
 
             {/* Cover image */}
-            <div className="relative overflow-hidden rounded-xl border-2 border-gray-200 shadow-xl bg-gray-900 h-44">
-              {isMobile ? (
-                <>
-                  <img src={project.image} aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-40" />
-                  <img src={project.image} alt={project.title} className="relative z-10 w-full h-full object-contain" />
-                </>
-              ) : (
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-              )}
-            </div>
+            {project.haveImage && (
+              <div className="relative overflow-hidden rounded-xl border-2 border-gray-200 shadow-xl bg-gray-900 h-44">
+                {isMobile ? (
+                  <>
+                    <img src={project.image} aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-40" />
+                    <img src={project.image} alt={project.title} className="relative z-10 w-full h-full object-contain" />
+                  </>
+                ) : (
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                )}
+              </div>
+            )}
 
             {/* Info card */}
             <div className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-5 space-y-4">
