@@ -6,13 +6,13 @@ import Divider from './UI/Divider'
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-50 ">
+    <section id="contact" className="py-12 px-4 bg-gray-50 ">
       <div className="max-w-4xl mx-auto text-center">
-        
-        <h2 className="text-5xl lg:text-6xl font-extrabold mb-6 text-slate-800 uppercase">
+
+        <h2 className="text-3xl lg:text-4xl font-extrabold mb-3 text-slate-800 uppercase">
           Contact</h2>
           <Divider/>
-        <p className="text-gray-600 mb-12 text-lg max-w-2xl mx-auto">
+        <p className="text-gray-500 mb-8 text-sm max-w-2xl mx-auto mt-3">
           I'm always open to new opportunities, ideas, or simply to get in touch
         </p>
 

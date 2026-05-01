@@ -22,10 +22,10 @@ export default function Projects() {
 
   return (
     <section id="projects" className="bg-zinc-50">
-      <div className="max-w-6xl mx-auto pt-20 px-4">
+      <div className="max-w-6xl mx-auto pt-12 px-4">
         {/* Unified section header */}
-        <div className="text-center mb-10 relative">
-          <h2 className="text-5xl lg:text-6xl font-extrabold text-slate-800 mb-4 uppercase">
+        <div className="text-center mb-8 relative">
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-800 mb-3 uppercase">
             My Projects
           </h2>
           <Divider />
@@ -37,10 +37,10 @@ export default function Projects() {
       <GraduationProjects />
 
       {/* Academic Projects */}
-      <div className="max-w-6xl mx-auto pb-20 px-4">
+      <div className="max-w-6xl mx-auto pb-12 px-4">
 
         {/* Tab filter */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8">
           <div className="flex flex-wrap justify-center bg-white rounded-full p-1.5 shadow-sm border border-gray-200 gap-1">
             {tabs.map((tab) => (
               <button
