@@ -1,67 +1,86 @@
-import { Button, Card } from "@mui/material";
-import React from "react";
 import { MdEmail, MdLocationOn } from "react-icons/md";
+import { FaGraduationCap } from "react-icons/fa";
 
 const Introduction = () => {
   return (
-<div 
-className="w-full max-w-4xl mx-auto shadow-xl rounded-lg hover:shadow-2xl transition-all duration-500 border-2 border-gray-300 overflow-hidden">
-  
-  {/* Layout: stack บนมือถือ, row บน desktop */}
-  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-6">
-    
-    {/* Avatar */}
-    <div className="relative group flex-shrink-0">
-      <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
-        <img
-          src="image/MyformalPic2.jpg"
-          alt="Putthipong Chobngam"
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-300"
-        />
-      </div>
-      <div className="absolute bottom-1 right-1 bg-green-500 w-5 h-5 rounded-full border-4 border-white shadow-lg" />
-    </div>
+    <div className="bg-white border-2 border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+      <div className="flex flex-col lg:flex-row">
 
-    {/* Info */}
-    <div className="flex-1 text-center sm:text-left">
-      
-      {/* Name */}
-      <div className="flex flex-wrap justify-center sm:justify-start items-baseline gap-1">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-          Putthipong Chobngam
-        </h2>
-        <p className="text-xl sm:text-2xl font-bold text-gray-500">(AUM)</p>
-      </div>
+        {/* LEFT: Profile */}
+        <div className="flex-1 p-6 flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+          <div className="relative flex-shrink-0">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white ring-2 ring-gray-200 shadow-md">
+              <img
+                src="image/MyformalPic2.jpg"
+                alt="Putthipong Chobngam"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div className="absolute bottom-0.5 right-0.5 bg-green-500 w-3.5 h-3.5 rounded-full border-2 border-white" />
+          </div>
 
-      {/* Bio */}
-      <p className="text-gray-600 leading-relaxed text-sm py-2">
-        Passionate and self-motivated web developer with a focus on software
-        engineering and full-stack development. Recently graduated from the
-        Faculty of Information Technology KMITL. Eager to keep learning and
-        improving. Seeking an opportunity to contribute and grow in a
-        development team.
-      </p>
-
-      {/* Badges */}
-      <div className="flex flex-wrap justify-center sm:justify-start gap-3 pt-2">
-        <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20 hover:shadow-md transition-all duration-200 group">
-          <MdLocationOn className="text-red-500 text-md group-hover:scale-110 transition-transform" />
-          <span className="text-sm text-gray-700">Bangkok, Thailand</span>
+          <div className="flex-1 text-center sm:text-left min-w-0">
+            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-1">
+              Hello, I'm
+            </p>
+            <h3 className="text-xl lg:text-2xl font-extrabold text-gray-900 leading-tight">
+              Putthipong Chobngam{" "}
+              <span className="text-gray-400 font-semibold">(AUM)</span>
+            </h3>
+            <p className="text-sm font-semibold text-slate-600 mt-0.5">
+              Full-Stack Developer · Software Engineer
+            </p>
+            <p className="text-sm leading-relaxed mt-2.5" style={{ color: '#4b5563' }}>
+              Passionate and self-motivated web developer focused on software engineering and
+              full-stack development. Recently graduated from Faculty of Information Technology,
+              KMITL — eager to keep learning and contribute to a great team.
+            </p>
+            <div className="flex flex-wrap gap-2 mt-3 justify-center sm:justify-start">
+              <span
+                className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200"
+                style={{ color: '#4b5563' }}
+              >
+                <MdLocationOn className="text-red-500" /> Bangkok, Thailand
+              </span>
+              <a
+                href="mailto:putthipong.chb@gmail.com"
+                className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200 hover:bg-white hover:border-slate-300 hover:shadow-sm transition-all duration-200"
+                style={{ color: '#4b5563' }}
+              >
+                <MdEmail className="text-blue-500" /> putthipong.chb@gmail.com
+              </a>
+            </div>
+          </div>
         </div>
-        <a
-          href="mailto:putthipong.chb@gmail.com"
-          className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/20 hover:bg-white/80 transition-all duration-200 group"
+
+        {/* RIGHT: Education */}
+        <div
+          id="education"
+          className="lg:w-[38%] p-6 lg:border-l-2 border-t-2 lg:border-t-0 border-gray-100 bg-gray-50/60 flex gap-4 items-center"
         >
-          <MdEmail className="text-blue-500 text-md group-hover:scale-110 transition-transform" />
-          <span className="text-sm text-gray-700 break-all sm:break-normal">
-            putthipong.chb@gmail.com
-          </span>
-        </a>
+          <img
+            src="/image/KMITL_Logo.png"
+            alt="KMITL"
+            className="h-16 w-auto object-contain flex-shrink-0"
+          />
+          <div className="flex-1 min-w-0">
+            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-1.5">
+              <FaGraduationCap className="text-sm" /> Education
+            </p>
+            <h4 className="text-sm font-bold text-gray-900 leading-snug">
+              B.Sc. Information Technology
+            </h4>
+            <span className="inline-block bg-gray-900 text-white text-[11px] px-2.5 py-0.5 rounded-full mt-1 font-semibold">
+              Software Engineering
+            </span>
+            <p className="text-xs mt-2" style={{ color: '#6b7280' }}>
+              KMITL · Graduated 2025 · GPAX 3.11
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
-
-  </div>
-</div>
   );
 };
 
