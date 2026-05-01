@@ -30,11 +30,7 @@ const Introduction = () => {
             <p className="text-sm font-semibold text-slate-600 mt-0.5">
               Full-Stack Developer · Software Engineer
             </p>
-            <p className="text-sm leading-relaxed mt-2.5" style={{ color: '#4b5563' }}>
-              Passionate and self-motivated web developer focused on software engineering and
-              full-stack development. Recently graduated from Faculty of Information Technology,
-              KMITL — eager to keep learning and contribute to a great team.
-            </p>
+         
             <div className="flex flex-wrap gap-2 mt-3 justify-center sm:justify-start">
               <span
                 className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200"
