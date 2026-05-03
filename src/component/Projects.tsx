@@ -7,7 +7,6 @@ import { FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import GraduationProjects from "./Project/GraduationProjects";
-import Divider from "./UI/Divider";
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
@@ -23,14 +22,13 @@ export default function Projects() {
   return (
     <section id="projects" className="bg-zinc-50">
       <div className="max-w-6xl mx-auto pt-12 px-4">
-        {/* Unified section header */}
-        <div className="text-center mb-8 relative">
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-800 mb-3 uppercase">
-            My Projects
-          </h2>
-          <Divider />
+        {/* Section indicator */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase flex items-center gap-2">
+            <span className="w-6 h-px bg-gray-400" /> Projects
+          </p>
+          <p className="text-xs font-mono text-gray-400">03 / 04</p>
         </div>
-
       </div>
 
       {/* Senior Project */}

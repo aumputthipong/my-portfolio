@@ -62,14 +62,6 @@ const mediaItems: MediaItem[] = [
   ...senior.images.slice(2).map((src) => ({ type: "image" as const, src })),
 ];
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-      {children}
-    </p>
-  );
-}
-
 export default function SeniorProjectPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -97,7 +89,16 @@ export default function SeniorProjectPage() {
       <div className="fixed top-1/4 left-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
       <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 pt-16 pb-20 relative z-10 space-y-5">
+      <div className="max-w-6xl mx-auto px-4 pt-10 pb-12 relative z-10 space-y-5">
+
+        {/* Section indicator */}
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase flex items-center gap-2">
+            <span className="w-6 h-px bg-gray-400" /> Senior Project
+          </p>
+          <p className="text-xs font-mono text-gray-400">PROJ_SENIOR · {senior.year}</p>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -224,8 +225,10 @@ export default function SeniorProjectPage() {
             </div>
 
             {/* Responsibilities */}
-            <div className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-5">
-              <SectionLabel>Responsibilities</SectionLabel>
+            <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm p-5">
+              <p className="text-[11px] font-mono text-gray-400 mb-4 flex items-center gap-1.5">
+                <span className="text-blue-500">//</span> RESPONSIBILITIES
+              </p>
               <ul className="space-y-3">
                 {senior.responsibility.map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm leading-relaxed" style={{ color: '#4b5563' }}>
@@ -240,15 +243,19 @@ export default function SeniorProjectPage() {
           </div>
 
           {/* ── RIGHT: Info panel ── */}
-          <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 space-y-4 lg:sticky lg:top-20">
+          <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 lg:sticky lg:top-20">
 
-            {/* Cover image */}
-            <div className="overflow-hidden rounded-xl border-2 border-gray-200 shadow-xl bg-gray-900 h-44">
-              <img src={senior.images[0]} alt={senior.title} className="w-full h-full object-cover" />
-            </div>
+            <div className="bg-white border-2 border-gray-200 rounded-2xl shadow-xl p-4 space-y-4">
 
-            {/* Info card */}
-            <div className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-5 space-y-4">
+              {/* Card header (mono identifier) */}
+              <div className="flex items-center justify-between text-[10px] font-mono">
+                <span className="text-gray-400 tracking-wider">PROJ_SENIOR</span>
+                <div className="flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
+                </div>
+              </div>
 
               <div>
                 <span className="inline-block bg-gray-100 text-gray-500 text-xs font-semibold px-3 py-1 rounded-full border border-gray-200 mb-2">
@@ -257,11 +264,10 @@ export default function SeniorProjectPage() {
                 <h1 className="text-xl font-extrabold text-gray-900 leading-snug">
                   {senior.title}
                 </h1>
+                <p className="text-[11px] mt-1.5 leading-relaxed" style={{ color: '#9ca3af' }}>
+                  {senior.full_project_name}
+                </p>
               </div>
-
-              <p className="text-xs italic leading-relaxed border-l-2 border-gray-200 pl-3" style={{ color: '#9ca3af' }}>
-                {senior.full_project_name}
-              </p>
 
               <p className="text-sm leading-relaxed" style={{ color: '#4b5563' }}>
                 {senior.description}
@@ -270,35 +276,42 @@ export default function SeniorProjectPage() {
               <div className="h-px bg-gray-100" />
 
               <div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2.5">Tech Stack</p>
+                <p className="text-[11px] font-mono text-gray-400 mb-2.5 flex items-center gap-1.5">
+                  <span className="text-blue-500">//</span> TECH STACK
+                </p>
                 <div className="flex flex-wrap gap-1.5">
                   {senior.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 text-xs px-2.5 py-1 rounded-full font-medium"
-                      style={{ color: '#4b5563' }}
+                      className="inline-flex items-center gap-1.5 border border-gray-200 bg-white hover:bg-gray-50 hover:border-slate-300 text-[11px] font-mono px-2.5 py-1 rounded-md transition-all duration-200"
+                      style={{ color: '#374151' }}
                     >
-                      <img src={`../${tech.icon}`} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
+                      <img src={`/${tech.icon}`} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
                       {tech.name}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="h-px bg-gray-100" />
-
-              <div className="space-y-1.5">
-                <div className="flex justify-between">
-                  <span className="text-gray-400 text-xs">Year</span>
-                  <span className="font-semibold text-gray-700 text-xs">{senior.year}</span>
+              {/* Stats grid */}
+              <div className="grid grid-cols-3 gap-1 pt-3 border-t border-gray-100">
+                <div>
+                  <p className="text-base font-extrabold text-gray-900 leading-none">{senior.year}</p>
+                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
+                    Year
+                  </p>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400 text-xs">Videos</span>
-                  <span className="font-semibold text-gray-700 text-xs">{videos.length}</span>
+                <div>
+                  <p className="text-base font-extrabold text-gray-900 leading-none">{videos.length}</p>
+                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
+                    Videos
+                  </p>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400 text-xs">Screenshots</span>
-                  <span className="font-semibold text-gray-700 text-xs">{senior.images.length}</span>
+                <div>
+                  <p className="text-base font-extrabold text-gray-900 leading-none">{senior.images.length}</p>
+                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
+                    Shots
+                  </p>
                 </div>
               </div>
 

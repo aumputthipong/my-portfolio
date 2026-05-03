@@ -1,25 +1,20 @@
 "use client";
-import Skills from "./AboutMeComponent/Skills";
 import Introduction from "./AboutMeComponent/Introduction";
-import Divider from "./UI/Divider";
 
 const AboutMe = () => {
   return (
-    <section id="about-me" className="bg-zinc-50 pt-12 pb-8 px-4">
+    <section id="about-me" className="bg-zinc-50 pt-12 pb-10 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-6 relative">
-          <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-800 mb-3 uppercase">
-            About Me
-          </h2>
-          <Divider />
+
+        {/* Section indicator */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase flex items-center gap-2">
+            <span className="w-6 h-px bg-gray-400" /> About
+          </p>
+          <p className="text-xs font-mono text-gray-400">02 / 04</p>
         </div>
 
-        <div className="space-y-5">
-          <Introduction />
-          <div id="skills">
-            <Skills />
-          </div>
-        </div>
+        <Introduction />
       </div>
     </section>
   );
