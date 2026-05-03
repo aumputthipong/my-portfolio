@@ -1,45 +1,48 @@
 'use client'
 
-import React from 'react'
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa'
-import Divider from './UI/Divider'
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-12 px-4 bg-gray-50 ">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="contact" className="py-12 px-4 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
 
-        <h2 className="text-3xl lg:text-4xl font-extrabold mb-3 text-slate-800 uppercase">
-          Contact</h2>
-          <Divider/>
-        <p className="text-gray-500 mb-8 text-sm max-w-2xl mx-auto mt-3">
-          I'm always open to new opportunities, ideas, or simply to get in touch
+        {/* Section indicator */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase flex items-center gap-2">
+            <span className="w-6 h-px bg-gray-400" /> Contact
+          </p>
+          <p className="text-xs font-mono text-gray-400">04 / 04</p>
+        </div>
+
+        <p className="text-gray-500 mb-6 text-sm">
+          I'm always open to new opportunities, ideas, or simply to get in touch.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-5xl mx-auto">
           <a
             href="mailto:putthipong.chb@gmail.com"
-            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:bg-gray-50 group"
+            className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md border border-gray-200 transition-all duration-200 hover:bg-gray-50 group min-w-0"
           >
-            <div className="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-              <FaEnvelope className="text-blue-600 text-lg" />
+            <div className="p-2 bg-blue-50 rounded-md group-hover:bg-blue-100 transition-colors flex-shrink-0">
+              <FaEnvelope className="text-blue-600 text-base" />
             </div>
-            <div className="text-left">
-              <p className="font-medium text-gray-800">Email</p>
-              <p className="text-gray-600 text-sm">putthipong.chb@gmail.com</p>
+            <div className="text-left min-w-0 flex-1">
+              <p className="font-semibold text-gray-800 text-sm">Email</p>
+              <p className="text-gray-500 text-xs truncate">putthipong.chb@gmail.com</p>
             </div>
           </a>
 
           <a
             href="tel:+66960542824"
-            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:bg-gray-50 group"
+            className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md border border-gray-200 transition-all duration-200 hover:bg-gray-50 group min-w-0"
           >
-            <div className="p-3 bg-green-50 rounded-lg group-hover:bg-green-100 transition-colors">
-              <FaPhone className="text-green-600 text-lg" />
+            <div className="p-2 bg-green-50 rounded-md group-hover:bg-green-100 transition-colors flex-shrink-0">
+              <FaPhone className="text-green-600 text-base" />
             </div>
-            <div className="text-left">
-              <p className="font-medium text-gray-800">Phone</p>
-              <p className="text-gray-600 text-sm">+66 96 054 2824</p>
+            <div className="text-left min-w-0 flex-1">
+              <p className="font-semibold text-gray-800 text-sm">Phone</p>
+              <p className="text-gray-500 text-xs truncate">+66 96 054 2824</p>
             </div>
           </a>
 
@@ -47,14 +50,14 @@ const ContactSection = () => {
             href="https://github.com/aumputthipong"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:bg-gray-50 group"
+            className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md border border-gray-200 transition-all duration-200 hover:bg-gray-50 group min-w-0"
           >
-            <div className="p-3 bg-gray-50 rounded-lg group-hover:bg-gray-100 transition-colors">
-              <FaGithub className="text-gray-700 text-lg" />
+            <div className="p-2 bg-gray-50 rounded-md group-hover:bg-gray-100 transition-colors flex-shrink-0">
+              <FaGithub className="text-gray-700 text-base" />
             </div>
-            <div className="text-left">
-              <p className="font-medium text-gray-800">GitHub</p>
-              <p className="text-gray-600 text-sm">github.com/aumputthipong</p>
+            <div className="text-left min-w-0 flex-1">
+              <p className="font-semibold text-gray-800 text-sm">GitHub</p>
+              <p className="text-gray-500 text-xs truncate">aumputthipong</p>
             </div>
           </a>
 
@@ -62,19 +65,19 @@ const ContactSection = () => {
             href="https://www.linkedin.com/in/putthipong-chobngam/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:bg-gray-50 group"
+            className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md border border-gray-200 transition-all duration-200 hover:bg-gray-50 group min-w-0"
           >
-            <div className="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-              <FaLinkedin className="text-blue-700 text-lg" />  
+            <div className="p-2 bg-blue-50 rounded-md group-hover:bg-blue-100 transition-colors flex-shrink-0">
+              <FaLinkedin className="text-blue-700 text-base" />
             </div>
-            <div className="text-left">
-              <p className="font-medium text-gray-800">LinkedIn</p>
-              <p className="text-gray-600 text-sm">linkedin.com/in/putthipong-chobngam</p>
+            <div className="text-left min-w-0 flex-1">
+              <p className="font-semibold text-gray-800 text-sm">LinkedIn</p>
+              <p className="text-gray-500 text-xs truncate">putthipong-chobngam</p>
             </div>
           </a>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-gray-200">
+        <div className="mt-10 pt-8 border-t border-gray-200 text-center">
           <p className="text-gray-500 text-sm">
             Let's connect and create something amazing together!
           </p>

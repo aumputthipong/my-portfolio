@@ -40,7 +40,16 @@ export default function ProjectDetailPage() {
       <div className="fixed top-1/4 left-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
       <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 pt-16 pb-20 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 pt-10 pb-12 relative z-10 space-y-5">
+
+        {/* Section indicator */}
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase flex items-center gap-2">
+            <span className="w-6 h-px bg-gray-400" /> {project.type}
+          </p>
+          <p className="text-xs font-mono text-gray-400">PROJ_{String(project.id).padStart(3, "0")} · {project.year}</p>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -149,24 +158,19 @@ export default function ProjectDetailPage() {
           </div>
 
           {/* ── RIGHT: Info panel ── */}
-          <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 space-y-4 lg:sticky lg:top-20">
+          <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 lg:sticky lg:top-20">
 
-            {/* Cover image */}
-            {project.haveImage && (
-              <div className="relative overflow-hidden rounded-xl border-2 border-gray-200 shadow-xl bg-gray-900 h-44">
-                {isMobile ? (
-                  <>
-                    <img src={project.image} aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-40" />
-                    <img src={project.image} alt={project.title} className="relative z-10 w-full h-full object-contain" />
-                  </>
-                ) : (
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                )}
+            <div className="bg-white border-2 border-gray-200 rounded-2xl shadow-xl p-4 space-y-4">
+
+              {/* Card header (mono identifier) */}
+              <div className="flex items-center justify-between text-[10px] font-mono">
+                <span className="text-gray-400 tracking-wider">PROJ_{String(project.id).padStart(3, "0")}</span>
+                <div className="flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
+                </div>
               </div>
-            )}
-
-            {/* Info card */}
-            <div className="bg-white border-2 border-gray-200 rounded-xl shadow-xl p-5 space-y-4">
 
               {/* Badge + title */}
               <div>
@@ -185,36 +189,20 @@ export default function ProjectDetailPage() {
 
               <div className="h-px bg-gray-100" />
 
-              {/* Meta */}
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400 text-xs">Year</span>
-                  <span className="font-semibold text-gray-700 text-xs">{project.year}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400 text-xs">Platform</span>
-                  <span className="font-semibold text-gray-700 text-xs capitalize">{project.layout}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400 text-xs">Screenshots</span>
-                  <span className="font-semibold text-gray-700 text-xs">{images.length}</span>
-                </div>
-              </div>
-
-              <div className="h-px bg-gray-100" />
-
               {/* Tech Stack */}
               <div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2.5">Tech Stack</p>
+                <p className="text-[11px] font-mono text-gray-400 mb-2.5 flex items-center gap-1.5">
+                  <span className="text-blue-500">//</span> TECH STACK
+                </p>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 text-xs px-2.5 py-1 rounded-full font-medium"
-                      style={{ color: '#4b5563' }}
+                      className="inline-flex items-center gap-1.5 border border-gray-200 bg-white hover:bg-gray-50 hover:border-slate-300 text-[11px] font-mono px-2.5 py-1 rounded-md transition-all duration-200"
+                      style={{ color: '#374151' }}
                     >
                       {tech.icon && (
-                        <img src={`../${tech.icon}`} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
+                        <img src={`/${tech.icon}`} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
                       )}
                       {tech.name}
                     </span>
@@ -222,31 +210,55 @@ export default function ProjectDetailPage() {
                 </div>
               </div>
 
-              {/* Action buttons */}
-              <div className="space-y-2 pt-1">
-                {project.github.length > 0 && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
-                  >
-                    <FaGithub />
-                    View Source Code
-                  </a>
-                )}
-                {typeof project.ref === "string" && (
-                  <a
-                    href={project.ref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full border-2 border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50 text-gray-700 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200"
-                  >
-                    <FaFigma />
-                    View in Figma
-                  </a>
-                )}
+              {/* Stats grid */}
+              <div className="grid grid-cols-3 gap-1 pt-3 border-t border-gray-100">
+                <div>
+                  <p className="text-base font-extrabold text-gray-900 leading-none">{project.year}</p>
+                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
+                    Year
+                  </p>
+                </div>
+                <div>
+                  <p className="text-base font-extrabold text-gray-900 leading-none capitalize">{project.layout}</p>
+                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
+                    Platform
+                  </p>
+                </div>
+                <div>
+                  <p className="text-base font-extrabold text-gray-900 leading-none">{images.length}</p>
+                  <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
+                    Shots
+                  </p>
+                </div>
               </div>
+
+              {/* Action buttons */}
+              {(project.github.length > 0 || typeof project.ref === "string") && (
+                <div className="space-y-2 pt-1">
+                  {project.github.length > 0 && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                      <FaGithub />
+                      View Source Code
+                    </a>
+                  )}
+                  {typeof project.ref === "string" && (
+                    <a
+                      href={project.ref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full border-2 border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50 text-gray-700 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200"
+                    >
+                      <FaFigma />
+                      View in Figma
+                    </a>
+                  )}
+                </div>
+              )}
 
             </div>
           </div>

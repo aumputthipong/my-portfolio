@@ -18,10 +18,10 @@ const Hero = () => {
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16">
 
           {/* ── LEFT ── */}
-          <div className="flex-1 w-full space-y-5">
+          <div className="w-full max-w-xl space-y-5">
 
             {/* Status pill */}
             <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
@@ -48,7 +48,7 @@ const Hero = () => {
             </div>
 
             {/* Role with code icon + typing */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2.5 min-h-[2.5rem] lg:min-h-[2.75rem]">
               <HiCode className="text-blue-500 text-2xl flex-shrink-0" />
               <TypeAnimation
                 sequence={[
@@ -63,7 +63,7 @@ const Hero = () => {
                 speed={50}
                 repeat={Infinity}
                 cursor={true}
-                className="text-xl lg:text-2xl font-semibold text-slate-700"
+                className="text-xl lg:text-2xl font-semibold text-slate-700 inline-block min-w-[200px]"
               />
             </div>
 
@@ -149,9 +149,9 @@ const Hero = () => {
                 />
 
                 {/* Online badge */}
-                <div className="absolute top-2 right-2 z-20 inline-flex items-center gap-1 bg-white/95 backdrop-blur-sm border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">
-                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                  <span className="text-[10px] font-semibold text-gray-700">Online</span>
+                <div className="absolute top-2 right-2 z-20 inline-flex items-center gap-1 bg-slate-900/85 backdrop-blur-sm border border-slate-700 px-2 py-0.5 rounded-full shadow-sm">
+                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+                  <span className="text-[10px] font-semibold text-white">Online</span>
                 </div>
               </div>
 
