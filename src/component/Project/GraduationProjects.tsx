@@ -46,9 +46,9 @@ const GraduationProjects = () => {
             />
 
             {/* Hover overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors duration-300 pointer-events-none">
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors duration-300 pointer-events-none">
               <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 backdrop-blur-sm text-gray-800 text-xs font-semibold px-4 py-2 rounded-lg shadow flex items-center gap-1.5">
-                View Full Project
+                View Details
                 <FaArrowRight className="text-[10px]" />
               </span>
             </div>
