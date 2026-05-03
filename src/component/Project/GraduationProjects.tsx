@@ -28,10 +28,10 @@ const GraduationProjects = () => {
         className="group border-2 border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden bg-white cursor-pointer"
         onClick={() => router.push("/projects/senior")}
       >
-        <div className="flex flex-col lg:flex-row min-h-[360px]">
+        <div className="flex flex-col lg:flex-row min-h-[300px]">
 
           {/* Image side — light bg with floating screenshot */}
-          <div className="relative lg:w-[55%] h-72 lg:h-auto bg-slate-100 flex items-center justify-center overflow-hidden p-5 lg:p-8">
+          <div className="relative lg:w-[55%] h-72 lg:h-auto bg-slate-100 flex items-center justify-center overflow-hidden p-4 lg:p-6">
             <img
               src={seniorProject.image}
               alt={seniorProject.title}
@@ -58,11 +58,11 @@ const GraduationProjects = () => {
           </div>
 
           {/* Info side */}
-          <div className="lg:w-[45%] p-8 lg:p-10 flex flex-col justify-center gap-5">
+          <div className="lg:w-[45%] p-6 lg:p-8 flex flex-col justify-center gap-3.5">
 
             {/* Badge + year + title (desktop) */}
             <div className="hidden lg:block">
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-2">
                 <span className="inline-block bg-slate-100 text-slate-500 text-xs font-semibold px-3 py-1 rounded-full border border-slate-200">
                   Senior Project
                 </span>

@@ -23,14 +23,14 @@ const SOCIAL_LINKS = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="w-full bg-slate-900 text-gray-200 py-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-4">
+    <footer className="w-full bg-slate-900 text-gray-200 py-5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
         {/* Name */}
-        <h3 className="text-base sm:text-lg font-semibold tracking-wide">
+        <h3 className="text-sm font-semibold tracking-wide">
           Putthipong Chobngam
         </h3>
         {/* Social Icons */}
-        <div className="flex items-center gap-5 text-xl">
+        <div className="flex items-center gap-2 text-base">
           {SOCIAL_LINKS.map(({ href, icon, label, external }) => (
             <a
               key={label}
@@ -44,10 +44,8 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        {/* Divider */}
-        <div className="w-16 h-px bg-slate-700" />
         {/* Copyright */}
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-500">
           © {year} Putthipong Chobngam. All rights reserved.
         </p>
       </div>
