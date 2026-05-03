@@ -38,13 +38,13 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto pb-12 px-4">
 
         {/* Tab filter */}
-        <div className="flex justify-center mb-8">
-          <div className="flex flex-wrap justify-center bg-white rounded-full p-1.5 shadow-sm border border-gray-200 gap-1">
+        <div className="flex justify-center mb-6">
+          <div className="flex flex-wrap justify-center bg-white rounded-full p-1 shadow-sm border border-gray-200 gap-1">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-5 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
+                className={`px-4 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                   activeTab === tab
                     ? "bg-slate-800 text-white shadow-md"
                     : "text-gray-500 hover:text-gray-800 hover:bg-gray-100"
@@ -60,7 +60,7 @@ export default function Projects() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
