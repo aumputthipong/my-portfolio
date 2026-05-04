@@ -15,6 +15,39 @@ export interface Project {
 
 export const projectData: Project[] = [
   {
+    id: 8,
+    title: "Turtask — Mini ERP Kanban",
+    type: "Software Development",
+    description:
+      "Real-time Kanban task management for small teams — multi-board, role-based access, drag-and-drop with optimistic UI, WebSocket sync, and analytics dashboard.",
+    tech: [
+      { name: "Next.js", icon: "image/skills/framework/nextjs.png" },
+      { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
+      { name: "Go" },
+      { name: "PostgreSQL", icon: "image/skills/framework/Postgresql.png" },
+      { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
+    ],
+    github: "",
+    ref: false,
+    image: "/projects/kanban-manage/kanban-manage (11).png",
+    year: 2026,
+    images: [
+      "/projects/kanban-manage/kanban-manage (11).png",
+      "/projects/kanban-manage/kanban-manage (10).png",
+      "/projects/kanban-manage/kanban-manage (9).png",
+      "/projects/kanban-manage/kanban-manage (8).png",
+      "/projects/kanban-manage/kanban-manage (6).png",
+      // "/projects/kanban-manage/kanban-manage (7).png",
+      "/projects/kanban-manage/kanban-manage (5).png",
+      "/projects/kanban-manage/kanban-manage (1).png",
+      // "/projects/kanban-manage/kanban-manage (2).png",
+      "/projects/kanban-manage/kanban-manage (3).png",
+      "/projects/kanban-manage/kanban-manage (4).png",
+    ],
+    haveImage: true,
+    layout: "web",
+  },
+  {
     id: 1,
     title: "BookingRoom Web Application",
     type: "Software Development",
@@ -134,8 +167,41 @@ export const projectData: Project[] = [
     haveImage: false,
     layout: "web",
   },
-  {
+    {
     id: 5,
+    title: "BlueRoom Registration System",
+    type: "UX/UI Design",
+    description:
+      "Analyzed requirements and designed a scheduling system for faculty to manage class timetables and teaching assignments.",
+    tech: [
+      { name: "Figma", icon: "image/skills/tools/figma.png" },
+      { name: "UX/UI Design" },
+    ],
+    github: "",
+    year: 2024,
+    ref: false,
+    image: "/projects/reg-web/reg (2).png",
+    images: [
+      "/projects/reg-web/reg (1).png",
+      "/projects/reg-web/reg (2).png",
+      // "/projects/reg-web/reg (3).png",
+      "/projects/reg-web/reg (5).png",
+      "/projects/reg-web/reg (4).png",
+      "/projects/reg-web/reg (6).png",
+      // "/projects/reg-web/reg (7).png",
+      // "/projects/reg-web/reg (8).png",
+      // "/projects/reg-web/reg (9).png",
+      // "/projects/reg-web/reg (10).png",
+      // "/projects/reg-web/reg (11).png",
+      // "/projects/reg-web/reg (12).png",
+      // "/projects/reg-web/reg (13).png",
+    ],
+    layout: "web",
+    haveImage: true,
+  },
+
+  {
+    id: 6,
     title: "Parking App Figma Design",
     year: 2024,
 
@@ -161,38 +227,6 @@ export const projectData: Project[] = [
     ],
     haveImage: true,
     layout: "mobile",
-  },
-  {
-    id: 6,
-    title: "BlueRoom Registration System",
-    type: "UX/UI Design",
-    description:
-      "Analyzed requirements and designed a scheduling system for faculty to manage class timetables and teaching assignments.",
-    tech: [
-      { name: "Figma", icon: "image/skills/tools/figma.png" },
-      { name: "UX/UI Design" },
-    ],
-    github: "",
-    year: 2024,
-    ref: false,
-    image: "/projects/reg-web/reg (11).png",
-    images: [
-      "/projects/reg-web/reg (1).png",
-      "/projects/reg-web/reg (2).png",
-      "/projects/reg-web/reg (3).png",
-      "/projects/reg-web/reg (4).png",
-      "/projects/reg-web/reg (5).png",
-      "/projects/reg-web/reg (6).png",
-      "/projects/reg-web/reg (7).png",
-      "/projects/reg-web/reg (8).png",
-      "/projects/reg-web/reg (9).png",
-      "/projects/reg-web/reg (10).png",
-      "/projects/reg-web/reg (11).png",
-      "/projects/reg-web/reg (12).png",
-      "/projects/reg-web/reg (13).png",
-    ],
-    layout: "web",
-    haveImage: true,
   },
 
   {
