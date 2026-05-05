@@ -52,11 +52,9 @@ const Hero = () => {
               <HiCode className="text-blue-500 text-2xl flex-shrink-0" />
               <TypeAnimation
                 sequence={[
-                  "Full-stack Engineer",
+                  "Full-stack Developer",
                   2000,
                   "Software Engineer",
-                  2000,
-                  "Web Developer",
                   2000,
                 ]}
                 wrapper="span"
@@ -70,7 +68,7 @@ const Hero = () => {
             {/* Bio */}
             <p className="text-base leading-relaxed max-w-xl" style={{ color: '#4b5563' }}>
               Passionate, self-motivated developer focused on software engineering and
-              full-stack web — building clean, useful interfaces. Always learning,
+              full-stack development — building clean, useful interfaces. Always learning,
               always shipping.
             </p>
 
@@ -89,7 +87,7 @@ const Hero = () => {
               </a>
               <span className="inline-flex items-center gap-1.5">
                 <FaGraduationCap className="text-slate-500 text-base" />
-                B.Sc. IT, KMITL · GPAX 3.11
+                B.Sc. IT, KMITL · 2025
               </span>
             </div>
 
@@ -161,22 +159,22 @@ const Hero = () => {
                   Putthipong Chobngam <span className="text-gray-400 font-semibold">(AUM)</span>
                 </h3>
                 <p className="text-[11px] text-gray-500 mt-0.5">
-                  Front-end / Full-stack Developer
+                  Full-stack Developer / Software Engineer
                 </p>
               </div>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-1 pt-2 border-t border-gray-100">
                 <div>
-                  <p className="text-base font-extrabold text-gray-900 leading-none">8+</p>
+                  <p className="text-base font-extrabold text-gray-900 leading-none">9+</p>
                   <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
-                    Projects
+                    Project
                   </p>
                 </div>
                 <div>
-                  <p className="text-base font-extrabold text-gray-900 leading-none">3.11</p>
+                  <p className="text-base font-extrabold text-gray-900 leading-none">24</p>
                   <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
-                    GPAX
+                    Age
                   </p>
                 </div>
                 <div>
