@@ -16,6 +16,8 @@ export const techSkills = [
       { label: "Java", icon: "image/skills/programming/java.png" },
       { label: "Html", icon: "image/skills/programming/html.png" },
       { label: "CSS", icon: "image/skills/programming/css.png" },
+      { label: "Go", icon: "image/skills/programming/go.png" }
+
     ],
   },
   {
@@ -40,6 +42,8 @@ export const techSkills = [
       { label: "FastAPI", icon: "image/skills/framework/fastapi.png" },
       { label: "Express", icon: "image/skills/framework/express-js.png" },
       { label: "Springboot", icon: "image/skills/framework/spring.png" },
+      { label: "Go", icon: "image/skills/programming/go.png" }
+
     ],
   },
  {
