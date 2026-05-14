@@ -6,11 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "design:link": "design.md lint design.md",
+    "design:lint": "design.md lint design.md"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@google/design.md": "^0.1.1",
     "@mui/icons-material": "^7.1.1",
     "@mui/lab": "^7.0.0-beta.14",
     "@mui/material": "^7.1.2",
