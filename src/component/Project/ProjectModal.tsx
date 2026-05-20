@@ -18,28 +18,28 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+        className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-3 sm:p-4"
         onClick={onClose}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white rounded-lg max-w-7xl w-full max-h-[95vh] overflow-hidden flex flex-col"
+          className="bg-white rounded-lg max-w-[95vw] sm:max-w-3xl lg:max-w-7xl w-full max-h-[95vh] overflow-hidden flex flex-col"
         >
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-800">{project.title}</h2>
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-800 truncate pr-3">{project.title}</h2>
             <button
               onClick={onClose}
-              className="text-gray-400 leading-none hover:text-gray-600 text-2xl font-light w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+              className="text-gray-400 leading-none hover:text-gray-600 text-2xl font-light w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
             >
               ×
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6">
             <div
-              className={`grid gap-6 ${
+              className={`grid gap-3 sm:gap-6 ${
                 project.layout === "mobile"
-                  ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-                  : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                  ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
               }`}
             >
               {project.images.map((img, i) => (
@@ -54,7 +54,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                     className={`w-full block transition-transform duration-500 group-hover:scale-105 ${
                       project.layout === "mobile"
                         ? "aspect-[9/19] object-cover object-top"
-                        : "h-48 object-cover"
+                        : "h-40 sm:h-48 object-cover"
                     }`}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">

@@ -12,34 +12,34 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center relative overflow-hidden py-10 px-4"
+      className="min-h-screen flex items-center relative overflow-hidden py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8"
     >
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-56 sm:w-80 h-56 sm:h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 lg:gap-16">
 
           {/* ── LEFT ── */}
-          <div className="w-full max-w-xl space-y-5">
+          <div className="w-full max-w-xl space-y-4 sm:space-y-5">
 
             {/* Status pill */}
-            <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-3 py-1.5 rounded-full shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="text-xs font-medium text-gray-600">
+              <span className="text-[11px] sm:text-xs font-medium text-gray-600">
                 Available for work · Bangkok GMT+7
               </span>
             </div>
 
             {/* Title */}
             <div>
-              <h1 className="text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.05] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold text-slate-900 leading-[1.05] tracking-tight">
                 Hello, I&apos;m
               </h1>
-              <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mt-1">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight mt-1">
                 <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                   Putthipong
                 </span>
@@ -48,8 +48,8 @@ const Hero = () => {
             </div>
 
             {/* Role with code icon + typing */}
-            <div className="flex items-center gap-2.5 min-h-[2.5rem] lg:min-h-[2.75rem]">
-              <HiCode className="text-blue-500 text-2xl flex-shrink-0" />
+            <div className="flex items-center gap-2.5 min-h-[2.25rem] sm:min-h-[2.5rem] lg:min-h-[2.75rem]">
+              <HiCode className="text-blue-500 text-xl sm:text-2xl flex-shrink-0" />
               <TypeAnimation
                 sequence={[
                   "Full-stack Developer",
@@ -61,28 +61,28 @@ const Hero = () => {
                 speed={50}
                 repeat={Infinity}
                 cursor={true}
-                className="text-xl lg:text-2xl font-semibold text-slate-700 inline-block min-w-[200px]"
+                className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-700 inline-block min-w-[160px] sm:min-w-[200px]"
               />
             </div>
 
             {/* Bio */}
-            <p className="text-base leading-relaxed max-w-xl" style={{ color: '#4b5563' }}>
+            <p className="text-sm sm:text-base leading-relaxed max-w-xl" style={{ color: '#4b5563' }}>
               Passionate, self-motivated developer focused on software engineering and
               full-stack development — building clean, useful interfaces. Always learning,
               always shipping.
             </p>
 
             {/* Info row (icons + text) */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm" style={{ color: '#4b5563' }}>
+            <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm" style={{ color: '#4b5563' }}>
               <span className="inline-flex items-center gap-1.5">
                 <MdLocationOn className="text-red-500 text-base" />
                 Bangkok, Thailand
               </span>
               <a
                 href="mailto:putthipong.chb@gmail.com"
-                className="inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors"
+                className="inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors break-all"
               >
-                <MdEmail className="text-blue-500 text-base" />
+                <MdEmail className="text-blue-500 text-base flex-shrink-0" />
                 putthipong.chb@gmail.com
               </a>
               <span className="inline-flex items-center gap-1.5">
@@ -95,14 +95,14 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
                 onClick={() => scrollTo("projects")}
-                className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer w-full sm:w-auto"
               >
                 View My Work
                 <FaArrowRight className="text-xs" />
               </button>
               <button
                 onClick={() => scrollTo("contact")}
-                className="inline-flex items-center justify-center gap-2 bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 cursor-pointer w-full sm:w-auto"
               >
                 <FaEnvelope className="text-sm" />
                 Contact Me
@@ -119,7 +119,7 @@ const Hero = () => {
           </div>
 
           {/* ── RIGHT: ID card (compact) ── */}
-          <div className="w-full max-w-[260px] flex-shrink-0">
+          <div className="w-full max-w-[280px] sm:max-w-[260px] flex-shrink-0">
             <div className="bg-white border-2 border-gray-200 rounded-2xl shadow-xl p-3 space-y-3">
 
               {/* Card header */}
@@ -132,8 +132,8 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Photo area — closer to original ~220px */}
-              <div className="relative h-56 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50 border border-gray-100">
+              {/* Photo area */}
+              <div className="relative h-52 sm:h-56 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50 border border-gray-100">
                 <div
                   className="absolute inset-0 opacity-40"
                   style={{
