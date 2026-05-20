@@ -84,10 +84,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed my-2 top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 translate-y-0 opacity-100">
-      <div className="flex items-center bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-2 sm:px-4 py-1 shadow-2xl gap-1 sm:gap-2">
+    <nav className="fixed my-2 top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 translate-y-0 opacity-100 max-w-[calc(100vw-1rem)]">
+      <div className="flex items-center bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-1.5 sm:px-3 lg:px-4 py-1 shadow-2xl gap-0.5 sm:gap-1.5 lg:gap-2">
         {/* Brand */}
-        <div className="hidden sm:flex items-center">
+        <div className="hidden md:flex items-center">
           {isDetailPage && (
             <Link
               href="/#projects"
@@ -110,7 +110,7 @@ const Navbar = () => {
             key={id}
             onClick={() => scrollToSection(id)}
             className={`cursor-pointer flex items-center gap-1.5 rounded-full transition-all duration-300
-              px-3 py-2 sm:px-4 sm:py-2
+              px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-4
               ${
                 isActive(id)
                   ? "text-white bg-black/80 shadow-lg"
@@ -119,7 +119,7 @@ const Navbar = () => {
             aria-label={label}
           >
             {icon}
-            <span className="hidden sm:inline text-sm">{label}</span>
+            <span className="hidden md:inline text-sm">{label}</span>
           </button>
         ))}
       </div>
