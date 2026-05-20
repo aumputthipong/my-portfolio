@@ -2,37 +2,21 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
-
-const seniorProject = {
-  full_project_name:
-    "Web Application Platform to Support Image and Video Analysis with AI in a Microservice Model",
-  title: "AI Garden System",
-  description:
-    "Full-stack web application platform enabling users to analyze images and videos using AI computer vision services — supporting object detection, regression, classification, and image segmentation.",
-  tech: [
-    { name: "React", icon: "image/skills/framework/react.png" },
-    { name: "NestJs", icon: "image/skills/framework/nestjs.png" },
-    { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
-    { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
-    { name: "PostGreSQL", icon: "image/skills/framework/Postgresql.png" },
-    { name: "Docker", icon: "image/skills/tools/docker.png" },
-  ],
-  image: "/projects/senior/ai-web (3).png",
-  year: 2025,
-};
+import { seniorProject } from "@/data/SeniorProjectData";
+import TechBadge from "../UI/TechBadge";
 
 const GraduationProjects = () => {
   const router = useRouter();
   return (
-    <div className="max-w-6xl mx-auto px-4 pb-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
       <div
         className="group border-2 border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden bg-white cursor-pointer"
         onClick={() => router.push("/projects/senior")}
       >
         <div className="flex flex-col lg:flex-row">
 
-          {/* Image side — gradient bg with diagonal stripe overlay */}
-          <div className="relative lg:w-1/2 h-72 lg:h-auto overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center p-4 lg:p-5 border-b lg:border-b-0 lg:border-r border-gray-200">
+          {/* Image side */}
+          <div className="relative lg:w-1/2 h-56 sm:h-64 md:h-72 lg:h-auto overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center p-3 sm:p-4 lg:p-5 border-b lg:border-b-0 lg:border-r border-gray-200">
             <div
               className="absolute inset-0 opacity-40 pointer-events-none"
               style={{
@@ -54,7 +38,7 @@ const GraduationProjects = () => {
             </div>
 
             {/* Mobile title overlay */}
-            <div className="absolute bottom-5 left-5 right-5 lg:hidden z-20">
+            <div className="absolute bottom-4 left-4 right-4 lg:hidden z-20">
               <span className="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-full mb-2 tracking-widest uppercase">
                 Senior Project · 2025
               </span>
@@ -62,7 +46,7 @@ const GraduationProjects = () => {
           </div>
 
           {/* Info side */}
-          <div className="lg:w-1/2 p-5 lg:p-6 flex flex-col gap-3">
+          <div className="lg:w-1/2 p-4 sm:p-5 lg:p-6 flex flex-col gap-3">
 
             {/* Badge + year (desktop) */}
             <div className="hidden lg:flex items-center gap-3">
@@ -73,31 +57,24 @@ const GraduationProjects = () => {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl lg:text-2xl font-extrabold text-gray-900 leading-tight">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-gray-900 leading-tight">
               {seniorProject.title}
             </h3>
 
-            {/* Tagline (full project name) */}
-            <p className="text-xs italic leading-snug" style={{ color: '#9ca3af' }}>
+            {/* Tagline */}
+            <p className="text-[11px] sm:text-xs italic leading-snug" style={{ color: '#9ca3af' }}>
               {seniorProject.full_project_name}
             </p>
 
             {/* Description */}
-            <p className="text-sm leading-relaxed" style={{ color: '#4b5563' }}>
-              {seniorProject.description}
+            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#4b5563' }}>
+              {seniorProject.shortDescription}
             </p>
 
-            {/* Tech chips (mono style) */}
+            {/* Tech chips */}
             <div className="flex flex-wrap gap-1">
               {seniorProject.tech.map((tech, i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center gap-1.5 border border-gray-200 bg-white hover:bg-gray-50 hover:border-slate-300 hover:shadow-sm text-[11px] font-mono px-2.5 py-1 rounded-md transition-all duration-200"
-                  style={{ color: '#374151' }}
-                >
-                  <img src={tech.icon} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
-                  {tech.name}
-                </span>
+                <TechBadge key={i} tech={tech} />
               ))}
             </div>
 
@@ -106,7 +83,7 @@ const GraduationProjects = () => {
               <Link
                 href="/projects/senior"
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group/btn"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group/btn"
               >
                 View Details
                 <FaArrowRight className="text-xs group-hover/btn:translate-x-0.5 transition-transform duration-200" />

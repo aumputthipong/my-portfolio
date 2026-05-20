@@ -13,13 +13,19 @@ export const metadata: Metadata = {
   description: "my portfolio website",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+};
+
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
   <html lang="en" className="scroll-smooth">
-      <body className="bg-white text-gray min-h-screen flex flex-col">
+      <body className="bg-white text-gray min-h-screen flex flex-col overflow-x-hidden">
         <MUIThemeProvider >
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full">{children}</main>
         <Footer />
         </MUIThemeProvider>
       </body>
