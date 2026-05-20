@@ -4,6 +4,17 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .thumb-strip::-webkit-scrollbar {
   height: 15px;
 }
@@ -19,4 +30,10 @@ html {
 .thumb-strip::-webkit-scrollbar-thumb:hover {
   background: #475569;
   cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .thumb-strip::-webkit-scrollbar {
+    height: 6px;
+  }
 }
