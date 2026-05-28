@@ -1,25 +1,47 @@
 "use client";
 
-import { projectData } from "@/data/ProjectsData";
+import { projectData, type Project } from "@/data/ProjectsData";
+import { seniorProject } from "@/data/SeniorProjectData";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import GraduationProjects from "./Project/GraduationProjects";
+import ProjectShowcase from "./Project/ProjectShowcase";
 import SectionHeader from "./UI/SectionHeader";
 import TechBadge from "./UI/TechBadge";
+
+const seniorAsProject: Project & { id: string | number; href: string } = {
+  id: "senior" as unknown as number,
+  title: seniorProject.title,
+  type: "Software Development",
+  description: seniorProject.shortDescription,
+  tech: seniorProject.tech,
+  ref: false,
+  image: seniorProject.image,
+  year: seniorProject.year,
+  images: seniorProject.images,
+  haveImage: true,
+  layout: "web",
+  href: "/projects/senior",
+  github: "https://github.com/aumputthipong/AI-garden-System",
+};
+
+const allProjects: Array<Project & { href?: string }> = [
+  seniorAsProject,
+  ...projectData,
+];
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
   const router = useRouter();
-  const types = [...new Set(projectData.map((p) => p.type))];
+  const types = [...new Set(allProjects.map((p) => p.type))];
   const tabs = ["All", ...types];
 
   const filteredProjects =
     activeTab === "All"
-      ? projectData
-      : projectData.filter((p) => p.type === activeTab);
+      ? allProjects
+      : allProjects.filter((p) => p.type === activeTab);
 
   return (
     <section id="projects" className="bg-zinc-50">
@@ -27,8 +49,8 @@ export default function Projects() {
         <SectionHeader label="Projects" index="03 / 04" />
       </div>
 
-      {/* Senior Project */}
-      <GraduationProjects />
+      {/* Highlight showcase carousel: graduated + personal */}
+      <ProjectShowcase />
 
       {/* Academic Projects */}
       <div className="max-w-6xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
@@ -48,7 +70,7 @@ export default function Projects() {
               >
                 {tab}
                 <span className={`ml-1.5 text-[11px] sm:text-xs ${activeTab === tab ? "text-white/60" : "text-gray-400"}`}>
-                  ({tab === "All" ? projectData.length : projectData.filter((p) => p.type === tab).length})
+                  ({tab === "All" ? allProjects.length : allProjects.filter((p) => p.type === tab).length})
                 </span>
               </button>
             ))}
@@ -65,7 +87,7 @@ export default function Projects() {
               transition={{ duration: 0.3, delay: index * 0.08 }}
               whileHover={{ y: -4 }}
               className="group cursor-pointer"
-              onClick={() => router.push(`/projects/${project.id}`)}
+              onClick={() => router.push(project.href ?? `/projects/${project.id}`)}
             >
               <div className="h-full flex flex-col rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden bg-white">
 
@@ -157,7 +179,7 @@ export default function Projects() {
                         {project.year}
                       </span>
                       <Link
-                        href={`/projects/${project.id}`}
+                        href={project.href ?? `/projects/${project.id}`}
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-1.5 bg-gray-900 hover:bg-black text-white text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
                       >
