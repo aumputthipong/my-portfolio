@@ -27,7 +27,7 @@ export const projectData: Project[] = [
       { name: "PostgreSQL", icon: "image/skills/framework/Postgresql.png" },
       { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
     ],
-    github: "",
+    github: "https://github.com/aumputthipong/Kanban-management",
     ref: false,
     image: "/projects/kanban-manage/kanban-manage (11).png",
     year: 2026,
