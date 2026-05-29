@@ -52,7 +52,7 @@ const Introduction = () => {
         >
           {/* Card header */}
           <div className="flex items-center justify-between text-[10px] font-mono">
-            <span className="text-gray-400 tracking-wider">EDU_001</span>
+            <span className="text-gray-400 tracking-wider">EDUCATION</span>
             <div className="flex items-center gap-1">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
               <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
@@ -61,11 +61,11 @@ const Introduction = () => {
           </div>
 
           {/* Logo area */}
-          <div className="relative h-36 sm:h-40 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50 border border-gray-100 flex items-center justify-center">
+          <div className="relative h-36 sm:h-40 rounded-xl overflow-hidden bg-white border border-gray-100 flex items-center justify-center">
             <div
-              className="absolute inset-0 opacity-40"
+              className="absolute inset-0"
               style={{
-                backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(148,163,184,0.12) 14px, rgba(148,163,184,0.12) 15px)`,
+                backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(0,0,0,0.04) 22px 23px)`,
               }}
             />
             <img
