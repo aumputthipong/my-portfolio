@@ -97,9 +97,9 @@ const Navbar = () => {
               Back
             </Link>
           )}
-          <Link href="/" className="text-sm font-semibold text-black/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-black transition-colors">
+          <Link href="/" className="font-display text-base font-semibold text-black/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-black transition-colors">
             Putthipong
-            <span className="font-light text-black/50">.portfolio</span>
+            <span className="font-normal text-black/50">.portfolio</span>
           </Link>
           <div className="w-px h-5 bg-black/10 mx-2" />
         </div>
@@ -113,7 +113,7 @@ const Navbar = () => {
               px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-4
               ${
                 isActive(id)
-                  ? "text-white bg-black/80 shadow-lg"
+                  ? "text-white bg-accent shadow-lg"
                   : "text-black/80 hover:text-black hover:bg-black/10"
               }`}
             aria-label={label}

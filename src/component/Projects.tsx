@@ -63,7 +63,7 @@ export default function Projects() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-medium rounded-full transition-all duration-200 ${
                   activeTab === tab
-                    ? "bg-slate-800 text-white shadow-md"
+                    ? "bg-accent text-white shadow-md"
                     : "text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                 }`}
               >
@@ -116,7 +116,7 @@ export default function Projects() {
 
                 {/* Card body */}
                 <div className="flex-1 flex flex-col pt-4">
-                  <h3 className="font-bold text-gray-900 text-sm sm:text-[15px] leading-snug mb-2">
+                  <h3 className="font-display font-semibold text-gray-900 text-[15px] sm:text-base leading-snug mb-2">
                     {project.title}
                   </h3>
                   <p className="text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2" style={{ color: '#6b7280' }}>
