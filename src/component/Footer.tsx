@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="w-full bg-slate-900 text-gray-200 py-4 sm:py-5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-center sm:text-left">
         {/* Name */}
-        <h3 className="text-xs sm:text-sm font-semibold tracking-wide">
+        <h3 className="font-display text-sm sm:text-base font-semibold tracking-wide">
           Putthipong Chobngam
         </h3>
         {/* Social Icons */}

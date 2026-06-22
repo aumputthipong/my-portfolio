@@ -39,7 +39,7 @@ const GraduationProjects = () => {
 
             {/* Mobile title overlay */}
             <div className="absolute bottom-4 left-4 right-4 lg:hidden z-20">
-              <span className="inline-block bg-slate-100 text-slate-900 text-[10px] font-bold px-2.5 py-1 rounded-full mb-2 tracking-widest uppercase">
+              <span className="inline-block bg-accent-soft text-accent text-[10px] font-bold px-2.5 py-1 rounded-full mb-2 tracking-widest uppercase">
                 Senior Project · 2025
               </span>
             </div>
@@ -50,14 +50,14 @@ const GraduationProjects = () => {
 
             {/* Badge + year (desktop) */}
             <div className="hidden lg:flex items-center gap-3">
-              <span className="inline-block bg-slate-100 text-slate-900 text-[10px] font-bold px-2.5 py-1 rounded-full tracking-[0.2em] uppercase">
+              <span className="inline-block bg-accent-soft text-accent text-[10px] font-bold px-2.5 py-1 rounded-full tracking-[0.2em] uppercase">
                 Senior Project
               </span>
               <span className="text-xs font-mono text-gray-400">{seniorProject.year}</span>
             </div>
 
             {/* Title */}
-            <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-gray-900 leading-tight">
+            <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 leading-tight">
               {seniorProject.title}
             </h3>
 

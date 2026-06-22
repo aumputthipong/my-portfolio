@@ -118,7 +118,7 @@ export default function ProjectDetailPage() {
                           key={i}
                           ref={setThumbRef(i)}
                           onClick={() => select(i)}
-                          className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-md sm:rounded-lg border-2 transition-all duration-200 ${i === selectedIndex ? "border-slate-700 shadow-md" : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"}`}
+                          className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-md sm:rounded-lg border-2 transition-all duration-200 ${i === selectedIndex ? "border-accent shadow-md" : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"}`}
                         >
                           {isMobile ? (
                             <img src={img} alt={`Thumb ${i + 1}`} className="w-10 h-16 sm:w-14 sm:h-20 object-cover object-top bg-gray-900" />
@@ -146,7 +146,7 @@ export default function ProjectDetailPage() {
               <div className="flex items-center justify-between text-[10px] font-mono">
                 <span className="text-gray-400 tracking-wider">PROJ_{String(project.id).padStart(3, "0")}</span>
                 <div className="flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" />
                   <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
                   <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
                 </div>
@@ -156,7 +156,7 @@ export default function ProjectDetailPage() {
                 <span className="inline-block bg-gray-100 text-gray-500 text-[11px] sm:text-xs font-semibold px-3 py-1 rounded-full border border-gray-200 mb-2">
                   {project.type}
                 </span>
-                <h1 className="text-lg sm:text-xl font-extrabold text-gray-900 leading-snug">
+                <h1 className="font-display text-xl sm:text-2xl font-semibold text-gray-900 leading-snug">
                   {project.title}
                 </h1>
               </div>

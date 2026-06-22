@@ -112,8 +112,8 @@ export default function ProjectShowcase() {
       {/* Showcase header */}
       <div className="flex flex-wrap items-end justify-between gap-4 sm:gap-6 mb-5 sm:mb-7">
         <div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-none text-gray-900">
-            Selected <span className="text-slate-900">Projects</span>.
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-none text-gray-900">
+            Selected Projects<span className="text-accent">.</span>
           </h2>
         </div>
 
@@ -129,13 +129,13 @@ export default function ProjectShowcase() {
                   onClick={() => goTo(i)}
                   className={`text-left rounded-lg border px-2.5 py-1.5 flex flex-col leading-tight transition-all duration-200 hover:-translate-y-0.5 ${
                     active
-                      ? "border-slate-900 bg-slate-100"
+                      ? "border-accent bg-accent-soft"
                       : "border-gray-200 bg-white hover:border-gray-400"
                   }`}
                 >
                   <span
                     className={`font-mono text-[9px] tracking-wider ${
-                      active ? "text-slate-900 font-semibold" : "text-gray-500"
+                      active ? "text-accent font-semibold" : "text-gray-500"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")} / {h.glyph}
@@ -194,7 +194,7 @@ export default function ProjectShowcase() {
               {/* Image side — pattern only, no gradient bg, no glyph */}
               <div className="relative overflow-hidden bg-white min-h-[240px]">
                 <span className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur border border-gray-200 font-mono text-[10px] sm:text-[11px] tracking-wider text-gray-700">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> {h.badge}
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" /> {h.badge}
                 </span>
                 <span className="absolute bottom-5 left-5 z-20 px-3 py-1.5 rounded-full bg-white/85 border border-gray-200 font-mono text-[11px] text-gray-700">
                   {h.year}
@@ -226,7 +226,7 @@ export default function ProjectShowcase() {
                   <div className="flex flex-wrap items-center gap-2.5 mb-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-gray-500">
                     <span>{h.category}</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-extrabold tracking-tight leading-[1.05] text-gray-900 mb-3">
+                  <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-semibold tracking-tight leading-[1.05] text-gray-900 mb-3">
                     {h.title}
                   </h3>
                   <p className="text-xs sm:text-sm italic text-gray-500 leading-snug mb-3 max-w-md">
@@ -268,7 +268,7 @@ export default function ProjectShowcase() {
 
         {/* Progress rail */}
         <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-black/[0.06] z-30">
-          <div ref={fillRef} className="h-full bg-slate-900" style={{ width: "0%" }} />
+          <div ref={fillRef} className="h-full bg-accent" style={{ width: "0%" }} />
         </div>
       </div>
 

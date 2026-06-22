@@ -10,8 +10,8 @@ const Introduction = () => {
       {/* Card header */}
       <div className="flex items-center justify-between mb-5 sm:mb-6">
         <p className="text-[11px] sm:text-xs font-mono text-gray-400 flex items-center gap-2">
-          <span className="w-5 sm:w-6 h-px bg-slate-900" />
-          <span className="text-gray-400">{"//"}</span> TECH STACK
+          <span className="w-5 sm:w-6 h-px bg-accent" />
+          <span className="text-accent">{"//"}</span> TECH STACK
         </p>
         <p className="text-[11px] sm:text-xs font-mono text-gray-400">{total} technologies</p>
       </div>
@@ -54,7 +54,7 @@ const Introduction = () => {
           <div className="flex items-center justify-between text-[10px] font-mono">
             <span className="text-gray-400 tracking-wider">EDUCATION</span>
             <div className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
+              <span className="w-1.5 h-1.5 bg-accent rounded-full" />
               <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
               <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
             </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { FaGithub, FaLinkedin, FaGraduationCap } from "react-icons/fa";
-import { HiCode } from "react-icons/hi";
 import { MdEmail, MdLocationOn } from "react-icons/md";
 
 const Hero = () => {
@@ -14,28 +13,24 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-8 sm:gap-10 lg:gap-16">
 
           {/* ── LEFT ── */}
-          <div className="w-full max-w-xl space-y-4 sm:space-y-5">
+          <div className="w-full max-w-xl space-y-5 sm:space-y-6">
 
             {/* Title */}
-            <div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold text-slate-900 leading-[1.05] tracking-tight">
-                Putthipong Chobngam
+            <div className="space-y-3">
+              <h1 className="font-display font-semibold text-slate-900 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.01em]">
+                Putthipong<br />Chobngam<span className="text-accent">.</span>
               </h1>
-            </div>
-
-            {/* Role with code icon */}
-            <div className="flex items-center gap-2.5">
-              <HiCode className="text-slate-700 text-xl sm:text-2xl flex-shrink-0" />
-              <span className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-700">
-                Full-stack Developer / Software Engineer
-              </span>
+              <p className="text-lg sm:text-xl text-slate-600">
+                Full-stack developer &amp; software engineer
+              </p>
             </div>
 
             {/* Bio */}
-            <p className="text-sm sm:text-base leading-relaxed max-w-xl" style={{ color: '#4b5563' }}>
-              Passionate, self-motivated developer focused on software engineering and
-              full-stack development — building clean, useful interfaces. Always learning,
-              always shipping.
+            <p className="text-sm sm:text-base leading-relaxed max-w-md text-gray-600">
+              I&apos;m a software engineer from Bangkok, fresh out of KMITL. I build
+              full-stack web and mobile apps end to end — most recently an AI-assisted
+              garden system for my senior project. I like turning messy problems into
+              clean, working software.
             </p>
 
             {/* Info row (icons + text) */}
@@ -46,7 +41,7 @@ const Hero = () => {
               </span>
               <a
                 href="mailto:putthipong.chb@gmail.com"
-                className="inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors break-all"
+                className="inline-flex items-center gap-1.5 hover:text-accent transition-colors break-all"
               >
                 <MdEmail className="text-slate-700 text-base flex-shrink-0" />
                 putthipong.chb@gmail.com
@@ -63,7 +58,7 @@ const Hero = () => {
                 href="https://github.com/aumputthipong"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-slate-900 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-accent transition-colors"
               >
                 <FaGithub className="text-base" /> GitHub
               </a>
@@ -72,18 +67,10 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/putthipong-chobngam/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-slate-900 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-accent transition-colors"
               >
                 <FaLinkedin className="text-base" /> LinkedIn
               </a>
-            </div>
-
-            {/* Scroll hint */}
-            <div className="hidden lg:flex items-center gap-3 pt-4">
-              <div className="w-10 h-px bg-gray-300" />
-              <span className="text-[11px] font-semibold tracking-widest uppercase text-gray-400">
-                Scroll to explore
-              </span>
             </div>
           </div>
 
@@ -92,7 +79,7 @@ const Hero = () => {
             <div className="relative">
               {/* offset frame — signature */}
               <div
-                className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border border-slate-300"
+                className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border border-accent/40"
                 aria-hidden
               />
               {/* photo */}

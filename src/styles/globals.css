@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --color-accent: #1f6f4e;
+  --color-accent-dark: #14532d;
+  --color-accent-soft: #ecf4ef;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+}
+
 html {
   scroll-behavior: smooth;
 }
