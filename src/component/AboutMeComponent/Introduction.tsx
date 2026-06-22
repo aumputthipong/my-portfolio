@@ -50,10 +50,12 @@ const Introduction = () => {
             About me
           </h3>
           <p className="text-sm leading-relaxed text-gray-600">
-            I&apos;m a Software Engineering graduate from KMITL with a strong focus on
-            full-stack development. I&apos;ve built hands-on projects with TypeScript,
-            React, Next.js, NestJS, and Go, and I care about clean code and solid
-            engineering practices — always learning, always improving.
+            A highly motivated Software Engineering graduate from King Mongkut&apos;s
+            Institute of Technology Ladkrabang (KMITL) with a strong focus on full-stack
+            development. I have hands-on experience building projects using TypeScript,
+            React, Next.js, NestJS, and Go. I am eager to keep learning, improve my coding
+            practices, and apply software engineering best practices to problem-solving and
+            project collaboration.
           </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4 text-sm font-medium">
             <a
@@ -102,21 +104,9 @@ const Introduction = () => {
             <p className="text-sm text-gray-500 mt-0.5">
               KMITL · Software Engineering
             </p>
-          </div>
-        </div>
-
-        <div className="flex items-end gap-10 mt-6 pt-5 border-t border-gray-200">
-          <div>
-            <p className="font-display text-2xl sm:text-3xl font-semibold text-slate-900 leading-none">
-              2025
+            <p className="text-xs text-gray-400 mt-1.5">
+              Graduated 2025 · GPAX 3.11 / 4.00
             </p>
-            <p className="text-[11px] text-gray-500 mt-2">Graduated</p>
-          </div>
-          <div>
-            <p className="font-display text-2xl sm:text-3xl font-semibold text-slate-900 leading-none">
-              3.11<span className="text-sm font-sans text-gray-400">/4.00</span>
-            </p>
-            <p className="text-[11px] text-gray-500 mt-2">GPAX</p>
           </div>
         </div>
         </div>

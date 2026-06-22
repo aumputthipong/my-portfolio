@@ -79,17 +79,21 @@ export default function ProjectShowcase() {
 
   const restart = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const active = !paused && !prefersReduced;
     const fill = fillRef.current;
     if (fill) {
       fill.style.transition = "none";
       fill.style.width = "0%";
       void fill.offsetWidth;
-      if (!paused) {
+      if (active) {
         fill.style.transition = `width ${SLIDE_DURATION}ms linear`;
         fill.style.width = "100%";
       }
     }
-    if (!paused && total > 1) {
+    if (active && total > 1) {
       timerRef.current = setTimeout(() => {
         setCurrent((c) => (c + 1) % total);
       }, SLIDE_DURATION);
@@ -244,7 +248,7 @@ export default function ProjectShowcase() {
                 <div className="flex flex-wrap gap-2.5">
                   <Link
                     href={h.href}
-                    className="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
+                    className="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-200"
                   >
                     View Details
                     <FaArrowRight className="text-[10px]" />
@@ -254,7 +258,7 @@ export default function ProjectShowcase() {
                       href={h.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white hover:border-gray-800 text-gray-900 border border-gray-200 text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full transition-all duration-200"
+                      className="inline-flex items-center gap-2 bg-white hover:border-gray-800 text-gray-900 border border-gray-200 text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl transition-all duration-200"
                     >
                       <FaGithub />
                       Code

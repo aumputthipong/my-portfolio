@@ -18,7 +18,7 @@ const Hero = () => {
             {/* Title */}
             <div className="space-y-3">
               <h1 className="font-display font-semibold text-slate-900 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.01em]">
-                Putthipong<br />Chobngam<span className="text-accent">.</span>
+                Putthipong<br /><span className="text-accent">Chobngam.</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-600">
                 Full-stack developer &amp; software engineer
@@ -27,10 +27,10 @@ const Hero = () => {
 
             {/* Bio */}
             <p className="text-sm sm:text-base leading-relaxed max-w-md text-gray-600">
-              I&apos;m a software engineer from Bangkok, fresh out of KMITL. I build
-              full-stack web and mobile apps end to end — most recently an AI-assisted
-              garden system for my senior project. I like turning messy problems into
-              clean, working software.
+              I&apos;m a Software Engineering graduate from KMITL with a strong focus on
+              full-stack development — building with TypeScript, React, Next.js, NestJS,
+              and Go. Eager to keep learning and apply solid engineering practices to
+              every project.
             </p>
 
             {/* Info row (icons + text) */}
