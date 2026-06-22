@@ -87,7 +87,7 @@ export default function Projects() {
               className="group cursor-pointer"
               onClick={() => router.push(project.href ?? `/projects/${project.id}`)}
             >
-              <div className="h-full flex flex-col rounded-2xl p-3 border border-transparent transition-all duration-300 group-hover:bg-gray-50 group-hover:border-gray-200 group-hover:shadow-sm">
+              <div className="h-full flex flex-col rounded-2xl p-3 bg-white border border-gray-200 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md">
 
                 {/* Banner image */}
                 <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden rounded-xl bg-gray-900 flex-shrink-0">
