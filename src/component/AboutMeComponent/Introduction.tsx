@@ -1,3 +1,4 @@
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { techSkills } from "../../data/TechSkillsData";
 import TechBadge from "../UI/TechBadge";
 
@@ -5,109 +6,109 @@ const Introduction = () => {
   const total = techSkills.reduce((sum, s) => sum + s.skills.length, 0);
 
   return (
-    <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm p-4 sm:p-6 lg:p-8">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
 
-      {/* Card header */}
-      <div className="flex items-center justify-between mb-5 sm:mb-6">
-        <p className="text-[11px] sm:text-xs font-mono text-gray-400 flex items-center gap-2">
-          <span className="w-5 sm:w-6 h-px bg-blue-500" />
-          <span className="text-blue-500">{"//"}</span> TECH STACK
-        </p>
-        <p className="text-[11px] sm:text-xs font-mono text-gray-400">{total} technologies</p>
-      </div>
-
-      {/* Tech stack rows + Education card */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-
-        {/* LEFT: Tech stack rows */}
-        <div className="md:col-span-2 lg:col-span-2 space-y-1" id="skills">
-          {techSkills.map((section, idx) => (
-            <div
-              key={section.category}
-              className={`flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 py-2.5 ${
-                idx !== techSkills.length - 1 ? "border-b border-gray-100" : ""
-              }`}
-            >
-              <div className="sm:w-40 lg:w-44 flex items-center gap-2 flex-shrink-0">
-                <p className="text-[11px] sm:text-xs font-bold text-gray-900 uppercase tracking-widest">
-                  {section.category.replace("Programming ", "").replace("Development", "")}
-                </p>
-                <span className="text-[10px] font-mono text-gray-400">
-                  {String(section.skills.length).padStart(2, "0")}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-1.5 flex-1 min-w-0">
-                {section.skills.map((skill) => (
-                  <TechBadge key={skill.label} tech={{ name: skill.label, icon: skill.icon }} />
-                ))}
-              </div>
-            </div>
-          ))}
+      {/* ── LEFT: Tech stack ── */}
+      <div className="lg:col-span-3" id="skills">
+        <div className="flex items-baseline justify-between mb-5">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-slate-900">
+            Tech stack
+          </h3>
+          <span className="text-[11px] font-mono text-gray-400">
+            {total} technologies
+          </span>
         </div>
 
-        {/* RIGHT: Education card (matching Hero ID card style) */}
-        <div
-          id="education"
-          className="md:col-span-2 lg:col-span-1 bg-white border-2 border-gray-200 rounded-2xl shadow-xl p-3 space-y-3 self-start max-w-sm mx-auto md:mx-0 w-full"
-        >
-          {/* Card header */}
-          <div className="flex items-center justify-between text-[10px] font-mono">
-            <span className="text-gray-400 tracking-wider">EDUCATION</span>
-            <div className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
-              <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
-              <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
+        {techSkills.map((section) => (
+          <div
+            key={section.category}
+            className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-3 sm:gap-8 py-6 border-t border-gray-200 first:border-t-0"
+          >
+            <div className="flex items-center gap-2.5 flex-shrink-0">
+              <p className="text-sm font-semibold text-slate-900">
+                {section.category.replace("Programming ", "").replace(" Development", "")}
+              </p>
+              <span className="text-[11px] font-mono text-gray-400">
+                {String(section.skills.length).padStart(2, "0")}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {section.skills.map((skill) => (
+                <TechBadge key={skill.label} tech={{ name: skill.label, icon: skill.icon }} />
+              ))}
             </div>
           </div>
+        ))}
+      </div>
 
-          {/* Logo area */}
-          <div className="relative h-36 sm:h-40 rounded-xl overflow-hidden bg-white border border-gray-100 flex items-center justify-center">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(0,0,0,0.04) 22px 23px)`,
-              }}
-            />
-            <img
-              src="/image/KMITL_Logo.png"
-              alt="KMITL"
-              className="relative z-10 h-24 sm:h-28 w-auto object-contain"
-            />
+      {/* ── RIGHT: About me + Education ── */}
+      <div className="lg:col-span-2 lg:border-l lg:border-gray-200 lg:pl-8 space-y-8">
 
-            {/* Graduated badge */}
-            <div className="absolute top-2 right-2 z-20 inline-flex items-center gap-1 bg-slate-900/85 backdrop-blur-sm border border-slate-700 px-2 py-0.5 rounded-full shadow-sm">
-              <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-              <span className="text-[10px] font-semibold text-white">Graduated</span>
-            </div>
+        {/* About me */}
+        <div id="about">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-slate-900 mb-3">
+            About me
+          </h3>
+          <p className="text-sm leading-relaxed text-gray-600">
+            A highly motivated Software Engineering graduate from King Mongkut&apos;s
+            Institute of Technology Ladkrabang (KMITL) with a strong focus on full-stack
+            development. I have hands-on experience building projects using TypeScript,
+            React, Next.js, NestJS, and Go. I am eager to keep learning, improve my coding
+            practices, and apply software engineering best practices to problem-solving and
+            project collaboration.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4 text-sm font-medium">
+            <a
+              href="https://github.com/aumputthipong"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+            >
+              <FaGithub className="text-base" /> GitHub
+            </a>
+            <span className="w-px h-4 bg-gray-200" />
+            <a
+              href="https://www.linkedin.com/in/putthipong-chobngam/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+            >
+              <FaLinkedin className="text-base" /> LinkedIn
+            </a>
+            <span className="w-px h-4 bg-gray-200" />
+            <a
+              href="mailto:putthipong.chb@gmail.com"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+            >
+              <FaEnvelope className="text-base" /> Email
+            </a>
           </div>
+        </div>
 
-          {/* Title + subtitle */}
-          <div>
-            <h4 className="text-sm font-bold text-gray-900 leading-tight">
+        {/* Education */}
+        <div id="education" className="pt-8 border-t border-gray-200">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-slate-900 mb-5">
+            Education
+          </h3>
+
+          <div className="flex items-center gap-4">
+          <img
+            src="/image/KMITL_Logo.png"
+            alt="KMITL"
+            className="h-14 sm:h-16 w-auto object-contain flex-shrink-0"
+          />
+          <div className="min-w-0">
+            <h4 className="font-display text-base sm:text-lg font-semibold text-slate-900 leading-snug">
               B.Sc. Information Technology
             </h4>
-            <p className="text-[11px] text-gray-500 mt-0.5">
+            <p className="text-sm text-gray-500 mt-0.5">
               KMITL · Software Engineering
             </p>
+            <p className="text-xs text-gray-400 mt-1.5">
+              Graduated 2025 · GPAX 3.11 / 4.00
+            </p>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-1 pt-2 border-t border-gray-100">
-            <div>
-              <p className="text-base font-extrabold text-gray-900 leading-none">2025</p>
-              <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
-                Graduated
-              </p>
-            </div>
-            <div>
-              <p className="text-base font-extrabold text-gray-900 leading-none">
-                3.11<span className="text-gray-400 text-xs font-bold">/4.00</span>
-              </p>
-              <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mt-1">
-                GPAX
-              </p>
-            </div>
-          </div>
+        </div>
         </div>
       </div>
 

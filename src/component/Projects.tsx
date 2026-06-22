@@ -5,7 +5,6 @@ import { seniorProject } from "@/data/SeniorProjectData";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ProjectShowcase from "./Project/ProjectShowcase";
 import SectionHeader from "./UI/SectionHeader";
@@ -44,9 +43,9 @@ export default function Projects() {
       : allProjects.filter((p) => p.type === activeTab);
 
   return (
-    <section id="projects" className="bg-zinc-50">
+    <section id="projects" className="bg-white">
       <div className="max-w-6xl mx-auto pt-10 sm:pt-12 px-4 sm:px-6 lg:px-8">
-        <SectionHeader label="Projects" index="03 / 04" />
+        <SectionHeader label="Projects" />
       </div>
 
       {/* Highlight showcase carousel: graduated + personal */}
@@ -64,7 +63,7 @@ export default function Projects() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-medium rounded-full transition-all duration-200 ${
                   activeTab === tab
-                    ? "bg-slate-800 text-white shadow-md"
+                    ? "bg-accent text-white shadow-md"
                     : "text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                 }`}
               >
@@ -85,15 +84,13 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.08 }}
-              whileHover={{ y: -4 }}
               className="group cursor-pointer"
               onClick={() => router.push(project.href ?? `/projects/${project.id}`)}
             >
-              <div className="h-full flex flex-col rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden bg-white">
+              <div className="h-full flex flex-col rounded-2xl p-3 bg-white border border-gray-200 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md">
 
                 {/* Banner image */}
-                <div className="p-3 pb-0 bg-white flex-shrink-0">
-                  <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden rounded-xl bg-gray-900">
+                <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden rounded-xl bg-gray-900 flex-shrink-0">
                     {project.layout === "mobile" && (
                       <img
                         src={project.image}
@@ -115,12 +112,11 @@ export default function Projects() {
                         <FaArrowRight className="text-[10px]" />
                       </span>
                     </div>
-                  </div>
                 </div>
 
                 {/* Card body */}
-                <div className="flex-1 flex flex-col p-4 sm:p-5">
-                  <h3 className="font-bold text-gray-900 text-sm sm:text-[15px] leading-snug mb-2">
+                <div className="flex-1 flex flex-col pt-4">
+                  <h3 className="font-display font-semibold text-gray-900 text-[15px] sm:text-base leading-snug mb-2">
                     {project.title}
                   </h3>
                   <p className="text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2" style={{ color: '#6b7280' }}>
@@ -173,19 +169,11 @@ export default function Projects() {
                       ) : null}
                     </div>
 
-                    {/* Right: year + Details button */}
+                    {/* Right: year */}
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <span className="text-[11px] sm:text-xs font-medium text-gray-400">
                         {project.year}
                       </span>
-                      <Link
-                        href={project.href ?? `/projects/${project.id}`}
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 bg-gray-900 hover:bg-black text-white text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
-                      >
-                        Details
-                        <FaArrowRight className="text-[10px]" />
-                      </Link>
                     </div>
                   </div>
                 </div>

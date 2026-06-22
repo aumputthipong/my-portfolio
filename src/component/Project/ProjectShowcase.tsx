@@ -70,14 +70,6 @@ const highlights: Highlight[] = [
     : []),
 ];
 
-const colorBg: Record<Highlight["color"], string> = {
-  indigo: "bg-gradient-to-br from-indigo-100 to-indigo-50",
-  violet: "bg-gradient-to-br from-violet-100 to-violet-50",
-  amber: "bg-gradient-to-br from-amber-100 to-amber-50",
-  emerald: "bg-gradient-to-br from-emerald-100 to-emerald-50",
-  rose: "bg-gradient-to-br from-rose-100 to-rose-50",
-};
-
 export default function ProjectShowcase() {
   const total = highlights.length;
   const [current, setCurrent] = useState(0);
@@ -87,17 +79,21 @@ export default function ProjectShowcase() {
 
   const restart = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const active = !paused && !prefersReduced;
     const fill = fillRef.current;
     if (fill) {
       fill.style.transition = "none";
       fill.style.width = "0%";
       void fill.offsetWidth;
-      if (!paused) {
+      if (active) {
         fill.style.transition = `width ${SLIDE_DURATION}ms linear`;
         fill.style.width = "100%";
       }
     }
-    if (!paused && total > 1) {
+    if (active && total > 1) {
       timerRef.current = setTimeout(() => {
         setCurrent((c) => (c + 1) % total);
       }, SLIDE_DURATION);
@@ -120,12 +116,8 @@ export default function ProjectShowcase() {
       {/* Showcase header */}
       <div className="flex flex-wrap items-end justify-between gap-4 sm:gap-6 mb-5 sm:mb-7">
         <div>
-          <div className="inline-flex items-center gap-2.5 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.18em] text-gray-500 mb-3">
-            <span className="w-5 h-px bg-blue-500" />
-            featured_work · highlight
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-none text-gray-900">
-            Selected <span className="text-blue-600">Projects</span>.
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-none text-gray-900">
+            Selected Projects<span className="text-accent">.</span>
           </h2>
         </div>
 
@@ -141,13 +133,13 @@ export default function ProjectShowcase() {
                   onClick={() => goTo(i)}
                   className={`text-left rounded-lg border px-2.5 py-1.5 flex flex-col leading-tight transition-all duration-200 hover:-translate-y-0.5 ${
                     active
-                      ? "border-blue-600 bg-blue-50"
+                      ? "border-accent bg-accent-soft"
                       : "border-gray-200 bg-white hover:border-gray-400"
                   }`}
                 >
                   <span
                     className={`font-mono text-[9px] tracking-wider ${
-                      active ? "text-blue-600 font-semibold" : "text-gray-500"
+                      active ? "text-accent font-semibold" : "text-gray-500"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")} / {h.glyph}
@@ -206,7 +198,7 @@ export default function ProjectShowcase() {
               {/* Image side — pattern only, no gradient bg, no glyph */}
               <div className="relative overflow-hidden bg-white min-h-[240px]">
                 <span className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur border border-gray-200 font-mono text-[10px] sm:text-[11px] tracking-wider text-gray-700">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500" /> {h.badge}
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" /> {h.badge}
                 </span>
                 <span className="absolute bottom-5 left-5 z-20 px-3 py-1.5 rounded-full bg-white/85 border border-gray-200 font-mono text-[11px] text-gray-700">
                   {h.year}
@@ -236,16 +228,9 @@ export default function ProjectShowcase() {
                 </span>
                 <div>
                   <div className="flex flex-wrap items-center gap-2.5 mb-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-gray-500">
-                    <span
-                      className={`px-2.5 py-1 rounded-full font-semibold text-white tracking-wider ${
-                        h.featured ? "bg-blue-600" : "bg-gray-900"
-                      }`}
-                    >
-                      {h.featured ? "★ Featured" : "Project"}
-                    </span>
                     <span>{h.category}</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-extrabold tracking-tight leading-[1.05] text-gray-900 mb-3">
+                  <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-semibold tracking-tight leading-[1.05] text-gray-900 mb-3">
                     {h.title}
                   </h3>
                   <p className="text-xs sm:text-sm italic text-gray-500 leading-snug mb-3 max-w-md">
@@ -263,7 +248,7 @@ export default function ProjectShowcase() {
                 <div className="flex flex-wrap gap-2.5">
                   <Link
                     href={h.href}
-                    className="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
+                    className="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-200"
                   >
                     View Details
                     <FaArrowRight className="text-[10px]" />
@@ -273,7 +258,7 @@ export default function ProjectShowcase() {
                       href={h.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white hover:border-gray-800 text-gray-900 border border-gray-200 text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full transition-all duration-200"
+                      className="inline-flex items-center gap-2 bg-white hover:border-gray-800 text-gray-900 border border-gray-200 text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl transition-all duration-200"
                     >
                       <FaGithub />
                       Code
@@ -287,7 +272,7 @@ export default function ProjectShowcase() {
 
         {/* Progress rail */}
         <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-black/[0.06] z-30">
-          <div ref={fillRef} className="h-full bg-blue-600" style={{ width: "0%" }} />
+          <div ref={fillRef} className="h-full bg-accent" style={{ width: "0%" }} />
         </div>
       </div>
 

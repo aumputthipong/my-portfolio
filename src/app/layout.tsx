@@ -1,11 +1,19 @@
 
 // layout.tsx
 import type { Metadata } from "next";
+import { Fraunces } from "next/font/google";
 import "../styles/globals.css";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 
 import MUIThemeProvider from "@/component/ThemeRegistry";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 
 export const metadata: Metadata = {
@@ -21,7 +29,7 @@ export const viewport = {
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
-  <html lang="en" className="scroll-smooth">
+  <html lang="en" className={`scroll-smooth ${fraunces.variable}`}>
       <body className="bg-white text-gray min-h-screen flex flex-col overflow-x-hidden">
         <MUIThemeProvider >
         <Navbar />
