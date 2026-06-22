@@ -16,7 +16,7 @@ const GraduationProjects = () => {
         <div className="flex flex-col lg:flex-row">
 
           {/* Image side */}
-          <div className="relative lg:w-1/2 h-56 sm:h-64 md:h-72 lg:h-auto overflow-hidden bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center p-3 sm:p-4 lg:p-5 border-b lg:border-b-0 lg:border-r border-gray-200">
+          <div className="relative lg:w-1/2 h-56 sm:h-64 md:h-72 lg:h-auto overflow-hidden bg-slate-50 flex items-center justify-center p-3 sm:p-4 lg:p-5 border-b lg:border-b-0 lg:border-r border-gray-200">
             <div
               className="absolute inset-0 opacity-40 pointer-events-none"
               style={{
@@ -39,7 +39,7 @@ const GraduationProjects = () => {
 
             {/* Mobile title overlay */}
             <div className="absolute bottom-4 left-4 right-4 lg:hidden z-20">
-              <span className="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-full mb-2 tracking-widest uppercase">
+              <span className="inline-block bg-slate-100 text-slate-900 text-[10px] font-bold px-2.5 py-1 rounded-full mb-2 tracking-widest uppercase">
                 Senior Project · 2025
               </span>
             </div>
@@ -50,7 +50,7 @@ const GraduationProjects = () => {
 
             {/* Badge + year (desktop) */}
             <div className="hidden lg:flex items-center gap-3">
-              <span className="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-full tracking-[0.2em] uppercase">
+              <span className="inline-block bg-slate-100 text-slate-900 text-[10px] font-bold px-2.5 py-1 rounded-full tracking-[0.2em] uppercase">
                 Senior Project
               </span>
               <span className="text-xs font-mono text-gray-400">{seniorProject.year}</span>

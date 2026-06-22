@@ -10,8 +10,8 @@ const Introduction = () => {
       {/* Card header */}
       <div className="flex items-center justify-between mb-5 sm:mb-6">
         <p className="text-[11px] sm:text-xs font-mono text-gray-400 flex items-center gap-2">
-          <span className="w-5 sm:w-6 h-px bg-blue-500" />
-          <span className="text-blue-500">{"//"}</span> TECH STACK
+          <span className="w-5 sm:w-6 h-px bg-slate-900" />
+          <span className="text-gray-400">{"//"}</span> TECH STACK
         </p>
         <p className="text-[11px] sm:text-xs font-mono text-gray-400">{total} technologies</p>
       </div>
@@ -54,7 +54,7 @@ const Introduction = () => {
           <div className="flex items-center justify-between text-[10px] font-mono">
             <span className="text-gray-400 tracking-wider">EDUCATION</span>
             <div className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+              <span className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
               <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
               <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
             </div>
@@ -74,11 +74,6 @@ const Introduction = () => {
               className="relative z-10 h-24 sm:h-28 w-auto object-contain"
             />
 
-            {/* Graduated badge */}
-            <div className="absolute top-2 right-2 z-20 inline-flex items-center gap-1 bg-slate-900/85 backdrop-blur-sm border border-slate-700 px-2 py-0.5 rounded-full shadow-sm">
-              <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-              <span className="text-[10px] font-semibold text-white">Graduated</span>
-            </div>
           </div>
 
           {/* Title + subtitle */}
