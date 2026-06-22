@@ -8,7 +8,7 @@ import SectionHeader from './UI/SectionHeader'
 const ContactSection = () => {
   return (
     <Section id="contact" bg="bg-zinc-50" className="py-10 sm:py-12 lg:py-14">
-      <SectionHeader label="Contact" index="04 / 04" />
+      <SectionHeader label="Contact" />
 
       {/* Card */}
       <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm p-5 sm:p-6 lg:p-10">
@@ -18,7 +18,7 @@ const ContactSection = () => {
           <div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 leading-tight">
               Let&apos;s build something{" "}
-              <span className="text-blue-600">good</span>
+              <span className="text-slate-900 underline decoration-2 underline-offset-4 decoration-slate-300">good</span>
               <br />
               together.
             </h2>

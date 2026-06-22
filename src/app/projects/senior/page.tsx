@@ -30,9 +30,7 @@ export default function SeniorProjectPage() {
   const handleMainClick = () => setLightboxIndex(selectedIndex);
 
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <div className="fixed top-1/4 left-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="fixed bottom-1/4 right-1/4 w-56 sm:w-80 h-56 sm:h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-white">
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-10 pb-10 sm:pb-12 relative z-10 space-y-5">
 
@@ -50,7 +48,7 @@ export default function SeniorProjectPage() {
 
             {/* Main viewer */}
             <div
-              className="relative group overflow-hidden rounded-xl bg-gray-900 shadow-xl border-2 border-gray-200"
+              className="relative group overflow-hidden rounded-xl bg-gray-900"
               onClick={handleMainClick}
             >
               <div className="aspect-video">
@@ -168,9 +166,9 @@ export default function SeniorProjectPage() {
             </div>
 
             {/* Responsibilities */}
-            <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm p-4 sm:p-5">
+            <div className="border-t border-gray-100 pt-5">
               <p className="text-[11px] font-mono text-gray-400 mb-3 sm:mb-4 flex items-center gap-1.5">
-                <span className="text-blue-500">{"//"}</span> RESPONSIBILITIES
+                <span className="text-gray-400">{"//"}</span> RESPONSIBILITIES
               </p>
               <ul className="space-y-2.5 sm:space-y-3">
                 {senior.responsibility.map((item, i) => (
@@ -188,12 +186,12 @@ export default function SeniorProjectPage() {
           {/* ── RIGHT: Info panel ── */}
           <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 lg:sticky lg:top-20">
 
-            <div className="bg-white border-2 border-gray-200 rounded-2xl shadow-xl p-4 space-y-4">
+            <div className="space-y-4">
 
               <div className="flex items-center justify-between text-[10px] font-mono">
                 <span className="text-gray-400 tracking-wider">PROJ_SENIOR</span>
                 <div className="flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
                   <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
                   <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
                 </div>
@@ -219,7 +217,7 @@ export default function SeniorProjectPage() {
 
               <div>
                 <p className="text-[11px] font-mono text-gray-400 mb-2 sm:mb-2.5 flex items-center gap-1.5">
-                  <span className="text-blue-500">{"//"}</span> TECH STACK
+                  <span className="text-gray-400">{"//"}</span> TECH STACK
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {senior.tech.map((tech, i) => (

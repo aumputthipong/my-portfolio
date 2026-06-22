@@ -17,8 +17,8 @@ export const contacts: ContactItem[] = [
     value: "putthipong.chb@gmail.com",
     href: "mailto:putthipong.chb@gmail.com",
     icon: FaEnvelope,
-    iconBg: "bg-blue-50 group-hover:bg-blue-100",
-    iconColor: "text-blue-600",
+    iconBg: "bg-slate-100 group-hover:bg-slate-200",
+    iconColor: "text-slate-700",
     external: false,
   },
   {
@@ -26,8 +26,8 @@ export const contacts: ContactItem[] = [
     value: "+66 96 054 2824",
     href: "tel:+66960542824",
     icon: FaPhone,
-    iconBg: "bg-green-50 group-hover:bg-green-100",
-    iconColor: "text-green-600",
+    iconBg: "bg-slate-100 group-hover:bg-slate-200",
+    iconColor: "text-slate-700",
     external: false,
   },
   {
@@ -35,8 +35,8 @@ export const contacts: ContactItem[] = [
     value: "github.com/aumputthipong",
     href: "https://github.com/aumputthipong",
     icon: FaGithub,
-    iconBg: "bg-gray-50 group-hover:bg-gray-100",
-    iconColor: "text-gray-700",
+    iconBg: "bg-slate-100 group-hover:bg-slate-200",
+    iconColor: "text-slate-700",
     external: true,
   },
   {
@@ -44,8 +44,8 @@ export const contacts: ContactItem[] = [
     value: "linkedin.com/in/putthipong-chobngam",
     href: "https://www.linkedin.com/in/putthipong-chobngam/",
     icon: FaLinkedin,
-    iconBg: "bg-blue-50 group-hover:bg-blue-100",
-    iconColor: "text-blue-700",
+    iconBg: "bg-slate-100 group-hover:bg-slate-200",
+    iconColor: "text-slate-700",
     external: true,
   },
 ];

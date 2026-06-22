@@ -18,7 +18,7 @@ export default function Footer() {
               href={href}
               target={external ? "_blank" : undefined}
               rel={external ? "noopener noreferrer" : undefined}
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-200 p-2 rounded-full hover:bg-slate-800"
+              className="text-gray-400 hover:text-white transition-colors duration-200 p-2 rounded-full hover:bg-slate-800"
               aria-label={label}
             >
               <Icon />
