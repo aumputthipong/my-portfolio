@@ -8,7 +8,7 @@ import SectionHeader from './UI/SectionHeader'
 const ContactSection = () => {
   return (
     <Section id="contact" bg="bg-zinc-50" className="py-10 sm:py-12 lg:py-14">
-      <SectionHeader label="Contact" index="04 / 04" />
+      <SectionHeader label="Contact" />
 
       {/* Card */}
       <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm p-5 sm:p-6 lg:p-10">
@@ -16,9 +16,9 @@ const ContactSection = () => {
 
           {/* LEFT: Heading + tagline */}
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold text-gray-900 leading-tight">
               Let&apos;s build something{" "}
-              <span className="text-blue-600">good</span>
+              <span className="text-accent underline decoration-2 underline-offset-4 decoration-accent/40">good</span>
               <br />
               together.
             </h2>
@@ -37,7 +37,7 @@ const ContactSection = () => {
                   key={c.label}
                   href={c.href}
                   {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="group flex items-center gap-3 p-2.5 sm:p-3 bg-white rounded-lg border border-gray-200 hover:border-slate-300 hover:shadow-sm transition-all duration-200 min-w-0"
+                  className="group flex items-center gap-3 p-2.5 sm:p-3 bg-white rounded-lg border border-gray-200 hover:border-accent/40 hover:shadow-sm transition-all duration-200 min-w-0"
                 >
                   <div className={`p-2 sm:p-2.5 rounded-md transition-colors flex-shrink-0 ${c.iconBg}`}>
                     <Icon className={`${c.iconColor} text-sm sm:text-base`} />
@@ -50,7 +50,7 @@ const ContactSection = () => {
                       {c.value}
                     </p>
                   </div>
-                  <FaArrowRight className="text-xs text-gray-300 group-hover:text-gray-700 group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" />
+                  <FaArrowRight className="text-xs text-gray-300 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" />
                 </a>
               );
             })}

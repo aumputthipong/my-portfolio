@@ -1,7 +1,32 @@
 @import "tailwindcss";
 
+@theme {
+  --color-accent: #1f6f4e;
+  --color-accent-dark: #14532d;
+  --color-accent-soft: #ecf4ef;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+}
+
 html {
   scroll-behavior: smooth;
+  /* offset anchored sections so they aren't hidden under the fixed navbar */
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 html,
