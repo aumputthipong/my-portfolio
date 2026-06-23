@@ -17,14 +17,11 @@ const ContactSection = () => {
           {/* LEFT: Heading + tagline */}
           <div>
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold text-gray-900 leading-tight">
-              Let&apos;s build something{" "}
-              <span className="text-accent underline decoration-2 underline-offset-4 decoration-accent/40">good</span>
-              <br />
-              together.
+              Let&apos;s{" "}
+              <span className="text-accent underline decoration-2 underline-offset-4 decoration-accent/40">connect</span>.
             </h2>
             <p className="text-xs sm:text-sm leading-relaxed mt-3 sm:mt-4" style={{ color: '#6b7280' }}>
-              I&apos;m always open to new opportunities, ideas, or simply to get in touch.
-              Usually replies within a day.
+              Open to work and new opportunities. Feel free to reach out.
             </p>
           </div>
 
