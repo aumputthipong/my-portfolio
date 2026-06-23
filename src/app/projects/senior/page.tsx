@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Lightbox, { LightboxItem } from "@/component/UI/Lightbox";
-import { FaChevronLeft, FaChevronRight, FaPlay, FaArrowLeft, FaGithub, FaExpand } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaPlay, FaArrowLeft, FaArrowRight, FaGithub, FaExpand } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { seniorProject as senior, seniorVideos as videos } from "@/data/SeniorProjectData";
+import { projectData } from "@/data/ProjectsData";
 import { useImageCarousel } from "@/hooks/useImageCarousel";
 import TechBadge from "@/component/UI/TechBadge";
 
@@ -26,6 +27,7 @@ export default function SeniorProjectPage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const currentItem = mediaItems[selectedIndex];
+  const otherProjects = projectData.slice(0, 3);
 
   const handleMainClick = () => setLightboxIndex(selectedIndex);
 
@@ -229,6 +231,47 @@ export default function SeniorProjectPage() {
             ))}
           </ul>
         </div>
+
+        {/* ── More projects ── */}
+        {otherProjects.length > 0 && (
+          <div className="pt-6 sm:pt-8 border-t border-gray-200">
+            <div className="flex items-center justify-between mb-5 sm:mb-6">
+              <h2 className="font-display text-xl sm:text-2xl font-semibold text-gray-900">
+                More projects
+              </h2>
+              <Link
+                href="/#projects"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-500 hover:text-accent transition-colors"
+              >
+                View all
+                <FaArrowRight className="text-[10px]" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+              {otherProjects.map((p) => (
+                <Link
+                  key={p.id}
+                  href={`/projects/${p.id}`}
+                  className="group flex flex-col rounded-2xl border border-gray-200 p-3 hover:border-accent/40 hover:bg-accent-soft/40 transition-all duration-200"
+                >
+                  <div className="relative h-32 sm:h-28 overflow-hidden rounded-xl bg-gray-900">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${p.layout === "mobile" ? "object-contain" : "object-cover"}`}
+                    />
+                  </div>
+                  <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-gray-400 mt-3">
+                    {p.type}
+                  </p>
+                  <h3 className="font-display text-sm sm:text-base font-semibold text-gray-900 leading-snug mt-1 group-hover:text-accent transition-colors line-clamp-2">
+                    {p.title}
+                  </h3>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
       </div>
 
