@@ -195,8 +195,12 @@ export default function ProjectShowcase() {
               className="flex-[0_0_100%] grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] min-h-[420px] lg:min-h-[480px]"
               aria-hidden={i !== current}
             >
-              {/* Image side — pattern only, no gradient bg, no glyph */}
-              <div className="relative overflow-hidden bg-white min-h-[240px]">
+              {/* Image side — clickable to detail, hover reveals View Details */}
+              <Link
+                href={h.href}
+                aria-label={`View ${h.title} details`}
+                className="group relative block overflow-hidden bg-white min-h-[240px]"
+              >
                 <span className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur border border-gray-200 font-mono text-[10px] sm:text-[11px] tracking-wider text-gray-700">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" /> {h.badge}
                 </span>
@@ -214,9 +218,16 @@ export default function ProjectShowcase() {
                 <img
                   src={h.image}
                   alt={h.title}
-                  className="relative z-[3] w-full h-full object-contain"
+                  className="relative z-[3] w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                 />
-              </div>
+                {/* Hover overlay */}
+                <div className="absolute inset-0 z-[5] flex items-center justify-center bg-black/0 group-hover:bg-black/15 transition-colors duration-300 pointer-events-none">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-semibold px-4 py-2 rounded-full shadow flex items-center gap-1.5">
+                    View Details
+                    <FaArrowRight className="text-[10px]" />
+                  </span>
+                </div>
+              </Link>
 
               {/* Info side */}
               <div className="relative bg-white p-6 sm:p-10 flex flex-col justify-between gap-5">
@@ -227,7 +238,8 @@ export default function ProjectShowcase() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <div className="flex flex-wrap items-center gap-2.5 mb-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-gray-500">
+                  <div className="flex items-center gap-2.5 mb-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-gray-500">
+                    <span className="w-5 h-px bg-accent flex-shrink-0" />
                     <span>{h.category}</span>
                   </div>
                   <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-semibold tracking-tight leading-[1.05] text-gray-900 mb-3">
@@ -248,19 +260,19 @@ export default function ProjectShowcase() {
                 <div className="flex flex-wrap gap-2.5">
                   <Link
                     href={h.href}
-                    className="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-200"
+                    className="group/btn inline-flex items-center gap-2.5 bg-gray-900 hover:bg-black text-white text-sm sm:text-[15px] font-semibold px-6 sm:px-7 py-3.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200"
                   >
                     View Details
-                    <FaArrowRight className="text-[10px]" />
+                    <FaArrowRight className="text-xs group-hover/btn:translate-x-0.5 transition-transform duration-200" />
                   </Link>
                   {h.github && (
                     <a
                       href={h.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white hover:border-gray-800 text-gray-900 border border-gray-200 text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl transition-all duration-200"
+                      className="inline-flex items-center gap-2 bg-white hover:border-gray-800 hover:bg-gray-50 text-gray-900 border border-gray-200 text-sm sm:text-[15px] font-semibold px-5 sm:px-6 py-3.5 rounded-xl transition-all duration-200"
                     >
-                      <FaGithub />
+                      <FaGithub className="text-base" />
                       Code
                     </a>
                   )}

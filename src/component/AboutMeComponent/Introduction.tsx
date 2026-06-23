@@ -104,9 +104,16 @@ const Introduction = () => {
             <p className="text-sm text-gray-500 mt-0.5">
               KMITL · Software Engineering
             </p>
-            <p className="text-xs text-gray-400 mt-1.5">
-              Graduated 2025 · GPAX 3.11 / 4.00
-            </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-sm">
+              <span className="text-gray-600">
+                Graduated <span className="font-semibold text-slate-900">2025</span>
+              </span>
+              <span className="w-px h-3.5 bg-gray-200" />
+              <span className="text-gray-600">
+                GPAX <span className="font-semibold text-slate-900">3.11</span>
+                <span className="text-gray-400"> / 4.00</span>
+              </span>
+            </div>
           </div>
         </div>
         </div>

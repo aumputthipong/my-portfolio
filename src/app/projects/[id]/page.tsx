@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 import { projectData } from "@/data/ProjectsData";
 import Lightbox from "@/component/UI/Lightbox";
-import { FaGithub, FaChevronLeft, FaChevronRight, FaFigma, FaArrowLeft, FaExpand } from "react-icons/fa";
+import { FaGithub, FaChevronLeft, FaChevronRight, FaFigma, FaArrowLeft, FaArrowRight, FaExpand } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useImageCarousel } from "@/hooks/useImageCarousel";
@@ -17,8 +17,14 @@ export default function ProjectDetailPage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (isNaN(id)) notFound();
-  const project = projectData.find((p) => p.id === id);
+  const projectIndex = projectData.findIndex((p) => p.id === id);
+  const project = projectData[projectIndex];
   if (!project) notFound();
+
+  const otherProjects = [
+    ...projectData.slice(projectIndex + 1),
+    ...projectData.slice(0, projectIndex),
+  ].slice(0, 3);
 
   const isMobile = project.layout === "mobile";
   const images = project.haveImage && project.images.length > 0 ? project.images : [project.image];
@@ -197,6 +203,47 @@ export default function ProjectDetailPage() {
                 </button>
               </div>
             )}
+          </div>
+        )}
+
+        {/* ── More projects ── */}
+        {otherProjects.length > 0 && (
+          <div className="pt-6 sm:pt-8 border-t border-gray-200">
+            <div className="flex items-center justify-between mb-5 sm:mb-6">
+              <h2 className="font-display text-xl sm:text-2xl font-semibold text-gray-900">
+                More projects
+              </h2>
+              <Link
+                href="/#projects"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-500 hover:text-accent transition-colors"
+              >
+                View all
+                <FaArrowRight className="text-[10px]" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+              {otherProjects.map((p) => (
+                <Link
+                  key={p.id}
+                  href={`/projects/${p.id}`}
+                  className="group flex flex-col rounded-2xl border border-gray-200 p-3 hover:border-accent/40 hover:bg-accent-soft/40 transition-all duration-200"
+                >
+                  <div className="relative h-32 sm:h-28 overflow-hidden rounded-xl bg-gray-900">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${p.layout === "mobile" ? "object-contain" : "object-cover"}`}
+                    />
+                  </div>
+                  <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-gray-400 mt-3">
+                    {p.type}
+                  </p>
+                  <h3 className="font-display text-sm sm:text-base font-semibold text-gray-900 leading-snug mt-1 group-hover:text-accent transition-colors line-clamp-2">
+                    {p.title}
+                  </h3>
+                </Link>
+              ))}
+            </div>
           </div>
         )}
 
