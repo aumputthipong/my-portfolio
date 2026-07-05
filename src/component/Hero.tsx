@@ -11,14 +11,14 @@ const Hero = () => {
     >
       <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-8 sm:gap-10 lg:gap-16">
-
           {/* ── LEFT ── */}
           <div className="w-full max-w-xl space-y-5 sm:space-y-6">
-
             {/* Title */}
             <div className="space-y-3">
               <h1 className="font-display font-semibold text-slate-900 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.01em]">
-                Putthipong<br /><span className="text-accent">Chobngam.</span>
+                Putthipong
+                <br />
+                <span className="text-accent">Chobngam.</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-600">
                 Full-stack developer &amp; software engineer
@@ -27,14 +27,18 @@ const Hero = () => {
 
             {/* Bio */}
             <p className="text-sm sm:text-base leading-relaxed max-w-md text-gray-600">
-              I&apos;m a Software Engineering graduate from KMITL with a strong focus on
-              full-stack development — building with TypeScript, React, Next.js, NestJS,
-              and Go. Eager to keep learning and apply solid engineering practices to
-              every project.
+              I&apos;m a motivated Information Technology graduate from KMITL
+              with a strong focus on full-stack development, with hands-on
+              experience across the full development process, from requirements
+              analysis and solution design to development, testing, and
+              deployment. Eager to keep learning and improving as part of a team.
             </p>
 
             {/* Info row (icons + text) */}
-            <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm" style={{ color: '#4b5563' }}>
+            <div
+              className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm"
+              style={{ color: "#4b5563" }}
+            >
               <span className="inline-flex items-center gap-1.5">
                 <MdLocationOn className="text-slate-500 text-base" />
                 Bangkok, Thailand
@@ -92,7 +96,6 @@ const Hero = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
