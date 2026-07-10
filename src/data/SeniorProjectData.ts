@@ -22,13 +22,13 @@ export const seniorProject = {
     "Web Application Platform to Support Image and Video Analysis with AI in a Microservice Model",
   title: "AI Garden System",
   description:
-    "Full-stack web application platform that enables users to analyze images and videos using AI computer vision services, supporting object detection, regression, classification, and image segmentation.",
+    "Designed and developed a web application for image and video analysis with AI computer vision services, deployed for use by the Faculty of Information Technology in collaboration with medical instructors and students at Siriraj Hospital. Integrated existing AI vision models as microservices, supporting object detection, segmentation, and classification.",
   shortDescription:
-    "Full-stack web application platform enabling users to analyze images and videos using AI computer vision services — supporting object detection, regression, classification, and image segmentation.",
+    "A web application for AI computer vision image analysis, deployed for the Faculty of IT in collaboration with medical instructors and students at Siriraj Hospital.",
   responsibility: [
-    "Designed a user-friendly UI to support non-technical users, including medical professors and students, to easily access AI computer vision services.",
-    "Implemented existing AI computer vision models as microservice-based AI services that the web platform can call and use.",
-    "Developed a web platform that supports adding and integrating new AI services for AI developers.",
+    "Designed and developed a web application for image analysis with AI computer vision services, deployed for use by the Faculty of Information Technology in collaboration with medical instructors and medical students at Siriraj Hospital.",
+    "Designed a user-friendly UI to support non-technical users, to easily access AI computer vision.",
+    "Integrated existing AI vision models as microservices for web-based image and video analysis, supporting object detection, segmentation, and classification.",
   ],
   tech: [
     { name: "React", icon: "image/skills/framework/react.png" },
