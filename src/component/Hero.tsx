@@ -15,18 +15,18 @@ const Hero = () => {
           <div className="w-full max-w-xl space-y-5 sm:space-y-6">
             {/* Title */}
             <div className="space-y-3">
-              <h1 className="font-display font-semibold text-slate-900 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.01em]">
+              <h1 className="font-display font-semibold text-ink text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.01em]">
                 Putthipong
                 <br />
                 <span className="text-accent">Chobngam.</span>
               </h1>
-              <p className="text-lg sm:text-xl text-slate-600">
+              <p className="text-lg sm:text-xl text-body">
                 Full-stack developer &amp; software engineer
               </p>
             </div>
 
             {/* Bio */}
-            <p className="text-sm sm:text-base leading-relaxed max-w-md text-gray-600">
+            <p className="text-sm sm:text-base leading-relaxed max-w-md text-body">
               I&apos;m a motivated Information Technology graduate from KMITL
               with a strong focus on full-stack development, with hands-on
               experience across the full development process, from requirements
@@ -35,23 +35,20 @@ const Hero = () => {
             </p>
 
             {/* Info row (icons + text) */}
-            <div
-              className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm"
-              style={{ color: "#4b5563" }}
-            >
+            <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-body">
               <span className="inline-flex items-center gap-1.5">
-                <MdLocationOn className="text-slate-500 text-base" />
+                <MdLocationOn className="text-muted text-base" />
                 Bangkok, Thailand
               </span>
               <a
                 href="mailto:putthipong.chb@gmail.com"
                 className="inline-flex items-center gap-1.5 hover:text-accent transition-colors break-all"
               >
-                <MdEmail className="text-slate-700 text-base flex-shrink-0" />
+                <MdEmail className="text-muted text-base flex-shrink-0" />
                 putthipong.chb@gmail.com
               </a>
               <span className="inline-flex items-center gap-1.5">
-                <FaGraduationCap className="text-slate-500 text-base" />
+                <FaGraduationCap className="text-muted text-base" />
                 B.Sc. IT, KMITL · 2025
               </span>
             </div>
@@ -62,16 +59,16 @@ const Hero = () => {
                 href="https://github.com/aumputthipong"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-body hover:text-accent transition-colors"
               >
                 <FaGithub className="text-base" /> GitHub
               </a>
-              <span className="w-px h-4 bg-gray-200" />
+              <span className="w-px h-4 bg-line" />
               <a
                 href="https://www.linkedin.com/in/putthipong-chobngam/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-body hover:text-accent transition-colors"
               >
                 <FaLinkedin className="text-base" /> LinkedIn
               </a>
@@ -87,7 +84,7 @@ const Hero = () => {
                 aria-hidden
               />
               {/* photo */}
-              <div className="relative overflow-hidden rounded-3xl bg-gray-100">
+              <div className="relative overflow-hidden rounded-3xl bg-surface">
                 <img
                   src="/image/my_pic2.JPG"
                   alt="Putthipong Chobngam"

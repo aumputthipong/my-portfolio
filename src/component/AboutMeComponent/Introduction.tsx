@@ -10,10 +10,10 @@ const Introduction = () => {
       {/* ── LEFT: Tech stack ── */}
       <div className="lg:col-span-3" id="skills">
         <div className="flex items-baseline justify-between mb-5">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-slate-900">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink">
             Tech stack
           </h3>
-          <span className="text-[11px] font-mono text-gray-400">
+          <span className="text-[11px] font-mono text-muted">
             {total} technologies
           </span>
         </div>
@@ -21,15 +21,15 @@ const Introduction = () => {
         {techSkills.map((section) => (
           <div
             key={section.category}
-            className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-3 sm:gap-8 py-6 border-t border-gray-200 first:border-t-0"
+            className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-3 sm:gap-8 py-6 border-t border-line first:border-t-0"
           >
             <div className="flex items-center gap-2.5 flex-shrink-0">
-              <p className="text-sm font-semibold text-slate-900">
+              <p className="text-sm font-semibold text-ink">
                 {section.category
                   .replace("Programming ", "")
                   .replace(" Development", "")}
               </p>
-              <span className="text-[11px] font-mono text-gray-400">
+              <span className="text-[11px] font-mono text-muted">
                 {String(section.skills.length).padStart(2, "0")}
               </span>
             </div>
@@ -46,13 +46,13 @@ const Introduction = () => {
       </div>
 
       {/* ── RIGHT: About me + Education ── */}
-      <div className="lg:col-span-2 lg:border-l lg:border-gray-200 lg:pl-8 space-y-8">
+      <div className="lg:col-span-2 lg:border-l lg:border-line lg:pl-8 space-y-8">
         {/* About me */}
         <div id="about">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-slate-900 mb-3">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-3">
             About me
           </h3>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="text-sm leading-relaxed text-body">
             A highly motivated Information Technology graduate (Software
             Engineering major) from King Mongkut's Institute of Technology
             Ladkrabang (KMITL) with a strong focus on full-stack development. I
@@ -67,23 +67,23 @@ const Introduction = () => {
               href="https://github.com/aumputthipong"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-2 text-body hover:text-accent transition-colors"
             >
               <FaGithub className="text-base" /> GitHub
             </a>
-            <span className="w-px h-4 bg-gray-200" />
+            <span className="w-px h-4 bg-line" />
             <a
               href="https://www.linkedin.com/in/putthipong-chobngam/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-2 text-body hover:text-accent transition-colors"
             >
               <FaLinkedin className="text-base" /> LinkedIn
             </a>
-            <span className="w-px h-4 bg-gray-200" />
+            <span className="w-px h-4 bg-line" />
             <a
               href="mailto:putthipong.chb@gmail.com"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+              className="inline-flex items-center gap-2 text-body hover:text-accent transition-colors"
             >
               <FaEnvelope className="text-base" /> Email
             </a>
@@ -91,8 +91,8 @@ const Introduction = () => {
         </div>
 
         {/* Education */}
-        <div id="education" className="pt-8 border-t border-gray-200">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-slate-900 mb-5">
+        <div id="education" className="pt-8 border-t border-line">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-5">
             Education
           </h3>
 
@@ -103,22 +103,22 @@ const Introduction = () => {
               className="h-14 sm:h-16 w-auto object-contain flex-shrink-0"
             />
             <div className="min-w-0">
-              <h4 className="font-display text-base sm:text-lg font-semibold text-slate-900 leading-snug">
+              <h4 className="font-display text-base sm:text-lg font-semibold text-ink leading-snug">
                 B.Sc. Information Technology
               </h4>
-              <p className="text-sm text-gray-500 mt-0.5">
+              <p className="text-sm text-muted mt-0.5">
                 KMITL · Software Engineering
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-sm">
-                <span className="text-gray-600">
+                <span className="text-body">
                   Graduated{" "}
-                  <span className="font-semibold text-slate-900">2025</span>
+                  <span className="font-semibold text-ink">2025</span>
                 </span>
-                <span className="w-px h-3.5 bg-gray-200" />
-                <span className="text-gray-600">
+                <span className="w-px h-3.5 bg-line" />
+                <span className="text-body">
                   GPAX{" "}
-                  <span className="font-semibold text-slate-900">3.11</span>
-                  <span className="text-gray-400"> / 4.00</span>
+                  <span className="font-semibold text-ink">3.11</span>
+                  <span className="text-muted"> / 4.00</span>
                 </span>
               </div>
             </div>

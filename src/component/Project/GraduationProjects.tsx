@@ -10,13 +10,13 @@ const GraduationProjects = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
       <div
-        className="group border-2 border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden bg-white cursor-pointer"
+        className="group border-2 border-line rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden bg-card cursor-pointer"
         onClick={() => router.push("/projects/senior")}
       >
         <div className="flex flex-col lg:flex-row">
 
           {/* Image side */}
-          <div className="relative lg:w-1/2 h-56 sm:h-64 md:h-72 lg:h-auto overflow-hidden bg-slate-50 flex items-center justify-center p-3 sm:p-4 lg:p-5 border-b lg:border-b-0 lg:border-r border-gray-200">
+          <div className="relative lg:w-1/2 h-56 sm:h-64 md:h-72 lg:h-auto overflow-hidden bg-surface flex items-center justify-center p-3 sm:p-4 lg:p-5 border-b lg:border-b-0 lg:border-r border-line">
             <div
               className="absolute inset-0 opacity-40 pointer-events-none"
               style={{
@@ -53,21 +53,21 @@ const GraduationProjects = () => {
               <span className="inline-block bg-accent-soft text-accent text-[10px] font-bold px-2.5 py-1 rounded-full tracking-[0.2em] uppercase">
                 Senior Project
               </span>
-              <span className="text-xs font-mono text-gray-400">{seniorProject.year}</span>
+              <span className="text-xs font-mono text-muted">{seniorProject.year}</span>
             </div>
 
             {/* Title */}
-            <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 leading-tight">
+            <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-semibold text-ink leading-tight">
               {seniorProject.title}
             </h3>
 
             {/* Tagline */}
-            <p className="text-[11px] sm:text-xs italic leading-snug" style={{ color: '#9ca3af' }}>
+            <p className="text-[11px] sm:text-xs italic leading-snug text-muted">
               {seniorProject.full_project_name}
             </p>
 
             {/* Description */}
-            <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#4b5563' }}>
+            <p className="text-xs sm:text-sm leading-relaxed text-body">
               {seniorProject.shortDescription}
             </p>
 
@@ -83,7 +83,7 @@ const GraduationProjects = () => {
               <Link
                 href="/projects/senior"
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group/btn"
+                className="inline-flex items-center gap-2 bg-ink hover:bg-ink/90 text-canvas text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group/btn"
               >
                 View Details
                 <FaArrowRight className="text-xs group-hover/btn:translate-x-0.5 transition-transform duration-200" />

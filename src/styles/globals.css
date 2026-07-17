@@ -1,9 +1,63 @@
 @import "tailwindcss";
 
-@theme {
-  --color-accent: #1f6f4e;
-  --color-accent-dark: #14532d;
-  --color-accent-soft: #ecf4ef;
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic tokens. Values live in :root / .dark below; `inline` makes the
+   utilities resolve to var(--x) so the .dark override actually cascades. */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+}
+
+:root {
+  color-scheme: light;
+
+  --canvas: #ffffff;
+  --surface: #fafafa;
+  --card: #ffffff;
+  --ink: #0f172a;
+  --body: #4b5563;
+  --muted: #9ca3af;
+  --line: #e5e7eb;
+  --accent: #1f6f4e;
+  --accent-strong: #14532d;
+  --accent-soft: #ecf4ef;
+  --on-accent: #ffffff;
+
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #94a3b8;
+  --scrollbar-thumb-hover: #475569;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* elevation ramp (dark→light): canvas < surface < card */
+  --canvas: #0d1210;
+  --surface: #131a16;
+  --card: #1c2521;
+  --ink: #e8ecea;
+  --body: #a3aeaa;
+  --muted: #7a8681;
+  --line: #2b3531;
+  /* accent lifts in dark — #1f6f4e fails contrast on a dark ground */
+  --accent: #5cc08d;
+  --accent-strong: #7fd4a8;
+  --accent-soft: #16241d;
+  --on-accent: #0d1210;
+
+  --scrollbar-track: #131a16;
+  --scrollbar-thumb: #3a4641;
+  --scrollbar-thumb-hover: #5a6a63;
 }
 
 .font-display {
@@ -38,16 +92,16 @@ body {
   height: 15px;
 }
 .thumb-strip::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--scrollbar-track);
   border-radius: 9999px;
 }
 .thumb-strip::-webkit-scrollbar-thumb {
-  background: #94a3b8;
+  background: var(--scrollbar-thumb);
   border-radius: 9999px;
   cursor: pointer;
 }
 .thumb-strip::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--scrollbar-thumb-hover);
   cursor: pointer;
 }
 

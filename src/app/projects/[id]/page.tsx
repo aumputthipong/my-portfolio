@@ -32,14 +32,14 @@ export default function ProjectDetailPage() {
   const { index: selectedIndex, goPrev, goNext, select, setThumbRef } = useImageCarousel(images.length);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-canvas">
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-28 pb-12 sm:pb-16 relative z-10 space-y-8">
 
         {/* Back */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-accent transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-accent transition-colors"
         >
           <FaArrowLeft className="text-xs" />
           Back to projects
@@ -53,7 +53,7 @@ export default function ProjectDetailPage() {
           className="space-y-3"
         >
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-gray-400">
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-muted">
               <span className="text-accent font-semibold">{project.type}</span>
               <span aria-hidden>·</span>
               <span className="capitalize">{project.layout}</span>
@@ -67,7 +67,7 @@ export default function ProjectDetailPage() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-all duration-200"
+                    className="inline-flex items-center gap-1.5 bg-ink hover:bg-ink/90 text-canvas text-xs font-semibold px-3.5 py-2 rounded-lg transition-all duration-200"
                   >
                     <FaGithub className="text-xs" />
                     Code
@@ -78,7 +78,7 @@ export default function ProjectDetailPage() {
                     href={project.ref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 border border-gray-300 hover:border-gray-400 bg-white hover:bg-gray-50 text-gray-700 text-xs font-semibold px-3.5 py-2 rounded-lg transition-all duration-200"
+                    className="inline-flex items-center gap-1.5 border border-line hover:border-muted bg-card hover:bg-surface text-body text-xs font-semibold px-3.5 py-2 rounded-lg transition-all duration-200"
                   >
                     <FaFigma className="text-xs" />
                     Figma
@@ -87,10 +87,10 @@ export default function ProjectDetailPage() {
               </div>
             )}
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 leading-[1.05]">
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink leading-[1.05]">
             {project.title}
           </h1>
-          <p className="text-sm sm:text-base leading-relaxed text-gray-600 max-w-2xl">
+          <p className="text-sm sm:text-base leading-relaxed text-body max-w-2xl">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-2 pt-1">
@@ -102,20 +102,20 @@ export default function ProjectDetailPage() {
 
         {/* ── Image / carousel (full width) ── */}
         {!project.haveImage && (
-          <div className="aspect-video rounded-3xl bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center gap-3 sm:gap-4 text-center px-4 sm:px-8">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center">
-              <FaGithub className="text-2xl sm:text-3xl text-gray-400" />
+          <div className="aspect-video rounded-3xl bg-surface border-2 border-dashed border-line flex flex-col items-center justify-center gap-3 sm:gap-4 text-center px-4 sm:px-8">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-line flex items-center justify-center">
+              <FaGithub className="text-2xl sm:text-3xl text-muted" />
             </div>
             <div>
-              <p className="font-semibold text-gray-500 text-xs sm:text-sm">No screenshots available</p>
-              <p className="text-[11px] sm:text-xs text-gray-400 mt-1">View the source code on GitHub</p>
+              <p className="font-semibold text-muted text-xs sm:text-sm">No screenshots available</p>
+              <p className="text-[11px] sm:text-xs text-muted mt-1">View the source code on GitHub</p>
             </div>
             {project.github.length > 0 && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl shadow transition-all duration-200"
+                className="inline-flex items-center gap-2 bg-ink hover:bg-ink/90 text-canvas text-sm font-semibold px-5 sm:px-6 py-3 rounded-xl shadow transition-all duration-200"
               >
                 <FaGithub />
                 View Source Code
@@ -174,7 +174,7 @@ export default function ProjectDetailPage() {
 
             {images.length > 1 && (
               <div className="flex items-center gap-2">
-                <button onClick={goPrev} disabled={selectedIndex === 0} className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-lg flex items-center justify-center transition-all duration-200 shadow cursor-pointer">
+                <button onClick={goPrev} disabled={selectedIndex === 0} className="flex-shrink-0 w-8 h-8 bg-ink hover:bg-ink/90 disabled:opacity-30 disabled:cursor-not-allowed text-canvas rounded-lg flex items-center justify-center transition-all duration-200 shadow cursor-pointer">
                   <FaChevronLeft className="text-xs" />
                 </button>
                 <div className="thumb-strip flex gap-2 overflow-x-auto flex-1 pb-2 sm:pb-3">
@@ -188,7 +188,7 @@ export default function ProjectDetailPage() {
                       aria-current={i === selectedIndex}
                       onClick={() => select(i)}
                       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(i); } }}
-                      className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-xl border-2 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 ${i === selectedIndex ? "border-accent shadow-md" : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"}`}
+                      className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-xl border-2 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 ${i === selectedIndex ? "border-accent shadow-md" : "border-line opacity-60 hover:opacity-100 hover:border-muted"}`}
                     >
                       {isMobile ? (
                         <img src={img} alt={`Thumb ${i + 1}`} className="w-12 h-20 sm:w-16 sm:h-24 object-cover object-top bg-gray-900" />
@@ -198,7 +198,7 @@ export default function ProjectDetailPage() {
                     </div>
                   ))}
                 </div>
-                <button onClick={goNext} disabled={selectedIndex === images.length - 1} className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-lg flex items-center justify-center transition-all duration-200 shadow cursor-pointer">
+                <button onClick={goNext} disabled={selectedIndex === images.length - 1} className="flex-shrink-0 w-8 h-8 bg-ink hover:bg-ink/90 disabled:opacity-30 disabled:cursor-not-allowed text-canvas rounded-lg flex items-center justify-center transition-all duration-200 shadow cursor-pointer">
                   <FaChevronRight className="text-xs" />
                 </button>
               </div>
@@ -208,14 +208,14 @@ export default function ProjectDetailPage() {
 
         {/* ── More projects ── */}
         {otherProjects.length > 0 && (
-          <div className="pt-6 sm:pt-8 border-t border-gray-200">
+          <div className="pt-6 sm:pt-8 border-t border-line">
             <div className="flex items-center justify-between mb-5 sm:mb-6">
-              <h2 className="font-display text-xl sm:text-2xl font-semibold text-gray-900">
+              <h2 className="font-display text-xl sm:text-2xl font-semibold text-ink">
                 More projects
               </h2>
               <Link
                 href="/#projects"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-500 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-muted hover:text-accent transition-colors"
               >
                 View all
                 <FaArrowRight className="text-[10px]" />
@@ -226,7 +226,7 @@ export default function ProjectDetailPage() {
                 <Link
                   key={p.id}
                   href={`/projects/${p.id}`}
-                  className="group flex flex-col rounded-2xl border border-gray-200 p-3 hover:border-accent/40 hover:bg-accent-soft/40 transition-all duration-200"
+                  className="group flex flex-col rounded-2xl border border-line p-3 hover:border-accent/40 hover:bg-accent-soft/40 transition-all duration-200"
                 >
                   <div className="relative h-32 sm:h-28 overflow-hidden rounded-xl bg-gray-900">
                     <img
@@ -235,10 +235,10 @@ export default function ProjectDetailPage() {
                       className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${p.layout === "mobile" ? "object-contain" : "object-cover"}`}
                     />
                   </div>
-                  <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-gray-400 mt-3">
+                  <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-muted mt-3">
                     {p.type}
                   </p>
-                  <h3 className="font-display text-sm sm:text-base font-semibold text-gray-900 leading-snug mt-1 group-hover:text-accent transition-colors line-clamp-2">
+                  <h3 className="font-display text-sm sm:text-base font-semibold text-ink leading-snug mt-1 group-hover:text-accent transition-colors line-clamp-2">
                     {p.title}
                   </h3>
                 </Link>

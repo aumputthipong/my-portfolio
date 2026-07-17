@@ -32,14 +32,14 @@ export default function SeniorProjectPage() {
   const handleMainClick = () => setLightboxIndex(selectedIndex);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-canvas">
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-28 pb-12 sm:pb-16 relative z-10 space-y-8">
 
         {/* Back */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-accent transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-accent transition-colors"
         >
           <FaArrowLeft className="text-xs" />
           Back to projects
@@ -53,7 +53,7 @@ export default function SeniorProjectPage() {
           className="space-y-3"
         >
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-gray-400">
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-muted">
               <span className="text-accent font-semibold">Senior Project</span>
               <span aria-hidden>·</span>
               <span>{senior.year}</span>
@@ -62,19 +62,19 @@ export default function SeniorProjectPage() {
               href="https://github.com/aumputthipong/AI-garden-System"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-gray-900 hover:bg-black text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-all duration-200"
+              className="inline-flex items-center gap-1.5 bg-ink hover:bg-ink/90 text-canvas text-xs font-semibold px-3.5 py-2 rounded-lg transition-all duration-200"
             >
               <FaGithub className="text-xs" />
               Code
             </a>
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 leading-[1.05]">
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink leading-[1.05]">
             {senior.title}
           </h1>
-          <p className="text-sm italic text-gray-400 leading-relaxed">
+          <p className="text-sm italic text-muted leading-relaxed">
             {senior.full_project_name}
           </p>
-          <p className="text-sm sm:text-base leading-relaxed text-gray-600 max-w-2xl">
+          <p className="text-sm sm:text-base leading-relaxed text-body max-w-2xl">
             {senior.description}
           </p>
           <div className="flex flex-wrap gap-2 pt-1">
@@ -159,7 +159,7 @@ export default function SeniorProjectPage() {
             <button
               onClick={goPrev}
               disabled={selectedIndex === 0}
-              className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-lg flex items-center justify-center transition-all duration-200 shadow"
+              className="flex-shrink-0 w-8 h-8 bg-ink hover:bg-ink/90 disabled:opacity-30 disabled:cursor-not-allowed text-canvas rounded-lg flex items-center justify-center transition-all duration-200 shadow"
             >
               <FaChevronLeft className="text-xs" />
             </button>
@@ -178,7 +178,7 @@ export default function SeniorProjectPage() {
                   className={`flex-shrink-0 cursor-pointer overflow-hidden rounded-xl border-2 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 ${
                     i === selectedIndex
                       ? "border-accent shadow-md"
-                      : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-400"
+                      : "border-line opacity-60 hover:opacity-100 hover:border-muted"
                   }`}
                 >
                   {item.type === "video" ? (
@@ -208,7 +208,7 @@ export default function SeniorProjectPage() {
             <button
               onClick={goNext}
               disabled={selectedIndex === total - 1}
-              className="flex-shrink-0 w-8 h-8 bg-gray-900 hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed text-white rounded-lg flex items-center justify-center transition-all duration-200 shadow"
+              className="flex-shrink-0 w-8 h-8 bg-ink hover:bg-ink/90 disabled:opacity-30 disabled:cursor-not-allowed text-canvas rounded-lg flex items-center justify-center transition-all duration-200 shadow"
             >
               <FaChevronRight className="text-xs" />
             </button>
@@ -216,13 +216,13 @@ export default function SeniorProjectPage() {
         </div>
 
         {/* ── Responsibilities ── */}
-        <div className="pt-8 border-t border-gray-200">
-          <h3 className="font-display text-lg sm:text-xl font-semibold text-gray-900 mb-4">
+        <div className="pt-8 border-t border-line">
+          <h3 className="font-display text-lg sm:text-xl font-semibold text-ink mb-4">
             Responsibilities
           </h3>
           <ul className="space-y-3 max-w-3xl">
             {senior.responsibility.map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-gray-600">
+              <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-body">
                 <span className="w-6 h-6 bg-accent-soft text-accent rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-semibold">
                   {i + 1}
                 </span>
@@ -234,14 +234,14 @@ export default function SeniorProjectPage() {
 
         {/* ── More projects ── */}
         {otherProjects.length > 0 && (
-          <div className="pt-6 sm:pt-8 border-t border-gray-200">
+          <div className="pt-6 sm:pt-8 border-t border-line">
             <div className="flex items-center justify-between mb-5 sm:mb-6">
-              <h2 className="font-display text-xl sm:text-2xl font-semibold text-gray-900">
+              <h2 className="font-display text-xl sm:text-2xl font-semibold text-ink">
                 More projects
               </h2>
               <Link
                 href="/#projects"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-500 hover:text-accent transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-muted hover:text-accent transition-colors"
               >
                 View all
                 <FaArrowRight className="text-[10px]" />
@@ -252,7 +252,7 @@ export default function SeniorProjectPage() {
                 <Link
                   key={p.id}
                   href={`/projects/${p.id}`}
-                  className="group flex flex-col rounded-2xl border border-gray-200 p-3 hover:border-accent/40 hover:bg-accent-soft/40 transition-all duration-200"
+                  className="group flex flex-col rounded-2xl border border-line p-3 hover:border-accent/40 hover:bg-accent-soft/40 transition-all duration-200"
                 >
                   <div className="relative h-32 sm:h-28 overflow-hidden rounded-xl bg-gray-900">
                     <img
@@ -261,10 +261,10 @@ export default function SeniorProjectPage() {
                       className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${p.layout === "mobile" ? "object-contain" : "object-cover"}`}
                     />
                   </div>
-                  <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-gray-400 mt-3">
+                  <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-muted mt-3">
                     {p.type}
                   </p>
-                  <h3 className="font-display text-sm sm:text-base font-semibold text-gray-900 leading-snug mt-1 group-hover:text-accent transition-colors line-clamp-2">
+                  <h3 className="font-display text-sm sm:text-base font-semibold text-ink leading-snug mt-1 group-hover:text-accent transition-colors line-clamp-2">
                     {p.title}
                   </h3>
                 </Link>

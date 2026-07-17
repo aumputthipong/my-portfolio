@@ -83,7 +83,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
               <div className="w-5 h-5 sm:w-6 sm:h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <FaPlay className="text-white text-[8px] sm:text-[9px] ml-0.5" />
               </div>
-              <p className="font-semibold text-xs sm:text-sm truncate" style={{ color: '#ffffff' }}>
+              <p className="font-semibold text-xs sm:text-sm truncate text-white">
                 {current.name}
               </p>
             </div>
