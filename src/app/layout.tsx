@@ -6,7 +6,7 @@ import "../styles/globals.css";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 
-import MUIThemeProvider from "@/component/ThemeRegistry";
+import ThemeProvider from "@/component/ThemeProvider";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -29,13 +29,17 @@ export const viewport = {
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
-  <html lang="en" className={`scroll-smooth ${fraunces.variable}`}>
-      <body className="bg-white text-gray min-h-screen flex flex-col overflow-x-hidden">
-        <MUIThemeProvider >
+  <html
+      lang="en"
+      className={`scroll-smooth ${fraunces.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="bg-canvas text-body min-h-screen flex flex-col overflow-x-hidden">
+        <ThemeProvider>
         <Navbar />
         <main className="flex-1 w-full">{children}</main>
         <Footer />
-        </MUIThemeProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

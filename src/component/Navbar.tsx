@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa";
+import ThemeToggle from "@/component/UI/ThemeToggle";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -85,23 +86,23 @@ const Navbar = () => {
 
   return (
     <nav className="fixed my-2 top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 translate-y-0 opacity-100 max-w-[calc(100vw-1rem)]">
-      <div className="flex items-center bg-white/40 backdrop-blur-xl border border-white/10 rounded-full px-1.5 sm:px-3 lg:px-4 py-1 shadow-2xl gap-0.5 sm:gap-1.5 lg:gap-2">
+      <div className="flex items-center bg-canvas/40 backdrop-blur-xl border border-white/10 rounded-full px-1.5 sm:px-3 lg:px-4 py-1 shadow-2xl gap-0.5 sm:gap-1.5 lg:gap-2">
         {/* Brand */}
         <div className="hidden md:flex items-center">
           {isDetailPage && (
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-1.5 text-sm text-black/50 hover:text-black px-3 py-2 transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink px-3 py-2 transition-colors whitespace-nowrap"
             >
               <FaArrowLeft className="text-xs" />
               Back
             </Link>
           )}
-          <Link href="/" className="font-display text-base font-semibold text-black/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-black transition-colors">
+          <Link href="/" className="font-display text-base font-semibold text-ink/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-ink transition-colors">
             Putthipong
-            <span className="font-normal text-black/50">.portfolio</span>
+            <span className="font-normal text-ink/50">.portfolio</span>
           </Link>
-          <div className="w-px h-5 bg-black/10 mx-2" />
+          <div className="w-px h-5 bg-ink/10 mx-2" />
         </div>
 
         {/* Nav Buttons */}
@@ -113,8 +114,8 @@ const Navbar = () => {
               px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-4
               ${
                 isActive(id)
-                  ? "text-white bg-accent shadow-lg"
-                  : "text-black/80 hover:text-black hover:bg-black/10"
+                  ? "text-on-accent bg-accent shadow-lg"
+                  : "text-ink/80 hover:text-ink hover:bg-ink/10"
               }`}
             aria-label={label}
           >
@@ -122,6 +123,10 @@ const Navbar = () => {
             <span className="hidden md:inline text-sm">{label}</span>
           </button>
         ))}
+
+        {/* Theme */}
+        <div className="w-px h-5 bg-ink/10 mx-0.5 sm:mx-1 flex-shrink-0" />
+        <ThemeToggle />
       </div>
     </nav>
   );
