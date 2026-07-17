@@ -7,6 +7,7 @@
 @theme inline {
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
+  --color-card: var(--card);
   --color-ink: var(--ink);
   --color-body: var(--body);
   --color-muted: var(--muted);
@@ -22,6 +23,7 @@
 
   --canvas: #ffffff;
   --surface: #fafafa;
+  --card: #ffffff;
   --ink: #0f172a;
   --body: #4b5563;
   --muted: #9ca3af;
@@ -39,19 +41,21 @@
 .dark {
   color-scheme: dark;
 
+  /* elevation ramp (dark→light): canvas < surface < card */
   --canvas: #0d1210;
-  --surface: #141a17;
+  --surface: #131a16;
+  --card: #1c2521;
   --ink: #e8ecea;
   --body: #a3aeaa;
   --muted: #7a8681;
-  --line: #252e2a;
+  --line: #2b3531;
   /* accent lifts in dark — #1f6f4e fails contrast on a dark ground */
   --accent: #5cc08d;
   --accent-strong: #7fd4a8;
   --accent-soft: #16241d;
   --on-accent: #0d1210;
 
-  --scrollbar-track: #141a17;
+  --scrollbar-track: #131a16;
   --scrollbar-thumb: #3a4641;
   --scrollbar-thumb-hover: #5a6a63;
 }

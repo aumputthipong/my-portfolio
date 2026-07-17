@@ -16,7 +16,7 @@ export default function VideoProject() {
           <div
             key={video.id}
             onClick={() => setOpenId(video.id)}
-            className="group cursor-pointer rounded-xl overflow-hidden border-2 border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-lg transition-all duration-300"
+            className="group cursor-pointer rounded-xl overflow-hidden border-2 border-line hover:border-muted/50 shadow-sm hover:shadow-lg transition-all duration-300"
           >
             {/* Thumbnail */}
             <div className="relative aspect-video bg-gray-900 overflow-hidden">
@@ -39,9 +39,9 @@ export default function VideoProject() {
             </div>
 
             {/* Info */}
-            <div className="px-3 sm:px-4 py-3 bg-white">
-              <p className="font-semibold text-gray-800 text-xs sm:text-sm">{video.name}</p>
-              <p className="text-gray-500 text-[11px] sm:text-xs mt-0.5">{video.desc}</p>
+            <div className="px-3 sm:px-4 py-3 bg-card">
+              <p className="font-semibold text-ink text-xs sm:text-sm">{video.name}</p>
+              <p className="text-muted text-[11px] sm:text-xs mt-0.5">{video.desc}</p>
             </div>
           </div>
         ))}
@@ -68,7 +68,7 @@ export default function VideoProject() {
             {/* Title bar */}
             <div className="bg-gray-950 rounded-t-xl px-3 sm:px-5 py-3 sm:py-4 flex items-center gap-3">
               <FaYoutube className="text-red-500 text-lg sm:text-xl flex-shrink-0" />
-              <p className="font-semibold text-sm sm:text-base truncate" style={{ color: '#ffffff' }}>
+              <p className="font-semibold text-sm sm:text-base truncate text-white">
                 {activeVideo?.name}
               </p>
             </div>

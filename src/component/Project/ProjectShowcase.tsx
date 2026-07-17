@@ -116,7 +116,7 @@ export default function ProjectShowcase() {
       {/* Showcase header */}
       <div className="flex flex-wrap items-end justify-between gap-4 sm:gap-6 mb-5 sm:mb-7">
         <div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-none text-gray-900">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-none text-ink">
             Selected Projects<span className="text-accent">.</span>
           </h2>
         </div>
@@ -134,17 +134,17 @@ export default function ProjectShowcase() {
                   className={`text-left rounded-lg border px-2.5 py-1.5 flex flex-col leading-tight transition-all duration-200 hover:-translate-y-0.5 ${
                     active
                       ? "border-accent bg-accent-soft"
-                      : "border-gray-200 bg-white hover:border-gray-400"
+                      : "border-line bg-card hover:border-muted"
                   }`}
                 >
                   <span
                     className={`font-mono text-[9px] tracking-wider ${
-                      active ? "text-accent font-semibold" : "text-gray-500"
+                      active ? "text-accent font-semibold" : "text-muted"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")} / {h.glyph}
                   </span>
-                  <span className="text-[11.5px] font-semibold text-gray-900">
+                  <span className="text-[11.5px] font-semibold text-ink">
                     {h.shortLabel}
                   </span>
                 </button>
@@ -155,7 +155,7 @@ export default function ProjectShowcase() {
                 type="button"
                 aria-label="Previous"
                 onClick={prev}
-                className="w-8 h-8 rounded-full border border-gray-200 bg-white text-gray-800 inline-flex items-center justify-center transition-all duration-200 hover:bg-gray-900 hover:text-white hover:border-gray-900"
+                className="w-8 h-8 rounded-full border border-line bg-card text-body inline-flex items-center justify-center transition-all duration-200 hover:bg-ink hover:text-canvas hover:border-ink"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
                   <path d="M15 6l-6 6 6 6" />
@@ -165,7 +165,7 @@ export default function ProjectShowcase() {
                 type="button"
                 aria-label="Next"
                 onClick={next}
-                className="w-8 h-8 rounded-full border border-gray-200 bg-white text-gray-800 inline-flex items-center justify-center transition-all duration-200 hover:bg-gray-900 hover:text-white hover:border-gray-900"
+                className="w-8 h-8 rounded-full border border-line bg-card text-body inline-flex items-center justify-center transition-all duration-200 hover:bg-ink hover:text-canvas hover:border-ink"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
                   <path d="M9 6l6 6-6 6" />
@@ -178,7 +178,7 @@ export default function ProjectShowcase() {
 
       {/* Carousel */}
       <div
-        className="relative rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-[0_24px_60px_-28px_rgba(20,20,15,0.18)]"
+        className="relative rounded-3xl overflow-hidden bg-card border border-line shadow-[0_24px_60px_-28px_rgba(20,20,15,0.18)]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -199,12 +199,12 @@ export default function ProjectShowcase() {
               <Link
                 href={h.href}
                 aria-label={`View ${h.title} details`}
-                className="group relative block overflow-hidden bg-white min-h-[240px]"
+                className="group relative block overflow-hidden bg-card min-h-[240px]"
               >
-                <span className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur border border-gray-200 font-mono text-[10px] sm:text-[11px] tracking-wider text-gray-700">
+                <span className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-line font-mono text-[10px] sm:text-[11px] tracking-wider text-body">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" /> {h.badge}
                 </span>
-                <span className="absolute bottom-5 left-5 z-20 px-3 py-1.5 rounded-full bg-white/85 border border-gray-200 font-mono text-[11px] text-gray-700">
+                <span className="absolute bottom-5 left-5 z-20 px-3 py-1.5 rounded-full bg-card/85 backdrop-blur border border-line font-mono text-[11px] text-body">
                   {h.year}
                 </span>
                 <div
@@ -230,25 +230,25 @@ export default function ProjectShowcase() {
               </Link>
 
               {/* Info side */}
-              <div className="relative bg-white p-6 sm:p-10 flex flex-col justify-between gap-5">
+              <div className="relative bg-card p-6 sm:p-10 flex flex-col justify-between gap-5">
                 <span
                   aria-hidden
-                  className="hidden sm:block absolute top-7 right-8 font-mono font-bold text-5xl lg:text-6xl text-black/5 tracking-tight leading-none pointer-events-none"
+                  className="hidden sm:block absolute top-7 right-8 font-mono font-bold text-5xl lg:text-6xl text-ink/[0.05] tracking-tight leading-none pointer-events-none"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <div className="flex items-center gap-2.5 mb-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-gray-500">
+                  <div className="flex items-center gap-2.5 mb-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-muted">
                     <span className="w-5 h-px bg-accent flex-shrink-0" />
                     <span>{h.category}</span>
                   </div>
-                  <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-semibold tracking-tight leading-[1.05] text-gray-900 mb-3">
+                  <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.4rem] font-semibold tracking-tight leading-[1.05] text-ink mb-3">
                     {h.title}
                   </h3>
-                  <p className="text-xs sm:text-sm italic text-gray-500 leading-snug mb-3 max-w-md">
+                  <p className="text-xs sm:text-sm italic text-muted leading-snug mb-3 max-w-md">
                     {h.sub}
                   </p>
-                  <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed max-w-md mb-5">
+                  <p className="text-sm sm:text-[15px] text-body leading-relaxed max-w-md mb-5">
                     {h.desc}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-6">
@@ -260,7 +260,7 @@ export default function ProjectShowcase() {
                 <div className="flex flex-wrap gap-2.5">
                   <Link
                     href={h.href}
-                    className="group/btn inline-flex items-center gap-2.5 bg-gray-900 hover:bg-black text-white text-sm sm:text-[15px] font-semibold px-6 sm:px-7 py-3.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200"
+                    className="group/btn inline-flex items-center gap-2.5 bg-ink hover:bg-ink/90 text-canvas text-sm sm:text-[15px] font-semibold px-6 sm:px-7 py-3.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200"
                   >
                     View Details
                     <FaArrowRight className="text-xs group-hover/btn:translate-x-0.5 transition-transform duration-200" />
@@ -270,7 +270,7 @@ export default function ProjectShowcase() {
                       href={h.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white hover:border-gray-800 hover:bg-gray-50 text-gray-900 border border-gray-200 text-sm sm:text-[15px] font-semibold px-5 sm:px-6 py-3.5 rounded-xl transition-all duration-200"
+                      className="inline-flex items-center gap-2 bg-card hover:border-ink hover:bg-surface text-ink border border-line text-sm sm:text-[15px] font-semibold px-5 sm:px-6 py-3.5 rounded-xl transition-all duration-200"
                     >
                       <FaGithub className="text-base" />
                       Code
@@ -283,7 +283,7 @@ export default function ProjectShowcase() {
         </div>
 
         {/* Progress rail */}
-        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-black/[0.06] z-30">
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-ink/10 z-30">
           <div ref={fillRef} className="h-full bg-accent" style={{ width: "0%" }} />
         </div>
       </div>

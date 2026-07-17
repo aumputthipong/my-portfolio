@@ -14,6 +14,18 @@ colors:
   accent-dark: "#14532d"
   accent-soft: "#ecf4ef"
   on-accent: "#ffffff"
+colorsDark:
+  canvas: "#0d1210"
+  surface: "#131a16"
+  card: "#1c2521"
+  ink: "#e8ecea"
+  body: "#a3aeaa"
+  muted: "#7a8681"
+  line: "#2b3531"
+  accent: "#5cc08d"
+  accent-strong: "#7fd4a8"
+  accent-soft: "#16241d"
+  on-accent: "#0d1210"
 typography:
   display:
     fontFamily: Fraunces, Georgia, "Times New Roman", serif
@@ -122,6 +134,17 @@ The palette is intentionally narrow: one ink for hierarchy, one green for accent
 - **Accent (`#1f6f4e`):** Botanical green. Heading periods, active nav/tab/thumb, link hover, the surname in the wordmark, eyebrow dashes, contact icons.
 - **Accent-soft (`#ecf4ef`):** Tinted background for chips, active thumbnails, responsibility markers.
 - **Accent-dark (`#14532d`):** Reserved for accent hover/pressed.
+
+## Dark mode
+
+The palette is delivered through **semantic tokens** (`canvas`, `surface`, `card`, `ink`, `body`, `muted`, `line`, `accent`, `accent-strong`, `accent-soft`, `on-accent`) rather than raw Tailwind colors. Each token is a CSS variable defined on `:root` (light) and overridden on `.dark`; the Tailwind utilities (`bg-canvas`, `text-ink`, `border-line`, …) resolve to those variables via `@theme inline`, so a single class works in both themes. Theme selection is handled by `next-themes` (`class` strategy) with a sun/moon toggle in the navbar.
+
+Naming maps from the light palette: `border` → **`line`**, and a new **`card`** token sits above `surface` for raised surfaces.
+
+- **Elevation ramp (dark → light):** `canvas` `#0d1210` < `surface` `#131a16` < `card` `#1c2521`. In light mode the same three are `#ffffff` / `#fafafa` / `#ffffff` — cards read as raised in both directions.
+- **Accent lifts in dark:** botanical green moves to `#5cc08d` (`accent-strong` `#7fd4a8`) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` becomes a deep `#16241d` chip tint, and `on-accent` flips to near-black so text stays legible on the brighter green.
+- **Text ramp:** `ink` `#e8ecea`, `body` `#a3aeaa`, `muted` `#7a8681` — never pure white, to keep the editorial (not glaring) feel.
+- **Inverted / always-dark elements:** image backdrops, the lightbox, video title bars, and on-image overlay chips stay dark with white text in **both** themes — they sit on media, not on the page ground. The footer is the one deliberately inverted block: a dark band in light mode, a `surface` band with a top hairline in dark.
 
 ## Typography
 

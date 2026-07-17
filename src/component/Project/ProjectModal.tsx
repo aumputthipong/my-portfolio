@@ -23,13 +23,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white rounded-lg max-w-[95vw] sm:max-w-3xl lg:max-w-7xl w-full max-h-[95vh] overflow-hidden flex flex-col"
+          className="bg-card rounded-lg max-w-[95vw] sm:max-w-3xl lg:max-w-7xl w-full max-h-[95vh] overflow-hidden flex flex-col"
         >
-          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
-            <h2 className="text-lg sm:text-2xl font-bold text-gray-800 truncate pr-3">{project.title}</h2>
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-line">
+            <h2 className="text-lg sm:text-2xl font-bold text-ink truncate pr-3">{project.title}</h2>
             <button
               onClick={onClose}
-              className="text-gray-400 leading-none hover:text-gray-600 text-2xl font-light w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
+              className="text-muted leading-none hover:text-ink text-2xl font-light w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface transition-colors flex-shrink-0"
             >
               ×
             </button>
@@ -45,7 +45,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
               {project.images.map((img, i) => (
                 <div
                   key={i}
-                  className="relative group cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 bg-gray-50"
+                  className="relative group cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 bg-surface"
                   onClick={() => setLightboxIndex(i)}
                 >
                   <img

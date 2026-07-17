@@ -43,7 +43,7 @@ export default function Projects() {
       : allProjects.filter((p) => p.type === activeTab);
 
   return (
-    <section id="projects" className="bg-white">
+    <section id="projects" className="bg-canvas">
       <div className="max-w-6xl mx-auto pt-10 sm:pt-12 px-4 sm:px-6 lg:px-8">
         <SectionHeader label="Projects" />
       </div>
@@ -56,19 +56,19 @@ export default function Projects() {
 
         {/* Tab filter */}
         <div className="flex justify-center mb-5 sm:mb-6">
-          <div className="flex flex-wrap justify-center bg-white rounded-full p-1 shadow-sm border border-gray-200 gap-1 max-w-full">
+          <div className="flex flex-wrap justify-center bg-card rounded-full p-1 shadow-sm border border-line gap-1 max-w-full">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-medium rounded-full transition-all duration-200 ${
                   activeTab === tab
-                    ? "bg-accent text-white shadow-md"
-                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                    ? "bg-accent text-on-accent shadow-md"
+                    : "text-muted hover:text-ink hover:bg-surface"
                 }`}
               >
                 {tab}
-                <span className={`ml-1.5 text-[11px] sm:text-xs ${activeTab === tab ? "text-white/60" : "text-gray-400"}`}>
+                <span className={`ml-1.5 text-[11px] sm:text-xs ${activeTab === tab ? "text-on-accent/60" : "text-muted"}`}>
                   ({tab === "All" ? allProjects.length : allProjects.filter((p) => p.type === tab).length})
                 </span>
               </button>
@@ -87,7 +87,7 @@ export default function Projects() {
               className="group cursor-pointer"
               onClick={() => router.push(project.href ?? `/projects/${project.id}`)}
             >
-              <div className="h-full flex flex-col rounded-2xl p-3 bg-white border border-gray-200 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-md">
+              <div className="h-full flex flex-col rounded-2xl p-3 bg-card border border-line transition-all duration-300 group-hover:border-muted/50 group-hover:shadow-md">
 
                 {/* Banner image */}
                 <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden rounded-xl bg-gray-900 flex-shrink-0">
@@ -116,10 +116,10 @@ export default function Projects() {
 
                 {/* Card body */}
                 <div className="flex-1 flex flex-col pt-4">
-                  <h3 className="font-display font-semibold text-gray-900 text-[15px] sm:text-base leading-snug mb-2">
+                  <h3 className="font-display font-semibold text-ink text-[15px] sm:text-base leading-snug mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2" style={{ color: '#6b7280' }}>
+                  <p className="text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2 text-body">
                     {project.description}
                   </p>
 
@@ -132,13 +132,13 @@ export default function Projects() {
 
                   {/* Category tag */}
                   <div className="mb-4">
-                    <span className="inline-block bg-gray-100 text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-full border border-gray-200" style={{ color: '#6b7280' }}>
+                    <span className="inline-block bg-surface text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-full border border-line text-muted">
                       {project.type}
                     </span>
                   </div>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto gap-2 flex-wrap">
+                  <div className="flex items-center justify-between pt-4 border-t border-line mt-auto gap-2 flex-wrap">
 
                     {/* Left: external link */}
                     <div className="flex items-center min-w-0">
@@ -148,8 +148,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-gray-300 text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-md transition-all duration-200"
-                          style={{ color: '#374151' }}
+                          className="inline-flex items-center gap-1.5 border border-line bg-surface text-body hover:bg-line hover:border-muted/40 text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-md transition-all duration-200"
                         >
                           <FaGithub />
                           Code
@@ -160,8 +159,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-gray-300 text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-md transition-all duration-200"
-                          style={{ color: '#374151' }}
+                          className="inline-flex items-center gap-1.5 border border-line bg-surface text-body hover:bg-line hover:border-muted/40 text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-md transition-all duration-200"
                         >
                           <FaFigma />
                           Figma
@@ -171,7 +169,7 @@ export default function Projects() {
 
                     {/* Right: year */}
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <span className="text-[11px] sm:text-xs font-medium text-gray-400">
+                      <span className="text-[11px] sm:text-xs font-medium text-muted">
                         {project.year}
                       </span>
                     </div>

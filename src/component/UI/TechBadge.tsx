@@ -12,8 +12,7 @@ const TechBadge: React.FC<TechBadgeProps> = ({ tech, iconSrc }) => {
   const src = iconSrc ?? tech.icon;
   return (
     <span
-      className="inline-flex items-center gap-1.5 border border-gray-200 bg-white hover:bg-accent-soft hover:border-accent/40 text-[11px] sm:text-xs font-mono px-2.5 py-1.5 rounded-md transition-all duration-200"
-      style={{ color: "#374151" }}
+      className="inline-flex items-center gap-1.5 border border-line bg-canvas text-body hover:bg-accent-soft hover:border-accent/40 hover:text-accent text-[11px] sm:text-xs font-mono px-2.5 py-1.5 rounded-md transition-all duration-200"
     >
       {src && (
         <img src={src} alt={tech.name} className="h-3.5 w-3.5 object-contain" />
