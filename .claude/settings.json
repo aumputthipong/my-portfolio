@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(node verify-default.js)",
-      "Bash(echo \"tsc: $?\")",
-      "Bash(git commit -q -m 'feat\\(dark-mode\\): force light as default theme, ignore OS preference *)"
-    ]
-  }
-}
