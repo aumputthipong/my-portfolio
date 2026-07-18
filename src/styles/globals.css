@@ -41,23 +41,25 @@
 .dark {
   color-scheme: dark;
 
-  /* elevation ramp (dark→light): canvas < surface < card */
-  --canvas: #0d1210;
-  --surface: #131a16;
-  --card: #1c2521;
-  --ink: #e8ecea;
-  --body: #a3aeaa;
-  --muted: #7a8681;
-  --line: #2b3531;
+  /* Neutral, faintly-warm ramp — green lives only in the accent (matches the
+     light-mode "neutrals stay neutral" rule). Elevation reads mainly through a
+     clearly-visible hairline (--line) since fill steps are small on dark. */
+  --canvas: #131110;
+  --surface: #1c1a18;
+  --card: #262320;
+  --ink: #f0ece6;
+  --body: #aca69c;
+  --muted: #857d72;
+  --line: #3b3630;
   /* accent lifts in dark — #1f6f4e fails contrast on a dark ground */
   --accent: #5cc08d;
   --accent-strong: #7fd4a8;
-  --accent-soft: #16241d;
-  --on-accent: #0d1210;
+  --accent-soft: #1d2a20;
+  --on-accent: #131110;
 
-  --scrollbar-track: #131a16;
-  --scrollbar-thumb: #3a4641;
-  --scrollbar-thumb-hover: #5a6a63;
+  --scrollbar-track: #1c1a18;
+  --scrollbar-thumb: #45403a;
+  --scrollbar-thumb-hover: #635c53;
 }
 
 .font-display {
