@@ -17,7 +17,7 @@ colors:
 colorsDark:
   canvas: "#131110"
   surface: "#1c1a18"
-  card: "#262320"
+  card: "#2b2825"
   ink: "#f0ece6"
   body: "#aca69c"
   muted: "#857d72"
@@ -141,8 +141,8 @@ The palette is delivered through **semantic tokens** (`canvas`, `surface`, `card
 
 Naming maps from the light palette: `border` → **`line`**, and a new **`card`** token sits above `surface` for raised surfaces.
 
-- **Neutral, faintly-warm base:** the dark neutrals are kept *neutral* (a whisper of warmth to flatter the Fraunces serif) — **no green cast**. Green lives only in the accent, mirroring the light-mode rule "neutrals stay neutral, one green accent". Ramp: `canvas` `#131110` < `surface` `#1c1a18` < `card` `#262320`; light mode is `#ffffff` / `#fafafa` / `#ffffff`.
-- **Elevation reads through the hairline:** fill steps are inherently small on a dark ground (card↔canvas ≈ 1.2:1), so a clearly-visible `line` (`#3b3630`, ≈ 1.6:1 against canvas) does the separating work — cards are defined by their edge, not a wash.
+- **Neutral, faintly-warm base:** the dark neutrals are kept *neutral* (a whisper of warmth to flatter the Fraunces serif) — **no green cast**. Green lives only in the accent, mirroring the light-mode rule "neutrals stay neutral, one green accent". Ramp: `canvas` `#131110` < `surface` `#1c1a18` < `card` `#2b2825`; light mode is `#ffffff` / `#fafafa` / `#ffffff`.
+- **Elevation reads through fill + hairline:** fill steps are small on a dark ground (card↔canvas ≈ 1.4:1), so a clearly-visible `line` (`#3b3630`, ≈ 1.6:1 against canvas) shares the separating work — cards read as raised without heavy shadows or ID-card borders.
 - **Accent lifts in dark:** botanical green moves to `#5cc08d` (`accent-strong` `#7fd4a8`, `accent/canvas` ≈ 8.4:1) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` is a deep `#1d2a20` chip tint, and `on-accent` flips to near-black.
 - **Text ramp:** `ink` `#f0ece6`, `body` `#aca69c`, `muted` `#857d72` — warm off-whites, never pure white, all passing WCAG AA on canvas.
 - **Content images:** large white screenshots carry `dark:brightness-90` so they don't punch bright holes in the dark UI (icons, logos, and the portrait are untouched).
