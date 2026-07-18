@@ -133,11 +133,11 @@ export default function ProjectDetailPage() {
               {isMobile ? (
                 <div className="relative aspect-video flex items-center justify-center overflow-hidden">
                   <img src={images[selectedIndex]} aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-30" />
-                  <img src={images[selectedIndex]} alt={`Screenshot ${selectedIndex + 1}`} className="relative z-10 h-full max-h-[360px] sm:max-h-[560px] object-contain" />
+                  <img src={images[selectedIndex]} alt={`Screenshot ${selectedIndex + 1}`} className="relative z-10 h-full max-h-[360px] sm:max-h-[560px] object-contain dark:brightness-90" />
                 </div>
               ) : (
                 <div className="aspect-video">
-                  <img src={images[selectedIndex]} alt={`Screenshot ${selectedIndex + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+                  <img src={images[selectedIndex]} alt={`Screenshot ${selectedIndex + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02] dark:brightness-90" />
                 </div>
               )}
 

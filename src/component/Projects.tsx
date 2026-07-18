@@ -101,7 +101,7 @@ export default function Projects() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`relative z-10 w-full h-full transition-transform duration-500 group-hover:scale-105 ${
+                      className={`relative z-10 w-full h-full transition-transform duration-500 group-hover:scale-105 dark:brightness-90 ${
                         project.layout === "mobile" ? "object-contain" : "object-cover"
                       }`}
                     />

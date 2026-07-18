@@ -26,7 +26,7 @@ const GraduationProjects = () => {
             <img
               src={seniorProject.image}
               alt={seniorProject.title}
-              className="relative z-10 w-full h-full object-cover rounded-xl shadow-xl transition-transform duration-700 group-hover:scale-[1.03]"
+              className="relative z-10 w-full h-full object-cover rounded-xl shadow-xl transition-transform duration-700 group-hover:scale-[1.03] dark:brightness-90"
             />
 
             {/* Hover overlay */}

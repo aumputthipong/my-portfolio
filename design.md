@@ -15,17 +15,17 @@ colors:
   accent-soft: "#ecf4ef"
   on-accent: "#ffffff"
 colorsDark:
-  canvas: "#0d1210"
-  surface: "#131a16"
-  card: "#1c2521"
-  ink: "#e8ecea"
-  body: "#a3aeaa"
-  muted: "#7a8681"
-  line: "#2b3531"
+  canvas: "#131110"
+  surface: "#1c1a18"
+  card: "#2b2825"
+  ink: "#f0ece6"
+  body: "#aca69c"
+  muted: "#857d72"
+  line: "#3b3630"
   accent: "#5cc08d"
   accent-strong: "#7fd4a8"
-  accent-soft: "#16241d"
-  on-accent: "#0d1210"
+  accent-soft: "#1d2a20"
+  on-accent: "#131110"
 typography:
   display:
     fontFamily: Fraunces, Georgia, "Times New Roman", serif
@@ -141,9 +141,11 @@ The palette is delivered through **semantic tokens** (`canvas`, `surface`, `card
 
 Naming maps from the light palette: `border` → **`line`**, and a new **`card`** token sits above `surface` for raised surfaces.
 
-- **Elevation ramp (dark → light):** `canvas` `#0d1210` < `surface` `#131a16` < `card` `#1c2521`. In light mode the same three are `#ffffff` / `#fafafa` / `#ffffff` — cards read as raised in both directions.
-- **Accent lifts in dark:** botanical green moves to `#5cc08d` (`accent-strong` `#7fd4a8`) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` becomes a deep `#16241d` chip tint, and `on-accent` flips to near-black so text stays legible on the brighter green.
-- **Text ramp:** `ink` `#e8ecea`, `body` `#a3aeaa`, `muted` `#7a8681` — never pure white, to keep the editorial (not glaring) feel.
+- **Neutral, faintly-warm base:** the dark neutrals are kept *neutral* (a whisper of warmth to flatter the Fraunces serif) — **no green cast**. Green lives only in the accent, mirroring the light-mode rule "neutrals stay neutral, one green accent". Ramp: `canvas` `#131110` < `surface` `#1c1a18` < `card` `#2b2825`; light mode is `#ffffff` / `#fafafa` / `#ffffff`.
+- **Elevation reads through fill + hairline:** fill steps are small on a dark ground (card↔canvas ≈ 1.4:1), so a clearly-visible `line` (`#3b3630`, ≈ 1.6:1 against canvas) shares the separating work — cards read as raised without heavy shadows or ID-card borders.
+- **Accent lifts in dark:** botanical green moves to `#5cc08d` (`accent-strong` `#7fd4a8`, `accent/canvas` ≈ 8.4:1) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` is a deep `#1d2a20` chip tint, and `on-accent` flips to near-black.
+- **Text ramp:** `ink` `#f0ece6`, `body` `#aca69c`, `muted` `#857d72` — warm off-whites, never pure white, all passing WCAG AA on canvas.
+- **Content images:** large white screenshots carry `dark:brightness-90` so they don't punch bright holes in the dark UI (icons, logos, and the portrait are untouched).
 - **Inverted / always-dark elements:** image backdrops, the lightbox, video title bars, and on-image overlay chips stay dark with white text in **both** themes — they sit on media, not on the page ground. The footer is the one deliberately inverted block: a dark band in light mode, a `surface` band with a top hairline in dark.
 
 ## Typography
