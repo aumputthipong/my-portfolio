@@ -1,4 +1,4 @@
-# Personal Portfolio - Putthipong Chobngam
+# Personal Portfolio - Putthipong Chobngam (Aum)
 
 A personal portfolio website developed to showcase my skills, projects, and background as an Information Technology graduate (Software Engineering). This project demonstrates my skill and readiness for a Full-Stack Developer position.
 
