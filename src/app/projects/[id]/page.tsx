@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 import { projectData } from "@/data/ProjectsData";
 import Lightbox from "@/component/UI/Lightbox";
-import { FaGithub, FaChevronLeft, FaChevronRight, FaFigma, FaArrowLeft, FaArrowRight, FaExpand } from "react-icons/fa";
+import { FaGithub, FaChevronLeft, FaChevronRight, FaFigma, FaArrowLeft, FaArrowRight, FaExpand, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useImageCarousel } from "@/hooks/useImageCarousel";
@@ -60,8 +60,19 @@ export default function ProjectDetailPage() {
               <span aria-hidden>·</span>
               <span>{project.year}</span>
             </div>
-            {(project.github.length > 0 || typeof project.ref === "string") && (
+            {(project.github.length > 0 || typeof project.ref === "string" || project.demo) && (
               <div className="flex items-center gap-2">
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 border border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent text-xs font-semibold px-3.5 py-2 rounded-lg transition-all duration-200"
+                  >
+                    <FaExternalLinkAlt className="text-[10px]" />
+                    Live Demo
+                  </a>
+                )}
                 {project.github.length > 0 && (
                   <a
                     href={project.github}
