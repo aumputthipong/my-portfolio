@@ -86,6 +86,19 @@ components:
     border: "1px solid {colors.border}"
     rounded: "{rounded.xl}"
     padding: 12px 24px
+  button-accent:
+    backgroundColor: "{colors.accent-soft}"
+    textColor: "{colors.accent}"
+    border: "1px solid {colors.accent}"
+    rounded: "{rounded.xl}"
+    padding: 12px 20px
+    hover: "fill {colors.accent} / text {colors.on-accent}"
+  button-icon:
+    size: 48px
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.body}"
+    border: "1px solid {colors.border}"
+    rounded: "{rounded.xl}"
   button-compact:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.neutral}"
@@ -187,6 +200,8 @@ Generous, varied rounding rather than uniform pills:
 
 - **`button-primary`** — solid ink, white text, `rounded.xl`. The dominant action ("View Details").
 - **`button-secondary`** — white with a `border` hairline, `rounded.xl` ("Code", "Figma" at full size).
+- **`button-accent`** — `accent-soft` fill, `accent` border and text, `rounded.xl`; hover floods to solid `accent` with `on-accent` text. Reserved for **"Live Demo"** — the only action that hands the visitor a running product, so it gets the palette's one colour rather than another neutral hairline.
+- **`button-icon`** — 48×48 square, hairline border, glyph only, `rounded.xl`. The third tier, for actions whose mark is unambiguous to the audience (the GitHub octocat). Always carries `aria-label` + `title`.
 - **`button-compact`** — small ink button, `rounded.lg`, for inline detail-header actions ("Code").
 - **`card`** — project tile: white, hairline border, `rounded.2xl`; hover deepens border and adds a soft shadow (no lift).
 - **`chip`** — `accent-soft` background, `accent` text, fully rounded. Category / project-type labels.

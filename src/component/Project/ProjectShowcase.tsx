@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { FaArrowRight, FaGithub } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { seniorProject } from "@/data/SeniorProjectData";
 import { projectData } from "@/data/ProjectsData";
 import TechBadge from "../UI/TechBadge";
@@ -11,6 +11,7 @@ type Highlight = {
   key: string;
   href: string;
   github?: string;
+  demo?: string;
   badge: string;
   featured?: boolean;
   category: string;
@@ -53,6 +54,7 @@ const highlights: Highlight[] = [
           key: "turtask",
           href: `/projects/${turtask.id}`,
           github: turtask.github || undefined,
+          demo: turtask.demo,
           badge: "Personal Project",
           featured: true,
           category: "Mini ERP · Kanban",
@@ -257,23 +259,39 @@ export default function ProjectShowcase() {
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2.5">
+                {/* Actions — three weights: solid (stay on site), accent
+                    outline (the running app), icon-only (source). Keeping Code
+                    to a square lets all three share one row in the narrow
+                    info column at lg. */}
+                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
                   <Link
                     href={h.href}
-                    className="group/btn inline-flex items-center gap-2.5 bg-ink hover:bg-ink/90 text-canvas text-sm sm:text-[15px] font-semibold px-6 sm:px-7 py-3.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200"
+                    className="group/btn flex-1 sm:flex-none inline-flex items-center justify-center gap-2.5 h-12 px-5 lg:px-6 rounded-xl bg-ink hover:bg-ink/90 text-canvas text-sm sm:text-[15px] font-semibold whitespace-nowrap shadow-sm hover:shadow-md transition-all duration-200"
                   >
                     View Details
                     <FaArrowRight className="text-xs group-hover/btn:translate-x-0.5 transition-transform duration-200" />
                   </Link>
+                  {h.demo && (
+                    <a
+                      href={h.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 h-12 px-4 lg:px-5 rounded-xl border border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent text-sm sm:text-[15px] font-semibold whitespace-nowrap transition-all duration-200"
+                    >
+                      <FaExternalLinkAlt className="text-[11px]" />
+                      Live Demo
+                    </a>
+                  )}
                   {h.github && (
                     <a
                       href={h.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-card hover:border-ink hover:bg-surface text-ink border border-line text-sm sm:text-[15px] font-semibold px-5 sm:px-6 py-3.5 rounded-xl transition-all duration-200"
+                      aria-label={`${h.title} source code on GitHub`}
+                      title="Source code on GitHub"
+                      className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-xl border border-line bg-card text-body hover:text-ink hover:border-ink hover:bg-surface transition-all duration-200"
                     >
-                      <FaGithub className="text-base" />
-                      Code
+                      <FaGithub className="text-lg" />
                     </a>
                   )}
                 </div>

@@ -4,7 +4,7 @@ import { projectData, type Project } from "@/data/ProjectsData";
 import { seniorProject } from "@/data/SeniorProjectData";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaFigma, FaExternalLinkAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import ProjectShowcase from "./Project/ProjectShowcase";
 import SectionHeader from "./UI/SectionHeader";
@@ -140,8 +140,20 @@ export default function Projects() {
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-4 border-t border-line mt-auto gap-2 flex-wrap">
 
-                    {/* Left: external link */}
-                    <div className="flex items-center min-w-0">
+                    {/* Left: external links */}
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 border border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-md transition-all duration-200"
+                        >
+                          <FaExternalLinkAlt className="text-[9px]" />
+                          Live Demo
+                        </a>
+                      )}
                       {project.github.length > 0 ? (
                         <a
                           href={project.github}

@@ -6,6 +6,7 @@ export interface Project {
   tech: Array<{ name: string; icon?: string }>;
   github: string;
   ref?: string | false;
+  demo?: string;
   image: string;
   year: number;
   images: string[];
@@ -29,6 +30,7 @@ export const projectData: Project[] = [
     ],
     github: "https://github.com/aumputthipong/Kanban-management",
     ref: false,
+    demo: "https://turtask-management.vercel.app/",
     image: "/projects/kanban-manage/kanban-manage-v2 (16).png",
     year: 2026,
     images: [
