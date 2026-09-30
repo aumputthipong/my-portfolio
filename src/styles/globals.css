@@ -90,25 +90,38 @@ body {
   overflow-x: hidden;
 }
 
-.thumb-strip::-webkit-scrollbar {
-  height: 15px;
-}
-.thumb-strip::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-  border-radius: 9999px;
-}
-.thumb-strip::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 9999px;
-  cursor: pointer;
-}
-.thumb-strip::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover);
-  cursor: pointer;
+/* Lightbox filmstrip sits on a black overlay in both themes */
+.lightbox-strip {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
-@media (max-width: 640px) {
-  .thumb-strip::-webkit-scrollbar {
-    height: 6px;
-  }
+/* Project gallery thumbnail rail */
+/* Scrollbar hidden (Windows draws a heavy one with arrow buttons); a soft
+   fade on whichever edge has more thumbnails beyond it signals scrolling. */
+.thumb-rail {
+  --fade-l: 0rem;
+  --fade-r: 0rem;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent);
+  scroll-padding-inline: 2rem;
+}
+.thumb-rail[data-fade-left] {
+  --fade-l: 2rem;
+}
+.thumb-rail[data-fade-right] {
+  --fade-r: 2rem;
+}
+.thumb-rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* Stage image cross-fade when the selected screenshot changes */
+@keyframes stage-in {
+  from { opacity: 0; transform: scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+.stage-in {
+  animation: stage-in 220ms ease-out;
 }

@@ -1,35 +1,19 @@
 "use client";
 
 import { projectData, type Project } from "@/data/ProjectsData";
-import { seniorProject } from "@/data/SeniorProjectData";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaArrowRight, FaGithub, FaFigma, FaExternalLinkAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import ProjectShowcase from "./Project/ProjectShowcase";
+import ProjectShowcase, { FEATURED_PROJECT_IDS } from "./Project/ProjectShowcase";
 import SectionHeader from "./UI/SectionHeader";
 import TechBadge from "./UI/TechBadge";
 
-const seniorAsProject: Project & { id: string | number; href: string } = {
-  id: "senior" as unknown as number,
-  title: seniorProject.title,
-  type: "Software Development",
-  description: seniorProject.shortDescription,
-  tech: seniorProject.tech,
-  ref: false,
-  image: seniorProject.image,
-  year: seniorProject.year,
-  images: seniorProject.images,
-  haveImage: true,
-  layout: "web",
-  href: "/projects/senior",
-  github: "https://github.com/aumputthipong/AI-garden-System",
-};
-
-const allProjects: Array<Project & { href?: string }> = [
-  seniorAsProject,
-  ...projectData,
-];
+// The featured pair (AI Garden and Turtask) is shown in the showcase above, so
+// the grid lists everything else. AI Garden lives outside projectData already.
+const allProjects: Array<Project & { href?: string }> = projectData.filter(
+  (p) => !FEATURED_PROJECT_IDS.includes(p.id)
+);
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
