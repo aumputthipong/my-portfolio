@@ -12,6 +12,8 @@ export interface Project {
   images: string[];
   haveImage: boolean;
   layout: "web" | "mobile";
+  /** "What I did" bullets on the detail page */
+  highlights?: string[];
 }
 
 export const projectData: Project[] = [
@@ -20,13 +22,22 @@ export const projectData: Project[] = [
     title: "Turtask — Mini ERP Kanban",
     type: "Software Development",
     description:
-      "Real-time Kanban task management for small teams — multi-board, role-based access, drag-and-drop with optimistic UI, WebSocket sync, and analytics dashboard.",
+      "A team project management web app with Kanban boards, task assignment, and role-based access. Task updates and drag-and-drop changes sync in real time for everyone on the board.",
+    highlights: [
+      "Built a team project management web app with Kanban boards, task assignment, and role-based access for owners, managers, and members.",
+      "Implemented real-time collaboration using WebSockets, so task updates and drag-and-drop changes appear instantly for all team members viewing the same board.",
+      "Built a CI/CD workflow where pull requests must pass GitHub Actions tests before merging, with automatic deployment to Vercel and Render.",
+      "Wrote unit and integration tests for backend services, including tests against a real PostgreSQL database using Testcontainers.",
+    ],
     tech: [
       { name: "Next.js", icon: "image/skills/framework/nextjs.png" },
       { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
       { name: "Go", icon: "image/skills/programming/go.png" },
       { name: "PostgreSQL", icon: "image/skills/framework/Postgresql.png" },
+      { name: "WebSocket" },
       { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
+      { name: "GitHub Actions", icon: "image/skills/tools/github.png" },
+      { name: "Testcontainers" },
     ],
     github: "https://github.com/aumputthipong/Kanban-management",
     ref: false,

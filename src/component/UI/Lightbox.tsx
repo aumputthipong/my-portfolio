@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { FaPlay } from "react-icons/fa";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight, FaPlay, FaTimes } from "react-icons/fa";
 
 export type LightboxItem =
   | { type: "image"; src: string }
@@ -14,83 +14,107 @@ interface LightboxProps {
   onClose: () => void;
 }
 
+// mqdefault / maxresdefault are 16:9; hqdefault is 4:3 with black bars baked in
+export const youtubeThumb = (id: string, size: "mqdefault" | "hqdefault" | "maxresdefault" = "mqdefault") =>
+  `https://img.youtube.com/vi/${id}/${size}.jpg`;
+
 export default function Lightbox({ items, images, initialIndex, layout, onClose }: LightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const thumbRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const resolved: LightboxItem[] = items
     ?? (images?.map((src) => ({ type: "image", src })) ?? []);
 
   const total = resolved.length;
   const current = resolved[currentIndex];
+  const isMobile = layout === "mobile";
 
-  const prev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((i) => (i === 0 ? total - 1 : i - 1));
-  };
+  const prev = useCallback(() => setCurrentIndex((i) => (i === 0 ? total - 1 : i - 1)), [total]);
+  const next = useCallback(() => setCurrentIndex((i) => (i + 1) % total), [total]);
 
-  const next = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((i) => (i + 1) % total);
-  };
+  // Keyboard: Esc closes, arrows step through
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowLeft") prev();
+      else if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose, prev, next]);
+
+  // Keep the page behind from scrolling while open
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = original; };
+  }, []);
+
+  useEffect(() => {
+    thumbRefs.current[currentIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [currentIndex]);
+
+  const stop = (e: React.MouseEvent) => e.stopPropagation();
 
   return (
     <div
-      className="fixed inset-0 bg-black/90 flex items-center justify-center z-[60] p-2 sm:p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Screenshot viewer"
+      className="fixed inset-0 z-[60] flex flex-col bg-black/95"
       onClick={onClose}
     >
-      <div className="relative w-full h-full flex items-center justify-center">
-
-        {/* Close */}
+      {/* Top bar */}
+      <div className="flex items-center justify-between px-3 sm:px-5 py-3 text-white/70 text-xs sm:text-sm">
+        <span className="tabular-nums">{currentIndex + 1} / {total}</span>
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-300 text-2xl sm:text-3xl font-light w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors z-10 leading-none pb-1"
+          aria-label="Close viewer"
+          className="w-10 h-10 flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
-          ×
+          <FaTimes />
         </button>
+      </div>
 
-        {/* Prev */}
+      {/* Stage */}
+      <div className="relative flex-1 min-h-0 flex items-center justify-center px-12 sm:px-20">
         {total > 1 && (
           <button
-            onClick={prev}
-            className="cursor-pointer absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/70 hover:bg-white/95 backdrop-blur-sm transition-all duration-200 z-10 shadow-lg"
+            type="button"
+            onClick={(e) => { stop(e); prev(); }}
+            aria-label="Previous"
+            className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="m15 19-7-7 7-7" />
-            </svg>
+            <FaChevronLeft />
+          </button>
+        )}
+        {total > 1 && (
+          <button
+            type="button"
+            onClick={(e) => { stop(e); next(); }}
+            aria-label="Next"
+            className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            <FaChevronRight />
           </button>
         )}
 
-        {/* Next */}
-        {total > 1 && (
-          <button
-            onClick={next}
-            className="cursor-pointer absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/70 hover:bg-white/95 backdrop-blur-sm transition-all duration-200 z-10 shadow-lg"
-          >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="m9 5 7 7-7 7" />
-            </svg>
-          </button>
-        )}
-
-        {/* Content */}
         {current.type === "video" ? (
-          <div
-            className="w-full max-w-4xl mx-12 sm:mx-16"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Video title bar */}
-            <div className="bg-gray-950 rounded-t-xl px-3 sm:px-5 py-2.5 sm:py-3.5 flex items-center gap-2 sm:gap-3">
+          // Width is capped by the available height so the 16:9 player never
+          // runs under the filmstrip on short screens.
+          <div className="w-full max-w-[min(64rem,calc((100dvh-13rem)*16/9))]" onClick={stop}>
+            <div className="bg-gray-950 rounded-t-xl px-3 sm:px-5 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
               <div className="w-5 h-5 sm:w-6 sm:h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <FaPlay className="text-white text-[8px] sm:text-[9px] ml-0.5" />
               </div>
-              <p className="font-semibold text-xs sm:text-sm truncate text-white">
-                {current.name}
-              </p>
+              <p className="font-semibold text-xs sm:text-sm truncate text-white">{current.name}</p>
             </div>
-            <div className="relative aspect-video bg-black rounded-b-xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-video bg-black rounded-b-xl overflow-hidden">
               <iframe
                 key={current.id}
                 src={`https://www.youtube.com/embed/${current.id}?autoplay=1&rel=0&vq=hd1080`}
+                title={current.name}
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -99,22 +123,46 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
           </div>
         ) : (
           <img
+            key={current.src}
             src={current.src}
-            alt={`Screenshot ${currentIndex + 1}`}
-            className={`max-h-[85vh] sm:max-h-[88vh] w-auto object-contain rounded-lg shadow-2xl ${
-              layout === "mobile" ? "max-w-[70vw] sm:max-w-[50vw]" : "max-w-[82vw] sm:max-w-[88vw]"
-            }`}
-            onClick={(e) => e.stopPropagation()}
+            alt={`Screenshot ${currentIndex + 1} of ${total}`}
+            onClick={stop}
+            className={`max-h-full w-auto max-w-full object-contain ${isMobile ? "rounded-[1.25rem]" : "rounded-lg"}`}
           />
         )}
-
-        {/* Counter */}
-        {total > 1 && (
-          <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
-            {currentIndex + 1} / {total}
-          </div>
-        )}
       </div>
+
+      {/* Filmstrip — keeps the whole set in view while zoomed in */}
+      {total > 1 && (
+        <div className="flex justify-center px-3 pt-3 pb-4" onClick={stop}>
+          <div className="lightbox-strip flex gap-2 overflow-x-auto max-w-full px-1 py-1">
+            {resolved.map((item, i) => {
+              const src = item.type === "video" ? youtubeThumb(item.id) : item.src;
+              const active = i === currentIndex;
+              return (
+                <button
+                  key={i}
+                  ref={(el) => { thumbRefs.current[i] = el; }}
+                  type="button"
+                  onClick={() => setCurrentIndex(i)}
+                  aria-label={item.type === "video" ? `Play ${item.name}` : `Show screenshot ${i + 1}`}
+                  aria-current={active}
+                  className={`relative flex-shrink-0 overflow-hidden rounded-md transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                    isMobile ? "w-8 h-16 sm:w-9 sm:h-[4.5rem]" : "w-16 h-10 sm:w-20 sm:h-12"
+                  } ${active ? "opacity-100 ring-2 ring-white" : "opacity-40 hover:opacity-80"}`}
+                >
+                  <img src={src} alt="" className="w-full h-full object-cover object-top" />
+                  {item.type === "video" && (
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/30">
+                      <FaPlay className="text-white text-[9px]" />
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

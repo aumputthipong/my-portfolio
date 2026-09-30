@@ -22,21 +22,25 @@ export const seniorProject = {
     "Web Application Platform to Support Image and Video Analysis with AI in a Microservice Model",
   title: "AI Garden System",
   description:
-    "Designed and developed a web application for image and video analysis with AI computer vision services, deployed for use by the Faculty of Information Technology in collaboration with medical instructors and students at Siriraj Hospital. Integrated existing AI vision models as microservices, supporting object detection, segmentation, and classification.",
+    "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server for use by Siriraj Hospital medical instructors and students.",
   shortDescription:
-    "A web application for AI computer vision image analysis, deployed for the Faculty of IT in collaboration with medical instructors and students at Siriraj Hospital.",
+    "A web platform that lets non-technical users run image and video analysis with AI models, deployed on the IT faculty's server for Siriraj Hospital medical instructors and students.",
   responsibility: [
-    "Designed and developed a web application for image analysis with AI computer vision services, deployed for use by the Faculty of Information Technology in collaboration with medical instructors and medical students at Siriraj Hospital.",
-    "Designed a user-friendly UI to support non-technical users, to easily access AI computer vision.",
-    "Integrated existing AI vision models as microservices for web-based image and video analysis, supporting object detection, segmentation, and classification.",
+    "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server for use by Siriraj Hospital medical instructors and students.",
+    "Built an admin panel where admins connect new AI microservices by API endpoint and configure how results are displayed, without changing application code.",
+    "Designed the PostgreSQL schema with TypeORM and implemented shared workspaces with member invitations, access control, AI usage approval, and analysis history.",
+    "Deployed the system with Docker and Nginx, using GitHub Actions to build and publish Docker images.",
   ],
   tech: [
     { name: "React", icon: "image/skills/framework/react.png" },
-    { name: "NestJs", icon: "image/skills/framework/nestjs.png" },
+    { name: "NestJS", icon: "image/skills/framework/nestjs.png" },
     { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
+    { name: "PostgreSQL", icon: "image/skills/framework/Postgresql.png" },
+    { name: "TypeORM" },
     { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
-    { name: "PostGreSQL", icon: "image/skills/framework/Postgresql.png" },
     { name: "Docker", icon: "image/skills/tools/docker.png" },
+    { name: "Nginx" },
+    { name: "GitHub Actions", icon: "image/skills/tools/github.png" },
   ],
   images: [
     "/projects/senior/ai-web (3).png",
