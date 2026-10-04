@@ -4,7 +4,7 @@ import { notFound, useParams } from "next/navigation";
 import { FaGithub } from "react-icons/fa";
 import { projectData } from "@/data/ProjectsData";
 import ProjectInfo from "@/component/Project/ProjectInfo";
-import ProjectGallery from "@/component/Project/ProjectGallery";
+import ProjectGallerySets, { GallerySet } from "@/component/Project/ProjectGallerySets";
 import MoreProjects from "@/component/Project/MoreProjects";
 import ProjectHighlights from "@/component/Project/ProjectHighlights";
 
@@ -20,7 +20,16 @@ export default function ProjectDetailPage() {
     ...projectData.slice(0, projectIndex),
   ].slice(0, 3);
 
-  const images = project.haveImage && project.images.length > 0 ? project.images : [];
+  const toItems = (srcs: string[]) => srcs.map((src) => ({ type: "image" as const, src }));
+  const mainLabel = project.layout === "mobile" ? "Mobile app" : "Web app";
+  const companion = project.mobileCompanion;
+
+  const gallerySets: GallerySet[] = project.haveImage
+    ? [
+        { label: mainLabel, layout: project.layout, items: toItems(project.images) },
+        ...(companion ? [{ label: companion.label, layout: "mobile" as const, items: toItems(companion.images) }] : []),
+      ].filter((set) => set.items.length > 0)
+    : [];
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -34,7 +43,7 @@ export default function ProjectDetailPage() {
             title={project.title}
             description={project.description}
             facts={[
-              { label: "Platform", value: project.layout === "mobile" ? "Mobile app" : "Web app" },
+              { label: "Platform", value: companion ? `${mainLabel} + ${companion.label}` : mainLabel },
               { label: "Year", value: project.year },
             ]}
             tech={project.tech}
@@ -44,11 +53,8 @@ export default function ProjectDetailPage() {
           />
 
           <div className="min-w-0 lg:order-first">
-            {images.length > 0 ? (
-              <ProjectGallery
-                items={images.map((src) => ({ type: "image" as const, src }))}
-                layout={project.layout}
-              />
+            {gallerySets.length > 0 ? (
+              <ProjectGallerySets sets={gallerySets} />
             ) : (
               <div className="aspect-video rounded-2xl bg-surface border border-dashed border-line flex flex-col items-center justify-center gap-3 text-center px-6">
                 <p className="font-semibold text-body text-sm">No screenshots for this project yet</p>

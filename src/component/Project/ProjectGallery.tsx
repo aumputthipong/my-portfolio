@@ -73,7 +73,7 @@ export default function ProjectGallery({ items, layout }: ProjectGalleryProps) {
     : "aspect-video lg:aspect-auto lg:flex-1 lg:min-h-[clamp(16rem,calc(100dvh-15rem),36rem)]";
 
   return (
-    <div className="h-full flex flex-col gap-3" onKeyDown={onKeyDown}>
+    <div className="h-full flex-1 flex flex-col gap-3" onKeyDown={onKeyDown}>
       {/* Stage */}
       <div className={`group relative overflow-hidden rounded-2xl bg-surface border border-line ${stageSize}`}>
         {isMobile ? (
@@ -228,17 +228,19 @@ function MobileStage({
             onClick={() => (isCurrent ? onOpen() : onSelect(i))}
             aria-label={isCurrent ? `Enlarge screenshot ${i + 1}` : `Show screenshot ${i + 1}`}
             tabIndex={isCurrent ? 0 : -1}
-            className={`flex-shrink-0 aspect-[9/19] overflow-hidden rounded-[1.25rem] border border-line bg-canvas focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-opacity ${
+            className={`flex-shrink-0 overflow-hidden rounded-[1.25rem] border border-line bg-canvas focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-opacity ${
               isCurrent
                 ? "h-full cursor-zoom-in shadow-[0_12px_32px_-16px_rgba(15,23,42,0.35)]"
                 : "h-[86%] opacity-35 hover:opacity-70 cursor-pointer"
             }`}
           >
+            {/* Frame follows the screenshot's own ratio, so tall phones and
+                wider in-app views (e.g. LINE LIFF) are never cropped */}
             <img
               key={thumbSrc(item)}
               src={thumbSrc(item)}
               alt=""
-              className={`w-full h-full object-cover object-top dark:brightness-90 ${isCurrent ? "stage-in" : ""}`}
+              className={`h-full w-auto max-w-none block dark:brightness-90 ${isCurrent ? "stage-in" : ""}`}
             />
           </button>
         );
