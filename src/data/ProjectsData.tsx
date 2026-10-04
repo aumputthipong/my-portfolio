@@ -12,11 +12,66 @@ export interface Project {
   images: string[];
   haveImage: boolean;
   layout: "web" | "mobile";
+  /** Phone screenshots shown in their own gallery tab beside `images`, e.g. a LINE mini app */
+  mobileCompanion?: { label: string; images: string[] };
   /** "What I did" bullets on the detail page */
   highlights?: string[];
 }
 
 export const projectData: Project[] = [
+  {
+  id: 9,
+  title: "Turtle Shop — Multi-channel Inventory",
+  type: "Software Development",
+  description:
+    "An inventory back office for a small shop that sells one pool of stock through its store counter, Shopee and LINE. Orders reserve stock the moment they are placed, so two customers can never buy the same last unit, and customers can order themselves inside LINE.",
+  highlights: [
+    "Built a back office where staff take orders from every channel, pack and ship them, receive deliveries, and count shelves, with separate owner and staff roles.",
+    "Prevented overselling under concurrent orders: each order locks the stock rows it touches in a fixed order, reserves all items or none, and a PostgreSQL check constraint rejects any negative balance.",
+    "Proved it with integration tests against a real database: 40 concurrent orders for 5 units sell exactly 5, and a LINE customer racing a counter sale for the last unit leaves exactly one winner.",
+    "Built customer ordering inside LINE with a LIFF form, verifying the LINE ID token on the server and sending a LINE message at each order step.",
+    "Kept every stock change explainable with an append-only ledger and an audit log, written in the same transaction as the change. Mistakes are undone with an opposite entry instead of edits.",
+    "Set up GitHub Actions for lint, unit, integration, frontend and Docker build checks, and deployed the app as one container on Render with a Neon PostgreSQL database.",
+  ],
+  tech: [
+    { name: "Go", icon: "image/skills/programming/go.png" },
+    { name: "Gin" },
+    { name: "PostgreSQL", icon: "image/skills/framework/Postgresql.png" },
+    { name: "sqlc" },
+    { name: "React", icon: "image/skills/framework/react.png" },
+    { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
+    { name: "TanStack Router & Query" },
+    { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
+    { name: "LINE LIFF" },
+    { name: "Docker" },
+    { name: "GitHub Actions", icon: "image/skills/tools/github.png" },
+  ],
+  github: "https://github.com/aumputthipong/shop-inventory-app",
+  ref: false,
+  demo: "https://turtle-shop.onrender.com",
+  image: "/projects/shop-inventory/stock.png",
+  year: 2026,
+  images: [
+    "/projects/shop-inventory/stock.png",
+    "/projects/shop-inventory/today.png",
+    "/projects/shop-inventory/order-entry.png",
+    "/projects/shop-inventory/order-line.png",
+    "/projects/shop-inventory/receive.png",
+    "/projects/shop-inventory/ledger.png",
+    "/projects/shop-inventory/audit-log.png",
+  ],
+  haveImage: true,
+  layout: "web",
+  mobileCompanion: {
+    label: "LINE",
+    images: [
+      "/projects/shop-inventory/line-cart.png",
+      "/projects/shop-inventory/line-checkout.png",
+      "/projects/shop-inventory/line-sold-out.png",
+    ],
+  },
+},
+
   {
     id: 8,
     title: "Turtask — Mini ERP Kanban",
@@ -272,4 +327,5 @@ export const projectData: Project[] = [
     layout: "web",
     haveImage: true,
   },
+  
 ];
