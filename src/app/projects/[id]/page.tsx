@@ -4,7 +4,8 @@ import { notFound, useParams } from "next/navigation";
 import { FaGithub } from "react-icons/fa";
 import { projectData } from "@/data/ProjectsData";
 import ProjectInfo from "@/component/Project/ProjectInfo";
-import ProjectGallerySets, { GallerySet } from "@/component/Project/ProjectGallerySets";
+import ProjectGallery from "@/component/Project/ProjectGallery";
+import type { LightboxItem } from "@/component/UI/Lightbox";
 import MoreProjects from "@/component/Project/MoreProjects";
 import ProjectHighlights from "@/component/Project/ProjectHighlights";
 
@@ -20,15 +21,15 @@ export default function ProjectDetailPage() {
     ...projectData.slice(0, projectIndex),
   ].slice(0, 3);
 
-  const toItems = (srcs: string[]) => srcs.map((src) => ({ type: "image" as const, src }));
   const mainLabel = project.layout === "mobile" ? "Mobile app" : "Web app";
   const companion = project.mobileCompanion;
 
-  const gallerySets: GallerySet[] = project.haveImage
+  // Companion phone screens follow the main set in the same rail
+  const galleryItems: LightboxItem[] = project.haveImage
     ? [
-        { label: mainLabel, layout: project.layout, items: toItems(project.images) },
-        ...(companion ? [{ label: companion.label, layout: "mobile" as const, items: toItems(companion.images) }] : []),
-      ].filter((set) => set.items.length > 0)
+        ...project.images.map((src) => ({ type: "image" as const, src })),
+        ...(companion?.images ?? []).map((src) => ({ type: "image" as const, src, layout: "mobile" as const, group: companion?.label })),
+      ]
     : [];
 
   return (
@@ -53,8 +54,8 @@ export default function ProjectDetailPage() {
           />
 
           <div className="min-w-0 lg:order-first">
-            {gallerySets.length > 0 ? (
-              <ProjectGallerySets sets={gallerySets} />
+            {galleryItems.length > 0 ? (
+              <ProjectGallery items={galleryItems} layout={project.layout} />
             ) : (
               <div className="aspect-video rounded-2xl bg-surface border border-dashed border-line flex flex-col items-center justify-center gap-3 text-center px-6">
                 <p className="font-semibold text-body text-sm">No screenshots for this project yet</p>

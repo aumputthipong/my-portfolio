@@ -3,8 +3,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaPlay, FaTimes } from "react-icons/fa";
 
 export type LightboxItem =
-  | { type: "image"; src: string }
+  /** `layout` overrides the gallery's layout for this one screenshot; `group` names the set it belongs to (e.g. "LINE") */
+  | { type: "image"; src: string; layout?: "web" | "mobile"; group?: string }
   | { type: "video"; id: string; name: string };
+
+/** Whether one item should be shown as a phone screen, falling back to the gallery's layout */
+export const isMobileItem = (item: LightboxItem, layout: "web" | "mobile") =>
+  (item.type === "image" && item.layout ? item.layout : layout) === "mobile";
 
 interface LightboxProps {
   items?: LightboxItem[];
@@ -27,7 +32,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
 
   const total = resolved.length;
   const current = resolved[currentIndex];
-  const isMobile = layout === "mobile";
+  const isMobile = isMobileItem(current, layout);
 
   const prev = useCallback(() => setCurrentIndex((i) => (i === 0 ? total - 1 : i - 1)), [total]);
   const next = useCallback(() => setCurrentIndex((i) => (i + 1) % total), [total]);
@@ -135,7 +140,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
       {/* Filmstrip — keeps the whole set in view while zoomed in */}
       {total > 1 && (
         <div className="flex justify-center px-3 pt-3 pb-4" onClick={stop}>
-          <div className="lightbox-strip flex gap-2 overflow-x-auto max-w-full px-1 py-1">
+          <div className="lightbox-strip flex items-center gap-2 overflow-x-auto max-w-full px-1 py-1">
             {resolved.map((item, i) => {
               const src = item.type === "video" ? youtubeThumb(item.id) : item.src;
               const active = i === currentIndex;
@@ -148,7 +153,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
                   aria-label={item.type === "video" ? `Play ${item.name}` : `Show screenshot ${i + 1}`}
                   aria-current={active}
                   className={`relative flex-shrink-0 overflow-hidden rounded-md transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
-                    isMobile ? "w-8 h-16 sm:w-9 sm:h-[4.5rem]" : "w-16 h-10 sm:w-20 sm:h-12"
+                    isMobileItem(item, layout) ? "w-8 h-16 sm:w-9 sm:h-[4.5rem]" : "w-16 h-10 sm:w-20 sm:h-12"
                   } ${active ? "opacity-100 ring-2 ring-white" : "opacity-40 hover:opacity-80"}`}
                 >
                   <img src={src} alt="" className="w-full h-full object-cover object-top" />
