@@ -14,7 +14,7 @@ export default function MoreProjects({ projects }: { projects: Project[] }) {
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-muted hover:text-accent transition-colors"
         >
           View all
-          <FaArrowRight className="text-[10px]" />
+          <FaArrowRight className="size-2.5" />
         </Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -32,7 +32,7 @@ export default function MoreProjects({ projects }: { projects: Project[] }) {
               />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-muted truncate">{p.type}</p>
+              <p className="text-xs font-mono font-medium uppercase tracking-[0.05em] text-muted truncate">{p.type}</p>
               <h3 className="font-display text-sm sm:text-base font-semibold text-ink leading-snug mt-0.5 group-hover:text-accent transition-colors line-clamp-2">
                 {p.title}
               </h3>

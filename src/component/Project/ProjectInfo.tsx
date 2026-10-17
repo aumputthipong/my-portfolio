@@ -43,14 +43,14 @@ export default function ProjectInfo({
           {category}
         </span>
         <div className="space-y-2">
-          <h1 className="font-display text-3xl sm:text-4xl xl:text-[2.5rem] font-semibold text-ink leading-[1.05] text-balance">
+          <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink leading-[1.05] text-balance break-words">
             {title}
           </h1>
           {subtitle && (
             <p className="text-sm italic text-muted leading-relaxed">{subtitle}</p>
           )}
         </div>
-        <p className="text-sm sm:text-[0.95rem] leading-relaxed text-body max-w-prose">
+        <p className="text-base leading-relaxed text-body max-w-prose">
           {description}
         </p>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa";
@@ -34,13 +34,25 @@ const Navbar = () => {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, [isDetailPage]);
 
-  const scrollToSection = (sectionId: SectionId) => {
-    if (isDetailPage) {
-      router.push(`/#${sectionId}`);
-    } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+  // Counts in-app page changes. The navbar lives in the root layout, so it survives
+  // client navigation: past the first page, Back can use history and land the visitor
+  // on the card they came from instead of the top of #projects.
+  const pageViews = useRef(0);
+  useEffect(() => {
+    pageViews.current += 1;
+  }, [pathname]);
+
+  const goBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pageViews.current > 1) {
+      e.preventDefault();
+      router.back();
     }
   };
+
+  // Real anchors, so sections can be opened in a new tab or copied. On the home page
+  // the browser scrolls smoothly (html.scroll-smooth) under the navbar (scroll-padding-top).
+  const sectionHref = (sectionId: SectionId) =>
+    isDetailPage ? `/#${sectionId}` : `#${sectionId}`;
 
   const isActive = (sectionId: SectionId) =>
     !isDetailPage && activeSection === sectionId;
@@ -87,12 +99,28 @@ const Navbar = () => {
   return (
     <nav className="fixed my-2 top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 translate-y-0 opacity-100 max-w-[calc(100vw-1rem)]">
       <div className="flex items-center bg-canvas/40 backdrop-blur-xl border border-white/10 rounded-full px-1.5 sm:px-3 lg:px-4 py-1 shadow-2xl gap-0.5 sm:gap-1.5 lg:gap-2">
+        {/* Back on small screens, where the brand block is hidden */}
+        {isDetailPage && (
+          <>
+            <Link
+              href="/#projects"
+              onClick={goBack}
+              aria-label="Back"
+              className="md:hidden flex items-center justify-center w-9 h-9 pointer-coarse:w-11 pointer-coarse:h-11 rounded-full text-ink/80 hover:text-ink hover:bg-ink/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              <FaArrowLeft className="w-4 h-4" />
+            </Link>
+            <div className="md:hidden w-px h-5 bg-ink/10 mx-0.5 flex-shrink-0" />
+          </>
+        )}
+
         {/* Brand */}
         <div className="hidden md:flex items-center">
           {isDetailPage && (
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink px-3 py-2 transition-colors whitespace-nowrap"
+              onClick={goBack}
+              className="inline-flex items-center gap-1.5 rounded-full text-sm text-muted hover:text-ink px-3 py-2 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <FaArrowLeft className="text-xs" />
               Back
@@ -100,18 +128,20 @@ const Navbar = () => {
           )}
           <Link href="/" className="font-display text-base font-semibold text-ink/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-ink transition-colors">
             Putthipong
-            <span className="font-normal text-ink/50">.portfolio</span>
+            <span className="font-normal text-muted">.portfolio</span>
           </Link>
           <div className="w-px h-5 bg-ink/10 mx-2" />
         </div>
 
         {/* Nav Buttons */}
         {NAV_ITEMS.map(({ id, label, icon }) => (
-          <button
+          <Link
             key={id}
-            onClick={() => scrollToSection(id)}
-            className={`cursor-pointer flex items-center gap-1.5 rounded-full transition-all duration-300
-              px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-4
+            href={sectionHref(id)}
+            aria-current={isActive(id) ? "location" : undefined}
+            className={`flex items-center gap-1.5 rounded-full transition-all duration-300
+              px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-4 pointer-coarse:min-h-11
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
               ${
                 isActive(id)
                   ? "text-on-accent bg-accent shadow-lg"
@@ -121,7 +151,7 @@ const Navbar = () => {
           >
             {icon}
             <span className="hidden md:inline text-sm">{label}</span>
-          </button>
+          </Link>
         ))}
 
         {/* Theme */}

@@ -26,6 +26,8 @@ export const youtubeThumb = (id: string, size: "mqdefault" | "hqdefault" | "maxr
 export default function Lightbox({ items, images, initialIndex, layout, onClose }: LightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const thumbRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   const resolved: LightboxItem[] = items
     ?? (images?.map((src) => ({ type: "image", src })) ?? []);
@@ -37,12 +39,34 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
   const prev = useCallback(() => setCurrentIndex((i) => (i === 0 ? total - 1 : i - 1)), [total]);
   const next = useCallback(() => setCurrentIndex((i) => (i + 1) % total), [total]);
 
-  // Keyboard: Esc closes, arrows step through
+  // Focus moves into the dialog on open and returns to whatever opened it on close,
+  // so keyboard and screen-reader users are never left behind the overlay.
+  useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    return () => opener?.focus?.();
+  }, []);
+
+  // Keyboard: Esc closes, arrows step through, Tab stays inside the dialog
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       else if (e.key === "ArrowLeft") prev();
       else if (e.key === "ArrowRight") next();
+      else if (e.key === "Tab" && dialogRef.current) {
+        const focusable = dialogRef.current.querySelectorAll<HTMLElement>("button, iframe, [href]");
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const inside = dialogRef.current.contains(document.activeElement);
+        if (e.shiftKey && (document.activeElement === first || !inside)) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -63,6 +87,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label="Screenshot viewer"
@@ -73,6 +98,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
       <div className="flex items-center justify-between px-3 sm:px-5 py-3 text-white/70 text-xs sm:text-sm">
         <span className="tabular-nums">{currentIndex + 1} / {total}</span>
         <button
+          ref={closeRef}
           type="button"
           onClick={onClose}
           aria-label="Close viewer"
@@ -111,7 +137,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
           <div className="w-full max-w-[min(64rem,calc((100dvh-13rem)*16/9))]" onClick={stop}>
             <div className="bg-gray-950 rounded-t-xl px-3 sm:px-5 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
               <div className="w-5 h-5 sm:w-6 sm:h-6 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <FaPlay className="text-white text-[8px] sm:text-[9px] ml-0.5" />
+                <FaPlay className="text-white size-2 sm:size-2.5 ml-0.5" />
               </div>
               <p className="font-semibold text-xs sm:text-sm truncate text-white">{current.name}</p>
             </div>
@@ -159,7 +185,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
                   <img src={src} alt="" className="w-full h-full object-cover object-top" />
                   {item.type === "video" && (
                     <span className="absolute inset-0 flex items-center justify-center bg-black/30">
-                      <FaPlay className="text-white text-[9px]" />
+                      <FaPlay className="text-white size-2.5" />
                     </span>
                   )}
                 </button>

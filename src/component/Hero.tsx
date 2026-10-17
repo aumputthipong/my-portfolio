@@ -1,7 +1,10 @@
 "use client";
 
-import { FaGithub, FaLinkedin, FaGraduationCap } from "react-icons/fa";
-import { MdEmail, MdLocationOn } from "react-icons/md";
+// Semicircular top on a 4:5 box (50% of the width = 40% of the height), with
+// the usual soft corners at the bottom.
+const ARCH = {
+  borderRadius: "50% 50% 1.5rem 1.5rem / 40% 40% 1.5rem 1.5rem",
+};
 
 const Hero = () => {
   return (
@@ -15,7 +18,7 @@ const Hero = () => {
           <div className="w-full max-w-xl space-y-5 sm:space-y-6">
             {/* Title */}
             <div className="space-y-3">
-              <h1 className="font-display font-semibold text-ink text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.01em]">
+              <h1 className="font-display font-semibold text-ink text-[clamp(2.25rem,11vw,4.5rem)] leading-[0.95] tracking-[-0.01em]">
                 Putthipong
                 <br />
                 <span className="text-accent">Chobngam.</span>
@@ -26,69 +29,30 @@ const Hero = () => {
             </div>
 
             {/* Bio */}
-            <p className="text-sm sm:text-base leading-relaxed max-w-md text-body">
+            <p className="text-base leading-relaxed max-w-md text-body">
               I&apos;m a motivated Information Technology graduate from KMITL
               with a strong focus on full-stack development, with hands-on
               experience across the full development process, from requirements
               analysis and solution design to development, testing, and
               deployment. Eager to keep learning and improving as part of a team.
             </p>
-
-            {/* Info row (icons + text) */}
-            <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-body">
-              <span className="inline-flex items-center gap-1.5">
-                <MdLocationOn className="text-muted text-base" />
-                Bangkok, Thailand
-              </span>
-              <a
-                href="mailto:putthipong.chb@gmail.com"
-                className="inline-flex items-center gap-1.5 hover:text-accent transition-colors break-all"
-              >
-                <MdEmail className="text-muted text-base flex-shrink-0" />
-                putthipong.chb@gmail.com
-              </a>
-              <span className="inline-flex items-center gap-1.5">
-                <FaGraduationCap className="text-muted text-base" />
-                B.Sc. IT, KMITL · 2025
-              </span>
-            </div>
-
-            {/* Social links */}
-            <div className="flex items-center gap-5">
-              <a
-                href="https://github.com/aumputthipong"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-body hover:text-accent transition-colors"
-              >
-                <FaGithub className="text-base" /> GitHub
-              </a>
-              <span className="w-px h-4 bg-line" />
-              <a
-                href="https://www.linkedin.com/in/putthipong-chobngam/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-body hover:text-accent transition-colors"
-              >
-                <FaLinkedin className="text-base" /> LinkedIn
-              </a>
-            </div>
           </div>
 
-          {/* ── RIGHT: clean photo with offset frame ── */}
-          <div className="w-full max-w-[240px] sm:max-w-[260px] lg:max-w-[300px] flex-shrink-0">
+          {/* ── RIGHT: arched portrait with offset frame ── */}
+          <div className="w-full max-w-[210px] sm:max-w-[230px] lg:max-w-[260px] flex-shrink-0">
             <div className="relative">
               {/* offset frame — signature */}
               <div
-                className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border border-accent/40"
+                className="absolute inset-0 translate-x-4 translate-y-4 border border-accent/50"
+                style={ARCH}
                 aria-hidden
               />
-              {/* photo */}
-              <div className="relative overflow-hidden rounded-3xl bg-surface">
+              {/* photo — the arch trims the busy top corners of the background */}
+              <div className="relative overflow-hidden bg-surface" style={ARCH}>
                 <img
-                  src="/image/my_pic2.JPG"
+                  src="/image/profile_formal.png"
                   alt="Putthipong Chobngam"
-                  className="w-full aspect-[4/5] object-cover object-top"
+                  className="w-full aspect-[4/5] object-cover"
                 />
               </div>
             </div>

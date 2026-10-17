@@ -8,7 +8,7 @@ colors:
   surface: "#fafafa"
   ink: "#0f172a"
   body: "#4b5563"
-  muted: "#9ca3af"
+  muted: "#6b7280"
   border: "#e5e7eb"
   accent: "#1f6f4e"
   accent-dark: "#14532d"
@@ -20,7 +20,7 @@ colorsDark:
   card: "#2b2825"
   ink: "#f0ece6"
   body: "#aca69c"
-  muted: "#857d72"
+  muted: "#9a9286"
   line: "#3b3630"
   accent: "#5cc08d"
   accent-strong: "#7fd4a8"
@@ -59,6 +59,11 @@ typography:
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: 0.05em
+  label:
+    fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
+    fontSize: 0.75rem
+    fontWeight: 600
+    lineHeight: 1.4
 rounded:
   sm: 6px
   md: 8px
@@ -142,7 +147,7 @@ The palette is intentionally narrow: one ink for hierarchy, one green for accent
 - **Surface (`#fafafa`, zinc-50):** Alternating section ground (About, Contact) for rhythm against white (Hero, Projects).
 - **Ink (`#0f172a`, slate-900):** Headlines, primary buttons, the first half of the name wordmark.
 - **Body (`#4b5563`):** Paragraph and long-form copy.
-- **Muted (`#9ca3af`):** Captions, secondary metadata.
+- **Muted (`#6b7280`):** Captions, secondary metadata. At least 4.5:1 on `neutral` and `surface`; never lighter.
 - **Border (`#e5e7eb`):** Hairlines, card outlines, dividers.
 - **Accent (`#1f6f4e`):** Botanical green. Heading periods, active nav/tab/thumb, link hover, the surname in the wordmark, eyebrow dashes, contact icons.
 - **Accent-soft (`#ecf4ef`):** Tinted background for chips, active thumbnails, responsibility markers.
@@ -157,7 +162,7 @@ Naming maps from the light palette: `border` → **`line`**, and a new **`card`*
 - **Neutral, faintly-warm base:** the dark neutrals are kept *neutral* (a whisper of warmth to flatter the Fraunces serif) — **no green cast**. Green lives only in the accent, mirroring the light-mode rule "neutrals stay neutral, one green accent". Ramp: `canvas` `#131110` < `surface` `#1c1a18` < `card` `#2b2825`; light mode is `#ffffff` / `#fafafa` / `#ffffff`.
 - **Elevation reads through fill + hairline:** fill steps are small on a dark ground (card↔canvas ≈ 1.4:1), so a clearly-visible `line` (`#3b3630`, ≈ 1.6:1 against canvas) shares the separating work — cards read as raised without heavy shadows or ID-card borders.
 - **Accent lifts in dark:** botanical green moves to `#5cc08d` (`accent-strong` `#7fd4a8`, `accent/canvas` ≈ 8.4:1) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` is a deep `#1d2a20` chip tint, and `on-accent` flips to near-black.
-- **Text ramp:** `ink` `#f0ece6`, `body` `#aca69c`, `muted` `#857d72` — warm off-whites, never pure white, all passing WCAG AA on canvas.
+- **Text ramp:** `ink` `#f0ece6`, `body` `#aca69c`, `muted` `#9a9286` — warm off-whites, never pure white, all passing WCAG AA on canvas and on `card`.
 - **Content images:** large white screenshots carry `dark:brightness-90` so they don't punch bright holes in the dark UI (icons, logos, and the portrait are untouched).
 - **Inverted / always-dark elements:** image backdrops, the lightbox, video title bars, and on-image overlay chips stay dark with white text in **both** themes — they sit on media, not on the page ground. The footer is the one deliberately inverted block: a dark band in light mode, a `surface` band with a top hairline in dark.
 
@@ -165,11 +170,16 @@ Naming maps from the light palette: `border` → **`line`**, and a new **`card`*
 
 Headings use **Fraunces** (display serif); body uses the **system UI sans** stack; small structural metadata uses a **monospace**.
 
-- **Display** — hero name (two lines, surname in accent), set large with tight leading.
-- **H2** — section headlines ("Selected Projects.", "Let's build something good.") with an accent period.
+- **Display** — hero name (two lines, surname in accent), set large with tight leading. Fluid: `clamp(2.25rem, 11vw, 4.5rem)`, so it never clips on narrow screens or at 200% zoom.
+- **H2** — section headlines ("Selected Projects.", "Let's connect.") with an accent period.
 - **H3** — sub-headings ("Tech stack", "Education", "Responsibilities") and project titles.
 - **Body-md** — paragraphs; comfortable `line-height: 1.625`.
-- **Meta-mono** — uppercase metadata lines (`TYPE · PLATFORM · YEAR`), eyebrows, tech badges.
+- **Meta-mono** — uppercase metadata lines (`TYPE · PLATFORM · YEAR`), eyebrows, tech badges, counts, contact labels.
+- **Label** — small sans UI text: filter tabs, chips, card actions, years, gallery counters, the footer copyright.
+
+**Floor:** nothing is set below 12px (`0.75rem`). Icons are sized with `size-*`, not font sizes. Project descriptions and "What I did" items use body-md at 16px; long-form items are capped at ~68ch.
+
+**Outline:** one h1 per page. A section whose only heading is its eyebrow (About) renders the eyebrow as the h2; sections with a display h2 keep the eyebrow as a `p`. The footer name is not a heading.
 
 ## Layout
 
@@ -193,7 +203,8 @@ Generous, varied rounding rather than uniform pills:
 - `rounded.lg` (12px) — compact buttons.
 - `rounded.xl` (16px) — primary/secondary buttons, thumbnails.
 - `rounded.2xl` (24px) — project cards.
-- `rounded.3xl` (32px) — hero photo and detail media (soft, prominent).
+- `rounded.3xl` (32px) — detail media (soft, prominent).
+- **Arch** (semicircular top, `rounded.2xl`-ish bottom) — the hero portrait and its offset frame only. It crops the busy top corners of the photo and echoes the garden theme; don't reuse it elsewhere.
 - `rounded.full` — chips, eyebrow dots, nav pills, status dots.
 
 ## Components

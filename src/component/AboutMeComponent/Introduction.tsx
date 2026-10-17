@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { contacts } from "../../data/ContactData";
 import { techSkills } from "../../data/TechSkillsData";
 import TechBadge from "../UI/TechBadge";
 
@@ -13,7 +13,7 @@ const Introduction = () => {
           <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink">
             Tech stack
           </h3>
-          <span className="text-[11px] font-mono text-muted">
+          <span className="text-xs font-mono text-muted">
             {total} technologies
           </span>
         </div>
@@ -29,7 +29,7 @@ const Introduction = () => {
                   .replace("Programming ", "")
                   .replace(" Development", "")}
               </p>
-              <span className="text-[11px] font-mono text-muted">
+              <span className="text-xs font-mono text-muted">
                 {String(section.skills.length).padStart(2, "0")}
               </span>
             </div>
@@ -45,85 +45,74 @@ const Introduction = () => {
         ))}
       </div>
 
-      {/* ── RIGHT: About me + Education ── */}
-      <div className="lg:col-span-2 lg:border-l lg:border-line lg:pl-8 space-y-8">
-        {/* About me */}
-        <div id="about">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-3">
-            About me
-          </h3>
-          <p className="text-sm leading-relaxed text-body">
-            A highly motivated Information Technology graduate (Software
-            Engineering major) from King Mongkut's Institute of Technology
-            Ladkrabang (KMITL) with a strong focus on full-stack development. I
-            have hands-on experience across the entire development process, from
-            analyzing requirements and designing solutions to building, testing,
-            and deploying applications. I am eager to keep learning, improve my
-            coding practices, and apply software engineering best practices to
-            problem-solving and project collaboration.
-          </p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4 text-sm font-medium">
-            <a
-              href="https://github.com/aumputthipong"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-body hover:text-accent transition-colors"
-            >
-              <FaGithub className="text-base" /> GitHub
-            </a>
-            <span className="w-px h-4 bg-line" />
-            <a
-              href="https://www.linkedin.com/in/putthipong-chobngam/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-body hover:text-accent transition-colors"
-            >
-              <FaLinkedin className="text-base" /> LinkedIn
-            </a>
-            <span className="w-px h-4 bg-line" />
-            <a
-              href="mailto:putthipong.chb@gmail.com"
-              className="inline-flex items-center gap-2 text-body hover:text-accent transition-colors"
-            >
-              <FaEnvelope className="text-base" /> Email
-            </a>
-          </div>
-        </div>
+      {/* ── RIGHT: Education ── */}
+      <div className="lg:col-span-2 lg:border-l lg:border-line lg:pl-8" id="education">
+        <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-5">
+          Education
+        </h3>
 
-        {/* Education */}
-        <div id="education" className="pt-8 border-t border-line">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-5">
-            Education
-          </h3>
-
-          <div className="flex items-center gap-4">
+        {/* The one raised card in the section, so the degree is read first */}
+        <div className="rounded-2xl border border-line bg-card p-5 sm:p-6">
+          <div className="flex items-start gap-4">
             <img
               src="/image/KMITL_Logo.png"
               alt="KMITL"
-              className="h-14 sm:h-16 w-auto object-contain flex-shrink-0"
+              className="h-14 w-14 object-contain flex-shrink-0"
             />
             <div className="min-w-0">
-              <h4 className="font-display text-base sm:text-lg font-semibold text-ink leading-snug">
+              <h4 className="font-display text-lg font-semibold text-ink leading-snug">
                 B.Sc. Information Technology
               </h4>
-              <p className="text-sm text-muted mt-0.5">
-                KMITL · Software Engineering
+              <p className="text-sm text-body mt-1 leading-snug">
+                King Mongkut&apos;s Institute of Technology Ladkrabang
               </p>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-sm">
-                <span className="text-body">
-                  Graduated{" "}
-                  <span className="font-semibold text-ink">2025</span>
-                </span>
-                <span className="w-px h-3.5 bg-line" />
-                <span className="text-body">
-                  GPAX{" "}
-                  <span className="font-semibold text-ink">3.11</span>
-                  <span className="text-muted"> / 4.00</span>
-                </span>
-              </div>
+              <p className="text-sm text-muted mt-0.5">Software Engineering major</p>
             </div>
           </div>
+
+          <dl className="grid grid-cols-2 gap-4 mt-5 pt-5 border-t border-line">
+            <div>
+              <dt className="text-xs text-muted">Graduated</dt>
+              <dd className="font-display text-xl font-semibold text-ink mt-0.5">2025</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-muted">GPAX</dt>
+              <dd className="font-display text-xl font-semibold text-ink mt-0.5">
+                3.11
+                <span className="font-sans text-sm font-normal text-muted"> / 4.00</span>
+              </dd>
+            </div>
+          </dl>
         </div>
+
+        {/* Contact details: quiet rows, so the Education card stays the focus.
+            Same data as the Contact section, which remains the closing call to action. */}
+        <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mt-8 mb-2">
+          Contact details
+        </h3>
+        <dl className="text-sm">
+          <div className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line">
+            <dt className="text-muted">Location</dt>
+            <dd className="text-ink">Bangkok, Thailand</dd>
+          </div>
+          {contacts.map((c) => (
+            <div
+              key={c.label}
+              className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line last:border-b-0"
+            >
+              <dt className="text-muted">{c.label}</dt>
+              <dd className="min-w-0">
+                <a
+                  href={c.href}
+                  {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="block truncate text-ink hover:text-accent transition-colors"
+                >
+                  {c.value}
+                </a>
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </div>
   );
