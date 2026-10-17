@@ -70,11 +70,11 @@ export default function ProjectGallery({ items, layout }: ProjectGalleryProps) {
     else if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1); }
   };
 
-  // On lg the stage has a viewport-based minimum but grows (flex-1) to match
-  // the info panel beside it, so the two columns always end on the same line.
+  // On lg the stage keeps a viewport-based height of its own (the info panel beside
+  // it is sticky and no longer sets the row height, so nothing stretches the stage).
   // Below lg the stage takes the shape of the current item; on lg it keeps one
   // size, tall enough for phone screens whenever the gallery has any.
-  const stageSize = `${currentMobile ? "h-[26rem] sm:h-[30rem]" : "aspect-video"} lg:h-auto lg:aspect-auto lg:flex-1 ${
+  const stageSize = `${currentMobile ? "h-[26rem] sm:h-[30rem]" : "aspect-video"} lg:h-auto lg:aspect-auto ${
     hasMobile ? "lg:min-h-[clamp(20rem,calc(100dvh-15rem),36rem)]" : "lg:min-h-[clamp(16rem,calc(100dvh-15rem),36rem)]"
   }`;
 

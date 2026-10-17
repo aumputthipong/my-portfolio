@@ -17,8 +17,12 @@ const fraunces = Fraunces({
 
 
 export const metadata: Metadata = {
-  title: "PortFolio",
-  description: "my portfolio website",
+  title: {
+    default: "Putthipong Chobngam — Full-stack developer",
+    template: "%s · Putthipong Chobngam",
+  },
+  description:
+    "Full-stack developer and KMITL Information Technology graduate. Projects built end to end, from requirements and database design to testing and deployment.",
 };
 
 export const viewport = {

@@ -14,6 +14,10 @@ export interface Project {
   layout: "web" | "mobile";
   /** Phone screenshots shown in their own gallery tab beside `images`, e.g. a LINE mini app */
   mobileCompanion?: { label: string; images: string[] };
+  /** Shown under the detail page's Live demo button, e.g. a slow free-tier cold start */
+  demoNote?: string;
+  /** One checkable fact shown unclamped under the title when the project is featured */
+  proof?: string;
   /** "What I did" bullets on the detail page */
   highlights?: string[];
 }
@@ -49,6 +53,8 @@ export const projectData: Project[] = [
   github: "https://github.com/aumputthipong/shop-inventory-app",
   ref: false,
   demo: "https://turtle-shop.onrender.com",
+  proof: "Integration-tested: 40 concurrent orders for 5 units sell exactly 5.",
+  demoNote: "The free host sleeps, so the first load can take about 30 seconds. Demo accounts are listed on the login page.",
   image: "/projects/shop-inventory/today.png",
   year: 2026,
   images: [
@@ -73,6 +79,7 @@ export const projectData: Project[] = [
   {
     id: 8,
     title: "Turtask — Mini ERP Kanban",
+    proof: "Drag-and-drop changes sync in real time for everyone on the board.",
     type: "Software Development",
     description:
       "A team project management web app with Kanban boards, task assignment, and role-based access. Task updates and drag-and-drop changes sync in real time for everyone on the board.",
@@ -120,10 +127,10 @@ export const projectData: Project[] = [
     title: "BookingRoom Web Application",
     type: "Software Development",
     description:
-      "Developed a booking room web application using Next.js Typescripts and MongoDB for the database.",
+      "Developed a booking room web application using Next.js, TypeScript and MongoDB for the database.",
     tech: [
       { name: "Next.js", icon: "image/skills/framework/nextjs.png" },
-      { name: "Typescripts", icon: "image/skills/programming/typescript.png" },
+      { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
       { name: "Tailwind", icon: "image/skills/framework/tailwind.png" },
       { name: "MongoDB", icon: "image/skills/framework/mongodb.png" },
     ],
@@ -156,7 +163,7 @@ export const projectData: Project[] = [
       "Developed a mobile application for job seekers and employers using React Native, integrated with Firebase for real-time data and user management.",
     tech: [
       { name: "ReactNative", icon: "image/skills/framework/react-native.png" },
-      { name: "Typescript", icon: "image/skills/programming/typescript.png" },
+      { name: "TypeScript", icon: "image/skills/programming/typescript.png" },
       { name: "Firebase", icon: "image/skills/framework/firebase.png" },
       { name: "Fastify", icon: "image/skills/framework/fastify.png" },
       { name: "Mobile App" },

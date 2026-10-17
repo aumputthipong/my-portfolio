@@ -38,6 +38,7 @@ He builds complete, working systems end to end: database design, backend, fronte
 - Content lives in `src/data/`; components only render it.
 - Each piece of information appears in one place: the bio only in the Hero, education and contact details in About, and Contact is the closing call to action. Don't repeat content across sections.
 - The site is English only.
+- **Featured projects** ("Selected Projects") are only finished projects that the resume also leads with: currently AI Garden and Turtask. Turtle Shop stays in "More projects" until it is finished.
 - **Undecided:**
   - whether to add a work or internship experience section; none is provided, and none may be invented;
   - whether to offer a downloadable resume PDF;

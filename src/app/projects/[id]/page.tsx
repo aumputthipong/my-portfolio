@@ -49,6 +49,7 @@ export default function ProjectDetailPage() {
             ]}
             tech={project.tech}
             demo={project.demo}
+            demoNote={project.demoNote}
             github={project.github || undefined}
             figma={typeof project.ref === "string" ? project.ref : undefined}
           />

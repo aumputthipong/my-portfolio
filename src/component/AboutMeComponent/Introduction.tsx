@@ -3,7 +3,8 @@ import { techSkills } from "../../data/TechSkillsData";
 import TechBadge from "../UI/TechBadge";
 
 const Introduction = () => {
-  const total = techSkills.reduce((sum, s) => sum + s.skills.length, 0);
+  // Unique count: Go sits under both Languages and Back-End
+  const total = new Set(techSkills.flatMap((s) => s.skills.map((k) => k.label))).size;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
@@ -76,7 +77,7 @@ const Introduction = () => {
               <dd className="font-display text-xl font-semibold text-ink mt-0.5">2025</dd>
             </div>
             <div>
-              <dt className="text-xs text-muted">GPAX</dt>
+              <dt className="text-xs text-muted">Cumulative GPA</dt>
               <dd className="font-display text-xl font-semibold text-ink mt-0.5">
                 3.11
                 <span className="font-sans text-sm font-normal text-muted"> / 4.00</span>

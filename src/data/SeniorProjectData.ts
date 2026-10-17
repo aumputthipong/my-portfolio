@@ -21,6 +21,7 @@ export const seniorProject = {
   full_project_name:
     "Web Application Platform to Support Image and Video Analysis with AI in a Microservice Model",
   title: "AI Garden System",
+  proof: "Deployed for Siriraj Hospital medical instructors and students.",
   description:
     "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server for use by Siriraj Hospital medical instructors and students.",
   shortDescription:
