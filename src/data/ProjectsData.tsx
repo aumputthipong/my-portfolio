@@ -92,7 +92,7 @@ export const projectData: Project[] = [
       { name: "GitHub Actions", icon: "image/skills/tools/github.png" },
       { name: "Testcontainers" },
     ],
-    github: "https://github.com/aumputthipong/Kanban-management",
+    github: "https://github.com/aumputthipong/kanban-project-management",
     ref: false,
     demo: "https://turtask-management.vercel.app/",
     image: "/projects/kanban-manage/kanban-manage-v2 (16).png",

@@ -11,14 +11,14 @@ const ContactSection = () => {
       <SectionHeader label="Contact" />
 
       {/* Card */}
-      <div className="bg-card border-2 border-line rounded-xl shadow-sm p-5 sm:p-6 lg:p-10">
+      <div className="bg-card border border-line rounded-2xl p-5 sm:p-6 lg:p-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
 
           {/* LEFT: Heading + tagline */}
           <div>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold text-ink leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.05] text-ink">
               Let&apos;s{" "}
-              <span className="text-accent underline decoration-2 underline-offset-4 decoration-accent/40">connect</span>.
+              connect<span className="text-accent">.</span>
             </h2>
             <p className="text-xs sm:text-sm leading-relaxed mt-3 sm:mt-4 text-body">
               Open to work and new opportunities. Feel free to reach out.
@@ -40,7 +40,7 @@ const ContactSection = () => {
                     <Icon className={`${c.iconColor} text-sm sm:text-base`} />
                   </div>
                   <div className="text-left min-w-0 flex-1">
-                    <p className="text-[10px] font-bold text-muted uppercase tracking-widest">
+                    <p className="text-xs font-mono font-medium text-muted uppercase tracking-[0.05em]">
                       {c.label}
                     </p>
                     <p className="text-xs sm:text-sm font-semibold text-ink truncate">

@@ -26,7 +26,7 @@
   --card: #ffffff;
   --ink: #0f172a;
   --body: #4b5563;
-  --muted: #9ca3af;
+  --muted: #6b7280; /* 4.6:1 on surface; the old #9ca3af was 2.4:1 */
   --line: #e5e7eb;
   --accent: #1f6f4e;
   --accent-strong: #14532d;
@@ -49,7 +49,7 @@
   --card: #2b2825;
   --ink: #f0ece6;
   --body: #aca69c;
-  --muted: #857d72;
+  --muted: #9a9286; /* 4.8:1 on card, 6.1:1 on canvas */
   --line: #3b3630;
   /* accent lifts in dark — #1f6f4e fails contrast on a dark ground */
   --accent: #5cc08d;

@@ -63,7 +63,7 @@ const MAX_TECH = 3;
 export default function ProjectShowcase() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-12">
-      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-none text-ink mb-5 sm:mb-7">
+      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.05] text-ink mb-5 sm:mb-7">
         Selected Projects<span className="text-accent">.</span>
       </h2>
 
@@ -97,7 +97,7 @@ function FeaturedCard({ h }: { h: Highlight }) {
           <span className="text-xs font-medium text-muted tabular-nums">{h.year}</span>
         </div>
 
-        <h3 className="mt-3 font-display text-2xl lg:text-[1.75rem] font-semibold tracking-tight leading-tight text-ink">
+        <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight leading-tight text-ink">
           {/* Stretched link: the whole card opens the project */}
           <Link
             href={h.href}
@@ -131,7 +131,7 @@ function FeaturedCard({ h }: { h: Highlight }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg border border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card"
               >
-                <FaExternalLinkAlt className="text-[10px]" />
+                <FaExternalLinkAlt className="size-2.5" />
                 Live demo
               </a>
             )}

@@ -18,7 +18,7 @@ const Hero = () => {
           <div className="w-full max-w-xl space-y-5 sm:space-y-6">
             {/* Title */}
             <div className="space-y-3">
-              <h1 className="font-display font-semibold text-ink text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.01em]">
+              <h1 className="font-display font-semibold text-ink text-[clamp(2.25rem,11vw,4.5rem)] leading-[0.95] tracking-[-0.01em]">
                 Putthipong
                 <br />
                 <span className="text-accent">Chobngam.</span>
@@ -29,7 +29,7 @@ const Hero = () => {
             </div>
 
             {/* Bio */}
-            <p className="text-sm sm:text-base leading-relaxed max-w-md text-body">
+            <p className="text-base leading-relaxed max-w-md text-body">
               I&apos;m a motivated Information Technology graduate from KMITL
               with a strong focus on full-stack development, with hands-on
               experience across the full development process, from requirements

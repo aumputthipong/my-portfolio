@@ -136,7 +136,7 @@ export default function ProjectGallery({ items, layout }: ProjectGalleryProps) {
         {/* Counter + enlarge (hidden while a video plays, so YouTube's controls stay clear) */}
         {!playing && (
           <>
-            <span className="pointer-events-none absolute left-3 bottom-3 rounded-full bg-canvas/90 border border-line px-2.5 py-1 text-[11px] sm:text-xs font-medium tabular-nums text-body">
+            <span className="pointer-events-none absolute left-3 bottom-3 rounded-full bg-canvas/90 border border-line px-2.5 py-1 text-xs font-medium tabular-nums text-body">
               {index + 1} / {total}
               {current.type === "image" && current.group && <span className="font-semibold text-ink"> · {current.group}</span>}
             </span>
@@ -174,7 +174,7 @@ export default function ProjectGallery({ items, layout }: ProjectGalleryProps) {
                 {startsGroup && (
                   <span className="flex-shrink-0 self-stretch flex items-center gap-2 pl-1">
                     <span aria-hidden className="w-px h-3/4 bg-line" />
-                    <span className="text-[11px] sm:text-xs font-semibold text-muted">{group}</span>
+                    <span className="text-xs font-semibold text-muted">{group}</span>
                   </span>
                 )}
                 <button
@@ -195,7 +195,7 @@ export default function ProjectGallery({ items, layout }: ProjectGalleryProps) {
                   <img src={thumbSrc(item)} alt="" loading="lazy" className="w-full h-full object-cover object-top dark:brightness-90" />
                   {item.type === "video" && (
                     <span className="absolute inset-0 flex items-center justify-center bg-black/30">
-                      <FaPlay className="text-white text-[10px] ml-0.5" />
+                      <FaPlay className="text-white size-2.5 ml-0.5" />
                     </span>
                   )}
                 </button>

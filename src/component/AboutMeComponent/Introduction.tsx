@@ -13,7 +13,7 @@ const Introduction = () => {
           <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink">
             Tech stack
           </h3>
-          <span className="text-[11px] font-mono text-muted">
+          <span className="text-xs font-mono text-muted">
             {total} technologies
           </span>
         </div>
@@ -29,7 +29,7 @@ const Introduction = () => {
                   .replace("Programming ", "")
                   .replace(" Development", "")}
               </p>
-              <span className="text-[11px] font-mono text-muted">
+              <span className="text-xs font-mono text-muted">
                 {String(section.skills.length).padStart(2, "0")}
               </span>
             </div>
