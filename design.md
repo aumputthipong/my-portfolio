@@ -193,7 +193,8 @@ Generous, varied rounding rather than uniform pills:
 - `rounded.lg` (12px) — compact buttons.
 - `rounded.xl` (16px) — primary/secondary buttons, thumbnails.
 - `rounded.2xl` (24px) — project cards.
-- `rounded.3xl` (32px) — hero photo and detail media (soft, prominent).
+- `rounded.3xl` (32px) — detail media (soft, prominent).
+- **Arch** (semicircular top, `rounded.2xl`-ish bottom) — the hero portrait and its offset frame only. It crops the busy top corners of the photo and echoes the garden theme; don't reuse it elsewhere.
 - `rounded.full` — chips, eyebrow dots, nav pills, status dots.
 
 ## Components
