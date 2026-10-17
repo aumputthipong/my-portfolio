@@ -31,26 +31,27 @@ export default function Projects() {
 
   return (
     <section id="projects" className="bg-canvas">
-      <div className="max-w-6xl mx-auto pt-10 sm:pt-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto pt-10 px-4 sm:px-6 lg:px-8">
         <SectionHeader label="Projects" />
       </div>
 
-      {/* Highlight showcase carousel: graduated + personal */}
+      {/* Featured: the flagship pair */}
       <ProjectShowcase />
 
-      {/* Academic Projects */}
-      <div className="max-w-6xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
+      {/* The rest of the work: a heading marks the step down from the featured set */}
+      <div className="max-w-6xl mx-auto pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink">More projects</h3>
 
-        {/* Tab filter */}
-        <div className="flex justify-center mb-5 sm:mb-6">
-          <div className="flex flex-wrap justify-center bg-card rounded-full p-1 shadow-sm border border-line gap-1 max-w-full">
+          {/* Tab filter: one row, scrolling sideways on narrow screens instead of wrapping */}
+          <div className="flex flex-nowrap overflow-x-auto bg-card rounded-full p-1 border border-line gap-1 max-w-full self-start sm:self-auto">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
                 aria-pressed={activeTab === tab}
-                className={`px-3 sm:px-4 py-1.5 pointer-coarse:min-h-11 text-xs font-medium rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                className={`flex-shrink-0 whitespace-nowrap px-3 sm:px-4 py-1.5 pointer-coarse:min-h-11 text-xs font-medium rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   activeTab === tab
                     ? "bg-accent text-on-accent shadow-md"
                     : "text-muted hover:text-ink hover:bg-surface"
@@ -66,7 +67,7 @@ export default function Projects() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
             <motion.article
               key={project.id}
@@ -96,7 +97,7 @@ export default function Projects() {
 
                 {/* Card body */}
                 <div className="flex-1 flex flex-col pt-4">
-                  <h3 className="font-display font-semibold text-ink text-base leading-snug mb-2">
+                  <h4 className="font-display font-semibold text-ink text-base leading-snug mb-2">
                     {/* Stretched link: the whole card opens the project, and it is a real
                         link, so it is reachable by keyboard and opens in a new tab */}
                     <Link
@@ -106,7 +107,7 @@ export default function Projects() {
                     >
                       {project.title}
                     </Link>
-                  </h3>
+                  </h4>
                   <p className="text-sm leading-relaxed mb-4 line-clamp-2 text-body">
                     {project.description}
                   </p>
@@ -143,7 +144,7 @@ export default function Projects() {
                           className={`${CARD_ACTION} border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent`}
                         >
                           <FaExternalLinkAlt className="size-2.5" />
-                          Live Demo
+                          Live demo
                         </a>
                       )}
                       {project.github.length > 0 ? (

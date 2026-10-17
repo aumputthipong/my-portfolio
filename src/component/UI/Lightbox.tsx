@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaPlay, FaTimes } from "react-icons/fa";
 
 export type LightboxItem =
@@ -96,7 +96,10 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
     >
       {/* Top bar */}
       <div className="flex items-center justify-between px-3 sm:px-5 py-3 text-white/70 text-xs sm:text-sm">
-        <span className="tabular-nums">{currentIndex + 1} / {total}</span>
+        <span className="tabular-nums">
+          {currentIndex + 1} / {total}
+          {current.type === "image" && current.group && <span className="font-semibold text-white"> · {current.group}</span>}
+        </span>
         <button
           ref={closeRef}
           type="button"
@@ -170,9 +173,19 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
             {resolved.map((item, i) => {
               const src = item.type === "video" ? youtubeThumb(item.id) : item.src;
               const active = i === currentIndex;
+              const group = item.type === "image" ? item.group : undefined;
+              const prev = resolved[i - 1];
+              // Same marker as the gallery rail: where a named set (e.g. LINE) starts
+              const startsGroup = i > 0 && group && group !== (prev.type === "image" ? prev.group : undefined);
               return (
+                <Fragment key={i}>
+                {startsGroup && (
+                  <span className="flex-shrink-0 self-stretch flex items-center gap-2 pl-1">
+                    <span aria-hidden className="w-px h-3/4 bg-white/20" />
+                    <span className="text-xs font-semibold text-white/60">{group}</span>
+                  </span>
+                )}
                 <button
-                  key={i}
                   ref={(el) => { thumbRefs.current[i] = el; }}
                   type="button"
                   onClick={() => setCurrentIndex(i)}
@@ -189,6 +202,7 @@ export default function Lightbox({ items, images, initialIndex, layout, onClose 
                     </span>
                   )}
                 </button>
+                </Fragment>
               );
             })}
           </div>

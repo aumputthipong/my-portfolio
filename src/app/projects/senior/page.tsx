@@ -25,10 +25,10 @@ export default function SeniorProjectPage() {
           {/* Small screens read title → details → media; from lg the media moves to the
               left so the eye lands on it first, then reads across to facts and actions */}
           <ProjectInfo
-            category="Senior project"
+            category="Capstone project"
             title={senior.title}
             subtitle={senior.full_project_name}
-            description={senior.shortDescription}
+            description={senior.description}
             facts={[
               { label: "Platform", value: "Web app" },
               { label: "Year", value: senior.year },
@@ -44,7 +44,8 @@ export default function SeniorProjectPage() {
           </div>
         </div>
 
-        <ProjectHighlights items={senior.responsibility} />
+        {/* The first responsibility repeats the description above, so the list starts after it */}
+        <ProjectHighlights items={senior.responsibility.slice(1)} />
 
         <MoreProjects projects={otherProjects} />
       </div>

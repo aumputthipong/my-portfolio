@@ -1,5 +1,10 @@
 "use client";
 
+import { FaArrowDown, FaEnvelope } from "react-icons/fa";
+import { contacts } from "@/data/ContactData";
+
+const email = contacts.find((c) => c.label === "Email");
+
 // Semicircular top on a 4:5 box (50% of the width = 40% of the height), with
 // the usual soft corners at the bottom.
 const ARCH = {
@@ -36,6 +41,26 @@ const Hero = () => {
               analysis and solution design to development, testing, and
               deployment. Eager to keep learning and improving as part of a team.
             </p>
+
+            {/* Next step: the work first, then a direct line */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 h-11 px-6 rounded-2xl bg-ink text-canvas text-sm font-semibold transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+              >
+                See the work
+                <FaArrowDown className="size-3" />
+              </a>
+              {email && (
+                <a
+                  href={email.href}
+                  className="inline-flex items-center gap-2 h-11 px-6 rounded-2xl border border-line bg-canvas text-body text-sm font-semibold transition-colors hover:text-ink hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+                >
+                  <FaEnvelope className="size-3.5" />
+                  Email me
+                </a>
+              )}
+            </div>
           </div>
 
           {/* ── RIGHT: arched portrait with offset frame ── */}

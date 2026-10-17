@@ -183,7 +183,10 @@ Headings use **Fraunces** (display serif); body uses the **system UI sans** stac
 
 ## Layout
 
-Editorial and generous. Home content sits in a centered `max-w-6xl`; project detail pages use a tighter `max-w-5xl` with a **full-width, stacked** flow (back → meta → title → tech → large media → details) so imagery is never cramped beside text.
+Editorial and generous. Home content sits in a centered `max-w-6xl`.
+
+- **Featured projects:** the flagship pair (AI Garden and Turtask) side by side, each carrying one unclamped **proof line** (`proof` in `src/data/`) under its title. The rest of the work follows under its own "More projects" heading, a clear step down.
+- **Project detail pages:** a wide `max-w-[88rem]` two-column view from `lg`: gallery on the left, a sticky info panel on the right ordered story → actions (Live demo, Code) → facts → stack, so the actions stay above the fold. Below `lg` the panel comes first, then the gallery.
 
 Sections alternate `neutral` / `surface` for rhythm. `scroll-padding-top` offsets anchored sections beneath the floating navbar.
 
