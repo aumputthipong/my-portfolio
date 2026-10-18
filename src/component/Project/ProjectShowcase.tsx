@@ -1,17 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
-import { seniorProject } from "@/data/SeniorProjectData";
+import { seniorProject, seniorVideos } from "@/data/SeniorProjectData";
 import { projectData, type Project } from "@/data/ProjectsData";
 import TechBadge from "../UI/TechBadge";
-import { DemoAction, IconAction } from "../UI/CardActions";
+import { DemoAction, IconAction, VideoAction } from "../UI/CardActions";
+import Lightbox, { type LightboxItem } from "../UI/Lightbox";
 
 type Highlight = {
   key: string;
   href: string;
   github?: string;
   demo?: string;
+  /** Demo videos for a project with no live demo, opened at `start` */
+  video?: { items: LightboxItem[]; start: number };
   badge: string;
   title: string;
   /** One checkable fact, never clamped: the reason the project is featured */
@@ -51,6 +55,11 @@ const capstone: Highlight = {
   key: "senior",
   href: "/projects/senior",
   github: "https://github.com/aumputthipong/AI-garden-System",
+  video: {
+    items: seniorVideos.map((v) => ({ type: "video", id: v.id, name: v.name })),
+    // "Adding New AI Services": it shows what the proof line claims
+    start: seniorVideos.findIndex((v) => v.id === "B7YQeZ6N9No"),
+  },
   badge: "Capstone project",
   title: seniorProject.title,
   proof: seniorProject.proof,
@@ -87,79 +96,93 @@ const MAX_TECH = 3;
 
 function FeaturedCard({ h }: { h: Highlight }) {
   const extraTech = h.tech.length - MAX_TECH;
+  const [videoOpen, setVideoOpen] = useState(false);
 
   return (
-    <article className="group relative h-full flex flex-col rounded-2xl border border-line bg-card p-3 transition-colors hover:border-muted/60 has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent">
-      <div className="relative aspect-[16/7] overflow-hidden rounded-xl border border-line bg-surface">
-        <img
-          src={h.image}
-          alt=""
-          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015] dark:brightness-90"
-        />
-      </div>
-
-      <div className="flex flex-1 flex-col px-2 pt-4 pb-1">
-        <div className="flex items-center justify-between gap-3">
-          <span className="inline-flex rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent">
-            {h.badge}
-          </span>
-          <span className="text-xs font-medium text-muted tabular-nums">{h.year}</span>
+    <>
+      <article className="group relative h-full flex flex-col rounded-2xl border border-line bg-card p-3 transition-colors hover:border-muted/60 has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent">
+        <div className="relative aspect-[16/7] overflow-hidden rounded-xl border border-line bg-surface">
+          <img
+            src={h.image}
+            alt=""
+            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015] dark:brightness-90"
+          />
         </div>
 
-        <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight leading-tight text-ink">
-          {/* Stretched link: the whole card opens the project */}
-          <Link
-            href={h.href}
-            data-primary
-            className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none group-hover:text-accent transition-colors"
-          >
-            {h.title}
-          </Link>
-        </h3>
-
-        {h.proof && (
-          <p className="mt-2 flex items-baseline gap-2 text-sm font-medium text-ink">
-            <span aria-hidden className="size-1.5 flex-shrink-0 translate-y-[-0.1em] rounded-full bg-accent" />
-            {h.proof}
-          </p>
-        )}
-
-        <p className="mt-2 text-sm leading-relaxed text-body line-clamp-2">{h.desc}</p>
-
-        <div className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-3">
-          {/* Full width on phones so the badges keep one line and the actions
-              drop below them together, instead of "+N" wrapping on its own */}
-          <div className="w-full sm:w-auto flex flex-wrap items-center gap-1.5">
-            {/* Phones fit two badges on a line, so the third folds into the count */}
-            {h.tech.slice(0, MAX_TECH).map((t, i) => (
-              <span key={i} className={i === MAX_TECH - 1 ? "hidden sm:inline-flex" : "inline-flex"}>
-                <TechBadge tech={t} />
-              </span>
-            ))}
-            <span className="sm:hidden text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH - 1).map((t) => t.name).join(", ")}>
-              +{extraTech + 1}
+        <div className="flex flex-1 flex-col px-2 pt-4 pb-1">
+          <div className="flex items-center justify-between gap-3">
+            <span className="inline-flex rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent">
+              {h.badge}
             </span>
-            {extraTech > 0 && (
-              <span className="hidden sm:inline text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
-                +{extraTech}
-              </span>
-            )}
+            <span className="text-xs font-medium text-muted tabular-nums">{h.year}</span>
           </div>
 
-          {/* Sit above the stretched link so they stay independently clickable */}
-          <div className="relative z-10 ml-auto flex items-center gap-2">
-            {h.demo && <DemoAction href={h.demo} project={h.title} />}
-            {h.github && (
-              <IconAction
-                href={h.github}
-                label={`${h.title} source code on GitHub`}
-                title="Source code on GitHub"
-                icon={<FaGithub />}
-              />
-            )}
+          <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight leading-tight text-ink">
+            {/* Stretched link: the whole card opens the project */}
+            <Link
+              href={h.href}
+              data-primary
+              className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none group-hover:text-accent transition-colors"
+            >
+              {h.title}
+            </Link>
+          </h3>
+
+          {h.proof && (
+            <p className="mt-2 flex items-baseline gap-2 text-sm font-medium text-ink">
+              <span aria-hidden className="size-1.5 flex-shrink-0 translate-y-[-0.1em] rounded-full bg-accent" />
+              {h.proof}
+            </p>
+          )}
+
+          <p className="mt-2 text-sm leading-relaxed text-body line-clamp-2">{h.desc}</p>
+
+          <div className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-3">
+            {/* Full width on phones so the badges keep one line and the actions
+                drop below them together, instead of "+N" wrapping on its own */}
+            <div className="w-full sm:w-auto flex flex-wrap items-center gap-1.5">
+              {/* Phones fit two badges on a line, so the third folds into the count */}
+              {h.tech.slice(0, MAX_TECH).map((t, i) => (
+                <span key={i} className={i === MAX_TECH - 1 ? "hidden sm:inline-flex" : "inline-flex"}>
+                  <TechBadge tech={t} />
+                </span>
+              ))}
+              <span className="sm:hidden text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH - 1).map((t) => t.name).join(", ")}>
+                +{extraTech + 1}
+              </span>
+              {extraTech > 0 && (
+                <span className="hidden sm:inline text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
+                  +{extraTech}
+                </span>
+              )}
+            </div>
+
+            {/* Sit above the stretched link so they stay independently clickable */}
+            <div className="relative z-10 ml-auto flex items-center gap-2">
+              {h.demo && <DemoAction href={h.demo} project={h.title} />}
+              {!h.demo && h.video && <VideoAction project={h.title} onClick={() => setVideoOpen(true)} />}
+              {h.github && (
+                <IconAction
+                  href={h.github}
+                  label={`${h.title} source code on GitHub`}
+                  title="Source code on GitHub"
+                  icon={<FaGithub />}
+                />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+
+      {/* Outside the card, so clicks in the dialog never reach its stretched link */}
+      {videoOpen && h.video && (
+        <Lightbox
+          items={h.video.items}
+          initialIndex={h.video.start}
+          layout="web"
+          onClose={() => setVideoOpen(false)}
+        />
+      )}
+    </>
   );
 }

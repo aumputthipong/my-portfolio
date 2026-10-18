@@ -185,7 +185,7 @@ Headings use **Fraunces** (display serif); body uses the **system UI sans** stac
 
 Editorial and generous. Home content sits in a centered `max-w-6xl`.
 
-- **Featured projects:** the flagship pair (AI Garden and Turtask) side by side, each carrying one unclamped **proof line** (`proof` in `src/data/`) under its title. The rest of the work follows under its own "More projects" heading, a clear step down.
+- **Featured projects:** the flagship pair (AI Garden and Turtask) side by side, each carrying one unclamped **proof line** (`proof` in `src/data/`) under its title. The rest of the work follows under its own "More projects" heading, a clear step down. On phones that grid shows three cards and a "Show N more projects" button while the All tab is selected, so it never outweighs the featured pair.
 - **Project detail pages:** a wide `max-w-[88rem]` two-column view from `lg`: gallery on the left, a sticky info panel on the right ordered story → actions (Live demo, Code) → facts → stack, so the actions stay above the fold. Below `lg` the panel comes first, then the gallery.
 
 Sections alternate `neutral` / `surface` for rhythm. `scroll-padding-top` offsets anchored sections beneath the floating navbar.
@@ -220,7 +220,7 @@ Generous, varied rounding rather than uniform pills:
 - **`card`** — project tile: white, hairline border, `rounded.2xl`; hover deepens border and adds a soft shadow (no lift).
 - **`chip`** — `accent-soft` background, `accent` text, fully rounded. Category / project-type labels on featured cards and detail pages.
 - **`chip-neutral`** — `surface` background, hairline `border`, `muted` text. The project-type label on grid cards in "More projects": deliberately grey so the featured pair keeps the green and the accent stays near 5–10% of the page.
-- **Card actions** — project cards (featured and grid) share `UI/CardActions.tsx`: `DemoAction` (the `button-accent` "Live demo", 36px tall) and `IconAction` (the 36px `button-icon`, GitHub or Figma). Both grow to 44px on touch screens. Detail pages keep their own full-width buttons.
+- **Card actions** — project cards (featured and grid) share `UI/CardActions.tsx`: `DemoAction` (the `button-accent` "Live demo", 36px tall), `VideoAction` (the same accent button, "Watch demo", for a project with demo videos but no live site; it opens the lightbox) and `IconAction` (the 36px `button-icon`, GitHub or Figma). All grow to 44px on touch screens. Detail pages keep their own full-width buttons.
 - **`tech-badge`** — white, hairline border, monospace, `rounded.md`; hover tints to `accent-soft`.
 - **`divider`** — 1px `border` hairline separating editorial blocks.
 

@@ -3,7 +3,7 @@
 import { projectData, type Project } from "@/data/ProjectsData";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
+import { FaArrowRight, FaChevronDown, FaGithub, FaFigma } from "react-icons/fa";
 import Link from "next/link";
 import ProjectShowcase, { FEATURED_PROJECT_IDS } from "./Project/ProjectShowcase";
 import SectionHeader from "./UI/SectionHeader";
@@ -11,6 +11,8 @@ import TechBadge from "./UI/TechBadge";
 import { DemoAction, IconAction } from "./UI/CardActions";
 
 const MAX_TECH = 3;
+// Cards shown on phones before "Show more", so the grid doesn't outweigh the featured pair
+const COLLAPSED_COUNT = 3;
 
 // The featured pair (AI Garden and Turtask) is shown in the showcase above, so
 // the grid lists everything else. AI Garden lives outside projectData already.
@@ -20,6 +22,7 @@ const allProjects: Array<Project & { href?: string }> = projectData.filter(
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
+  const [showAll, setShowAll] = useState(false);
   const types = [...new Set(allProjects.map((p) => p.type))];
   const tabs = ["All", ...types];
 
@@ -27,6 +30,20 @@ export default function Projects() {
     activeTab === "All"
       ? allProjects
       : allProjects.filter((p) => p.type === activeTab);
+
+  // Only "All" collapses: a chosen category is already short, and the visitor asked for it
+  const collapsed = activeTab === "All" && !showAll && filteredProjects.length > COLLAPSED_COUNT;
+  const hiddenCount = filteredProjects.length - COLLAPSED_COUNT;
+
+  const expand = () => {
+    setShowAll(true);
+    // The button disappears, so focus moves to the first card it revealed
+    requestAnimationFrame(() =>
+      document
+        .querySelectorAll<HTMLAnchorElement>("#projects-grid a[data-primary]")
+        [COLLAPSED_COUNT]?.focus()
+    );
+  };
 
   // Padding sits outside max-w-6xl, as in UI/Section, so the content edge lines
   // up with the other sections.
@@ -68,14 +85,16 @@ export default function Projects() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div id="projects-grid" className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
             <motion.article
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.08 }}
-              className="group relative h-full flex flex-col rounded-2xl p-3 bg-card border border-line transition-[border-color,box-shadow] duration-300 hover:border-muted/50 hover:shadow-md has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent"
+              className={`group relative h-full flex flex-col rounded-2xl p-3 bg-card border border-line transition-[border-color,box-shadow] duration-300 hover:border-muted/50 hover:shadow-md has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent ${
+                collapsed && index >= COLLAPSED_COUNT ? "max-sm:hidden" : ""
+              }`}
             >
                 {/* Banner image */}
                 <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden rounded-xl bg-gray-900 flex-shrink-0">
@@ -176,6 +195,19 @@ export default function Projects() {
             </motion.article>
           ))}
         </div>
+
+        {/* Phones only: wider screens fit the whole grid in a few rows */}
+        {collapsed && (
+          <button
+            type="button"
+            onClick={expand}
+            aria-controls="projects-grid"
+            className="sm:hidden mt-4 inline-flex w-full items-center justify-center gap-2 h-11 rounded-xl border border-line bg-card text-sm font-semibold text-ink transition-colors hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+          >
+            Show {hiddenCount} more projects
+            <FaChevronDown className="size-3" />
+          </button>
+        )}
       </div>
     </section>
   );
