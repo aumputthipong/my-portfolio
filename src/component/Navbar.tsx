@@ -3,8 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaRegFilePdf } from "react-icons/fa";
 import ThemeToggle from "@/component/UI/ThemeToggle";
+import { RESUME_HREF } from "@/data/ContactData";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -155,6 +156,21 @@ const Navbar = () => {
               <span className="hidden md:inline text-xs font-semibold uppercase tracking-[0.18em]">{label}</span>
             </Link>
           ))}
+
+          {/* Resume shortcut from any page. Phones skip it: the bar is full there, and the
+              Hero and Contact sections both link the PDF. */}
+          <a
+            href={RESUME_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Resume (PDF)"
+            className="hidden sm:inline-flex items-center gap-2 h-9 pointer-coarse:h-11 ml-1 px-3 rounded-md border-2 border-ink/80 text-ink text-xs font-bold uppercase tracking-[0.15em] transition-colors hover:bg-ink hover:text-canvas focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+          >
+            <FaRegFilePdf className="size-3.5" aria-hidden />
+            <span className="hidden lg:inline">Resume</span>
+            <span className="sr-only lg:hidden">Resume</span>
+            <span className="sr-only">(PDF, opens in a new tab)</span>
+          </a>
 
           <div className="w-px h-5 bg-line mx-1 flex-shrink-0" />
           <ThemeToggle />

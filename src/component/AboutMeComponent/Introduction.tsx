@@ -1,83 +1,47 @@
+import { FaLocationDot } from "react-icons/fa6";
 import { contacts } from "../../data/ContactData";
 
+// One label voice for every in-card heading and caption (design.md label-caps)
+const labelCaps = "text-xs font-bold uppercase tracking-[0.15em] text-muted";
+
 /**
- * About, in two columns: who he is and how to reach him (a round portrait over the
- * contact details), then education. The tech stack has its own Skills section.
+ * About, in two cards of equal height: a profile card that holds who he is and
+ * where he studied (portrait, name, location, then the degree), and beside it the
+ * contact details. The tech stack has its own Skills section.
  */
 const Introduction = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14">
-      {/* ── LEFT: portrait + contact details ── */}
-      <div>
-        <div className="flex items-center gap-5">
-          {/* Round portrait inside a mustard ring, the signature frame in a smaller form */}
-          <div className="flex-shrink-0 rounded-full border-2 border-accent p-1.5">
-            {/* Zoomed toward the face: the source is a half-body 4:5 photo */}
-            <div className="size-24 sm:size-28 rounded-full overflow-hidden bg-canvas">
-              <img
-                src="/image/profile_formal.png"
-                alt="Putthipong Chobngam"
-                className="w-full h-full object-cover scale-[1.25] origin-[50%_15%]"
-              />
-            </div>
+    <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8">
+      {/* ── LEFT: profile card ── */}
+      <div className="rounded-xl bg-card ring-1 ring-line overflow-hidden">
+        {/* Who */}
+        <div className="flex items-center gap-5 sm:gap-6 px-5 py-6 sm:px-7 sm:py-7">
+          {/* Plain frame: the photo with a hairline, no ornament */}
+          <div className="relative w-24 sm:w-32 flex-shrink-0 aspect-[4/5] rounded-lg overflow-hidden bg-surface ring-1 ring-line">
+            {/* The name sits right beside it, so the image adds nothing for a screen reader */}
+            <img src="/image/profile_formal.png" alt="" className="w-full h-full object-cover object-top" />
           </div>
           <div className="min-w-0">
-            <p className="font-display text-xl sm:text-2xl font-bold tracking-[0.05em] text-ink leading-tight">
+            <p className="font-display text-xl sm:text-2xl font-bold tracking-[0.03em] text-ink leading-tight">
               Putthipong Chobngam
             </p>
-            <p className="mt-1 text-sm text-muted">Bangkok, Thailand</p>
+            <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-body">
+              <FaLocationDot className="size-3.5 text-accent-strong" aria-hidden />
+              Bangkok, Thailand
+            </p>
           </div>
         </div>
 
-        {/* Quiet rows, so the Education card stays the one raised block. Same data as
-            the Contact section, which remains the closing call to action; phones skip
-            them and reach that section instead. */}
-        <div className="hidden sm:block mt-8">
-          <h3 className="font-display text-base sm:text-lg font-bold uppercase tracking-[0.15em] text-ink mb-3">
-            Contact details
-          </h3>
-          <dl className="text-sm">
-            {contacts.map(({ icon: Icon, ...c }) => (
-              <div
-                key={c.label}
-                className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line last:border-b-0"
-              >
-                {/* Accent icons, as design.md gives contact icons, so each row is found at a glance */}
-                <dt className="flex items-center gap-2 text-muted">
-                  <Icon className="size-3.5 flex-shrink-0 text-accent-strong" aria-hidden />
-                  {c.label}
-                </dt>
-                <dd className="min-w-0">
-                  <a
-                    href={c.href}
-                    {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="block truncate text-ink hover:text-accent-strong transition-colors underline-offset-4 focus-visible:outline-none focus-visible:text-accent-strong focus-visible:underline"
-                  >
-                    {c.value}
-                  </a>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
+        {/* Where he studied: the lower half of the same card, on its own tint
+            (a step below the card in dark mode, so it never melts into the section) */}
+        <div id="education" className="border-t border-line bg-surface dark:bg-canvas px-5 py-6 sm:px-7">
+          <h3 className={labelCaps}>Education</h3>
 
-      {/* ── RIGHT: Education ── */}
-      <div id="education">
-        <h3 className="font-display text-base sm:text-lg font-bold uppercase tracking-[0.15em] text-ink mb-5">
-          Education
-        </h3>
-
-        {/* The one raised card in the section, so the degree is read first */}
-        <div className="rounded-xl bg-card p-5 sm:p-6 shadow-sm ring-1 ring-line/70">
-          <div className="flex items-start gap-4">
-            <img
-              src="/image/KMITL_Logo.png"
-              alt="KMITL"
-              className="h-14 w-14 object-contain flex-shrink-0"
-            />
+          <div className="mt-4 flex items-start gap-4">
+            {/* The school is named in full beside it */}
+            <img src="/image/KMITL_Logo.png" alt="" className="h-12 w-12 sm:h-14 sm:w-14 object-contain flex-shrink-0" />
             <div className="min-w-0">
-              <h4 className="font-display text-lg font-bold text-ink leading-snug">
+              <h4 className="font-display text-base sm:text-lg font-bold text-ink leading-snug">
                 B.Sc. Information Technology
               </h4>
               <p className="text-sm text-body mt-1 leading-snug">
@@ -87,20 +51,50 @@ const Introduction = () => {
             </div>
           </div>
 
-          <dl className="grid grid-cols-2 gap-4 mt-5 pt-5 border-t border-line">
+          <dl className="mt-5 grid grid-cols-2">
             <div>
-              <dt className="text-xs text-muted">Graduated</dt>
-              <dd className="font-display text-xl font-bold text-ink mt-0.5">2025</dd>
+              <dt className={labelCaps}>Graduated</dt>
+              <dd className="mt-1 text-base font-bold text-ink tabular-nums">2025</dd>
             </div>
-            <div>
-              <dt className="text-xs text-muted">Cumulative GPA</dt>
-              <dd className="font-display text-xl font-bold text-ink mt-0.5">
+            <div className="border-l border-line pl-5">
+              <dt className={labelCaps}>GPA</dt>
+              <dd className="mt-1 text-base font-bold text-ink tabular-nums">
                 3.11
-                <span className="font-sans text-sm font-normal text-muted"> / 4.00</span>
+                <span className="font-normal text-muted"> / 4.00</span>
               </dd>
             </div>
           </dl>
         </div>
+      </div>
+
+      {/* ── RIGHT: contact details, a card as tall as the profile card ──
+          Same data as the Contact section, which remains the closing call to action;
+          phones skip this card and reach that section instead. */}
+      <div className="hidden sm:flex flex-col rounded-xl bg-card ring-1 ring-line px-5 py-6 sm:px-7">
+        <h3 className={labelCaps}>Contact details</h3>
+        {/* Rows share the card's height, so both cards end on the same line */}
+        <ul className="mt-3 flex-1 flex flex-col justify-between">
+          {contacts.map(({ icon: Icon, ...c }) => (
+            <li key={c.label} className="border-b border-line last:border-b-0">
+              <a
+                href={c.href}
+                {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="group flex items-center gap-4 py-3.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+              >
+                <span className="grid place-items-center size-10 flex-shrink-0 rounded-md bg-accent-soft text-accent-strong transition-colors group-hover:bg-accent group-hover:text-on-accent">
+                  <Icon className="size-4" aria-hidden />
+                </span>
+                <span className="min-w-0">
+                  <span className={`block ${labelCaps}`}>{c.label}</span>
+                  <span className="mt-0.5 block truncate text-base font-semibold text-ink transition-colors group-hover:text-accent-strong">
+                    {c.value}
+                  </span>
+                </span>
+                {c.external && <span className="sr-only">(opens in a new tab)</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
