@@ -141,7 +141,7 @@ const Navbar = () => {
             aria-current={isActive(id) ? "location" : undefined}
             className={`flex items-center gap-1.5 rounded-full transition-all duration-300
               px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-4 pointer-coarse:min-h-11
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas
               ${
                 isActive(id)
                   ? "text-on-accent bg-accent shadow-lg"

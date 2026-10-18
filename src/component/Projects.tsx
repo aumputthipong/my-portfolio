@@ -52,7 +52,7 @@ export default function Projects() {
                 type="button"
                 onClick={() => setActiveTab(tab)}
                 aria-pressed={activeTab === tab}
-                className={`flex-shrink-0 whitespace-nowrap px-3 sm:px-4 py-1.5 pointer-coarse:min-h-11 text-xs font-medium rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                className={`flex-shrink-0 whitespace-nowrap px-3 sm:px-4 py-1.5 pointer-coarse:min-h-11 text-xs font-medium rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card ${
                   activeTab === tab
                     ? "bg-accent text-on-accent shadow-md"
                     : "text-muted hover:text-ink hover:bg-surface"

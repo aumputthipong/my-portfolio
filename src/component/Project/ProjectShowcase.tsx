@@ -34,7 +34,7 @@ const fromProject = (p: Project): Highlight => ({
   href: `/projects/${p.id}`,
   github: p.github || undefined,
   demo: p.demo,
-  badge: "Personal project",
+  badge: p.type,
   title: p.title,
   proof: p.proof,
   desc: p.summary ?? p.description,
