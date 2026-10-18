@@ -15,7 +15,7 @@ const TechBadge: React.FC<TechBadgeProps> = ({ tech, iconSrc }) => {
   const src = iconSrc ?? tech.icon;
   return (
     <span
-      className="inline-flex items-center gap-1.5 border border-line bg-canvas text-body hover:bg-accent-soft hover:border-accent/40 hover:text-accent text-xs font-mono px-2.5 py-1.5 rounded-md transition-all duration-200"
+      className="inline-flex items-center gap-1.5 bg-chip text-ink/85 text-xs font-semibold uppercase tracking-[0.06em] px-2.5 py-1 rounded"
     >
       {src && (
         <img src={src} alt="" className={`h-3.5 w-3.5 object-contain ${MONO_ICON.test(src) ? "dark:invert" : ""}`} />

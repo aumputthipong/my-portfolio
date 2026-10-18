@@ -51,10 +51,10 @@ export default function MoreProjects({ currentHref }: { currentHref: string }) {
     <div className="pt-6 sm:pt-8 border-t border-line space-y-10">
       <div>
         <div className="flex items-center justify-between mb-4 sm:mb-5">
-          <h2 className="font-display text-xl sm:text-2xl font-semibold text-ink">More projects</h2>
+          <h2 className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.15em] text-ink">More projects</h2>
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-muted hover:text-accent transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-muted hover:text-accent-strong transition-colors"
           >
             View all
             <FaArrowRight className="size-2.5" />
@@ -65,7 +65,7 @@ export default function MoreProjects({ currentHref }: { currentHref: string }) {
             <Link
               key={p.href}
               href={p.href}
-              className="group flex items-center gap-3 rounded-2xl border border-line p-2.5 hover:border-accent/40 hover:bg-accent-soft/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="group flex items-center gap-3 rounded-xl bg-card p-2.5 shadow-sm ring-1 ring-line/70 hover:shadow-md transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <div className="relative w-24 h-16 flex-shrink-0 overflow-hidden rounded-xl bg-surface">
                 <img
@@ -75,8 +75,8 @@ export default function MoreProjects({ currentHref }: { currentHref: string }) {
                 />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-mono font-medium uppercase tracking-[0.05em] text-muted truncate">{p.type}</p>
-                <h3 className="font-display text-sm sm:text-base font-semibold text-ink leading-snug mt-0.5 group-hover:text-accent transition-colors line-clamp-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted truncate">{p.type}</p>
+                <h3 className="font-display text-sm sm:text-base font-bold text-ink leading-snug mt-0.5 group-hover:text-accent-strong transition-colors line-clamp-2">
                   {p.title}
                 </h3>
               </div>
@@ -88,12 +88,12 @@ export default function MoreProjects({ currentHref }: { currentHref: string }) {
       {/* Closing line: the visitor who read this far shouldn't have to go back home to reach out */}
       {email && (
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-display text-lg sm:text-xl font-semibold text-ink">
-            Interested in working together<span className="text-accent">?</span>
+          <p className="font-display text-lg sm:text-xl font-bold tracking-[0.04em] text-ink">
+            Interested in working together<span className="text-accent-strong">?</span>
           </p>
           <a
             href={email.href}
-            className="inline-flex items-center gap-2 self-start sm:self-auto h-11 px-6 rounded-2xl bg-ink text-canvas text-sm font-semibold transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+            className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-md bg-accent text-on-accent text-xs font-bold uppercase tracking-[0.18em] shadow-sm transition-[filter] hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-canvas self-start sm:self-auto"
           >
             <FaEnvelope className="size-3.5" />
             Email me

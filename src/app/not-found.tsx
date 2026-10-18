@@ -13,8 +13,8 @@ export default function NotFound() {
     <section className="min-h-[80vh] flex items-center px-4 sm:px-6 lg:px-8 pt-24 pb-16">
       <div className="max-w-6xl mx-auto w-full">
         <div className="max-w-xl">
-          <h1 className="font-display font-semibold text-ink text-4xl sm:text-5xl leading-[1.05] tracking-[-0.01em] text-balance">
-            This page doesn&apos;t exist<span className="text-accent">.</span>
+          <h1 className="font-display font-bold text-ink text-4xl sm:text-5xl leading-[1.1] tracking-[0.04em] text-balance">
+            This page doesn&apos;t exist<span className="text-accent-strong">.</span>
           </h1>
           <p className="mt-4 text-base leading-relaxed text-body text-pretty">
             The link may be mistyped, or the project it pointed to has moved. Everything
@@ -24,14 +24,14 @@ export default function NotFound() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 h-11 px-6 rounded-2xl bg-ink text-canvas text-sm font-semibold transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-md bg-accent text-on-accent text-xs font-bold uppercase tracking-[0.18em] shadow-sm transition-[filter] hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
             >
               See the projects
               <FaArrowRight className="text-xs" />
             </Link>
             <Link
               href="/"
-              className="inline-flex items-center h-11 px-6 rounded-2xl border border-line bg-canvas text-body text-sm font-semibold transition-colors hover:text-ink hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-md border-2 border-ink/80 text-ink text-xs font-bold uppercase tracking-[0.18em] transition-colors hover:bg-ink hover:text-canvas focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
             >
               Back to home
             </Link>

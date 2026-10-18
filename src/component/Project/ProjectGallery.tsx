@@ -81,7 +81,7 @@ export default function ProjectGallery({ items, layout }: ProjectGalleryProps) {
   return (
     <div className="h-full flex flex-col gap-3" onKeyDown={onKeyDown}>
       {/* Stage */}
-      <div className={`group relative overflow-hidden rounded-2xl bg-surface border border-line ${stageSize}`}>
+      <div className={`group relative overflow-hidden rounded-xl bg-surface ring-1 ring-line/70 ${stageSize}`}>
         {currentMobile ? (
           <MobileStage items={items} layout={layout} index={index} onSelect={go} onOpen={() => setLightboxIndex(index)} />
         ) : current.type === "video" && playing ? (

@@ -40,14 +40,14 @@ export default function ProjectInfo({
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
-      className="flex flex-col gap-5 rounded-2xl border border-line bg-surface p-5 sm:p-6 xl:p-7 lg:sticky lg:top-24 lg:self-start"
+      className="flex flex-col gap-5 rounded-xl bg-card p-5 sm:p-6 xl:p-7 shadow-sm ring-1 ring-line/70 lg:sticky lg:top-24 lg:self-start"
     >
       <div className="space-y-4">
-        <span className="inline-flex rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent">
+        <span className="inline-flex rounded bg-accent px-2.5 py-1 text-xs font-bold uppercase tracking-[0.1em] text-on-accent">
           {category}
         </span>
         <div className="space-y-2">
-          <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink leading-[1.05] text-balance break-words">
+          <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-[0.03em] text-ink leading-[1.1] text-balance break-words">
             {title}
           </h1>
           {subtitle && (
@@ -68,7 +68,7 @@ export default function ProjectInfo({
                   href={demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 inline-flex items-center justify-center gap-2 border border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors ${focusRing}`}
+                  className={`flex-1 inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md bg-accent text-on-accent text-xs font-bold uppercase tracking-[0.15em] shadow-sm transition-[filter] hover:brightness-105 ${focusRing}`}
                 >
                   <FaExternalLinkAlt className="text-xs" />
                   Live demo
@@ -79,7 +79,7 @@ export default function ProjectInfo({
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 inline-flex items-center justify-center gap-2 bg-ink hover:bg-ink/90 text-canvas text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors ${focusRing}`}
+                  className={`flex-1 inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md border-2 border-ink/80 text-ink text-xs font-bold uppercase tracking-[0.15em] transition-colors hover:bg-ink hover:text-canvas ${focusRing}`}
                 >
                   <FaGithub />
                   Code
@@ -90,7 +90,7 @@ export default function ProjectInfo({
                   href={figma}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-1 inline-flex items-center justify-center gap-2 border border-line hover:border-muted bg-canvas text-body text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors ${focusRing}`}
+                  className={`flex-1 inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md border-2 border-ink/80 text-ink text-xs font-bold uppercase tracking-[0.15em] transition-colors hover:bg-ink hover:text-canvas ${focusRing}`}
                 >
                   <FaFigma />
                   Figma

@@ -1,18 +1,19 @@
 
 // layout.tsx
 import type { Metadata } from "next";
-import { Fraunces } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "../styles/globals.css";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 
 import ThemeProvider from "@/component/ThemeProvider";
 
-const fraunces = Fraunces({
+// One face for the whole site: headings get their voice from weight and tracking
+const openSans = Open_Sans({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "600", "700"],
   display: "swap",
-  variable: "--font-display",
+  variable: "--font-open-sans",
 });
 
 
@@ -35,10 +36,10 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
   <html
       lang="en"
-      className={`scroll-smooth ${fraunces.variable}`}
+      className={`scroll-smooth ${openSans.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-canvas text-body min-h-screen flex flex-col overflow-x-hidden">
+      <body className="font-sans bg-canvas text-body min-h-screen flex flex-col overflow-x-hidden">
         <ThemeProvider>
         <Navbar />
         <main className="flex-1 w-full">{children}</main>

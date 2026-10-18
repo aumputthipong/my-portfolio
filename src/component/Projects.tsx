@@ -48,8 +48,8 @@ export default function Projects() {
   // Padding sits outside max-w-6xl, as in UI/Section, so the content edge lines
   // up with the other sections.
   return (
-    <section id="projects" className="bg-canvas border-t border-line px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto pt-10 sm:pt-12 lg:pt-14">
+    <section id="projects" className="bg-card dark:bg-canvas border-y border-line px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto pt-16 sm:pt-20">
         <SectionHeader label="Projects" />
       </div>
 
@@ -59,20 +59,20 @@ export default function Projects() {
       {/* The rest of the work: a heading marks the step down from the featured set */}
       <div className="max-w-6xl mx-auto pb-16">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink">More projects</h3>
+          <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.15em] text-ink">More projects</h3>
 
           {/* Tab filter: one row, scrolling sideways on narrow screens instead of wrapping */}
-          <div className="flex flex-nowrap overflow-x-auto bg-card rounded-full p-1 border border-line gap-1 max-w-full self-start sm:self-auto">
+          <div className="flex flex-nowrap overflow-x-auto bg-card rounded-md p-1 ring-1 ring-line gap-1 max-w-full self-start sm:self-auto">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
                 aria-pressed={activeTab === tab}
-                className={`flex-shrink-0 whitespace-nowrap px-3 sm:px-4 py-1.5 pointer-coarse:min-h-11 text-xs font-medium rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card ${
+                className={`flex-shrink-0 whitespace-nowrap px-3 sm:px-4 py-1.5 pointer-coarse:min-h-11 text-xs font-semibold uppercase tracking-[0.1em] rounded transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-card ${
                   activeTab === tab
-                    ? "bg-accent text-on-accent shadow-md"
-                    : "text-muted hover:text-ink hover:bg-surface"
+                    ? "bg-accent text-on-accent"
+                    : "text-muted hover:text-ink hover:bg-chip"
                 }`}
               >
                 {tab}
@@ -92,12 +92,12 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.08 }}
-              className={`group relative h-full flex flex-col rounded-2xl p-3 bg-card border border-line transition-[border-color,box-shadow] duration-300 hover:border-muted/50 hover:shadow-md has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent ${
+              className={`group relative h-full flex flex-col rounded-xl p-3 bg-card shadow-sm ring-1 ring-line/70 transition-shadow duration-300 hover:shadow-lg has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent ${
                 collapsed && index >= COLLAPSED_COUNT ? "max-sm:hidden" : ""
               }`}
             >
                 {/* Banner image */}
-                <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden rounded-xl bg-gray-900 flex-shrink-0">
+                <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden rounded-lg bg-ink flex-shrink-0">
                     {project.layout === "mobile" && (
                       <img
                         src={project.image}
@@ -117,13 +117,13 @@ export default function Projects() {
 
                 {/* Card body */}
                 <div className="flex-1 flex flex-col pt-4">
-                  <h4 className="font-display font-semibold text-ink text-base leading-snug mb-2">
+                  <h4 className="font-display font-bold tracking-[0.02em] text-ink text-base leading-snug mb-2">
                     {/* Stretched link: the whole card opens the project, and it is a real
                         link, so it is reachable by keyboard and opens in a new tab */}
                     <Link
                       href={project.href ?? `/projects/${project.id}`}
                       data-primary
-                      className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none group-hover:text-accent transition-colors"
+                      className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none group-hover:text-accent-strong transition-colors"
                     >
                       {project.title}
                     </Link>
@@ -146,10 +146,10 @@ export default function Projects() {
 
                   {/* Category tag + year */}
                   <div className="mb-4 flex items-center justify-between gap-2">
-                    <span className="inline-block bg-surface text-xs font-semibold px-2.5 py-1 rounded-full border border-line text-muted">
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
                       {project.type}
                     </span>
-                    <span className="text-xs font-medium text-muted tabular-nums">
+                    <span className="text-xs font-semibold text-muted tabular-nums">
                       {project.year}
                     </span>
                   </div>
@@ -182,7 +182,7 @@ export default function Projects() {
                         hover. The card's link already announces it, so it is hidden from AT. */}
                     <span
                       aria-hidden
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink group-hover:text-accent transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-ink group-hover:text-accent-strong transition-colors"
                     >
                       Details
                       <FaArrowRight className="size-2.5 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -202,7 +202,7 @@ export default function Projects() {
             type="button"
             onClick={expand}
             aria-controls="projects-grid"
-            className="sm:hidden mt-4 inline-flex w-full items-center justify-center gap-2 h-11 rounded-xl border border-line bg-card text-sm font-semibold text-ink transition-colors hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+            className="sm:hidden mt-6 inline-flex w-full items-center justify-center gap-2 h-11 rounded-md border-2 border-ink/80 text-xs font-bold uppercase tracking-[0.15em] text-ink transition-colors hover:bg-ink hover:text-canvas focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
           >
             Show {hiddenCount} more projects
             <FaChevronDown className="size-3" />

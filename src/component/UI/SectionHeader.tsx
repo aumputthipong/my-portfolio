@@ -2,23 +2,40 @@ import React from "react";
 
 type SectionHeaderProps = {
   label: string;
+  /** Small text on the right of a left-aligned title, e.g. a count */
   index?: string;
+  /** One line under the title */
+  sub?: string;
+  align?: "left" | "center";
   className?: string;
-  /**
-   * `h2` when the label is the section's only heading (About), so the outline
-   * runs h1 → h2 → h3. Sections with their own display h2 keep the default `p`.
-   */
-  as?: "h2" | "p";
+  as?: "h2" | "h3";
 };
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({ label, index, className = "", as: Tag = "p" }) => {
+/**
+ * A section title in the site's voice: bold, widely tracked, with a short mustard
+ * bar under it. Centered titles open full-width sections; left ones sit beside content.
+ */
+const SectionHeader: React.FC<SectionHeaderProps> = ({
+  label,
+  index,
+  sub,
+  align = "left",
+  className = "",
+  as: Tag = "h2",
+}) => {
+  const centered = align === "center";
   return (
-    <div className={`flex items-center justify-between mb-5 sm:mb-6 ${className}`}>
-      {/* meta-mono: the documented eyebrow role in design.md */}
-      <Tag className="text-xs font-mono font-medium uppercase tracking-[0.05em] text-muted flex items-center gap-2">
-        <span className="w-5 sm:w-6 h-px bg-accent" aria-hidden /> {label}
-      </Tag>
-      {index && <p className="text-xs font-mono text-muted">{index}</p>}
+    <div className={`mb-8 sm:mb-10 ${centered ? "text-center" : "flex items-end justify-between gap-4"} ${className}`}>
+      <div>
+        <Tag className="font-display text-3xl sm:text-4xl font-bold tracking-[0.08em] leading-tight text-ink">
+          {label}
+        </Tag>
+        <span aria-hidden className={`block mt-3 h-1 w-16 rounded-full bg-accent ${centered ? "mx-auto" : ""}`} />
+        {sub && <p className={`mt-4 text-sm sm:text-base text-muted ${centered ? "mx-auto max-w-xl" : "max-w-xl"}`}>{sub}</p>}
+      </div>
+      {index && !centered && (
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted whitespace-nowrap">{index}</p>
+      )}
     </div>
   );
 };
