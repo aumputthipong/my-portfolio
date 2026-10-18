@@ -30,7 +30,7 @@ export default function SeniorProjectPage() {
               { label: "Platform", value: "Web app" },
               { label: "Year", value: senior.year },
               { label: "Role", value: "Co-developer" },
-              { label: "Used by", value: "Siriraj Hospital" },
+              { label: "Trial", value: "Siriraj Hospital" },
             ]}
             tech={senior.tech}
             github="https://github.com/aumputthipong/AI-garden-System"

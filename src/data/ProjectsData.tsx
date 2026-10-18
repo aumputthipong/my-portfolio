@@ -83,7 +83,7 @@ export const projectData: Project[] = [
 
   {
     id: 8,
-    title: "Turtask — Mini ERP Kanban",
+    title: "Turtask — Kanban Project Management",
     proof: "Drag-and-drop changes sync in real time for everyone on the board.",
     summary: "A team project management web app with Kanban boards, task assignment, and role-based access.",
     type: "Software Development",

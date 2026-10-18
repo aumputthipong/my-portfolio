@@ -21,14 +21,14 @@ export const seniorProject = {
   full_project_name:
     "Web Application Platform to Support Image and Video Analysis with AI in a Microservice Model",
   title: "AI Garden System",
-  proof: "Deployed for Siriraj Hospital medical instructors and students.",
+  proof: "New AI models plug in as microservices by API endpoint, with no application code changes.",
   description:
-    "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server for use by Siriraj Hospital medical instructors and students.",
+    "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server and trialed by instructors, staff, and students at Siriraj Hospital.",
   shortDescription:
     // Featured-card text: the proof line already says who uses it
     "A web platform that lets non-technical users run image and video analysis with AI models.",
   responsibility: [
-    "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server for use by Siriraj Hospital medical instructors and students.",
+    "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server and trialed by instructors, staff, and students at Siriraj Hospital.",
     "Built an admin panel where admins connect new AI microservices by API endpoint and configure how results are displayed, without changing application code.",
     "Designed the PostgreSQL schema with TypeORM and implemented shared workspaces with member invitations, access control, AI usage approval, and analysis history.",
     "Deployed the system with Docker and Nginx, using GitHub Actions to build and publish Docker images.",

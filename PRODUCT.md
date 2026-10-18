@@ -24,7 +24,7 @@ He builds complete, working systems end to end: database design, backend, fronte
 
 - live demos and public repositories;
 - concrete test results, such as Turtle Shop's integration test where 40 concurrent orders for 5 units sell exactly 5;
-- a system in real use: the AI Garden System is deployed on the IT faculty's server for Siriraj Hospital medical instructors and students.
+- an extensible architecture: in the AI Garden System, new AI models plug in as microservices by API endpoint without application code changes. It was deployed on the IT faculty's server and trialed at Siriraj Hospital; present that as a trial, never as production use.
 
 ## Operating Context
 
@@ -55,7 +55,7 @@ He builds complete, working systems end to end: database design, backend, fronte
 - **Projects** (`src/data/ProjectsData.tsx`, `src/data/SeniorProjectData.ts`):
   - **Turtle Shop**, multi-channel inventory (2026): Go, PostgreSQL, React, LINE LIFF, live demo, concurrency integration tests, CI, deployed on Render with Neon.
   - **Turtask**, mini ERP Kanban (2026): real-time board sync and role-based access. Currently the featured project.
-  - **AI Garden System**, senior project (2025): microservice AI analysis platform used by Siriraj Hospital instructors and students. Includes 17 screenshots and 2 YouTube demo videos.
+  - **AI Garden System**, senior project (2025): microservice AI analysis platform, trialed by instructors, staff, and students at Siriraj Hospital. Includes 17 screenshots and 2 YouTube demo videos.
   - Earlier work (2023–2024): BookingRoom, Job Search, Canteen Food, Convenience Store Management, plus the UX/UI design studies BlueRoom Registration and Parking App (Figma) and the ML project Depth Estimate Model.
 - **Education:** B.Sc. Information Technology, KMITL, Software Engineering major, graduated 2025, GPAX 3.11 / 4.00.
 - **Portrait:** `public/image/profile_formal.png`.
