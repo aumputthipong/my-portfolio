@@ -88,7 +88,7 @@ export const projectData: Project[] = [
     summary: "A team project management web app with Kanban boards, task assignment, and role-based access.",
     type: "Software Development",
     description:
-      "A team project management web app with Kanban boards, task assignment, and role-based access. Task updates and drag-and-drop changes sync in real time for everyone on the board.",
+      "A team project management web app built around a shared Kanban board.",
     highlights: [
       "Built a team project management web app with Kanban boards, task assignment, and role-based access for owners, managers, and members.",
       "Implemented real-time collaboration using WebSockets, so task updates and drag-and-drop changes appear instantly for all team members viewing the same board.",
