@@ -52,7 +52,7 @@ export default function ProjectDetailPage() {
             {galleryItems.length > 0 ? (
               <ProjectGallery items={galleryItems} layout={project.layout} />
             ) : (
-              <div className="aspect-video rounded-2xl bg-surface border border-dashed border-line flex flex-col items-center justify-center gap-3 text-center px-6">
+              <div className="aspect-video rounded-xl bg-surface border border-dashed border-line flex flex-col items-center justify-center gap-3 text-center px-6">
                 <p className="font-semibold text-body text-sm">No screenshots for this project yet</p>
                 {project.github.length > 0 && (
                   <a

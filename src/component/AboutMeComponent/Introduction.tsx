@@ -10,8 +10,8 @@ const Introduction = () => {
       {/* ── LEFT: portrait + contact details ── */}
       <div>
         <div className="flex items-center gap-5">
-          {/* Round portrait inside a thin accent ring, the signature frame in a smaller form */}
-          <div className="flex-shrink-0 rounded-full border border-accent/50 p-1.5">
+          {/* Round portrait inside a mustard ring, the signature frame in a smaller form */}
+          <div className="flex-shrink-0 rounded-full border-2 border-accent p-1.5">
             {/* Zoomed toward the face: the source is a half-body 4:5 photo */}
             <div className="size-24 sm:size-28 rounded-full overflow-hidden bg-canvas">
               <img
@@ -22,7 +22,7 @@ const Introduction = () => {
             </div>
           </div>
           <div className="min-w-0">
-            <p className="font-display text-xl sm:text-2xl font-semibold text-ink leading-tight">
+            <p className="font-display text-xl sm:text-2xl font-bold tracking-[0.05em] text-ink leading-tight">
               Putthipong Chobngam
             </p>
             <p className="mt-1 text-sm text-muted">Bangkok, Thailand</p>
@@ -33,7 +33,7 @@ const Introduction = () => {
             the Contact section, which remains the closing call to action; phones skip
             them and reach that section instead. */}
         <div className="hidden sm:block mt-8">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-2">
+          <h3 className="font-display text-base sm:text-lg font-bold uppercase tracking-[0.15em] text-ink mb-3">
             Contact details
           </h3>
           <dl className="text-sm">
@@ -44,14 +44,14 @@ const Introduction = () => {
               >
                 {/* Accent icons, as design.md gives contact icons, so each row is found at a glance */}
                 <dt className="flex items-center gap-2 text-muted">
-                  <Icon className="size-3.5 flex-shrink-0 text-accent" aria-hidden />
+                  <Icon className="size-3.5 flex-shrink-0 text-accent-strong" aria-hidden />
                   {c.label}
                 </dt>
                 <dd className="min-w-0">
                   <a
                     href={c.href}
                     {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="block truncate text-ink hover:text-accent transition-colors underline-offset-4 focus-visible:outline-none focus-visible:text-accent focus-visible:underline"
+                    className="block truncate text-ink hover:text-accent-strong transition-colors underline-offset-4 focus-visible:outline-none focus-visible:text-accent-strong focus-visible:underline"
                   >
                     {c.value}
                   </a>
@@ -64,12 +64,12 @@ const Introduction = () => {
 
       {/* ── RIGHT: Education ── */}
       <div id="education">
-        <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-5">
+        <h3 className="font-display text-base sm:text-lg font-bold uppercase tracking-[0.15em] text-ink mb-5">
           Education
         </h3>
 
         {/* The one raised card in the section, so the degree is read first */}
-        <div className="rounded-2xl border border-line bg-card p-5 sm:p-6">
+        <div className="rounded-xl bg-card p-5 sm:p-6 shadow-sm ring-1 ring-line/70">
           <div className="flex items-start gap-4">
             <img
               src="/image/KMITL_Logo.png"
@@ -77,7 +77,7 @@ const Introduction = () => {
               className="h-14 w-14 object-contain flex-shrink-0"
             />
             <div className="min-w-0">
-              <h4 className="font-display text-lg font-semibold text-ink leading-snug">
+              <h4 className="font-display text-lg font-bold text-ink leading-snug">
                 B.Sc. Information Technology
               </h4>
               <p className="text-sm text-body mt-1 leading-snug">
@@ -90,11 +90,11 @@ const Introduction = () => {
           <dl className="grid grid-cols-2 gap-4 mt-5 pt-5 border-t border-line">
             <div>
               <dt className="text-xs text-muted">Graduated</dt>
-              <dd className="font-display text-xl font-semibold text-ink mt-0.5">2025</dd>
+              <dd className="font-display text-xl font-bold text-ink mt-0.5">2025</dd>
             </div>
             <div>
               <dt className="text-xs text-muted">Cumulative GPA</dt>
-              <dd className="font-display text-xl font-semibold text-ink mt-0.5">
+              <dd className="font-display text-xl font-bold text-ink mt-0.5">
                 3.11
                 <span className="font-sans text-sm font-normal text-muted"> / 4.00</span>
               </dd>

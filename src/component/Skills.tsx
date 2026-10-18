@@ -10,8 +10,8 @@ const Skills = () => {
   const total = new Set(techSkills.flatMap((s) => s.skills.map((k) => k.label))).size;
 
   return (
-    <Section id="skills" bg="bg-surface border-t border-line" className="py-10 sm:py-12 lg:py-14">
-      <SectionHeader label="Skills" as="h2" index={`${total} technologies`} />
+    <Section id="skills" bg="bg-surface" className="py-16 sm:py-20">
+      <SectionHeader label="Skills" index={`${total} technologies`} />
 
       <div>
         {techSkills.map((section) => (
@@ -20,12 +20,12 @@ const Skills = () => {
             className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-1 sm:gap-8 py-3 sm:py-6 border-t border-line first:border-t-0"
           >
             <div className="flex items-center gap-2.5 flex-shrink-0">
-              <h3 className="text-sm font-semibold text-ink">
+              <h3 className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-ink">
                 {section.category
                   .replace("Programming ", "")
                   .replace(" Development", "")}
               </h3>
-              <span className="text-xs font-mono text-muted">
+              <span className="text-xs font-semibold text-muted tabular-nums">
                 {String(section.skills.length).padStart(2, "0")}
               </span>
             </div>

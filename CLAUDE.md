@@ -22,7 +22,7 @@ There is no test suite. If `npm run dev` fails with "Unable to acquire lock at .
 - `agent.md` is **outdated**: its blue palette, Gill Sans/MUI typography, `ThemeRegistry.tsx`, and "green only for status" rule no longer apply. Where it conflicts with `design.md`, follow `design.md`. Its general rules (external links get `target="_blank" rel="noopener noreferrer"`, `aria-label` on icon-only controls, `react-icons` for inline icons) still hold.
 - Colors go through semantic Tailwind utilities (`bg-canvas`, `bg-surface`, `bg-card`, `text-ink`, `text-body`, `text-muted`, `border-line`, `text-accent`, `bg-accent-soft`, `text-on-accent`, ...). They are CSS variables defined on `:root` and `.dark` in `src/styles/globals.css` and exposed via `@theme inline`. Raw Tailwind palette colors or hex values break dark mode.
 - Dark mode is `next-themes` with the `class` strategy, light by default, system preference disabled (`src/component/ThemeProvider.tsx`). The `dark:` variant is a custom variant on `.dark`.
-- Headings use Fraunces, loaded with `next/font` in `src/app/layout.tsx` as `--font-display` and applied with the `.font-display` class. Body text uses the system sans stack.
+- One face, Open Sans, loaded with `next/font` in `src/app/layout.tsx` as `--font-open-sans` and exposed as Tailwind `font-sans`. Headings keep the `.font-display` class (same face) and get their voice from bold weight and wide tracking; section titles go through `UI/SectionHeader.tsx` (title + accent bar). `accent` is the green used as fill; text and icons that need the accent use `text-accent-strong`.
 
 ## Architecture
 

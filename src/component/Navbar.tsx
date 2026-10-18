@@ -108,66 +108,57 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed my-2 top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 translate-y-0 opacity-100 max-w-[calc(100vw-1rem)]">
-      <div className="flex items-center bg-canvas/40 backdrop-blur-xl border border-white/10 rounded-full px-1.5 sm:px-3 lg:px-4 py-1 shadow-2xl gap-0.5 sm:gap-1.5 lg:gap-2">
-        {/* Back on small screens, where the brand block is hidden */}
-        {isDetailPage && (
-          <>
-            <Link
-              href="/#projects"
-              onClick={goBack}
-              aria-label="Back"
-              className="md:hidden flex items-center justify-center w-9 h-9 pointer-coarse:w-11 pointer-coarse:h-11 rounded-full text-ink/80 hover:text-ink hover:bg-ink/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              <FaArrowLeft className="w-4 h-4" />
-            </Link>
-            <div className="md:hidden w-px h-5 bg-ink/10 mx-0.5 flex-shrink-0" />
-          </>
-        )}
-
-        {/* Brand */}
-        <div className="hidden md:flex items-center">
+    <nav className="fixed inset-x-0 top-0 z-50 bg-canvas/90 backdrop-blur-md border-b border-line/70">
+      <div className="max-w-6xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-1 sm:gap-3">
           {isDetailPage && (
             <Link
               href="/#projects"
               onClick={goBack}
-              className="inline-flex items-center gap-1.5 rounded-full text-sm text-muted hover:text-ink px-3 py-2 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              aria-label="Back to projects"
+              className="flex items-center justify-center gap-2 h-9 pointer-coarse:h-11 px-2 md:px-3 rounded-md text-muted hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              <FaArrowLeft className="text-xs" />
-              Back
+              <FaArrowLeft className="size-3.5" />
+              <span className="hidden md:inline text-xs font-semibold uppercase tracking-[0.15em]">Back</span>
             </Link>
           )}
-          <Link href="/" className="font-display text-base font-semibold text-ink/80 px-3 py-2 tracking-wide whitespace-nowrap hover:text-ink transition-colors">
-            Putthipong
-            <span className="font-normal text-muted">.portfolio</span>
+          {/* Monogram: a square stamp, the site's mark */}
+          <Link
+            href="/"
+            aria-label="Putthipong Chobngam, home"
+            className="flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+          >
+            <span className="grid place-items-center size-9 rounded-md border-2 border-ink text-ink text-sm font-bold tracking-[0.08em]">
+              PC
+            </span>
+            <span className="hidden lg:inline text-sm font-bold uppercase tracking-[0.2em] text-ink">Putthipong</span>
           </Link>
-          <div className="w-px h-5 bg-ink/10 mx-2" />
         </div>
 
-        {/* Nav Buttons */}
-        {NAV_ITEMS.map(({ id, label, icon }) => (
-          <Link
-            key={id}
-            href={sectionHref(id)}
-            aria-current={isActive(id) ? "location" : undefined}
-            className={`flex items-center gap-1.5 rounded-full transition-all duration-300
-              px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-4 pointer-coarse:min-h-11
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas
-              ${
-                isActive(id)
-                  ? "text-on-accent bg-accent shadow-lg"
-                  : "text-ink/80 hover:text-ink hover:bg-ink/10"
-              }`}
-            aria-label={label}
-          >
-            {icon}
-            <span className="hidden md:inline text-sm">{label}</span>
-          </Link>
-        ))}
+        <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2">
+          {NAV_ITEMS.map(({ id, label, icon }) => (
+            <Link
+              key={id}
+              href={sectionHref(id)}
+              aria-current={isActive(id) ? "location" : undefined}
+              aria-label={label}
+              className={`relative flex items-center justify-center h-10 pointer-coarse:h-11 px-2.5 md:px-3 rounded-md transition-colors
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+                after:absolute after:left-2.5 after:right-2.5 md:after:left-3 md:after:right-3 after:bottom-1 after:h-0.5 after:rounded-full after:transition-transform after:duration-300 after:bg-accent
+                ${
+                  isActive(id)
+                    ? "text-ink after:scale-x-100"
+                    : "text-muted hover:text-ink after:scale-x-0"
+                }`}
+            >
+              <span className="md:hidden">{icon}</span>
+              <span className="hidden md:inline text-xs font-semibold uppercase tracking-[0.18em]">{label}</span>
+            </Link>
+          ))}
 
-        {/* Theme */}
-        <div className="w-px h-5 bg-ink/10 mx-0.5 sm:mx-1 flex-shrink-0" />
-        <ThemeToggle />
+          <div className="w-px h-5 bg-line mx-1 flex-shrink-0" />
+          <ThemeToggle />
+        </div>
       </div>
     </nav>
   );

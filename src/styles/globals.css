@@ -16,8 +16,13 @@
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--on-accent);
+  --color-chip: var(--chip);
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* The original palette: neutral ink on white, one botanical green accent.
+   accent is the fill (bars, buttons, frames, active states); accent-strong is the
+   same green where it sets text, kept separate so the fill can change on its own. */
 :root {
   color-scheme: light;
 
@@ -26,12 +31,13 @@
   --card: #ffffff;
   --ink: #0f172a;
   --body: #4b5563;
-  --muted: #6b7280; /* 4.6:1 on surface; the old #9ca3af was 2.4:1 */
+  --muted: #6b7280; /* 4.6:1 on surface */
   --line: #e5e7eb;
   --accent: #1f6f4e;
-  --accent-strong: #14532d;
+  --accent-strong: #1f6f4e;
   --accent-soft: #ecf4ef;
   --on-accent: #ffffff;
+  --chip: #f1f3f5;
 
   --scrollbar-track: #f1f1f1;
   --scrollbar-thumb: #94a3b8;
@@ -41,9 +47,8 @@
 .dark {
   color-scheme: dark;
 
-  /* Neutral, faintly-warm ramp — green lives only in the accent (matches the
-     light-mode "neutrals stay neutral" rule). Elevation reads mainly through a
-     clearly-visible hairline (--line) since fill steps are small on dark. */
+  /* Neutral, faintly-warm ramp; green lives only in the accent. Elevation reads
+     mainly through a clearly visible hairline (--line). */
   --canvas: #131110;
   --surface: #1c1a18;
   --card: #2b2825;
@@ -51,19 +56,21 @@
   --body: #aca69c;
   --muted: #9a9286; /* 4.8:1 on card, 6.1:1 on canvas */
   --line: #3b3630;
-  /* accent lifts in dark — #1f6f4e fails contrast on a dark ground */
+  /* accent lifts in dark: #1f6f4e fails contrast on a dark ground */
   --accent: #5cc08d;
-  --accent-strong: #7fd4a8;
+  --accent-strong: #5cc08d;
   --accent-soft: #1d2a20;
   --on-accent: #131110;
+  --chip: #36322e;
 
   --scrollbar-track: #1c1a18;
   --scrollbar-thumb: #45403a;
   --scrollbar-thumb-hover: #635c53;
 }
 
+/* Headings share the body face; their character comes from weight and wide tracking */
 .font-display {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {

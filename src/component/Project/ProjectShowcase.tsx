@@ -80,9 +80,9 @@ const highlights = [...featured, capstone];
 export default function ProjectShowcase() {
   return (
     <div className="max-w-6xl mx-auto pb-16">
-      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.05] text-ink mb-6">
-        Selected Projects<span className="text-accent">.</span>
-      </h2>
+      <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.15em] text-ink mb-6">
+        Selected projects
+      </h3>
 
       <div className="grid gap-4 lg:gap-6 lg:grid-cols-2">
         {highlights.map((h) => (
@@ -101,8 +101,8 @@ function FeaturedCard({ h }: { h: Highlight }) {
 
   return (
     <>
-      <article className="group relative h-full flex flex-col rounded-2xl border border-line bg-card p-3 transition-colors hover:border-muted/60 has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent">
-        <div className="relative aspect-[16/7] overflow-hidden rounded-xl border border-line bg-surface">
+      <article className="group relative h-full flex flex-col rounded-xl bg-card p-3 shadow-sm ring-1 ring-line/70 transition-shadow duration-300 hover:shadow-lg has-[a[data-primary]:focus-visible]:ring-2 has-[a[data-primary]:focus-visible]:ring-accent">
+        <div className="relative aspect-[16/7] overflow-hidden rounded-lg bg-surface">
           <img
             src={h.image}
             alt=""
@@ -112,26 +112,26 @@ function FeaturedCard({ h }: { h: Highlight }) {
 
         <div className="flex flex-1 flex-col px-2 pt-4 pb-1">
           <div className="flex items-center justify-between gap-3">
-            <span className="inline-flex rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent">
+            <span className="inline-flex rounded bg-accent px-2.5 py-1 text-xs font-bold uppercase tracking-[0.1em] text-on-accent">
               {h.badge}
             </span>
-            <span className="text-xs font-medium text-muted tabular-nums">{h.year}</span>
+            <span className="text-xs font-semibold text-muted tabular-nums">{h.year}</span>
           </div>
 
-          <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight leading-tight text-ink">
+          <h4 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-[0.03em] leading-tight text-ink">
             {/* Stretched link: the whole card opens the project */}
             <Link
               href={h.href}
               data-primary
-              className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none group-hover:text-accent transition-colors"
+              className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none group-hover:text-accent-strong transition-colors"
             >
               {h.title}
             </Link>
-          </h3>
+          </h4>
 
           {h.proof && (
-            <p className="mt-2 flex items-baseline gap-2 text-sm font-medium text-ink">
-              <span aria-hidden className="size-1.5 flex-shrink-0 translate-y-[-0.1em] rounded-full bg-accent" />
+            <p className="mt-2 flex items-baseline gap-2 text-sm font-semibold text-ink">
+              <span aria-hidden className="size-2 flex-shrink-0 translate-y-[-0.05em] rounded-full bg-accent" />
               {h.proof}
             </p>
           )}
@@ -148,11 +148,11 @@ function FeaturedCard({ h }: { h: Highlight }) {
                   <TechBadge tech={t} />
                 </span>
               ))}
-              <span className="sm:hidden text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH - 1).map((t) => t.name).join(", ")}>
+              <span className="sm:hidden text-xs font-semibold text-muted px-1" title={h.tech.slice(MAX_TECH - 1).map((t) => t.name).join(", ")}>
                 +{extraTech + 1}
               </span>
               {extraTech > 0 && (
-                <span className="hidden sm:inline text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
+                <span className="hidden sm:inline text-xs font-semibold text-muted px-1" title={h.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
                   +{extraTech}
                 </span>
               )}
