@@ -12,14 +12,8 @@ import ProjectHighlights from "@/component/Project/ProjectHighlights";
 export default function ProjectDetailPage() {
   const params = useParams();
   const id = Number(params.id);
-  const projectIndex = projectData.findIndex((p) => p.id === id);
-  const project = projectData[projectIndex];
+  const project = projectData.find((p) => p.id === id);
   if (!project) notFound();
-
-  const otherProjects = [
-    ...projectData.slice(projectIndex + 1),
-    ...projectData.slice(0, projectIndex),
-  ].slice(0, 3);
 
   const mainLabel = project.layout === "mobile" ? "Mobile app" : "Web app";
   const companion = project.mobileCompanion;
@@ -78,7 +72,7 @@ export default function ProjectDetailPage() {
 
         {project.highlights && <ProjectHighlights items={project.highlights} />}
 
-        <MoreProjects projects={otherProjects} />
+        <MoreProjects currentHref={`/projects/${project.id}`} />
       </div>
     </div>
   );

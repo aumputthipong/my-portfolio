@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { seniorProject } from "@/data/SeniorProjectData";
 import { projectData, type Project } from "@/data/ProjectsData";
 import TechBadge from "../UI/TechBadge";
+import { DemoAction, IconAction } from "../UI/CardActions";
 
 type Highlight = {
   key: string;
@@ -36,7 +37,7 @@ const fromProject = (p: Project): Highlight => ({
   badge: "Personal project",
   title: p.title,
   proof: p.proof,
-  desc: p.description,
+  desc: p.summary ?? p.description,
   tech: p.tech,
   image: p.image,
   year: p.year,
@@ -68,7 +69,7 @@ const highlights = [capstone, ...featured];
  */
 export default function ProjectShowcase() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div className="max-w-6xl mx-auto pb-16">
       <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.05] text-ink mb-6">
         Selected Projects<span className="text-accent">.</span>
       </h2>
@@ -126,42 +127,35 @@ function FeaturedCard({ h }: { h: Highlight }) {
         <p className="mt-2 text-sm leading-relaxed text-body line-clamp-2">{h.desc}</p>
 
         <div className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-1.5">
+          {/* Full width on phones so the badges keep one line and the actions
+              drop below them together, instead of "+N" wrapping on its own */}
+          <div className="w-full sm:w-auto flex flex-wrap items-center gap-1.5">
+            {/* Phones fit two badges on a line, so the third folds into the count */}
             {h.tech.slice(0, MAX_TECH).map((t, i) => (
-              <TechBadge key={i} tech={t} />
+              <span key={i} className={i === MAX_TECH - 1 ? "hidden sm:inline-flex" : "inline-flex"}>
+                <TechBadge tech={t} />
+              </span>
             ))}
+            <span className="sm:hidden text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH - 1).map((t) => t.name).join(", ")}>
+              +{extraTech + 1}
+            </span>
             {extraTech > 0 && (
-              <span className="text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
+              <span className="hidden sm:inline text-xs font-medium text-muted px-1" title={h.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
                 +{extraTech}
               </span>
             )}
           </div>
 
           {/* Sit above the stretched link so they stay independently clickable */}
-          <div className="relative z-10 flex items-center gap-2">
-            {h.demo && (
-              <a
-                href={h.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${h.title} live demo (opens in a new tab)`}
-                className="inline-flex items-center gap-1.5 h-9 pointer-coarse:h-11 px-3.5 rounded-lg border border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card"
-              >
-                <FaExternalLinkAlt className="size-2.5" />
-                Live demo
-              </a>
-            )}
+          <div className="relative z-10 ml-auto flex items-center gap-2">
+            {h.demo && <DemoAction href={h.demo} project={h.title} />}
             {h.github && (
-              <a
+              <IconAction
                 href={h.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${h.title} source code on GitHub`}
+                label={`${h.title} source code on GitHub`}
                 title="Source code on GitHub"
-                className="inline-flex items-center justify-center w-9 h-9 pointer-coarse:w-11 pointer-coarse:h-11 rounded-lg border border-line bg-card text-body hover:text-ink hover:border-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card"
-              >
-                <FaGithub />
-              </a>
+                icon={<FaGithub />}
+              />
             )}
           </div>
         </div>

@@ -22,7 +22,7 @@ const Introduction = () => {
         {techSkills.map((section) => (
           <div
             key={section.category}
-            className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-3 sm:gap-8 py-6 border-t border-line first:border-t-0"
+            className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-1 sm:gap-8 py-3 sm:py-6 border-t border-line first:border-t-0"
           >
             <div className="flex items-center gap-2.5 flex-shrink-0">
               <p className="text-sm font-semibold text-ink">
@@ -34,7 +34,12 @@ const Introduction = () => {
                 {String(section.skills.length).padStart(2, "0")}
               </span>
             </div>
-            <div className="flex flex-wrap gap-2">
+            {/* Phones get a plain list instead of the badge wall, so the projects
+                below are reached a screen sooner */}
+            <p className="sm:hidden text-sm leading-relaxed text-body">
+              {section.skills.map((skill) => skill.label).join(", ")}
+            </p>
+            <div className="hidden sm:flex flex-wrap gap-2">
               {section.skills.map((skill) => (
                 <TechBadge
                   key={skill.label}
@@ -86,8 +91,13 @@ const Introduction = () => {
           </dl>
         </div>
 
+        {/* Phones skip the contact list (the Contact section below has the same
+            channels) and keep only the one fact that lives nowhere else */}
+        <p className="sm:hidden mt-4 text-sm text-body">Based in Bangkok, Thailand</p>
+
         {/* Contact details: quiet rows, so the Education card stays the focus.
             Same data as the Contact section, which remains the closing call to action. */}
+        <div className="hidden sm:block">
         <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mt-8 mb-2">
           Contact details
         </h3>
@@ -106,7 +116,7 @@ const Introduction = () => {
                 <a
                   href={c.href}
                   {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="block truncate text-ink hover:text-accent transition-colors"
+                  className="block truncate text-ink hover:text-accent transition-colors underline-offset-4 focus-visible:outline-none focus-visible:text-accent focus-visible:underline"
                 >
                   {c.value}
                 </a>
@@ -114,6 +124,7 @@ const Introduction = () => {
             </div>
           ))}
         </dl>
+        </div>
       </div>
     </div>
   );

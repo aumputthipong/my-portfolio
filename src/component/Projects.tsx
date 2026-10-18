@@ -3,15 +3,14 @@
 import { projectData, type Project } from "@/data/ProjectsData";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaArrowRight, FaGithub, FaFigma, FaExternalLinkAlt } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaFigma } from "react-icons/fa";
 import Link from "next/link";
 import ProjectShowcase, { FEATURED_PROJECT_IDS } from "./Project/ProjectShowcase";
 import SectionHeader from "./UI/SectionHeader";
 import TechBadge from "./UI/TechBadge";
+import { DemoAction, IconAction } from "./UI/CardActions";
 
-/** Shared shape of a card's external link: compact on a mouse, 44px tall on touch */
-const CARD_ACTION =
-  "inline-flex items-center gap-1.5 border text-xs font-semibold px-2.5 h-7 pointer-coarse:h-11 pointer-coarse:px-3.5 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card";
+const MAX_TECH = 3;
 
 // The featured pair (AI Garden and Turtask) is shown in the showcase above, so
 // the grid lists everything else. AI Garden lives outside projectData already.
@@ -29,9 +28,11 @@ export default function Projects() {
       ? allProjects
       : allProjects.filter((p) => p.type === activeTab);
 
+  // Padding sits outside max-w-6xl, as in UI/Section, so the content edge lines
+  // up with the other sections.
   return (
-    <section id="projects" className="bg-canvas">
-      <div className="max-w-6xl mx-auto pt-10 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="bg-canvas px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto pt-10">
         <SectionHeader label="Projects" />
       </div>
 
@@ -39,7 +40,7 @@ export default function Projects() {
       <ProjectShowcase />
 
       {/* The rest of the work: a heading marks the step down from the featured set */}
-      <div className="max-w-6xl mx-auto pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto pb-16">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
           <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink">More projects</h3>
 
@@ -114,9 +115,14 @@ export default function Projects() {
 
                   {/* Tech badges */}
                   <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.tech.slice(0, 3).map((tech, i) => (
+                    {project.tech.slice(0, MAX_TECH).map((tech, i) => (
                       <TechBadge key={i} tech={tech} />
                     ))}
+                    {project.tech.length > MAX_TECH && (
+                      <span className="self-center text-xs font-medium text-muted px-1" title={project.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
+                        +{project.tech.length - MAX_TECH}
+                      </span>
+                    )}
                   </div>
 
                   {/* Category tag + year */}
@@ -133,42 +139,23 @@ export default function Projects() {
                   <div className="flex items-center justify-between pt-4 border-t border-line mt-auto gap-2 flex-wrap">
 
                     {/* Left: external links, raised above the stretched link so they stay
-                        independently clickable. Touch screens get a 44px target. */}
+                        independently clickable. Same actions as the featured cards. */}
                     <div className="relative z-10 flex items-center gap-2 min-w-0">
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${project.title} live demo (opens in a new tab)`}
-                          className={`${CARD_ACTION} border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent`}
-                        >
-                          <FaExternalLinkAlt className="size-2.5" />
-                          Live demo
-                        </a>
-                      )}
+                      {project.demo && <DemoAction href={project.demo} project={project.title} />}
                       {project.github.length > 0 ? (
-                        <a
+                        <IconAction
                           href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${project.title} source code on GitHub`}
-                          className={`${CARD_ACTION} border-line bg-surface text-body hover:bg-line hover:border-muted/40`}
-                        >
-                          <FaGithub />
-                          Code
-                        </a>
+                          label={`${project.title} source code on GitHub`}
+                          title="Source code on GitHub"
+                          icon={<FaGithub />}
+                        />
                       ) : typeof project.ref === "string" ? (
-                        <a
+                        <IconAction
                           href={project.ref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${project.title} design file on Figma`}
-                          className={`${CARD_ACTION} border-line bg-surface text-body hover:bg-line hover:border-muted/40`}
-                        >
-                          <FaFigma />
-                          Figma
-                        </a>
+                          label={`${project.title} design file on Figma`}
+                          title="Design file on Figma"
+                          icon={<FaFigma />}
+                        />
                       ) : null}
                     </div>
 
@@ -182,6 +169,9 @@ export default function Projects() {
                       <FaArrowRight className="size-2.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                     </span>
                   </div>
+                  {project.demo && project.demoHint && (
+                    <p className="mt-2 text-xs text-muted">{project.demoHint}</p>
+                  )}
                 </div>
             </motion.article>
           ))}

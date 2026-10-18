@@ -6,7 +6,6 @@ import ProjectGallery from "@/component/Project/ProjectGallery";
 import MoreProjects from "@/component/Project/MoreProjects";
 import ProjectHighlights from "@/component/Project/ProjectHighlights";
 import { seniorProject as senior, seniorVideos as videos } from "@/data/SeniorProjectData";
-import { projectData } from "@/data/ProjectsData";
 
 // Videos lead: they show the platform in use, which screenshots can't.
 const mediaItems: LightboxItem[] = [
@@ -15,8 +14,6 @@ const mediaItems: LightboxItem[] = [
 ];
 
 export default function SeniorProjectPage() {
-  const otherProjects = projectData.slice(0, 3);
-
   return (
     <div className="min-h-screen bg-canvas">
       <div className="max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-10 pt-20 sm:pt-24 pb-12 sm:pb-16 space-y-8 sm:space-y-10">
@@ -47,7 +44,7 @@ export default function SeniorProjectPage() {
         {/* The first responsibility repeats the description above, so the list starts after it */}
         <ProjectHighlights items={senior.responsibility.slice(1)} />
 
-        <MoreProjects projects={otherProjects} />
+        <MoreProjects currentHref="/projects/senior" />
       </div>
     </div>
   );

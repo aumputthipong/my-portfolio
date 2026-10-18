@@ -25,7 +25,8 @@ export const seniorProject = {
   description:
     "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server for use by Siriraj Hospital medical instructors and students.",
   shortDescription:
-    "A web platform that lets non-technical users run image and video analysis with AI models, deployed on the IT faculty's server for Siriraj Hospital medical instructors and students.",
+    // Featured-card text: the proof line already says who uses it
+    "A web platform that lets non-technical users run image and video analysis with AI models.",
   responsibility: [
     "Co-developed a web platform that lets non-technical users run image and video analysis with AI models (classification, object detection, image regression, instance segmentation), deployed on the IT faculty's server for use by Siriraj Hospital medical instructors and students.",
     "Built an admin panel where admins connect new AI microservices by API endpoint and configure how results are displayed, without changing application code.",
