@@ -144,7 +144,7 @@ Motion is restrained: brief entrance fades and hover lifts only. Everything resp
 The palette is intentionally narrow: one ink for hierarchy, one green for accent, neutrals for everything else. There is **no blue** and no secondary brand color.
 
 - **Neutral (`#ffffff`):** Page and card background.
-- **Surface (`#fafafa`, zinc-50):** Alternating section ground (About, Contact) for rhythm against white (Hero, Projects).
+- **Surface (`#fafafa`, zinc-50):** Alternating section ground (About, Skills) for rhythm against white (Hero, Projects, Contact).
 - **Ink (`#0f172a`, slate-900):** Headlines, primary buttons, the first half of the name wordmark.
 - **Body (`#4b5563`):** Paragraph and long-form copy.
 - **Muted (`#6b7280`):** Captions, secondary metadata. At least 4.5:1 on `neutral` and `surface`; never lighter.
@@ -185,10 +185,15 @@ Headings use **Fraunces** (display serif); body uses the **system UI sans** stac
 
 Editorial and generous. Home content sits in a centered `max-w-6xl`.
 
-- **Featured projects:** the flagship pair (AI Garden and Turtask) side by side, each carrying one unclamped **proof line** (`proof` in `src/data/`) under its title. The rest of the work follows under its own "More projects" heading, a clear step down. On phones that grid shows three cards and a "Show N more projects" button while the All tab is selected, so it never outweighs the featured pair.
+- **Hero:** name, role, bio and the two actions; the portrait lives in About.
+- **About:** two columns. Left: a small round portrait inside a thin `accent` ring (the signature frame in a smaller form) beside the name and location, then the Contact details rows (hidden on phones). Right: the Education card.
+- **Featured projects:** the flagship pair (Turtask, then AI Garden) side by side, each carrying one unclamped **proof line** (`proof` in `src/data/`) under its title. The rest of the work follows under its own "More projects" heading, a clear step down. On phones that grid shows three cards and a "Show N more projects" button while the All tab is selected, so it never outweighs the featured pair.
 - **Project detail pages:** a wide `max-w-[88rem]` two-column view from `lg`: gallery on the left, a sticky info panel on the right ordered story → actions (Live demo, Code) → facts → stack, so the actions stay above the fold. Below `lg` the panel comes first, then the gallery.
 
-Sections alternate `neutral` / `surface` for rhythm. `scroll-padding-top` offsets anchored sections beneath the floating navbar.
+- **Skills:** the tech stack as its own section after Projects, one row per category with badges (a plain comma list on phones).
+- **Contact (the page's end):** no card container. Email is the one primary action (the ink `Email me` button, with the address beside it as copyable text); Phone, GitHub and LinkedIn follow as quiet hairline rows, external ones marked with an open-in-new-tab glyph. The footer carries only the name and copyright.
+
+The home order is Hero → About → Projects → Skills → Contact, and the backgrounds alternate canvas / surface / canvas / surface / canvas. In light mode `canvas` and `surface` are nearly equal, so each band change also carries a `border-t border-line` hairline. `scroll-padding-top` offsets anchored sections beneath the floating navbar.
 
 | Token | Use |
 |:------|:----|

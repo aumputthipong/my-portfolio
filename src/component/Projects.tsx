@@ -48,8 +48,8 @@ export default function Projects() {
   // Padding sits outside max-w-6xl, as in UI/Section, so the content edge lines
   // up with the other sections.
   return (
-    <section id="projects" className="bg-canvas px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto pt-10">
+    <section id="projects" className="bg-canvas border-t border-line px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto pt-10 sm:pt-12 lg:pt-14">
         <SectionHeader label="Projects" />
       </div>
 

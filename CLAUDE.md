@@ -26,12 +26,12 @@ There is no test suite. If `npm run dev` fails with "Unable to acquire lock at .
 
 ## Architecture
 
-- **Home page** (`src/app/page.tsx`) is one scrolling page: `Hero` → `AboutMe` → `Projects` → `ContactSection`. The section ids `home`, `about-me`, `projects`, `contact` are wired into `Navbar.tsx` (the `SectionId` type, the IntersectionObserver scroll-spy selector, and the nav items). Adding or renaming a home section means updating all three. On detail pages the nav routes to `/#<id>` instead of scrolling.
+- **Home page** (`src/app/page.tsx`) is one scrolling page: `Hero` → `AboutMe` → `Projects` → `Skills` → `ContactSection`. The section ids `home`, `about-me`, `projects`, `skills`, `contact` are wired into `Navbar.tsx` (the `SectionId` type, the IntersectionObserver scroll-spy selector, and the nav items). Adding or renaming a home section means updating all three. On detail pages the nav routes to `/#<id>` instead of scrolling.
 - **Content lives in `src/data/`**; components only render it:
   - `ProjectsData.tsx`: the `Project` interface and `projectData`. It drives the home grid (tabs filter by `type`) and `/projects/[id]` (a client page that looks projects up by numeric `id`). `images` + `layout` (`"web" | "mobile"`) feed the gallery, `mobileCompanion` appends a labelled set of phone screens to the same gallery rail, `highlights` are the "What I did" bullets, and `haveImage: false` shows a placeholder.
   - `SeniorProjectData.ts`: the senior project (AI Garden System) is **not** in `projectData`. It has its own route, `src/app/projects/senior/page.tsx`.
-  - Featured projects: `Project/ProjectShowcase.tsx` shows the senior project plus the ids in `FEATURED_PROJECT_IDS`, and `Projects.tsx` excludes those ids from the grid so nothing appears twice. Edit that array to change what is featured.
-  - `TechSkillsData.tsx`: tech stack categories for the About section. Icon paths are relative to `public/` with no leading slash.
+  - Featured projects: `Project/ProjectShowcase.tsx` shows the ids in `FEATURED_PROJECT_IDS` (Turtask leads), then the senior project, and `Projects.tsx` excludes those ids from the grid so nothing appears twice. Edit that array to change what is featured.
+  - `TechSkillsData.tsx`: tech stack categories for the Skills section (`Skills.tsx`). Icon paths are relative to `public/` with no leading slash.
   - `ContactData.ts`: `contacts` feeds both `ContactSection` and the contact details list in `AboutMeComponent/Introduction.tsx`.
 - **Shared UI**: `UI/Section.tsx` (section wrapper, `max-w-6xl`), `UI/SectionHeader.tsx` (eyebrow header), `UI/TechBadge.tsx`, and `UI/Lightbox.tsx` (fullscreen viewer; `LightboxItem` is an image with optional per-item `layout`/`group`, or a YouTube video by id).
 - Images use plain `<img>` with assets under `public/image/`, so the `@next/next/no-img-element` lint warning is expected.
@@ -40,7 +40,7 @@ There is no test suite. If `npm run dev` fails with "Unable to acquire lock at .
 
 ## Content decisions
 
-Each piece of information appears in one place: the bio only in the Hero, education and contact details in the About section, and the Contact section is the closing call to action. Avoid reintroducing the same content in several sections.
+Each piece of information appears in one place: the bio only in the Hero; the portrait, education and contact details in the About section; the tech stack in the Skills section; and the Contact section is the closing call to action. Avoid reintroducing the same content in several sections.
 
 ## Git
 

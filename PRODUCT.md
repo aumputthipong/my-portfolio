@@ -29,19 +29,18 @@ He builds complete, working systems end to end: database design, backend, fronte
 ## Operating Context
 
 - Deployed on Vercel at https://portfolio-putthipong.vercel.app/ and shared as a link alongside job applications.
-- The home page is one scroll: Hero (name, role, bio) → About (tech stack, education, contact details) → Projects (featured showcase plus a filterable grid) → Contact (closing call to action).
+- The home page is one scroll: Hero (name, role, bio) → About (portrait, education, contact details) → Projects (featured showcase plus a filterable grid) → Skills (tech stack) → Contact (closing call to action).
 - Project detail pages (`/projects/[id]`, `/projects/senior`) carry the screenshot gallery, "What I did" highlights, tech badges, and demo, GitHub, Figma, and video links.
 - Visitors can switch between light (default) and dark themes.
 
 ## Capabilities and Constraints
 
 - Content lives in `src/data/`; components only render it.
-- Each piece of information appears in one place: the bio only in the Hero, education and contact details in About, and Contact is the closing call to action. Don't repeat content across sections.
+- Each piece of information appears in one place: the bio only in the Hero; the portrait, education and contact details in About; the tech stack in Skills; and Contact is the closing call to action. Don't repeat content across sections.
 - The site is English only.
-- **Featured projects** ("Selected Projects") are only finished projects that the resume also leads with: currently AI Garden and Turtask. Turtle Shop stays in "More projects" until it is finished.
+- **Featured projects** ("Selected Projects") are only finished projects that the resume also leads with: currently Turtask (shown first) and AI Garden. Turtle Shop stays in "More projects" until it is finished.
 - **Undecided:**
   - whether to add a work or internship experience section; none is provided, and none may be invented;
-  - whether to offer a downloadable resume PDF;
   - whether the target market includes international or remote companies, or calls for a Thai version.
 
 ## Brand Commitments
@@ -60,6 +59,7 @@ He builds complete, working systems end to end: database design, backend, fronte
 - **Education:** B.Sc. Information Technology, KMITL, Software Engineering major, graduated 2025, GPAX 3.11 / 4.00.
 - **Portrait:** `public/image/profile_formal.png`.
 - **Contacts** (`src/data/ContactData.ts`): email, phone, GitHub, LinkedIn.
+- **Resume:** `public/resume/Resume_Putthipong-Chobngam_Software_developer.pdf`, linked from the Hero and the Contact section. It is the reference for project wording and the skills list.
 - **Absent, and must not be fabricated:** testimonials, references, work or internship experience, employer logos, user counts or metrics beyond what the project data states.
 
 ## Product Principles

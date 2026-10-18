@@ -27,7 +27,7 @@ type Highlight = {
 };
 
 /**
- * Project ids shown here, after the capstone; the grid below leaves them out so
+ * Project ids shown here, before the capstone; the grid below leaves them out so
  * nothing appears twice. Only finished projects that the resume also leads with
  * belong here (see PRODUCT.md); the capstone (AI Garden) is not in projectData.
  */
@@ -69,7 +69,8 @@ const capstone: Highlight = {
   year: seniorProject.year,
 };
 
-const highlights = [capstone, ...featured];
+// Turtask leads: its screenshot makes the stronger first card
+const highlights = [...featured, capstone];
 
 /**
  * The flagship pair side by side, each with one unclamped proof line under its

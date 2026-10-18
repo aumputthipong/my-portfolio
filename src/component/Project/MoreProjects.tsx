@@ -29,12 +29,12 @@ const toSuggestion = (p: (typeof projectData)[number]): Suggestion => ({
   layout: p.layout,
 });
 
-// Featured work first (the capstone, then FEATURED_PROJECT_IDS), then everything
+// Featured work first (FEATURED_PROJECT_IDS, then the capstone, as on the home page), then everything
 // else newest first, so a visitor finishing one project meets the strongest work
 // next instead of whatever happens to follow it in the data file.
 const ordered: Suggestion[] = [
-  capstone,
   ...FEATURED_PROJECT_IDS.flatMap((id) => projectData.filter((p) => p.id === id)).map(toSuggestion),
+  capstone,
   ...projectData
     .filter((p) => !FEATURED_PROJECT_IDS.includes(p.id))
     .sort((a, b) => b.year - a.year)
