@@ -193,9 +193,9 @@ One face, **Open Sans** (loaded with `next/font` as `--font-open-sans`, the Tail
 
 Generous, centred in a `max-w-6xl`. Section titles sit left with their bar; the Contact card centres its own.
 
-- **Navbar:** a flat full-width bar (`bg-canvas/90`, blur, bottom hairline), the "PC" monogram stamp (a 36px outlined square) on the left, uppercase tracked links on the right with a 2px accent underline on the active one. Phones show icons instead of labels; detail pages add Back.
-- **Hero:** full height. Left: accent bar, name, the role as a tracked caps line, bio, then SEE THE WORK (accent fill), EMAIL ME and RESUME (outlined). Right: the Turtask and AI Garden screenshots overlapping, each on an offset accent frame (an outline behind one, a solid block behind the other).
-- **About:** two columns. Left: a small round portrait inside an `accent` ring beside the name and location, then the Contact details rows with accent icons (hidden on phones). Right: the Education card.
+- **Navbar:** a flat full-width bar (`bg-canvas/90`, blur, bottom hairline), the "PC" monogram stamp (a 36px outlined square) on the left, uppercase tracked links on the right with a 2px accent underline on the active one. Phones show icons instead of labels; detail pages add Back. An outlined RESUME button (the PDF, new tab) sits before the theme toggle on every page: icon only between `sm` and `lg`, hidden on phones, where the Hero and Contact link the PDF.
+- **Hero:** full height. Left: accent bar, name, the role as a tracked caps line, bio, then SEE THE WORK (accent fill), EMAIL ME and RESUME (outlined). Right: a hand-drawn line scene (`HeroIllustration.tsx`, inline SVG): him from the waist up at a desk, round glasses, smiling eyes, a light blush, short black hair, behind an open laptop whose lid carries a pineapple mark; a mug, and a code window floating behind his shoulder. Clothes, desk and window are drawn in `ink` and `canvas` (CSS variables, so they invert with dark mode) with `accent` on the pineapple mark and code lines; skin, facial lines and hair use fixed colours so the face never turns into a negative on the dark ground.
+- **About:** two cards of equal height (`ring-1 ring-line`, no shadow, one 28px inset). Left: the profile card, its top half a 4:5 portrait in a plain hairline frame beside the name (20–24px, one line) and location, its lower half Education on the `surface` tint (`canvas` in dark mode, so it never melts into the section): degree, school, major, then Graduated and GPA at 16px split by one vertical hairline. Right: Contact details, rows of an `accent-soft` icon tile, a caps label and the value, spread to the card's height (hidden on phones, where the Contact section has the same channels). Every in-card heading and caption uses label-caps (12px, 700, 0.15em, muted).
 - **Projects:** "Selected projects" (the flagship pair, Turtask then AI Garden, side by side, each with one unclamped **proof line** under its title), then "More projects" with its filter tabs and grid. On phones the grid shows three cards and a "Show N more projects" button while the All tab is selected. The section is white with hairlines above and below, because the project screenshots are white.
 - **Skills:** the tech stack as its own section after Projects, one row per category with chips (a plain comma list on phones).
 - **Contact (the page's end):** one white speech-bubble card, centred, with a small tail at its lower edge: the title and bar, one line on the role, the location, the EMAIL ME button with the address as copyable text, then Phone (shown as the number), GitHub, LinkedIn and Resume as one line of quiet links. The footer carries only the name and copyright.
@@ -217,9 +217,9 @@ Small, even corners; the shape language is square-ish, not pill-shaped.
 
 - `rounded.xs` (4px, Tailwind `rounded`) — tech chips, the type chip, filter tabs.
 - `rounded.sm` (6px, `rounded-md`) — buttons, the monogram stamp.
-- `rounded.md` (8px, `rounded-lg`) — screenshot frames and grid images.
+- `rounded.md` (8px, `rounded-lg`) — screenshot frames, grid images, the About portrait.
 - `rounded.lg` (12px, `rounded-xl`) — cards, the Contact card, the detail panel and gallery.
-- `rounded.full` — the round portrait, section-title bars, status dots.
+- `rounded.full` — section-title bars, status dots.
 
 ## Components
 
@@ -235,7 +235,7 @@ Small, even corners; the shape language is square-ish, not pill-shaped.
 
 ## Signature
 
-The page is remembered by its **tracked caps voice** — wide-set bold headings with a short green bar under each, uppercase buttons — and the **hero's two real screenshots on offset green frames**, the work shown before anything is said about it.
+The page is remembered by its **tracked caps voice** — wide-set bold headings with a short green bar under each, uppercase buttons — and the **hand-drawn scene in the hero**, smiling over a pineapple-badged laptop: two colours, even strokes, theme-aware.
 
 ## Do's and Don'ts
 
