@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: My Portfolio
-description: Visual identity for the personal portfolio of Putthipong Chobngam (AUM) — a Next.js 16 + React 19 single-page portfolio. Editorial, monochrome, with a single botanical-green accent.
+description: Visual identity for the personal portfolio of Putthipong Chobngam (AUM) — a Next.js 16 + React 19 single-page portfolio. Clean and tracked: one sans face set bold and wide, monochrome neutrals, a single botanical-green accent.
 colors:
   neutral: "#ffffff"
   on-neutral: "#0f172a"
@@ -11,9 +11,10 @@ colors:
   muted: "#6b7280"
   border: "#e5e7eb"
   accent: "#1f6f4e"
-  accent-dark: "#14532d"
+  accent-strong: "#1f6f4e"
   accent-soft: "#ecf4ef"
   on-accent: "#ffffff"
+  chip: "#f1f3f5"
 colorsDark:
   canvas: "#131110"
   surface: "#1c1a18"
@@ -23,54 +24,61 @@ colorsDark:
   muted: "#9a9286"
   line: "#3b3630"
   accent: "#5cc08d"
-  accent-strong: "#7fd4a8"
+  accent-strong: "#5cc08d"
   accent-soft: "#1d2a20"
   on-accent: "#131110"
+  chip: "#36322e"
 typography:
   display:
-    fontFamily: Fraunces, Georgia, "Times New Roman", serif
-    fontSize: 4.5rem
-    fontWeight: 600
-    lineHeight: 0.95
-    letterSpacing: -0.01em
-  h2:
-    fontFamily: Fraunces, Georgia, serif
-    fontSize: 3rem
-    fontWeight: 600
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
+    fontSize: 4.25rem
+    fontWeight: 700
     lineHeight: 1.05
-  h3:
-    fontFamily: Fraunces, Georgia, serif
-    fontSize: 1.5rem
-    fontWeight: 600
-    lineHeight: 1.2
+    letterSpacing: 0.04em
+  h2:
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
+    fontSize: 2.25rem
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: 0.08em
+  h3-caps:
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
+    fontSize: 1.25rem
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: 0.15em
+  h4:
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
+    fontSize: 1rem
+    fontWeight: 700
+    lineHeight: 1.375
+    letterSpacing: 0.02em
   body-md:
-    fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
     fontSize: 1rem
     fontWeight: 400
     lineHeight: 1.625
   caption:
-    fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
     fontSize: 0.875rem
     fontWeight: 400
     lineHeight: 1.5
-  meta-mono:
-    fontFamily: ui-monospace, SFMono-Regular, Menlo, monospace
+  label-caps:
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
     fontSize: 0.75rem
-    fontWeight: 500
+    fontWeight: 700
     lineHeight: 1.4
-    letterSpacing: 0.05em
+    letterSpacing: 0.15em
   label:
-    fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
+    fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
     fontSize: 0.75rem
     fontWeight: 600
     lineHeight: 1.4
 rounded:
+  xs: 4px
   sm: 6px
   md: 8px
   lg: 12px
-  xl: 16px
-  2xl: 24px
-  3xl: 32px
   full: 9999px
 spacing:
   xs: 4px
@@ -81,51 +89,49 @@ spacing:
   2xl: 64px
 components:
   button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.neutral}"
-    rounded: "{rounded.xl}"
-    padding: 12px 24px
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.sm}"
+    height: 44px
+    padding: 0 24px
   button-secondary:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.body}"
-    border: "1px solid {colors.border}"
-    rounded: "{rounded.xl}"
-    padding: 12px 24px
-  button-accent:
-    backgroundColor: "{colors.accent-soft}"
-    textColor: "{colors.accent}"
-    border: "1px solid {colors.accent}"
-    rounded: "{rounded.xl}"
-    padding: 12px 20px
-    hover: "fill {colors.accent} / text {colors.on-accent}"
+    backgroundColor: transparent
+    textColor: "{colors.ink}"
+    border: "2px solid {colors.ink}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.sm}"
+    height: 44px
+    padding: 0 20px
+    hover: "fill {colors.ink} / text {colors.neutral}"
   button-icon:
-    size: 48px
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.body}"
-    border: "1px solid {colors.border}"
-    rounded: "{rounded.xl}"
-  button-compact:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.neutral}"
-    rounded: "{rounded.lg}"
-    padding: 8px 14px
+    size: 40px
+    textColor: "{colors.ink}"
+    border: "2px solid {colors.ink}"
+    rounded: "{rounded.sm}"
   card:
     backgroundColor: "{colors.neutral}"
     border: "1px solid {colors.border}"
-    rounded: "{rounded.2xl}"
+    rounded: "{rounded.lg}"
     padding: 12px
+    shadow: soft, deepening on hover
   chip:
-    backgroundColor: "{colors.accent-soft}"
-    textColor: "{colors.accent}"
-    rounded: "{rounded.full}"
-    padding: 4px 12px
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.xs}"
+    padding: 4px 10px
   tech-badge:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.body}"
-    border: "1px solid {colors.border}"
-    typography: "{typography.meta-mono}"
-    rounded: "{rounded.md}"
-    padding: 6px 10px
+    backgroundColor: "{colors.chip}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.xs}"
+    padding: 4px 10px
+  section-bar:
+    backgroundColor: "{colors.accent}"
+    width: 64px
+    height: 4px
+    rounded: "{rounded.full}"
   divider:
     backgroundColor: "{colors.border}"
     height: 1px
@@ -133,11 +139,11 @@ components:
 
 ## Overview
 
-The portfolio's visual identity is **editorial, monochrome, and content-first**. It pairs a deep ink (`ink`) on a clean white canvas with a single, meaningful **botanical-green accent** (`accent`, `#1f6f4e`) drawn from the subject's flagship "AI Garden System" project. The accent is spent sparingly — heading periods, active states, link hovers, small marks — never as a wash.
+The portfolio's visual identity is **editorial, monochrome, and content-first**. It pairs a deep ink (`ink`) on a clean white canvas with a single, meaningful **botanical-green accent** (`accent`, `#1f6f4e`) drawn from the subject's flagship "AI Garden System" project. The accent is spent on a few fills: the section-title bars, the one primary button per context, the type chip, the hero frames and the active nav underline — never as a wash.
 
-Headings use **Fraunces**, a high-contrast display serif, which carries the personality of the page; body copy falls back to the platform UI sans for readability. The result reads as a deliberate design choice rather than a templated default.
+Type is one face, **Open Sans**, set bold with wide tracking for headings and as uppercase tracked labels for buttons and metadata; a short green bar under each section title is the recurring mark. The tracked-caps voice was taken from a reference portfolio the owner chose; its colours were not.
 
-Motion is restrained: brief entrance fades and hover lifts only. Everything respects `prefers-reduced-motion` (the homepage showcase stops auto-advancing; transitions collapse).
+Motion is restrained: brief entrance fades and hover shadows only. Everything respects `prefers-reduced-motion` (transitions collapse).
 
 ## Colors
 
@@ -145,55 +151,57 @@ The palette is intentionally narrow: one ink for hierarchy, one green for accent
 
 - **Neutral (`#ffffff`):** Page and card background.
 - **Surface (`#fafafa`, zinc-50):** Alternating section ground (About, Skills) for rhythm against white (Hero, Projects, Contact).
-- **Ink (`#0f172a`, slate-900):** Headlines, primary buttons, the first half of the name wordmark.
+- **Ink (`#0f172a`, slate-900):** Headlines, outlined buttons, the monogram stamp, the footer band.
 - **Body (`#4b5563`):** Paragraph and long-form copy.
 - **Muted (`#6b7280`):** Captions, secondary metadata. At least 4.5:1 on `neutral` and `surface`; never lighter.
 - **Border (`#e5e7eb`):** Hairlines, card outlines, dividers.
-- **Accent (`#1f6f4e`):** Botanical green. Heading periods, active nav/tab/thumb, link hover, the surname in the wordmark, eyebrow dashes, contact icons.
+- **Accent (`#1f6f4e`):** Botanical green, used as fill: section-title bars, primary buttons, the type chip, hero frames, the active nav underline and filter tab, the portrait ring.
+- **Accent-strong (`#1f6f4e`):** The same green where it sets text or icons (link hover, contact icons). A separate token so the fill can change without touching text contrast.
+- **Chip (`#f1f3f5`):** The flat fill behind tech chips.
 - **Accent-soft (`#ecf4ef`):** Tinted background for chips, active thumbnails, responsibility markers.
-- **Accent-dark (`#14532d`):** Reserved for accent hover/pressed.
 
 ## Dark mode
 
-The palette is delivered through **semantic tokens** (`canvas`, `surface`, `card`, `ink`, `body`, `muted`, `line`, `accent`, `accent-strong`, `accent-soft`, `on-accent`) rather than raw Tailwind colors. Each token is a CSS variable defined on `:root` (light) and overridden on `.dark`; the Tailwind utilities (`bg-canvas`, `text-ink`, `border-line`, …) resolve to those variables via `@theme inline`, so a single class works in both themes. Theme selection is handled by `next-themes` (`class` strategy) with a sun/moon toggle in the navbar.
+The palette is delivered through **semantic tokens** (`canvas`, `surface`, `card`, `ink`, `body`, `muted`, `line`, `accent`, `accent-strong`, `accent-soft`, `on-accent`, `chip`) rather than raw Tailwind colors. Each token is a CSS variable defined on `:root` (light) and overridden on `.dark`; the Tailwind utilities (`bg-canvas`, `text-ink`, `border-line`, …) resolve to those variables via `@theme inline`, so a single class works in both themes. Theme selection is handled by `next-themes` (`class` strategy) with a sun/moon toggle in the navbar.
 
 Naming maps from the light palette: `border` → **`line`**, and a new **`card`** token sits above `surface` for raised surfaces.
 
-- **Neutral, faintly-warm base:** the dark neutrals are kept *neutral* (a whisper of warmth to flatter the Fraunces serif) — **no green cast**. Green lives only in the accent, mirroring the light-mode rule "neutrals stay neutral, one green accent". Ramp: `canvas` `#131110` < `surface` `#1c1a18` < `card` `#2b2825`; light mode is `#ffffff` / `#fafafa` / `#ffffff`.
+- **Neutral, faintly-warm base:** the dark neutrals are kept *neutral* (a whisper of warmth) — **no green cast**. Green lives only in the accent, mirroring the light-mode rule "neutrals stay neutral, one green accent". Ramp: `canvas` `#131110` < `surface` `#1c1a18` < `card` `#2b2825`; light mode is `#ffffff` / `#fafafa` / `#ffffff`.
 - **Elevation reads through fill + hairline:** fill steps are small on a dark ground (card↔canvas ≈ 1.4:1), so a clearly-visible `line` (`#3b3630`, ≈ 1.6:1 against canvas) shares the separating work — cards read as raised without heavy shadows or ID-card borders.
-- **Accent lifts in dark:** botanical green moves to `#5cc08d` (`accent-strong` `#7fd4a8`, `accent/canvas` ≈ 8.4:1) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` is a deep `#1d2a20` chip tint, and `on-accent` flips to near-black.
+- **Accent lifts in dark:** botanical green moves to `#5cc08d` (also `accent-strong`, `accent/canvas` ≈ 8.4:1) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` is a deep `#1d2a20` chip tint, and `on-accent` flips to near-black.
 - **Text ramp:** `ink` `#f0ece6`, `body` `#aca69c`, `muted` `#9a9286` — warm off-whites, never pure white, all passing WCAG AA on canvas and on `card`.
 - **Content images:** large white screenshots carry `dark:brightness-90` so they don't punch bright holes in the dark UI (icons, logos, and the portrait are untouched).
 - **Inverted / always-dark elements:** image backdrops, the lightbox, video title bars, and on-image overlay chips stay dark with white text in **both** themes — they sit on media, not on the page ground. The footer is the one deliberately inverted block: a dark band in light mode, a `surface` band with a top hairline in dark.
 
 ## Typography
 
-Headings use **Fraunces** (display serif); body uses the **system UI sans** stack; small structural metadata uses a **monospace**.
+One face, **Open Sans** (loaded with `next/font` as `--font-open-sans`, the Tailwind `font-sans`), for everything. Headings get their voice from **bold weight and wide tracking**, not from a second family. The `.font-display` class is kept on headings and resolves to the same face.
 
-- **Display** — hero name (two lines, surname in accent), set large with tight leading. Fluid: `clamp(2.25rem, 11vw, 4.5rem)`, so it never clips on narrow screens or at 200% zoom.
-- **H2** — section headlines ("Selected Projects.", "Let's connect.") with an accent period.
-- **H3** — sub-headings ("Tech stack", "Education", "Responsibilities") and project titles.
+- **Display** — the hero name, bold, `tracking-[0.04em]`, fluid `clamp(2.5rem, 6vw, 4.25rem)` so it never clips on narrow screens or at 200% zoom. A short accent bar sits above it.
+- **H2** — section titles ("About", "Projects", "Skills", "Let's connect"), bold, `tracking-[0.08em]`, with a 64×4px `accent` bar under them (`UI/SectionHeader.tsx`).
+- **H3 caps** — sub-headings inside a section ("Selected projects", "More projects", "Education", "Contact details", "What I did"), bold uppercase, `tracking-[0.15em]`.
+- **H4** — project card titles, bold with light tracking, sentence case so long names stay readable.
 - **Body-md** — paragraphs; comfortable `line-height: 1.625`.
-- **Meta-mono** — uppercase metadata lines (`TYPE · PLATFORM · YEAR`), eyebrows, tech badges, counts, contact labels.
-- **Label** — small sans UI text: filter tabs, chips, card actions, years, gallery counters, the footer copyright.
+- **Label caps** — button labels, project-type labels, nav links, tech chips: 12px, bold or semibold, uppercase, tracked `0.1em`–`0.2em`.
+- **Label** — small sans UI text in sentence case: years, counts, captions, the footer copyright.
 
-**Floor:** nothing is set below 12px (`0.75rem`). Icons are sized with `size-*`, not font sizes. Project descriptions and "What I did" items use body-md at 16px; long-form items are capped at ~68ch.
+**Floor:** nothing is set below 12px (`0.75rem`). Icons are sized with `size-*`, not font sizes. There is no monospace: tracked caps carry the metadata voice.
 
-**Outline:** one h1 per page. A section whose only heading is its eyebrow (About) renders the eyebrow as the h2; sections with a display h2 keep the eyebrow as a `p`. The footer name is not a heading.
+**Outline:** one h1 per page. Every home section has its own h2 title; sub-headings are h3, card titles h4. The footer name is not a heading.
 
 ## Layout
 
-Editorial and generous. Home content sits in a centered `max-w-6xl`.
+Generous, centred in a `max-w-6xl`. Section titles sit left with their bar; the Contact card centres its own.
 
-- **Hero:** name, role, bio and the two actions; the portrait lives in About.
-- **About:** two columns. Left: a small round portrait inside a thin `accent` ring (the signature frame in a smaller form) beside the name and location, then the Contact details rows (hidden on phones). Right: the Education card.
-- **Featured projects:** the flagship pair (Turtask, then AI Garden) side by side, each carrying one unclamped **proof line** (`proof` in `src/data/`) under its title. The rest of the work follows under its own "More projects" heading, a clear step down. On phones that grid shows three cards and a "Show N more projects" button while the All tab is selected, so it never outweighs the featured pair.
-- **Project detail pages:** a wide `max-w-[88rem]` two-column view from `lg`: gallery on the left, a sticky info panel on the right ordered story → actions (Live demo, Code) → facts → stack, so the actions stay above the fold. Below `lg` the panel comes first, then the gallery.
+- **Navbar:** a flat full-width bar (`bg-canvas/90`, blur, bottom hairline), the "PC" monogram stamp (a 36px outlined square) on the left, uppercase tracked links on the right with a 2px accent underline on the active one. Phones show icons instead of labels; detail pages add Back.
+- **Hero:** full height. Left: accent bar, name, the role as a tracked caps line, bio, then SEE THE WORK (accent fill), EMAIL ME and RESUME (outlined). Right: the Turtask and AI Garden screenshots overlapping, each on an offset accent frame (an outline behind one, a solid block behind the other).
+- **About:** two columns. Left: a small round portrait inside an `accent` ring beside the name and location, then the Contact details rows with accent icons (hidden on phones). Right: the Education card.
+- **Projects:** "Selected projects" (the flagship pair, Turtask then AI Garden, side by side, each with one unclamped **proof line** under its title), then "More projects" with its filter tabs and grid. On phones the grid shows three cards and a "Show N more projects" button while the All tab is selected. The section is white with hairlines above and below, because the project screenshots are white.
+- **Skills:** the tech stack as its own section after Projects, one row per category with chips (a plain comma list on phones).
+- **Contact (the page's end):** one white speech-bubble card, centred, with a small tail at its lower edge: the title and bar, one line on the role, the location, the EMAIL ME button with the address as copyable text, then Phone (shown as the number), GitHub, LinkedIn and Resume as one line of quiet links. The footer carries only the name and copyright.
+- **Project detail pages:** a wide `max-w-[88rem]` two-column view from `lg`: gallery on the left, a sticky info panel on the right ordered story → actions (Live demo filled, Code and Figma outlined) → facts → stack. Below `lg` the panel comes first.
 
-- **Skills:** the tech stack as its own section after Projects, one row per category with badges (a plain comma list on phones).
-- **Contact (the page's end):** no card container. Email is the one primary action (the ink `Email me` button, with the address beside it as copyable text); Phone, GitHub and LinkedIn follow as quiet hairline rows, external ones marked with an open-in-new-tab glyph. The footer carries only the name and copyright.
-
-The home order is Hero → About → Projects → Skills → Contact, and the backgrounds alternate canvas / surface / canvas / surface / canvas. In light mode `canvas` and `surface` are nearly equal, so each band change also carries a `border-t border-line` hairline. `scroll-padding-top` offsets anchored sections beneath the floating navbar.
+The home order is Hero → About → Projects → Skills → Contact, on canvas / surface / white / surface / canvas. `scroll-padding-top` offsets anchored sections beneath the fixed navbar.
 
 | Token | Use |
 |:------|:----|
@@ -205,39 +213,35 @@ The home order is Hero → About → Projects → Skills → Contact, and the ba
 
 ## Shapes
 
-Generous, varied rounding rather than uniform pills:
+Small, even corners; the shape language is square-ish, not pill-shaped.
 
-- `rounded.md` (8px) — tech badges.
-- `rounded.lg` (12px) — compact buttons.
-- `rounded.xl` (16px) — primary/secondary buttons, thumbnails.
-- `rounded.2xl` (24px) — project cards.
-- `rounded.3xl` (32px) — detail media (soft, prominent).
-- **Arch** (semicircular top, `rounded.2xl`-ish bottom) — the hero portrait and its offset frame only. It crops the busy top corners of the photo and echoes the garden theme; don't reuse it elsewhere.
-- `rounded.full` — chips, eyebrow dots, nav pills, status dots.
+- `rounded.xs` (4px, Tailwind `rounded`) — tech chips, the type chip, filter tabs.
+- `rounded.sm` (6px, `rounded-md`) — buttons, the monogram stamp.
+- `rounded.md` (8px, `rounded-lg`) — screenshot frames and grid images.
+- `rounded.lg` (12px, `rounded-xl`) — cards, the Contact card, the detail panel and gallery.
+- `rounded.full` — the round portrait, section-title bars, status dots.
 
 ## Components
 
-- **`button-primary`** — solid ink, white text, `rounded.xl`. The dominant action ("View Details").
-- **`button-secondary`** — white with a `border` hairline, `rounded.xl` ("Code", "Figma" at full size).
-- **`button-accent`** — `accent-soft` fill, `accent` border and text, `rounded.xl`; hover floods to solid `accent` with `on-accent` text. Reserved for **"Live Demo"** — the only action that hands the visitor a running product, so it gets the palette's one colour rather than another neutral hairline.
-- **`button-icon`** — 48×48 square, hairline border, glyph only, `rounded.xl`. The third tier, for actions whose mark is unambiguous to the audience (the GitHub octocat). Always carries `aria-label` + `title`.
-- **`button-compact`** — small ink button, `rounded.lg`, for inline detail-header actions ("Code").
-- **`card`** — project tile: white, hairline border, `rounded.2xl`; hover deepens border and adds a soft shadow (no lift).
-- **`chip`** — `accent-soft` background, `accent` text, fully rounded. Category / project-type labels on featured cards and detail pages.
-- **`chip-neutral`** — `surface` background, hairline `border`, `muted` text. The project-type label on grid cards in "More projects": deliberately grey so the featured pair keeps the green and the accent stays near 5–10% of the page.
-- **Card actions** — project cards (featured and grid) share `UI/CardActions.tsx`: `DemoAction` (the `button-accent` "Live demo", 36px tall), `VideoAction` (the same accent button, "Watch demo", for a project with demo videos but no live site; it opens the lightbox) and `IconAction` (the 36px `button-icon`, GitHub or Figma). All grow to 44px on touch screens. Detail pages keep their own full-width buttons.
-- **`tech-badge`** — white, hairline border, monospace, `rounded.md`; hover tints to `accent-soft`.
-- **`divider`** — 1px `border` hairline separating editorial blocks.
+- **`button-primary`** — solid `accent` fill, `on-accent` text, uppercase tracked label, `rounded.sm`, 44px tall. The one action per context: SEE THE WORK, EMAIL ME (Contact), LIVE DEMO, WATCH DEMO.
+- **`button-secondary`** — transparent with a 2px `ink` outline, uppercase tracked label; hover floods to `ink` with canvas text. EMAIL ME and RESUME in the Hero, CODE and FIGMA on detail pages.
+- **`button-icon`** — 40px square, the same 2px outline, glyph only (the GitHub octocat). Always carries `aria-label` + `title`.
+- **`card`** — project tile, Education, the detail panel: white (`card`), a hairline ring and a soft shadow that deepens on hover (no lift).
+- **`chip`** — the project-type label on featured cards and detail pages: solid `accent`, `on-accent` uppercase text, `rounded.xs`. Grid cards set the type as plain muted caps instead, so the featured pair keeps the colour.
+- **Card actions** — project cards share `UI/CardActions.tsx`: `DemoAction` (primary, "Live demo"), `VideoAction` (primary, "Watch demo", opens the lightbox for a project with demo videos but no live site) and `IconAction` (`button-icon`, GitHub or Figma). All grow to 44px on touch screens.
+- **`tech-badge`** — a flat `chip`-token fill, uppercase tracked 12px label with the tool's icon, `rounded.xs`, no border.
+- **Section title** — `UI/SectionHeader.tsx`: the h2 plus its accent bar, left-aligned (optionally a count on the right) or centred.
+- **`divider`** — 1px `line` hairline separating editorial blocks.
 
 ## Signature
 
-The page is remembered by its **Fraunces wordmark** — "Putthipong" in ink, "Chobngam." in botanical green — and the **offset-framed portrait** (a hairline accent frame shifted behind a `rounded.3xl` photo).
+The page is remembered by its **tracked caps voice** — wide-set bold headings with a short green bar under each, uppercase buttons — and the **hero's two real screenshots on offset green frames**, the work shown before anything is said about it.
 
 ## Do's and Don'ts
 
 **Do**
-- Keep ink for hierarchy and reserve green for accents, active states, and one period per headline.
-- Let Fraunces headlines carry personality; keep body copy quiet.
+- Keep ink for hierarchy and reserve green for the bars, the one primary action, the type chip and active states.
+- Let the tracked bold headings and caps labels carry the personality; keep body copy quiet and sentence case.
 - Alternate `neutral` / `surface` section backgrounds for rhythm.
 - Respect `prefers-reduced-motion`; keep motion subtle and purposeful.
 - Pair icons with text or `aria-label`; use `target="_blank" rel="noopener noreferrer"` on external links.
@@ -245,4 +249,5 @@ The page is remembered by its **Fraunces wordmark** — "Putthipong" in ink, "Ch
 **Don't**
 - Don't reintroduce blue, gradients on the name, blurred orbs, status pills, typing animations, or numbered section counters — these were removed for reading as templated/AI-generated.
 - Don't flood the page with green; the accent should stay roughly 5–10% of the surface.
-- Don't wrap content in heavy bordered/shadowed "ID-card" containers; prefer borderless blocks with hairlines and whitespace.
+- Don't wrap whole sections in bordered/shadowed containers; the Contact speech-bubble card is the one exception, as the page's close. Cards are for repeated items (projects, Education).
+- Don't bring back the serif display face, eyebrow labels above headings, or monospace metadata; the tracked sans replaced all three.
