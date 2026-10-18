@@ -2,12 +2,9 @@
 
 import { FaArrowDown, FaEnvelope, FaRegFilePdf } from "react-icons/fa";
 import { contacts, RESUME_HREF } from "@/data/ContactData";
-import { projectData } from "@/data/ProjectsData";
-import { seniorProject } from "@/data/SeniorProjectData";
-import { FEATURED_PROJECT_IDS } from "./Project/ProjectShowcase";
+import HeroIllustration from "./HeroIllustration";
 
 const email = contacts.find((c) => c.label === "Email");
-const lead = projectData.find((p) => p.id === FEATURED_PROJECT_IDS[0]);
 
 const outlineButton =
   "inline-flex items-center gap-2 h-11 px-5 rounded-md border-2 border-ink/80 text-ink text-xs font-bold uppercase tracking-[0.18em] transition-colors hover:bg-ink hover:text-canvas focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas";
@@ -60,29 +57,10 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* ── RIGHT: the two featured systems, as they look ── */}
-        {lead && (
-          <div aria-hidden className="relative mx-auto w-full max-w-xl lg:max-w-none aspect-[5/4]">
-            {/* AI Garden, set back on the right */}
-            <div className="absolute right-0 top-0 w-[76%]">
-              <div className="absolute inset-0 translate-x-3 -translate-y-3 sm:translate-x-4 sm:-translate-y-4 rounded-lg border-2 border-accent" />
-              <img
-                src={seniorProject.image}
-                alt=""
-                className="relative w-full aspect-[16/10] object-cover object-top rounded-lg border border-line bg-card shadow-lg dark:brightness-90"
-              />
-            </div>
-            {/* Turtask, in front on the left */}
-            <div className="absolute left-0 bottom-0 w-[76%]">
-              <div className="absolute inset-0 -translate-x-3 translate-y-3 sm:-translate-x-4 sm:translate-y-4 rounded-lg bg-accent" />
-              <img
-                src={lead.image}
-                alt=""
-                className="relative w-full aspect-[16/10] object-cover object-top rounded-lg border border-line bg-card shadow-xl dark:brightness-90"
-              />
-            </div>
-          </div>
-        )}
+        {/* ── RIGHT: a line drawing of him, at work ── */}
+        <div className="mx-auto w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[460px]">
+          <HeroIllustration className="w-full h-auto" />
+        </div>
       </div>
     </section>
   );
