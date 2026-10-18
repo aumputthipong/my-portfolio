@@ -12,7 +12,7 @@ const Navbar = () => {
   const router = useRouter();
   const isDetailPage = pathname.startsWith("/projects/");
 
-  type SectionId = "home" | "about-me" | "projects" | "contact";
+  type SectionId = "home" | "about-me" | "projects" | "skills" | "contact";
 
   useEffect(() => {
     if (isDetailPage) return;
@@ -28,7 +28,7 @@ const Navbar = () => {
     );
 
     const sections = document.querySelectorAll(
-      "#home, #about-me, #projects, #contact",
+      "#home, #about-me, #projects, #skills, #contact",
     );
     sections.forEach((section) => observer.observe(section));
     return () => sections.forEach((section) => observer.unobserve(section));
@@ -82,6 +82,17 @@ const Navbar = () => {
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
           <path d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14" />
+        </svg>
+      ),
+    },
+    {
+      id: "skills",
+      label: "Skills",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="m12 3 9 4.5-9 4.5-9-4.5L12 3Z" />
+          <path d="m3 12 9 4.5 9-4.5" />
+          <path d="m3 16.5 9 4.5 9-4.5" />
         </svg>
       ),
     },

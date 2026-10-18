@@ -1,58 +1,69 @@
 import { contacts } from "../../data/ContactData";
-import { techSkills } from "../../data/TechSkillsData";
-import TechBadge from "../UI/TechBadge";
 
+/**
+ * About, in two columns: who he is and how to reach him (a round portrait over the
+ * contact details), then education. The tech stack has its own Skills section.
+ */
 const Introduction = () => {
-  // Unique count: Go sits under both Languages and Back-End
-  const total = new Set(techSkills.flatMap((s) => s.skills.map((k) => k.label))).size;
-
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-      {/* ── LEFT: Tech stack ── */}
-      <div className="lg:col-span-3" id="skills">
-        <div className="flex items-baseline justify-between mb-5">
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink">
-            Tech stack
-          </h3>
-          <span className="text-xs font-mono text-muted">
-            {total} technologies
-          </span>
-        </div>
-
-        {techSkills.map((section) => (
-          <div
-            key={section.category}
-            className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-1 sm:gap-8 py-3 sm:py-6 border-t border-line first:border-t-0"
-          >
-            <div className="flex items-center gap-2.5 flex-shrink-0">
-              <p className="text-sm font-semibold text-ink">
-                {section.category
-                  .replace("Programming ", "")
-                  .replace(" Development", "")}
-              </p>
-              <span className="text-xs font-mono text-muted">
-                {String(section.skills.length).padStart(2, "0")}
-              </span>
-            </div>
-            {/* Phones get a plain list instead of the badge wall, so the projects
-                below are reached a screen sooner */}
-            <p className="sm:hidden text-sm leading-relaxed text-body">
-              {section.skills.map((skill) => skill.label).join(", ")}
-            </p>
-            <div className="hidden sm:flex flex-wrap gap-2">
-              {section.skills.map((skill) => (
-                <TechBadge
-                  key={skill.label}
-                  tech={{ name: skill.label, icon: skill.icon }}
-                />
-              ))}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14">
+      {/* ── LEFT: portrait + contact details ── */}
+      <div>
+        <div className="flex items-center gap-5">
+          {/* Round portrait inside a thin accent ring, the signature frame in a smaller form */}
+          <div className="flex-shrink-0 rounded-full border border-accent/50 p-1.5">
+            {/* Zoomed toward the face: the source is a half-body 4:5 photo */}
+            <div className="size-24 sm:size-28 rounded-full overflow-hidden bg-canvas">
+              <img
+                src="/image/profile_formal.png"
+                alt="Putthipong Chobngam"
+                className="w-full h-full object-cover scale-[1.25] origin-[50%_15%]"
+              />
             </div>
           </div>
-        ))}
+          <div className="min-w-0">
+            <p className="font-display text-xl sm:text-2xl font-semibold text-ink leading-tight">
+              Putthipong Chobngam
+            </p>
+            <p className="mt-1 text-sm text-muted">Bangkok, Thailand</p>
+          </div>
+        </div>
+
+        {/* Quiet rows, so the Education card stays the one raised block. Same data as
+            the Contact section, which remains the closing call to action; phones skip
+            them and reach that section instead. */}
+        <div className="hidden sm:block mt-8">
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-2">
+            Contact details
+          </h3>
+          <dl className="text-sm">
+            {contacts.map(({ icon: Icon, ...c }) => (
+              <div
+                key={c.label}
+                className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line last:border-b-0"
+              >
+                {/* Accent icons, as design.md gives contact icons, so each row is found at a glance */}
+                <dt className="flex items-center gap-2 text-muted">
+                  <Icon className="size-3.5 flex-shrink-0 text-accent" aria-hidden />
+                  {c.label}
+                </dt>
+                <dd className="min-w-0">
+                  <a
+                    href={c.href}
+                    {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="block truncate text-ink hover:text-accent transition-colors underline-offset-4 focus-visible:outline-none focus-visible:text-accent focus-visible:underline"
+                  >
+                    {c.value}
+                  </a>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
 
       {/* ── RIGHT: Education ── */}
-      <div className="lg:col-span-2 lg:border-l lg:border-line lg:pl-8" id="education">
+      <div id="education">
         <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-5">
           Education
         </h3>
@@ -89,41 +100,6 @@ const Introduction = () => {
               </dd>
             </div>
           </dl>
-        </div>
-
-        {/* Phones skip the contact list (the Contact section below has the same
-            channels) and keep only the one fact that lives nowhere else */}
-        <p className="sm:hidden mt-4 text-sm text-body">Based in Bangkok, Thailand</p>
-
-        {/* Contact details: quiet rows, so the Education card stays the focus.
-            Same data as the Contact section, which remains the closing call to action. */}
-        <div className="hidden sm:block">
-        <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mt-8 mb-2">
-          Contact details
-        </h3>
-        <dl className="text-sm">
-          <div className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line">
-            <dt className="text-muted">Location</dt>
-            <dd className="text-ink">Bangkok, Thailand</dd>
-          </div>
-          {contacts.map((c) => (
-            <div
-              key={c.label}
-              className="grid grid-cols-[84px_1fr] gap-3 py-2 border-b border-line last:border-b-0"
-            >
-              <dt className="text-muted">{c.label}</dt>
-              <dd className="min-w-0">
-                <a
-                  href={c.href}
-                  {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="block truncate text-ink hover:text-accent transition-colors underline-offset-4 focus-visible:outline-none focus-visible:text-accent focus-visible:underline"
-                >
-                  {c.value}
-                </a>
-              </dd>
-            </div>
-          ))}
-        </dl>
         </div>
       </div>
     </div>
