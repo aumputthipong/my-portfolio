@@ -16,8 +16,12 @@ export interface Project {
   mobileCompanion?: { label: string; images: string[] };
   /** Shown under the detail page's Live demo button, e.g. a slow free-tier cold start */
   demoNote?: string;
+  /** Few-word version of demoNote, shown under the Live demo button on project cards */
+  demoHint?: string;
   /** One checkable fact shown unclamped under the title when the project is featured */
   proof?: string;
+  /** Featured-card description that leaves out what `proof` already says; falls back to `description` */
+  summary?: string;
   /** "What I did" bullets on the detail page */
   highlights?: string[];
 }
@@ -54,6 +58,7 @@ export const projectData: Project[] = [
   ref: false,
   demo: "https://turtle-shop.onrender.com",
   proof: "Integration-tested: 40 concurrent orders for 5 units sell exactly 5.",
+  demoHint: "First load can take ~30 s",
   demoNote: "The free host sleeps, so the first load can take about 30 seconds. Demo accounts are listed on the login page.",
   image: "/projects/shop-inventory/today.png",
   year: 2026,
@@ -78,8 +83,9 @@ export const projectData: Project[] = [
 
   {
     id: 8,
-    title: "Turtask — Mini ERP Kanban",
+    title: "Turtask — Kanban Project Management",
     proof: "Drag-and-drop changes sync in real time for everyone on the board.",
+    summary: "A team project management web app with Kanban boards, task assignment, and role-based access.",
     type: "Software Development",
     description:
       "A team project management web app with Kanban boards, task assignment, and role-based access. Task updates and drag-and-drop changes sync in real time for everyone on the board.",

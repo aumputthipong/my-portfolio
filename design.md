@@ -218,7 +218,9 @@ Generous, varied rounding rather than uniform pills:
 - **`button-icon`** — 48×48 square, hairline border, glyph only, `rounded.xl`. The third tier, for actions whose mark is unambiguous to the audience (the GitHub octocat). Always carries `aria-label` + `title`.
 - **`button-compact`** — small ink button, `rounded.lg`, for inline detail-header actions ("Code").
 - **`card`** — project tile: white, hairline border, `rounded.2xl`; hover deepens border and adds a soft shadow (no lift).
-- **`chip`** — `accent-soft` background, `accent` text, fully rounded. Category / project-type labels.
+- **`chip`** — `accent-soft` background, `accent` text, fully rounded. Category / project-type labels on featured cards and detail pages.
+- **`chip-neutral`** — `surface` background, hairline `border`, `muted` text. The project-type label on grid cards in "More projects": deliberately grey so the featured pair keeps the green and the accent stays near 5–10% of the page.
+- **Card actions** — project cards (featured and grid) share `UI/CardActions.tsx`: `DemoAction` (the `button-accent` "Live demo", 36px tall) and `IconAction` (the 36px `button-icon`, GitHub or Figma). Both grow to 44px on touch screens. Detail pages keep their own full-width buttons.
 - **`tech-badge`** — white, hairline border, monospace, `rounded.md`; hover tints to `accent-soft`.
 - **`divider`** — 1px `border` hairline separating editorial blocks.
 
