@@ -1,15 +1,9 @@
 "use client";
 
-import { FaArrowDown, FaEnvelope } from "react-icons/fa";
-import { contacts } from "@/data/ContactData";
+import { FaArrowDown, FaEnvelope, FaRegFilePdf } from "react-icons/fa";
+import { contacts, RESUME_HREF } from "@/data/ContactData";
 
 const email = contacts.find((c) => c.label === "Email");
-
-// Semicircular top on a 4:5 box (50% of the width = 40% of the height), with
-// the usual soft corners at the bottom.
-const ARCH = {
-  borderRadius: "50% 50% 1.5rem 1.5rem / 40% 40% 1.5rem 1.5rem",
-};
 
 const Hero = () => {
   return (
@@ -60,26 +54,16 @@ const Hero = () => {
                   Email me
                 </a>
               )}
-            </div>
-          </div>
-
-          {/* ── RIGHT: arched portrait with offset frame ── */}
-          <div className="w-full max-w-[210px] sm:max-w-[230px] lg:max-w-[260px] flex-shrink-0">
-            <div className="relative">
-              {/* offset frame — signature */}
-              <div
-                className="absolute inset-0 translate-x-4 translate-y-4 border border-accent/50"
-                style={ARCH}
-                aria-hidden
-              />
-              {/* photo — the arch trims the busy top corners of the background */}
-              <div className="relative overflow-hidden bg-surface" style={ARCH}>
-                <img
-                  src="/image/profile_formal.png"
-                  alt="Putthipong Chobngam"
-                  className="w-full aspect-[4/5] object-cover"
-                />
-              </div>
+              <a
+                href={RESUME_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 h-11 px-6 rounded-2xl border border-line bg-canvas text-body text-sm font-semibold transition-colors hover:text-ink hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+              >
+                <FaRegFilePdf className="size-3.5" aria-hidden />
+                Resume
+                <span className="sr-only">(PDF, opens in a new tab)</span>
+              </a>
             </div>
           </div>
         </div>
