@@ -1,5 +1,6 @@
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLanguage, FaLocationDot } from "react-icons/fa6";
 import { contacts } from "../../data/ContactData";
+import { profile } from "../../data/ProfileData";
 
 // One label voice for every in-card heading and caption (design.md label-caps)
 const labelCaps = "text-xs font-bold uppercase tracking-[0.15em] text-muted";
@@ -15,7 +16,8 @@ const Introduction = () => {
       {/* ── LEFT: profile card ── */}
       <div className="rounded-xl bg-card ring-1 ring-line overflow-hidden">
         {/* Who */}
-        <div className="flex items-center gap-5 sm:gap-6 px-5 py-6 sm:px-7 sm:py-7">
+        {/* Phones stack the portrait above the details so the lines and the badge keep one row each */}
+        <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 sm:gap-6 px-5 pt-6 pb-6 sm:px-7 sm:pt-7">
           {/* Plain frame: the photo with a hairline, no ornament */}
           <div className="relative w-24 sm:w-32 flex-shrink-0 aspect-[4/5] rounded-lg overflow-hidden bg-surface ring-1 ring-line">
             {/* The name sits right beside it, so the image adds nothing for a screen reader */}
@@ -25,16 +27,27 @@ const Introduction = () => {
             <p className="font-display text-xl sm:text-2xl font-bold tracking-[0.03em] text-ink leading-tight">
               Putthipong Chobngam
             </p>
-            <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-body">
-              <FaLocationDot className="size-3.5 text-accent-strong" aria-hidden />
-              Bangkok, Thailand
+            <ul className="mt-2.5 space-y-1.5 text-sm text-body">
+              <li className="flex items-center gap-2">
+                <FaLocationDot className="size-3.5 flex-shrink-0 text-accent-strong" aria-hidden />
+                {profile.location}
+              </li>
+              <li className="flex items-center gap-2">
+                <FaLanguage className="size-4 flex-shrink-0 text-accent-strong" aria-hidden />
+                {profile.languages}
+              </li>
+            </ul>
+            {/* Availability, so a recruiter knows at a glance he is looking */}
+            <p className="mt-3.5 inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent-strong">
+              <span aria-hidden className="size-2 rounded-full bg-accent" />
+              {profile.availability}
             </p>
           </div>
         </div>
 
-        {/* Where he studied: the lower half of the same card, on its own tint
-            (a step below the card in dark mode, so it never melts into the section) */}
-        <div id="education" className="border-t border-line bg-surface dark:bg-canvas px-5 py-6 sm:px-7">
+        {/* Where he studied: same card, same ground, so name and degree read as one
+            profile; an inset hairline marks the second part */}
+        <div id="education" className="mx-5 sm:mx-7 border-t border-line pt-6 pb-6 sm:pb-7">
           <h3 className={labelCaps}>Education</h3>
 
           <div className="mt-4 flex items-start gap-4">

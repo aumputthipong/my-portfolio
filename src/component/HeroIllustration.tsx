@@ -1,7 +1,6 @@
 /**
  * Hand-drawn line figure for the hero: him from the waist up at a desk, smiling
- * over an open laptop with a pineapple mark, a mug beside it, a code window
- * floating behind him.
+ * over an open laptop marked with a </> sign, a code window floating behind him.
  * The clothes, desk and window follow the theme through the CSS variables;
  * skin, facial lines and hair keep fixed colours so the face never turns into a
  * negative on the dark ground.
@@ -68,16 +67,10 @@ export default function HeroIllustration({ className = "" }: { className?: strin
       {/* Desk */}
       <path d="M24 322 L396 322 L396 334 L24 334 Z" fill={INK} {...line} />
 
-      {/* Laptop, lid towards us, with the pineapple on it */}
+      {/* Laptop, lid towards us, marked with a code sign */}
       <rect x="136" y="228" width="140" height="94" rx="9" fill={PAPER} {...line} />
-      <ellipse cx="206" cy="280" rx="11" ry="14" fill={ACCENT} />
-      <path d="M198 272 L214 288 M214 272 L198 288" fill="none" stroke={PAPER} strokeWidth={1.8} strokeLinecap="round" />
-      <path d="M206 266 L200 254 M206 266 L206 250 M206 266 L212 254" fill="none" stroke={ACCENT} strokeWidth={3.5} strokeLinecap="round" />
+      <path d="M194 265 L183 275 L194 285 M218 265 L229 275 L218 285 M211 261 L201 289" fill="none" stroke={ACCENT} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
 
-      {/* Mug with steam */}
-      <path d="M58 278 L94 278 L91 322 L61 322 Z" fill={PAPER} {...line} />
-      <path d="M94 288 C107 288 107 308 93 308" fill="none" {...line} />
-      <path d="M70 266 C66 258 74 254 70 246 M82 266 C78 258 86 254 82 246" fill="none" {...line} strokeWidth={2.5} />
     </svg>
   );
 }

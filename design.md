@@ -16,18 +16,18 @@ colors:
   on-accent: "#ffffff"
   chip: "#f1f3f5"
 colorsDark:
-  canvas: "#131110"
-  surface: "#1c1a18"
-  card: "#2b2825"
-  ink: "#f0ece6"
-  body: "#aca69c"
-  muted: "#9a9286"
-  line: "#3b3630"
-  accent: "#5cc08d"
-  accent-strong: "#5cc08d"
-  accent-soft: "#1d2a20"
-  on-accent: "#131110"
-  chip: "#36322e"
+  canvas: "#10151c"
+  surface: "#151c25"
+  card: "#1b2430"
+  ink: "#e6eaf0"
+  body: "#aab4c1"
+  muted: "#8592a3"
+  line: "#2a3644"
+  accent: "#6fcf9f"
+  accent-strong: "#6fcf9f"
+  accent-soft: "#17302a"
+  on-accent: "#0b1a13"
+  chip: "#222d3a"
 typography:
   display:
     fontFamily: "Open Sans", ui-sans-serif, system-ui, sans-serif
@@ -166,10 +166,10 @@ The palette is delivered through **semantic tokens** (`canvas`, `surface`, `card
 
 Naming maps from the light palette: `border` → **`line`**, and a new **`card`** token sits above `surface` for raised surfaces.
 
-- **Neutral, faintly-warm base:** the dark neutrals are kept *neutral* (a whisper of warmth) — **no green cast**. Green lives only in the accent, mirroring the light-mode rule "neutrals stay neutral, one green accent". Ramp: `canvas` `#131110` < `surface` `#1c1a18` < `card` `#2b2825`; light mode is `#ffffff` / `#fafafa` / `#ffffff`.
-- **Elevation reads through fill + hairline:** fill steps are small on a dark ground (card↔canvas ≈ 1.4:1), so a clearly-visible `line` (`#3b3630`, ≈ 1.6:1 against canvas) shares the separating work — cards read as raised without heavy shadows or ID-card borders.
-- **Accent lifts in dark:** botanical green moves to `#5cc08d` (also `accent-strong`, `accent/canvas` ≈ 8.4:1) because the light `#1f6f4e` fails contrast on a dark ground. `accent-soft` is a deep `#1d2a20` chip tint, and `on-accent` flips to near-black.
-- **Text ramp:** `ink` `#f0ece6`, `body` `#aca69c`, `muted` `#9a9286` — warm off-whites, never pure white, all passing WCAG AA on canvas and on `card`.
+- **Its own palette, not a mirror of light mode:** a cool night-blue slate, chosen for comfort over long reading in the dark. Ramp: `canvas` `#10151c` < `surface` `#151c25` < `card` `#1b2430`; light mode is `#ffffff` / `#fafafa` / `#ffffff`. Never pure black.
+- **Elevation reads through fill + hairline:** fill steps are small on a dark ground (card↔canvas ≈ 1.4:1), so a clearly-visible `line` (`#2a3644`, ≈ 1.5:1 against canvas) shares the separating work — cards read as raised without heavy shadows or ID-card borders.
+- **A softer accent:** the green becomes a gentle mint `#6fcf9f` (also `accent-strong`, ≈ 9.7:1 on canvas); the light `#1f6f4e` would fail contrast on a dark ground. `accent-soft` is a deep `#17302a` tint for icon tiles, and `on-accent` is near-black green `#0b1a13` so filled buttons read as mint with dark labels.
+- **Text ramp:** `ink` `#e6eaf0`, `body` `#aab4c1`, `muted` `#8592a3` — cool off-whites, never pure white, all passing WCAG AA on canvas and on `card` (muted 4.95:1 on card). `chip` `#222d3a` fills the tech chips.
 - **Content images:** large white screenshots carry `dark:brightness-90` so they don't punch bright holes in the dark UI (icons, logos, and the portrait are untouched).
 - **Inverted / always-dark elements:** image backdrops, the lightbox, video title bars, and on-image overlay chips stay dark with white text in **both** themes — they sit on media, not on the page ground. The footer is the one deliberately inverted block: a dark band in light mode, a `surface` band with a top hairline in dark.
 
@@ -194,8 +194,8 @@ One face, **Open Sans** (loaded with `next/font` as `--font-open-sans`, the Tail
 Generous, centred in a `max-w-6xl`. Section titles sit left with their bar; the Contact card centres its own.
 
 - **Navbar:** a flat full-width bar (`bg-canvas/90`, blur, bottom hairline), the "PC" monogram stamp (a 36px outlined square) on the left, uppercase tracked links on the right with a 2px accent underline on the active one. Phones show icons instead of labels; detail pages add Back. An outlined RESUME button (the PDF, new tab) sits before the theme toggle on every page: icon only between `sm` and `lg`, hidden on phones, where the Hero and Contact link the PDF.
-- **Hero:** full height. Left: accent bar, name, the role as a tracked caps line, bio, then SEE THE WORK (accent fill), EMAIL ME and RESUME (outlined). Right: a hand-drawn line scene (`HeroIllustration.tsx`, inline SVG): him from the waist up at a desk, round glasses, smiling eyes, a light blush, short black hair, behind an open laptop whose lid carries a pineapple mark; a mug, and a code window floating behind his shoulder. Clothes, desk and window are drawn in `ink` and `canvas` (CSS variables, so they invert with dark mode) with `accent` on the pineapple mark and code lines; skin, facial lines and hair use fixed colours so the face never turns into a negative on the dark ground.
-- **About:** two cards of equal height (`ring-1 ring-line`, no shadow, one 28px inset). Left: the profile card, its top half a 4:5 portrait in a plain hairline frame beside the name (20–24px, one line) and location, its lower half Education on the `surface` tint (`canvas` in dark mode, so it never melts into the section): degree, school, major, then Graduated and GPA at 16px split by one vertical hairline. Right: Contact details, rows of an `accent-soft` icon tile, a caps label and the value, spread to the card's height (hidden on phones, where the Contact section has the same channels). Every in-card heading and caption uses label-caps (12px, 700, 0.15em, muted).
+- **Hero:** full height. Left: accent bar, name, the role as a tracked caps line, bio, then SEE THE WORK (accent fill), EMAIL ME and RESUME (outlined). Right: a hand-drawn line scene (`HeroIllustration.tsx`, inline SVG): him from the waist up at a desk, round glasses, smiling eyes, a light blush, short black hair, behind an open laptop marked with a `</>` sign, and a code window floating behind his shoulder. Clothes, desk and window are drawn in `ink` and `canvas` (CSS variables, so they invert with dark mode) with `accent` on the `</>` sign and the code lines; skin, facial lines and hair use fixed colours so the face never turns into a negative on the dark ground.
+- **About:** two cards of equal height (`ring-1 ring-line`, no shadow, one 28px inset). Left: the profile card, its top half a 4:5 portrait in a plain hairline frame beside the name (20–24px, one line), location and languages (icon rows), and an availability badge (an `accent-soft` pill with an `accent` dot); on phones the portrait stacks above them, its lower half Education on the same card ground, set off only by an inset hairline so the two read as one profile: degree, school, major, then Graduated and GPA at 16px split by one vertical hairline. Right: Contact details, rows of an `accent-soft` icon tile, a caps label and the value, spread to the card's height (hidden on phones, where the Contact section has the same channels). Every in-card heading and caption uses label-caps (12px, 700, 0.15em, muted).
 - **Projects:** "Selected projects" (the flagship pair, Turtask then AI Garden, side by side, each with one unclamped **proof line** under its title), then "More projects" with its filter tabs and grid. On phones the grid shows three cards and a "Show N more projects" button while the All tab is selected. The section is white with hairlines above and below, because the project screenshots are white.
 - **Skills:** the tech stack as its own section after Projects, one row per category with chips (a plain comma list on phones).
 - **Contact (the page's end):** one white speech-bubble card, centred, with a small tail at its lower edge: the title and bar, one line on the role, the location, the EMAIL ME button with the address as copyable text, then Phone (shown as the number), GitHub, LinkedIn and Resume as one line of quiet links. The footer carries only the name and copyright.
@@ -235,7 +235,7 @@ Small, even corners; the shape language is square-ish, not pill-shaped.
 
 ## Signature
 
-The page is remembered by its **tracked caps voice** — wide-set bold headings with a short green bar under each, uppercase buttons — and the **hand-drawn scene in the hero**, smiling over a pineapple-badged laptop: two colours, even strokes, theme-aware.
+The page is remembered by its **tracked caps voice** — wide-set bold headings with a short green bar under each, uppercase buttons — and the **hand-drawn scene in the hero**, smiling over his laptop: two colours, even strokes, theme-aware.
 
 ## Do's and Don'ts
 
