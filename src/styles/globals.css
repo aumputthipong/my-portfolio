@@ -47,25 +47,25 @@
 .dark {
   color-scheme: dark;
 
-  /* Neutral, faintly-warm ramp; green lives only in the accent. Elevation reads
-     mainly through a clearly visible hairline (--line). */
-  --canvas: #131110;
-  --surface: #1c1a18;
-  --card: #2b2825;
-  --ink: #f0ece6;
-  --body: #aca69c;
-  --muted: #9a9286; /* 4.8:1 on card, 6.1:1 on canvas */
-  --line: #3b3630;
-  /* accent lifts in dark: #1f6f4e fails contrast on a dark ground */
-  --accent: #5cc08d;
-  --accent-strong: #5cc08d;
-  --accent-soft: #1d2a20;
-  --on-accent: #131110;
-  --chip: #36322e;
+  /* Its own palette, not a mirror of light mode: a cool night-blue slate, soft
+     off-white text, and a gentle mint accent, tuned for long reading in the dark.
+     Grounds step canvas < surface < card; a visible hairline shares the work. */
+  --canvas: #10151c;
+  --surface: #151c25;
+  --card: #1b2430;
+  --ink: #e6eaf0;
+  --body: #aab4c1;
+  --muted: #8592a3; /* 4.95:1 on card, 5.4:1 on surface */
+  --line: #2a3644; /* 1.5:1 on canvas */
+  --accent: #6fcf9f; /* 9.7:1 on canvas */
+  --accent-strong: #6fcf9f;
+  --accent-soft: #17302a;
+  --on-accent: #0b1a13;
+  --chip: #222d3a;
 
-  --scrollbar-track: #1c1a18;
-  --scrollbar-thumb: #45403a;
-  --scrollbar-thumb-hover: #635c53;
+  --scrollbar-track: #151c25;
+  --scrollbar-thumb: #2a3644;
+  --scrollbar-thumb-hover: #3b4a5c;
 }
 
 /* Headings share the body face; their character comes from weight and wide tracking */
