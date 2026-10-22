@@ -4,68 +4,89 @@
  * The clothes, desk and window follow the theme through the CSS variables;
  * skin, facial lines and hair keep fixed colours so the face never turns into a
  * negative on the dark ground.
+ *
+ * In dark mode he keeps a dark sweater: the clothes and desk step up to a slate
+ * just above the ground instead of inverting to near-white, the outlines soften
+ * to muted, and the collar stays light. The laptop lid and the code window
+ * take the raised `card` fill so they don't read as holes in the ground, and the
+ * skin is toned down a step so the face doesn't glow brighter than the name.
+ * The --fig-* variables are set on the <svg>; all but the skin point at
+ * existing theme tokens.
  */
+const FIGURE_THEME =
+  "[--fig-line:var(--ink)] [--fig-cloth:var(--ink)] [--fig-collar:var(--canvas)] [--fig-fold:var(--canvas)] " +
+  "[--fig-paper:var(--canvas)] [--fig-skin:#fbf1e6] " +
+  "dark:[--fig-line:var(--muted)] dark:[--fig-cloth:var(--line)] dark:[--fig-collar:var(--ink)] dark:[--fig-fold:var(--muted)] " +
+  "dark:[--fig-paper:var(--card)] dark:[--fig-skin:#e8d9c8]";
 const INK = "var(--ink)";
-const PAPER = "var(--canvas)";
+const LINE = "var(--fig-line)";
+const CLOTH = "var(--fig-cloth)";
+const COLLAR = "var(--fig-collar)";
+const FOLD = "var(--fig-fold)";
+const PAPER = "var(--fig-paper)";
 const ACCENT = "var(--accent)";
 const HAIR = "#1b1a19";
-const SKIN = "#fbf1e6";
+const SKIN = "var(--fig-skin)";
 const FEATURE = "#1b1a19";
-// A soft blush, the one warm note on the face
-const BLUSH = "#f2a29a";
 
-const line = { stroke: INK, strokeWidth: 3, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+const line = { stroke: LINE, strokeWidth: 3, strokeLinecap: "round", strokeLinejoin: "round" } as const;
 const skinLine = { stroke: FEATURE, strokeWidth: 2.5, strokeLinecap: "round", strokeLinejoin: "round" } as const;
 
 export default function HeroIllustration({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 420 360"
-      className={className}
+      className={`${FIGURE_THEME} ${className}`}
       role="img"
       aria-label="Illustration of Putthipong smiling at his laptop"
     >
-      {/* Code window floating behind his shoulder */}
+      {/* Code window floating behind his shoulder, clear of the head */}
       <g>
-        <rect x="256" y="14" width="150" height="108" rx="10" fill={PAPER} {...line} />
-        <path d="M256 38 L406 38" fill="none" {...line} />
-        <circle cx="272" cy="26" r="3.5" fill={INK} />
-        <circle cx="284" cy="26" r="3.5" fill={INK} />
-        <circle cx="296" cy="26" r="3.5" fill={INK} />
-        <path d="M272 56 L310 56 M320 56 L346 56" fill="none" stroke={ACCENT} strokeWidth={5} strokeLinecap="round" />
-        <path d="M286 72 L354 72" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.55} />
-        <path d="M286 88 L326 88 M336 88 L394 88" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.55} />
-        <path d="M272 104 L300 104" fill="none" stroke={ACCENT} strokeWidth={5} strokeLinecap="round" />
+        <rect x="266" y="8" width="144" height="106" rx="10" fill={PAPER} {...line} />
+        <path d="M266 32 L410 32" fill="none" {...line} />
+        <circle cx="282" cy="20" r="3.5" fill={LINE} />
+        <circle cx="294" cy="20" r="3.5" fill={LINE} />
+        <circle cx="306" cy="20" r="3.5" fill={LINE} />
+        <path d="M282 50 L318 50 M328 50 L352 50" fill="none" stroke={ACCENT} strokeWidth={5} strokeLinecap="round" />
+        <path d="M296 66 L362 66" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.55} />
+        <path d="M296 82 L334 82 M344 82 L396 82" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.55} />
+        <path d="M282 98 L310 98" fill="none" stroke={ACCENT} strokeWidth={5} strokeLinecap="round" />
       </g>
 
       {/* Sweater, cut off by the desk */}
-      <path d="M100 322 C100 244 124 194 166 182 C180 178 192 177 206 177 C220 177 232 178 246 182 C288 194 312 244 312 322 Z" fill={INK} {...line} />
-      {/* Folds where the arms reach down to the keyboard */}
-      <path d="M146 236 C134 266 132 296 138 320 M266 236 C278 266 280 296 274 320" fill="none" stroke={PAPER} strokeWidth={2} strokeLinecap="round" opacity={0.6} />
+      <path d="M110 322 C110 246 132 196 170 184 C182 180 194 179 206 179 C218 179 230 180 242 184 C280 196 302 246 302 322 Z" fill={CLOTH} {...line} />
+      {/* Arms reaching down to the keyboard; they run in behind the lid */}
+      <path d="M152 214 C144 228 142 240 150 252 M260 214 C268 228 270 240 262 252" fill="none" stroke={FOLD} strokeWidth={2} strokeLinecap="round" opacity={0.6} />
 
       {/* Neck */}
-      <path d="M196 154 L196 181 L216 181 L216 154 Z" fill={SKIN} {...skinLine} />
-      <path d="M189 180 C197 190 215 190 223 180" fill="none" stroke={PAPER} strokeWidth={2.5} strokeLinecap="round" />
+      <path d="M196 158 L196 183 L216 183 L216 158 Z" fill={SKIN} {...skinLine} />
+      <path d="M189 182 C197 191 215 191 223 182" fill="none" stroke={COLLAR} strokeWidth={2.5} strokeLinecap="round" />
 
-      {/* Head */}
-      <path d="M173 116 C173 86 189 72 206 72 C224 72 239 86 239 116 C239 144 225 160 206 160 C187 160 173 144 173 116 Z" fill={SKIN} {...skinLine} strokeWidth={3} />
-      <path d="M238 118 C246 114 250 126 240 134 Z" fill={SKIN} {...skinLine} />
-      {/* Short black hair, the fringe cut in uneven tufts */}
-      <path d="M170 114 C164 82 184 60 210 60 C236 60 250 80 244 112 C241 104 237 99 231 97 L229 104 C223 96 215 93 207 95 L204 102 C199 95 191 94 185 98 C180 102 174 107 170 114 Z" fill={HAIR} {...line} />
-      {/* Cheeks */}
-      <ellipse cx="186" cy="136" rx="6" ry="3.5" fill={BLUSH} opacity={0.55} />
-      <ellipse cx="226" cy="136" rx="6" ry="3.5" fill={BLUSH} opacity={0.55} />
-      {/* Round glasses, eyes smiling behind them */}
-      <circle cx="191" cy="121" r="11" fill="none" {...skinLine} />
-      <circle cx="221" cy="121" r="11" fill="none" {...skinLine} />
-      <path d="M202 120 C204 117 208 117 210 120 M232 119 L239 117" fill="none" {...skinLine} />
-      <path d="M186 123 C188 119 194 119 196 123 M216 123 C218 119 224 119 226 123" fill="none" {...skinLine} />
-      {/* Nose and an open smile */}
-      <path d="M206 128 C204 133 203 136 207 137" fill="none" {...skinLine} />
-      <path d="M194 142 C199 152 214 152 219 141 C211 145 202 145 194 142 Z" fill={FEATURE} {...skinLine} />
+      {/* Head, set a little lower so the neck stays short */}
+      <g transform="translate(0 6)">
+        {/* Ears, both sides */}
+        <path d="M174 118 C166 114 162 126 172 134 Z" fill={SKIN} {...skinLine} />
+        <path d="M238 118 C246 114 250 126 240 134 Z" fill={SKIN} {...skinLine} />
+        <path d="M173 116 C173 86 189 72 206 72 C224 72 239 86 239 116 C239 144 225 160 206 160 C187 160 173 144 173 116 Z" fill={SKIN} {...skinLine} strokeWidth={3} />
+        {/* Short black hair as in his portrait: a full rounded cut kept close to the skull so the head stays round, the fringe down to
+            the glasses, parted left of centre, the larger side sweeping to a point
+            at the right temple */}
+        <path d="M168 116 C161 94 175 67 205 66 C233 64 251 80 247 104 C246 112 244 117 241 121 C234 110 222 102 208 99 C201 97 196 96 193 95 C188 101 181 108 173 114 C171 116 169 117 168 116 Z" fill={HAIR} {...line} />
+        {/* Detail on the crown only: a cowlick and two strands falling either side of it */}
+        <path d="M206 67 C204 59 209 54 217 55" fill="none" {...line} />
+        <path d="M200 75 C193 80 189 86 188 92 M224 74 C228 79 230 86 229 92" fill="none" stroke="#5a544e" strokeWidth={2} strokeLinecap="round" />
+        {/* Round glasses, eyes smiling behind them */}
+        <circle cx="191" cy="121" r="11" fill="none" {...skinLine} />
+        <circle cx="221" cy="121" r="11" fill="none" {...skinLine} />
+        <path d="M202 120 C204 117 208 117 210 120 M232 119 L239 117 M180 119 L173 117" fill="none" {...skinLine} />
+        <path d="M186 123 C188 119 194 119 196 123 M216 123 C218 119 224 119 226 123" fill="none" {...skinLine} />
+        {/* Nose and an open smile */}
+        <path d="M206 128 C204 133 203 136 207 137" fill="none" {...skinLine} />
+        <path d="M194 142 C199 152 214 152 219 141 C211 145 202 145 194 142 Z" fill={FEATURE} {...skinLine} />
+      </g>
 
-      {/* Desk */}
-      <path d="M24 322 L396 322 L396 334 L24 334 Z" fill={INK} {...line} />
+      {/* Desk, sized to the figure */}
+      <path d="M58 322 L362 322 L362 334 L58 334 Z" fill={CLOTH} {...line} />
 
       {/* Laptop, lid towards us, marked with a code sign */}
       <rect x="136" y="228" width="140" height="94" rx="9" fill={PAPER} {...line} />
