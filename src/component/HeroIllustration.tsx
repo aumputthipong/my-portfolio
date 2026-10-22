@@ -64,14 +64,17 @@ export default function HeroIllustration({ className = "" }: { className?: strin
 
       {/* Head, set a little lower so the neck stays short */}
       <g transform="translate(0 6)">
-        {/* Ears, both sides */}
-        <path d="M174 118 C166 114 162 126 172 134 Z" fill={SKIN} {...skinLine} />
-        <path d="M238 118 C246 114 250 126 240 134 Z" fill={SKIN} {...skinLine} />
+        {/* Ears, both sides: the original small shape, with the inner edge carried a
+            few units into the face so the head, drawn next, covers the join and
+            no gap shows between ear and cheek */}
+        <path d="M180 117 L174 118 C166 114 162 126 172 134 C174 136 177 136 180 135 Z" fill={SKIN} {...skinLine} />
+        <path d="M232 117 L238 118 C246 114 250 126 240 134 C238 136 235 136 232 135 Z" fill={SKIN} {...skinLine} />
         <path d="M173 116 C173 86 189 72 206 72 C224 72 239 86 239 116 C239 144 225 160 206 160 C187 160 173 144 173 116 Z" fill={SKIN} {...skinLine} strokeWidth={3} />
-        {/* Short black hair as in his portrait: a full rounded cut kept close to the skull so the head stays round, the fringe down to
-            the glasses, parted left of centre, the larger side sweeping to a point
-            at the right temple */}
-        <path d="M168 116 C161 94 175 67 205 66 C233 64 251 80 247 104 C246 112 244 117 241 121 C234 110 222 102 208 99 C201 97 196 96 193 95 C188 101 181 108 173 114 C171 116 169 117 168 116 Z" fill={HAIR} {...line} />
+        {/* Short black hair as in his portrait: a full rounded cut kept close to the
+            skull so the head stays round, parted left of centre. The fringe breaks
+            into a few broad locks of uneven length, each tapering to a point that
+            leans away from the part, so it doesn't read as one smooth sheet */}
+        <path d="M168 116 C161 94 175 67 205 66 C233 64 251 80 247 104 C246 112 244 117 242 122 C240 115 237 109 234 103 C233 108 232 111 230 115 C226 108 220 101 213 99 C213 103 212 107 210 110 C206 104 202 98 197 95 C192 100 186 106 181 111 C181 108 181 105 180 103 C177 108 173 113 169 118 Z" fill={HAIR} {...line} />
         {/* Detail on the crown only: a cowlick and two strands falling either side of it */}
         <path d="M206 67 C204 59 209 54 217 55" fill="none" {...line} />
         <path d="M200 75 C193 80 189 86 188 92 M224 74 C228 79 230 86 229 92" fill="none" stroke="#5a544e" strokeWidth={2} strokeLinecap="round" />
