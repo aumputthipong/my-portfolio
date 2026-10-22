@@ -11,6 +11,19 @@ import TechBadge from "./UI/TechBadge";
 import { DemoAction, IconAction } from "./UI/CardActions";
 
 const MAX_TECH = 3;
+// Name length that fits one chip row of a three-column card; chips past it fold into the count
+const TECH_CHAR_BUDGET = 22;
+
+const visibleTech = (tech: Project["tech"]) => {
+  const shown: Project["tech"] = [];
+  let used = 0;
+  for (const t of tech.slice(0, MAX_TECH)) {
+    if (shown.length > 0 && used + t.name.length > TECH_CHAR_BUDGET) break;
+    shown.push(t);
+    used += t.name.length;
+  }
+  return shown;
+};
 // Cards shown on phones before "Show more", so the grid doesn't outweigh the featured pair
 const COLLAPSED_COUNT = 3;
 
@@ -86,7 +99,10 @@ export default function Projects() {
 
         {/* Cards */}
         <div id="projects-grid" className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => {
+            const shownTech = visibleTech(project.tech);
+            const hiddenTech = project.tech.slice(shownTech.length);
+            return (
             <motion.article
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -117,49 +133,57 @@ export default function Projects() {
 
                 {/* Card body */}
                 <div className="flex-1 flex flex-col pt-4">
-                  <h4 className="font-display font-bold tracking-[0.02em] text-ink text-base leading-snug mb-2">
-                    {/* Stretched link: the whole card opens the project, and it is a real
-                        link, so it is reachable by keyboard and opens in a new tab */}
-                    <Link
-                      href={project.href ?? `/projects/${project.id}`}
-                      data-primary
-                      className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none group-hover:text-accent-strong transition-colors"
-                    >
-                      {project.title}
-                    </Link>
-                  </h4>
-                  <p className="text-sm leading-relaxed mb-4 line-clamp-2 text-body">
-                    {project.description}
-                  </p>
-
-                  {/* Tech badges */}
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.tech.slice(0, MAX_TECH).map((tech, i) => (
-                      <TechBadge key={i} tech={tech} />
-                    ))}
-                    {project.tech.length > MAX_TECH && (
-                      <span className="self-center text-xs font-medium text-muted px-1" title={project.tech.slice(MAX_TECH).map((t) => t.name).join(", ")}>
-                        +{project.tech.length - MAX_TECH}
+                  {/* Identity first: what the project is and when, before the pitch and the stack */}
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h4 className="font-display font-bold tracking-[0.02em] text-ink text-base leading-snug">
+                      {/* Stretched link: the whole card opens the project, and it is a real
+                          link, so it is reachable by keyboard and opens in a new tab */}
+                      <Link
+                        href={project.href ?? `/projects/${project.id}`}
+                        data-primary
+                        className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none group-hover:text-accent-strong transition-colors"
+                      >
+                        {project.title}
+                      </Link>
+                    </h4>
+                    <span className="flex-shrink-0 text-xs font-semibold text-muted tabular-nums">
+                      {project.year}
+                    </span>
+                  </div>
+                  <div className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+                      {project.type}
+                    </span>
+                    {/* Outlined, unlike the filled tech chips: context about the project, not a tool */}
+                    {project.academic && (
+                      <span className="rounded px-2 py-0.5 text-xs font-semibold text-body ring-1 ring-inset ring-line">
+                        Academic project
                       </span>
                     )}
                   </div>
 
-                  {/* Category tag + year */}
-                  <div className="mb-4 flex items-center justify-between gap-2">
-                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-                      {project.type}
-                    </span>
-                    <span className="text-xs font-semibold text-muted tabular-nums">
-                      {project.year}
-                    </span>
+                  <p className="mt-3 text-sm leading-relaxed line-clamp-2 text-body">
+                    {project.description}
+                  </p>
+
+                  {/* Stack and actions sit on the card's floor, so they line up across a row */}
+                  <div className="mt-auto flex flex-wrap gap-1.5 pt-4 pb-4">
+                    {shownTech.map((tech, i) => (
+                      <TechBadge key={i} tech={tech} />
+                    ))}
+                    {hiddenTech.length > 0 && (
+                      <span className="self-center text-xs font-medium text-muted px-1" title={hiddenTech.map((t) => t.name).join(", ")}>
+                        +{hiddenTech.length}
+                      </span>
+                    )}
                   </div>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-line mt-auto gap-2 flex-wrap">
+                  <div className="flex items-center justify-between pt-4 border-t border-line gap-2 flex-wrap">
 
                     {/* Left: external links, raised above the stretched link so they stay
                         independently clickable. Same actions as the featured cards. */}
-                    <div className="relative z-10 flex items-center gap-2 min-w-0">
+                    <div className="relative z-10 flex items-center gap-2 min-w-0 min-h-10 pointer-coarse:min-h-11">
                       {project.demo && <DemoAction href={project.demo} project={project.title} />}
                       {project.github.length > 0 ? (
                         <IconAction
@@ -193,7 +217,8 @@ export default function Projects() {
                   )}
                 </div>
             </motion.article>
-          ))}
+            );
+          })}
         </div>
 
         {/* Phones only: wider screens fit the whole grid in a few rows */}

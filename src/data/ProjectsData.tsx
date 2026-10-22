@@ -24,6 +24,8 @@ export interface Project {
   summary?: string;
   /** "What I did" bullets on the detail page */
   highlights?: string[];
+  /** Built for a university course; labelled on the grid card and the detail page */
+  academic?: boolean;
 }
 
 export const projectData: Project[] = [
@@ -66,6 +68,7 @@ export const projectData: Project[] = [
     "/projects/shop-inventory/today.png",
     "/projects/shop-inventory/order-entry.png",
     "/projects/shop-inventory/stock.png",
+    "/projects/shop-inventory/stock-balance.png",
     "/projects/shop-inventory/ledger.png",
     "/projects/shop-inventory/add-product.png",
   ],
@@ -114,7 +117,6 @@ export const projectData: Project[] = [
       "/projects/kanban-manage/kanban-manage-v2 (16).png",
       "/projects/kanban-manage/kanban-manage-v2 (1).png",
       "/projects/kanban-manage/kanban-manage-v2 (19).png",
-      "/projects/kanban-manage/kanban-manage-v2 (2).png",
       "/projects/kanban-manage/kanban-manage-v2 (10).png",
       "/projects/kanban-manage/kanban-manage-v2 (13).png",
       "/projects/kanban-manage/kanban-manage-v2 (12).png",
@@ -130,6 +132,7 @@ export const projectData: Project[] = [
   },
   {
     id: 1,
+    academic: true,
     title: "BookingRoom Web Application",
     type: "Software Development",
     description:
@@ -163,6 +166,7 @@ export const projectData: Project[] = [
   },
   {
     id: 2,
+    academic: true,
     title: "Job Search Application",
     type: "Software Development",
     description:
@@ -194,6 +198,7 @@ export const projectData: Project[] = [
   },
   {
     id: 3,
+    academic: true,
     title: "Canteen Food Web Application",
     type: "Software Development",
     year: 2023,
@@ -225,6 +230,7 @@ export const projectData: Project[] = [
   },
   {
     id: 4,
+    academic: true,
     title: "Convenience Store Management",
     type: "Software Development",
     description:
@@ -253,6 +259,7 @@ export const projectData: Project[] = [
   },
   {
     id: 5,
+    academic: true,
     title: "BlueRoom Registration System",
     type: "UX/UI Design",
     description:
@@ -286,6 +293,7 @@ export const projectData: Project[] = [
 
   {
     id: 6,
+    academic: true,
     title: "Parking App Figma Design",
     year: 2024,
 
@@ -315,6 +323,7 @@ export const projectData: Project[] = [
 
   {
     id: 7,
+    academic: true,
     title: "Depth Estimate Model",
     type: "AI & Machine Learning",
     description:
