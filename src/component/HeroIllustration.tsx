@@ -64,12 +64,11 @@ export default function HeroIllustration({ className = "" }: { className?: strin
 
       {/* Head, set a little lower so the neck stays short */}
       <g transform="translate(0 6)">
-        {/* Ears, both sides: a rounded C with one fold inside. Their inner edge sits
-            well inside the face, so the head, drawn next, hides it and its own
-            outline makes the join. The right ear mirrors the left around x = 206. */}
-        <path d="M184 111 C168 105 159 116 161 126 C163 135 171 139 184 137 Z" fill={SKIN} {...skinLine} />
-        <path d="M228 111 C244 105 253 116 251 126 C249 135 241 139 228 137 Z" fill={SKIN} {...skinLine} />
-        <path d="M171 119 C166 119 165 127 170 130 M241 119 C246 119 247 127 242 130" fill="none" {...skinLine} strokeWidth={2} />
+        {/* Ears, both sides: the original small shape, with the inner edge carried a
+            few units into the face so the head, drawn next, covers the join and
+            no gap shows between ear and cheek */}
+        <path d="M180 117 L174 118 C166 114 162 126 172 134 C174 136 177 136 180 135 Z" fill={SKIN} {...skinLine} />
+        <path d="M232 117 L238 118 C246 114 250 126 240 134 C238 136 235 136 232 135 Z" fill={SKIN} {...skinLine} />
         <path d="M173 116 C173 86 189 72 206 72 C224 72 239 86 239 116 C239 144 225 160 206 160 C187 160 173 144 173 116 Z" fill={SKIN} {...skinLine} strokeWidth={3} />
         {/* Short black hair as in his portrait: a full rounded cut kept close to the
             skull so the head stays round, parted left of centre. The fringe breaks
