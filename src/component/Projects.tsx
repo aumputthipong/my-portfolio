@@ -113,12 +113,6 @@ export default function Projects() {
                         project.layout === "mobile" ? "object-contain" : "object-cover"
                       }`}
                     />
-                    {/* On-image chip: stays dark in both themes, like the gallery's overlays */}
-                    {project.university && (
-                      <span className="absolute left-2.5 top-2.5 rounded bg-black/65 backdrop-blur-sm px-2 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-white">
-                        University project
-                      </span>
-                    )}
                 </div>
 
                 {/* Card body */}
@@ -150,13 +144,20 @@ export default function Projects() {
                     )}
                   </div>
 
-                  {/* Category tag + year */}
-                  <div className="mb-4 flex items-center justify-between gap-2">
+                  {/* Category tag + year; coursework gets a chip here rather than on the banner */}
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
                     <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
                       {project.type}
                     </span>
-                    <span className="text-xs font-semibold text-muted tabular-nums">
-                      {project.year}
+                    <span className="flex items-center gap-2">
+                      {project.university && (
+                        <span className="rounded bg-chip px-2 py-0.5 text-xs font-semibold text-body">
+                          University project
+                        </span>
+                      )}
+                      <span className="text-xs font-semibold text-muted tabular-nums">
+                        {project.year}
+                      </span>
                     </span>
                   </div>
 
