@@ -25,7 +25,7 @@ export interface Project {
   /** "What I did" bullets on the detail page */
   highlights?: string[];
   /** Built for a university course; labelled on the grid card and the detail page */
-  university?: boolean;
+  academic?: boolean;
 }
 
 export const projectData: Project[] = [
@@ -132,7 +132,7 @@ export const projectData: Project[] = [
   },
   {
     id: 1,
-    university: true,
+    academic: true,
     title: "BookingRoom Web Application",
     type: "Software Development",
     description:
@@ -166,7 +166,7 @@ export const projectData: Project[] = [
   },
   {
     id: 2,
-    university: true,
+    academic: true,
     title: "Job Search Application",
     type: "Software Development",
     description:
@@ -198,7 +198,7 @@ export const projectData: Project[] = [
   },
   {
     id: 3,
-    university: true,
+    academic: true,
     title: "Canteen Food Web Application",
     type: "Software Development",
     year: 2023,
@@ -230,7 +230,7 @@ export const projectData: Project[] = [
   },
   {
     id: 4,
-    university: true,
+    academic: true,
     title: "Convenience Store Management",
     type: "Software Development",
     description:
@@ -259,7 +259,7 @@ export const projectData: Project[] = [
   },
   {
     id: 5,
-    university: true,
+    academic: true,
     title: "BlueRoom Registration System",
     type: "UX/UI Design",
     description:
@@ -293,7 +293,7 @@ export const projectData: Project[] = [
 
   {
     id: 6,
-    university: true,
+    academic: true,
     title: "Parking App Figma Design",
     year: 2024,
 
@@ -323,7 +323,7 @@ export const projectData: Project[] = [
 
   {
     id: 7,
-    university: true,
+    academic: true,
     title: "Depth Estimate Model",
     type: "AI & Machine Learning",
     description:

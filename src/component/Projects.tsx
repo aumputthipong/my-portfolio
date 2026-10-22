@@ -150,9 +150,9 @@ export default function Projects() {
                       {project.type}
                     </span>
                     <span className="flex items-center gap-2">
-                      {project.university && (
+                      {project.academic && (
                         <span className="rounded bg-chip px-2 py-0.5 text-xs font-semibold text-body">
-                          University project
+                          Academic project
                         </span>
                       )}
                       <span className="text-xs font-semibold text-muted tabular-nums">
