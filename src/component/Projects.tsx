@@ -113,6 +113,12 @@ export default function Projects() {
                         project.layout === "mobile" ? "object-contain" : "object-cover"
                       }`}
                     />
+                    {/* On-image chip: stays dark in both themes, like the gallery's overlays */}
+                    {project.university && (
+                      <span className="absolute left-2.5 top-2.5 rounded bg-black/65 backdrop-blur-sm px-2 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-white">
+                        University project
+                      </span>
+                    )}
                 </div>
 
                 {/* Card body */}

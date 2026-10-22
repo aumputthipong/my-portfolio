@@ -40,6 +40,7 @@ export default function ProjectDetailPage() {
             facts={[
               { label: "Platform", value: companion ? `${mainLabel} + ${companion.label}` : mainLabel },
               { label: "Year", value: project.year },
+              ...(project.university ? [{ label: "Context", value: "University project" }] : []),
             ]}
             tech={project.tech}
             demo={project.demo}
