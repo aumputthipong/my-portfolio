@@ -7,10 +7,14 @@ import MoreProjects from "@/component/Project/MoreProjects";
 import ProjectHighlights from "@/component/Project/ProjectHighlights";
 import { seniorProject as senior, seniorVideos as videos } from "@/data/SeniorProjectData";
 
-// Videos lead: they show the platform in use, which screenshots can't.
+// The first two screenshots are the cover shots, so they lead; the videos follow
+// before the rest of the screenshots.
+const COVER_COUNT = 2;
+const toImage = (src: string) => ({ type: "image" as const, src });
 const mediaItems: LightboxItem[] = [
+  ...senior.images.slice(0, COVER_COUNT).map(toImage),
   ...videos.map((v) => ({ type: "video" as const, id: v.id, name: v.name })),
-  ...senior.images.map((src) => ({ type: "image" as const, src })),
+  ...senior.images.slice(COVER_COUNT).map(toImage),
 ];
 
 export default function SeniorProjectPage() {
