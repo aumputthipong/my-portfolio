@@ -228,6 +228,7 @@ Small, even corners; the shape language is square-ish, not pill-shaped.
 - **`button-icon`** — 40px square, the same 2px outline, glyph only (the GitHub octocat). Always carries `aria-label` + `title`.
 - **`card`** — project tile, Education, the detail panel: white (`card`), a hairline ring and a soft shadow that deepens on hover (no lift).
 - **`chip`** — the project-type label on featured cards and detail pages: solid `accent`, `on-accent` uppercase text, `rounded.xs`. Grid cards set the type as plain muted caps instead, so the featured pair keeps the colour.
+- **Grid card** ("More projects") — reads identity first: the title with the year on its right, then the type in muted caps and, for coursework, an outlined **Academic project** chip (`ring-1 ring-line`, sentence case, no fill, so it never reads as a tech chip); then the two-line description. The stack (one row of tech badges; names past one row fold into a `+N` count) and the actions sit on the card floor, so dividers line up across a row.
 - **Card actions** — project cards share `UI/CardActions.tsx`: `DemoAction` (primary, "Live demo"), `VideoAction` (primary, "Watch demo", opens the lightbox for a project with demo videos but no live site) and `IconAction` (`button-icon`, GitHub or Figma). All grow to 44px on touch screens.
 - **`tech-badge`** — a flat `chip`-token fill, uppercase tracked 12px label with the tool's icon, `rounded.xs`, no border.
 - **Section title** — `UI/SectionHeader.tsx`: the h2 plus its accent bar, left-aligned (optionally a count on the right) or centred.
