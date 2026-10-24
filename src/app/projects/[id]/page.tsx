@@ -15,16 +15,23 @@ export default function ProjectDetailPage() {
   const project = projectData.find((p) => p.id === id);
   if (!project) notFound();
 
-  const mainLabel = project.layout === "mobile" ? "Mobile app" : "Web app";
+  const mainLabel = project.layout === "mobile" ? "Mobile" : "Web";
   const companion = project.mobileCompanion;
 
-  // Companion phone screens follow the main set in the same rail
+  // Companion phone screens share the rail with the main set, after it unless
+  // companionFirst; then the main set gets its own label where it starts
+  const mainItems: LightboxItem[] = project.images.map((src) => ({
+    type: "image" as const,
+    src,
+    ...(project.companionFirst ? { group: mainLabel } : {}),
+  }));
+  const companionItems: LightboxItem[] = (companion?.images ?? []).map((src) => ({ type: "image" as const, src, layout: "mobile" as const, group: companion?.label }));
   const galleryItems: LightboxItem[] = project.haveImage
-    ? [
-        ...project.images.map((src) => ({ type: "image" as const, src })),
-        ...(companion?.images ?? []).map((src) => ({ type: "image" as const, src, layout: "mobile" as const, group: companion?.label })),
-      ]
+    ? project.companionFirst ? [...companionItems, ...mainItems] : [...mainItems, ...companionItems]
     : [];
+  const platform = !companion
+    ? mainLabel
+    : project.companionFirst ? `${companion.label} + ${mainLabel}` : `${mainLabel} + ${companion.label}`;
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -38,7 +45,7 @@ export default function ProjectDetailPage() {
             title={project.title}
             description={project.description}
             facts={[
-              { label: "Platform", value: companion ? `${mainLabel} + ${companion.label}` : mainLabel },
+              { label: "Platform", value: platform },
               { label: "Year", value: project.year },
               ...(project.academic ? [{ label: "Context", value: "Academic project" }] : []),
             ]}
