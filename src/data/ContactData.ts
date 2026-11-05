@@ -41,4 +41,4 @@ export const contacts: ContactItem[] = [
 ];
 
 /** The resume PDF in public/resume, linked from the Hero and the Contact section */
-export const RESUME_HREF = "/resume/Resume_Putthipong-Chobngam_Software_developer.pdf";
+export const RESUME_HREF = "/resume/Putthipong-Chobngam_Fullstack_Software_Engineer_Resume.pdf";
